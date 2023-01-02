@@ -1,0 +1,59 @@
+<template>
+    <div class=" mainDiv slds-m-top_xx-large">
+        <div class=" mainDiv">
+            <div class="slds-grid slds-p-around_large headerDiv">
+                <div class="slds-col slds-size_1-of-2"> Application Details </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <div class="slds-grid slds-grid_align-end">
+                        <lightning-icon onclick={CloseIcon} class="slds-m-top_xx-small closeIcon" variant="inverse" size="x-small" icon-name="utility:close" alternative-text="Close" title="Close"></lightning-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-around_large">
+                <div class="slds-p-bottom_xx-large mainText">{jobdetails.Name}</div>
+                <!-- <p class="slds-m-bottom_large paragraph"> Cover Letter <br> Please remember to update your cover letter for this specific job PDF Files only <br> (4MB max)</p> -->
+                <div class="slds-grid slds-m-bottom_xx-large">
+                    <div class="slds-col slds-size_9-of-12 upload-btn-wrapper">
+                        <button class="btn"><img style="width: 35px;" src={uploadIcon} /><span class="uploadCover">Upload Cover Letter</span> </button>
+                        <input onchange={handleOnFileUpload} type="file" name="myfile" />
+                    </div>
+                    <div class="slds-col slds-size_3-of-12 slds-grid slds-grid_align-end slds-m-left_medium infoFileChoosen">
+                        No file choosen
+                    </div>
+                </div>
+                <div class="">
+                     <div class="infoText"> Only Allow Pdf or Word Files</div>
+                </div>
+                <div class="slds-grid slds-grid_align-end slds-m-top_large">
+                    <button disabled onclick={SubmitApplicationButton} class="slds-p-horizontal_medium slds-p-vertical_small slds-m-right_large disableButtonClass">Submit application</button>
+                    <button onclick={SaveAsDraftButton} class="slds-p-horizontal_medium slds-p-vertical_small slds-m-right_large lineButtonClass">Save as Draft</button>
+                    <button onclick={CancelButton} class="slds-p-horizontal_medium slds-p-vertical_small invertButtonClass">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </template> -->
+
+<template if:true={CantOpenModal}>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="CantOpenModal slds-modal slds-fade-in-open">
+        <div class="slds-modal__container CantOpenDiv">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+        </svg>
+        <span class="slds-assistive-text">Cancel and close</span>
+        </button>
+        <div class="slds-card slds-p-around_large">
+            It might be because<br>
+            1. Your profile is incomplete<br>
+            2. Your profile is inactive<br>
+            3. You have not uploaded a cover letter for this application<br>
+            <div class="slds-grid slds-grid_align-end">
+                <button onclick={CloseCantOpenModal} class="slds-m-around_small slds-p-vertical_small slds-p-horizontal_x-large OKButton">OK</button>
+            </div>
+        </div>
+        </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+</template>

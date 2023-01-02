@@ -1,0 +1,1050 @@
+<template>
+
+    <!-- <div style="display:flex">
+           <div>
+              <lightning-button variant="Neutral" icon-name={locationImage} label="Analytics " title="titleName" onclick={handleClick} style="margin-right:54rem" class="addAnalytics"></lightning-button>
+          </div>
+         <div>
+           <lightning-button variant="success" label="Add Job" icon-name="utility:add" title="" onclick={handleClick} class="addjobButton"></lightning-button>
+         </div> 
+    </div>   -->
+
+    <!-- <div class="noTabScreen">
+        <img src={multipleIcon} style="margin: 0px 10px;">
+    </div> -->
+
+    <div class="mainScreen" style="background: #e6eaea;">
+        <template if:true={mainchildbodyVisibility}>
+            <div class="mainchildbody">
+                <div class="slds-tabs_default slds-sub-tabs" style="border-radius: 20px 0px 0px 0px;display: flex;">
+                    <ul class="conInfoTabs" role="tablist">
+                        <template for:each={recentChats} for:item="recentChat" for:index="index">
+                            <li class="contactTab" onclick={changeTab} key={recentChat.Id} data-id={recentChat.Id}
+                                data-record={recentChat} data-index={index}>
+                                <p data-index={index} class="contactName">{recentChat.Name}</p>
+                                <lightning-icon icon-name="utility:close" size="x-small" alternative-text="Doc image"
+                                    data-index={index} style="margin: 2px 0px 0px 5px;">
+                                </lightning-icon>
+                            </li>
+                        </template>
+                    </ul>
+                    <!-- <div style="margin-top: 15px;margin-right: 20px;display: flex;">
+                        <div style="margin-right:10px;cursor: pointer;">
+                            <img src={clock} alt="">
+                        </div>
+                        <div style="cursor: pointer;">
+                            <img src={gridData} alt="">
+                        </div>
+                        <div style="cursor: pointer;">
+                            <lightning-icon icon-name='utility:threedots' alternative-text='threedots' size='small'
+                                title='threedots' onclick={showThreeDotOptions} class="threeDots"
+                                style="--sds-c-icon-color-foreground-default: #FFF;cursor: pointer;margin: 0px 5px 0px 10px;"></lightning-icon>
+                            <template if:true={threeDotOptionsVisibility}>
+                                <div class="threeDotOptionsOverlay" onclick={hideThreeDotOptions}></div>
+                                <div class="threeDotOptions">
+                                    <h1 class="ThreeDotsPoints"></h1>
+                                    <ul>
+                                        <li><lightning-icon icon-name="utility:send" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;transform: rotate(-30deg);"></lightning-icon>
+                                            Publish/Close</li>
+                                        <li><lightning-icon icon-name="utility:search" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            Find Candidates</li>
+                                        <li><lightning-icon icon-name="utility:preview" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            View Applications</li>
+                                        <li><lightning-icon icon-name="utility:layers" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            Duplicate</li>
+                                        <li><lightning-icon icon-name="utility:save" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            Save as Template</li>
+                                        <li><lightning-icon icon-name="utility:edit" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            Edit Job</li>
+                                        <li><lightning-icon icon-name="utility:delete" size="small"
+                                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin-right: 10px;"></lightning-icon>
+                                            Delete</li>
+                                    </ul>
+                                </div>
+                            </template>
+                        </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+        </template>
+        <div class="innerScroller" style="overflow-y: auto;" onclick={SetValueToConlistScroller}>
+            <article style="background: white;">
+
+                <div class="backBtn" onclick={backBtnClicked}>
+                    <lightning-icon icon-name="utility:back" class="search-icon" size="x-small">
+                    </lightning-icon>
+                </div>
+                <div class="header" style="position: relative;">
+                    <div>
+                        <div style="display: flex;">
+                            <span class="fullNameCss">{visibleContact.Name}</span>
+                            <img class="fav" src={visibleContact.bookmarkStatus} onclick={favouriteCandiddate}
+                                data-id={visibleContact.Id} alt="" style="width: 30px;cursor: pointer;">
+
+                            <!-- <img src={star} style="width: 15px;height: 15px;margin: 8px;"> -->
+                        </div>
+                        <div class="emailPreviewcss">
+                            <p>{visibleContact.Email}</p>
+                        </div>
+                    </div>
+                    <div class="imageIcons" style="display: flex;flex-wrap:wrap;align-items: center;">
+                        <lightning-icon icon-name='utility:user' alternative-text='user' onclick={showUserDetail}
+                            size='small'
+                            style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin: 0px 5px;"></lightning-icon>
+                        <lightning-icon icon-name='utility:prompt' size='small' onclick={showChatArea}
+                            style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin: 0px 5px;"></lightning-icon>
+                        <div if:true={jobApplied}>
+                            <lightning-icon icon-name='utility:display_text' size='small'
+                                onclick={showcandidateApplicationHistory}
+                                style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin: 0px 5px;"></lightning-icon>
+                        </div>
+                        <lightning-icon icon-name='utility:note' size='small' onclick={showNotesArea}
+                            style="--sds-c-icon-color-foreground-default: #549BA5;cursor: pointer;margin: 0px 5px;"></lightning-icon>
+
+                        <!-- <img src={userIcon} style="margin: 0px 10px 0px 0px;"> -->
+                        <template if:true={inviteBtn}>
+                            <div class="inviteBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Invite
+                            </div>
+                        </template>
+                        <template if:true={invitedBtn}>
+                            <div class="invitedBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Invited
+                            </div>
+                        </template>
+                        <template if:true={hiredBtn}>
+                            <div class="hiredBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Hired
+                            </div>
+                        </template>
+
+
+                        <template if:true={AcceptedBtn}>
+                            <div class="AcceptedBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Accepted
+                            </div>
+                        </template>
+                        <template if:true={DeclinedBtn}>
+                            <div class="DeclinedBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Declined
+                            </div>
+                        </template>
+                        <template if:true={ContactedBtn}>
+                            <div class="ContactedBtn">
+                                <lightning-icon icon-name='utility:check' size='x-small'
+                                    style="--sds-c-icon-color-foreground-default: #fff;"></lightning-icon> Contacted
+                            </div>
+                        </template>
+
+
+
+                        <div class="toggleButton" style="margin-left: 7px;" onclick={showParentInfo}>
+                            <lightning-icon icon-name="utility:chevronright" size="x-small"></lightning-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <template if:true={candidateInfo}>
+                    <p style="font-size: 13px;color: #549BA5;font-weight: bold;float: right;margin: 0px 20px;cursor: pointer;"
+                        onclick={showReordeOptions}>
+                        <lightning-icon icon-name='utility:settings' alternative-text='settings'
+                            style="--sds-c-icon-color-foreground-default: #549BA5;" size='small'
+                            ></lightning-icon>
+                    </p>
+
+
+                    <template if:true={ReordeOptions}>
+                        <div class="ReordeOptionsOverlay" onclick={closeReorderOptions}
+                            style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 4;background: black;opacity: 0.5;">
+                        </div>
+                        <div class="ReordeOptions">
+                            <lightning-dual-listbox label="Fields" source-label="Available" selected-label="Selected"
+                                options={allFieldsAvailable} value={currentFieldsOptions}
+                                onchange={handleAddRemoveListOptionChanged}></lightning-dual-listbox>
+                            <div class="listBoxActions"
+                                style="display: flex;justify-content: center;padding: 20px 0px 0px;">
+                                <p onclick={closeReorderOptions}
+                                    style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;border: 1px solid #ccc;border-radius: 2px;">
+                                    Cancel
+                                </p>
+                                <p onclick={resetReorderOptions}
+                                    style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;border: 1px solid #ccc;border-radius: 2px;">
+                                    Reset</p>
+                                <p onclick={SubmitReorderOptions}
+                                    style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;background: #549BA5;color:white">
+                                    Submit
+                                </p>
+                            </div>
+                        </div>
+                    </template>
+
+
+                    <div class="sectionContainer" style="min-height: 100vh;">
+                        <div class="sectionContainerChild basicInfoEduDetail container" data-class="basicInfoEduDetail"
+                            style="display: none;padding: 0px 15px;display: flex;width: 100%;">
+                            <div class="basicInfo">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">BASIC INFORMATION SUMMARY</p>
+                                </div>
+                                <div style="border-radius: 15px;background: #F6F6F6;">
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span class="" style="color: #091132;"> Full Name
+                                                <p class="textCss"> {visibleContact.Name}</p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Country of Residence
+                                                <p class="textCss">{visibleContact.currentCountryOfResidence__c}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <span style="color: #091132;"> Phone
+                                                <p class="textCss">{visibleContact.Phone} </p>
+                                            </span>
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Criminal Record
+                                                <p class="textCss">{visibleContact.Criminal_Record__c}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <span style="color:#091132;">Date of Birth
+                                                <p class="textCss">{visibleContact.Birthdate}</p>
+                                            </span>
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;">Relationship Status
+                                                <p class="textCss">{visibleContact.Relationship_Status__c}</p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span style="color:#091132;">Date of Availibility
+                                                <p class="textCss"> {visibleContact.Date_of_Availability__c}</p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Number of Dependents
+                                                <p class="textCss">{visibleContact.Number_Of_Dependents__c}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div style="padding:15px;height:70px;display:flex;justify-content: space-between;">
+                                        <div>
+                                            <span style="color:#091132;">Partner</span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <p class="textCss"> {visibleContact.Partner__c}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="education">
+                                <div class="basicInfoCss" style="display: flex;justify-content: space-between;">
+                                    <p style="padding-bottom: 15px;" class="customClass">EDUCATIONAL SUMMARY</p>
+                                </div>
+                                <div style="border-radius: 15px;background: #F6F6F6;">
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span style="color: #091132;"> Name of Institute
+                                                <p class="textCss"> {visibleContact.Name_Of_Institute__c}</p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Country
+                                                <p class="textCss">{visibleContact.countryOfBirth__c}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <span style="color: #091132;"> Degree type
+                                                <p class="textCss">{visibleContact.Degree_Type__c} </p>
+                                            </span>
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Degree in Education
+                                                <p class="textCss">{visibleContact.Degree_Conferred__c}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <span style="color:#091132;">Course / Major
+                                                <p class="textCss">{visibleContact.Course_Major__c}</p>
+                                            </span>
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;">Degree Conferred
+                                                <p class="textCss">{visibleContact.Degree_Conferred__c}</p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span style="color: #091132;">
+                                                <p class="textCss"></p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;">
+                                                <p class="textCss"></p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div style="padding:15px;height:70px;display:flex;justify-content: space-between;">
+                                        <div>
+                                            <span style="color:#091132;">Certificate</span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <p class="textCss"> {visibleContact.Certification__c}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionContainerChild seekingPosition" data-class="seekingPosition"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">SEEKING POSITIONS</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={seekingPosition} style="padding: 10px; text-align: center;">No Data
+                                        Available</div>
+                                    <div if:true={seekingPosition} style="min-width: 800px;">
+                                        <table>
+                                            <tr class="seekingPositionTabHeader">
+                                                <th style="padding:20px">Department</th>
+                                                <th>Subject</th>
+                                                <th>Years of Experience in Position</th>
+                                            </tr>
+                                            <template for:each={seekingPositionData} for:item="item">
+                                                <tr key={item.key} class="seekingPositionData">
+                                                    <td style="padding:17px">{item.Department__c}</td>
+                                                    <td>{item.Subject__c}</td>
+
+                                                    <td>{item.Years_of_Experience__c}</td>
+                                                </tr>
+                                            </template>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild jobPreference" data-class="jobPreference"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div class="jobPrefernces" style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p class="customClass" style="padding-bottom: 15px;"> Job Preferences</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+
+                                    <div style="min-width: 800px;">
+                                        <div class="preferences">
+                                            <p class="position">Position Availability:</p>
+                                            <p class="preferencesValue">{visibleContact.Preferred_Jobtype__c}</p>
+                                        </div>
+                                        <div class="preferences">
+                                            <p class="position">Curriculum Experience:</p>
+                                            <p class="preferencesValue">{visibleContact.Curriculum_Experience__c}</p>
+                                        </div>
+                                        <div class="preferences">
+                                            <p class="position">Location:</p>
+                                            <p class="preferencesValue">{visibleContact.Preferred_Country__c}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild careerhistory" data-class="careerhistory"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Career History</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={careerHistoryBoolean} style="padding: 10px; text-align: center;">No
+                                        Data
+                                        Available</div>
+                                    <div if:true={careerHistoryBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Start to Finish Date</div>
+                                            <div class="careerhistoryHeader">Job Title</div>
+                                            <div class="careerhistoryHeader">Organization</div>
+                                            <div class="careerhistoryHeader">Job type</div>
+                                            <div class="careerhistoryHeader">Curriculum</div>
+                                            <div class="careerhistoryHeader">Country, State</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={positionHeldData} for:item="item">
+
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">Aug 01 2018 - Current</div>
+                                                        <div class="careerhistoryValue">School Counselor</div>
+                                                        <div class="careerhistoryValue">Jefferson Elementary School
+                                                        </div>
+                                                        <div class="careerhistoryValue">Full Time</div>
+                                                        <div class="careerhistoryValue">United States of America</div>
+                                                        <div class="careerhistoryValue">United States, Wisconsin</div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild careerAbsense" data-class="careerAbsense"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Career Absences</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={absenceBoolean} style="padding: 10px; text-align: center;">No Data
+                                        Available
+                                    </div>
+                                    <div if:true={absenceBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Start to Finish Date</div>
+                                            <div class="careerhistoryHeader">Job Title</div>
+                                            <div class="careerhistoryHeader">Organization</div>
+                                            <div class="careerhistoryHeader">Job type</div>
+                                            <div class="careerhistoryHeader">Curriculum</div>
+                                            <div class="careerhistoryHeader">Country, State</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={careerAbsenceData} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">Aug 01 2018 - Current</div>
+                                                        <div class="careerhistoryValue">School Counselor</div>
+                                                        <div class="careerhistoryValue">Jefferson Elementary School
+                                                        </div>
+                                                        <div class="careerhistoryValue">Full Time</div>
+                                                        <div class="careerhistoryValue">United States of America</div>
+                                                        <div class="careerhistoryValue">United States, Wisconsin</div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild reference" data-class="reference"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">References</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={referenceBoolean} style="padding: 10px; text-align: center;">No Data
+                                        Available</div>
+                                    <div if:true={referenceBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Status</div>
+                                            <div class="careerhistoryHeader">Name</div>
+                                            <div class="careerhistoryHeader">Date of Reference</div>
+                                            <div class="careerhistoryHeader">School Name</div>
+                                            <div class="careerhistoryHeader">Start Date</div>
+                                            <div class="careerhistoryHeader">End Date</div>
+                                            <div class="careerhistoryHeader">Referee Title</div>
+                                            <div class="careerhistoryHeader">Referee Score</div>
+                                            <div class="careerhistoryHeader">Action</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={careerHistoryData} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">Completed</div>
+                                                        <div class="careerhistoryValue">Steph Debnam</div>
+                                                        <div class="careerhistoryValue">July 9 2021</div>
+                                                        <div class="careerhistoryValue">International School of Brussels
+                                                        </div>
+                                                        <div class="careerhistoryValue">Jan 03 2001</div>
+                                                        <div class="careerhistoryValue">Jan 03 2003</div>
+                                                        <div class="careerhistoryValue">Vice / Assistant / Deputy
+                                                            Principal
+                                                        </div>
+                                                        <div class="careerhistoryValue">7</div>
+                                                        <div class="careerhistoryValue"><lightning-icon
+                                                                icon-name='utility:delete' alternative-text='delete'
+                                                                size='small' title='delete'></lightning-icon></div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionContainerChild degreeQualification" data-class="degreeQualification"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Degrees/Qualifications</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={degreeBoolean} style="padding: 10px; text-align: center;">No Data
+                                        Available
+                                    </div>
+                                    <div if:true={degreeBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Name of Institute</div>
+                                            <div class="careerhistoryHeader">Country</div>
+                                            <div class="careerhistoryHeader">Degree Type
+                                            </div>
+                                            <div class="careerhistoryHeader">Course Major
+                                            </div>
+                                            <div class="careerhistoryHeader">In Education ?
+                                            </div>
+                                            <div class="careerhistoryHeader">Start Date</div>
+                                            <div class="careerhistoryHeader">Degree Conferred
+                                            </div>
+                                            <div class="careerhistoryHeader">Completion Date</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={visibleContact.Degree_Qualifications__r}
+                                                for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">{item.Institute_Name__c}</div>
+                                                        <div class="careerhistoryValue">{item.Country__c}</div>
+                                                        <div class="careerhistoryValue">{item.Degree_Type__c}</div>
+                                                        <div class="careerhistoryValue">{item.Course__c}</div>
+                                                        <div class="careerhistoryValue">{item.Degree_In_Education__c}
+                                                        </div>
+                                                        <div class="careerhistoryValue">{item.Start_Date__c}</div>
+                                                        <div class="careerhistoryValue">{item.Degree_Conferred__c}</div>
+                                                        <div class="careerhistoryValue">{item.Completion_Date__c}</div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionContainerChild registrationCertificate" data-class="registrationCertificate"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Registrations/Certificate</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={certificateBoolean} style="padding: 10px; text-align: center;">No
+                                        Data
+                                        Available</div>
+                                    <div if:true={certificateBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Certificate Area</div>
+                                            <div class="careerhistoryHeader">Status</div>
+                                            <div class="careerhistoryHeader">Expiry date</div>
+                                            <div class="careerhistoryHeader">Type</div>
+                                            <div class="careerhistoryHeader">Awarded By</div>
+                                            <div class="careerhistoryHeader">Registration Number</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={visibleContact.Certificates__r} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">N/A</div>
+                                                        <div class="careerhistoryValue">{item.Status__c}</div>
+                                                        <div class="careerhistoryValue">J{item.Expiry_Date__c}</div>
+                                                        <div class="careerhistoryValue">{item.Type__c}</div>
+                                                        <div class="careerhistoryValue">{item.Awarded_By__c}</div>
+                                                        <div class="careerhistoryValue">
+                                                            {item.Registration_Or_Certificate__c}
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild contactDetails container" data-class="contactDetails"
+                            style="display: none;width:96%;margin: auto;display: flex;">
+                            <div class="basicInfo">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Contact Details</p>
+                                </div>
+                                <div style="border-radius: 15px;background: #F6F6F6;">
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span class="" style="color: #091132;"> Email
+                                                <p style="width:130px;" class="textCss"> {visibleContact.Email}</p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Secondary Email
+                                                <p style="width:130px;" class="textCss">
+                                                    {visibleContact.secondaryEmail__c}
+                                                </p>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span class="" style="color: #091132;"> Skype ID
+                                                <p style="width:130px;" class="textCss"> {visibleContact.SkypeId__c}</p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <span style="color: #091132;"> Primary Phone
+                                                <p style="width:130px;" class="textCss">{visibleContact.Phone} </p>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;border-bottom: 1px solid lightgray; ">
+                                        <div style="padding-right: 5px;">
+                                            <p style="color:#091132;">Current Address:</p>
+
+                                        </div>
+                                        <div>
+                                            <p class="textCss">{visibleContact.MailingAddress}</p>
+                                        </div>
+
+                                    </div>
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;border-bottom: 0px solid lightgray; ">
+                                        <div style="padding-right: 5px;">
+                                            <p style="color:#091132;">Permanent Address:</p>
+
+                                        </div>
+                                        <div>
+                                            <p class="textCss">{visibleContact.OtherAddress}</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="education">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Emergency Contact Information
+                                    </p>
+                                </div>
+                                <div style="border-radius: 15px;background: #F6F6F6;">
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                                        <div>
+                                            <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                                            <span style="color: #091132;"> Name
+                                                <p class="textCss"> </p>
+                                            </span>
+
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Email
+                                                <p class="textCss"></p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="padding:15px;height:70px;display:flex;justify-content: space-between;border-bottom: 0px solid lightgray; ">
+                                        <div>
+                                            <span style="color: #091132;"> Phone
+                                                <p class="textCss"> </p>
+                                            </span>
+                                        </div>
+                                        <div style="width: 140px;">
+                                            <span style="color: #091132;"> Relationship
+                                                <p class="textCss"></p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionContainerChild mediaLinks" data-class="mediaLinks"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Media Links</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={mediaLinkBoolean} style="padding: 10px; text-align: center;">No Data
+                                        Available</div>
+                                    <div if:true={mediaLinkBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Start to Finish Date</div>
+                                            <div class="careerhistoryHeader">Job Title</div>
+                                            <div class="careerhistoryHeader">Organization</div>
+                                            <div class="careerhistoryHeader">Job type</div>
+                                            <div class="careerhistoryHeader">Curriculum</div>
+                                            <div class="careerhistoryHeader">Country, State</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={careerHistoryData} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">Aug 01 2018 - Current</div>
+                                                        <div class="careerhistoryValue">School Counselor</div>
+                                                        <div class="careerhistoryValue">Jefferson Elementary School
+                                                        </div>
+                                                        <div class="careerhistoryValue">Full Time</div>
+                                                        <div class="careerhistoryValue">United States of America</div>
+                                                        <div class="careerhistoryValue">United States, Wisconsin</div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild relationInfo" data-class="relationInfo"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Relationship Information</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={relationshipInformation} style="padding: 10px; text-align: center;">
+                                        No
+                                        Data
+                                        Available</div>
+                                    <div if:true={relationshipInformation} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader" style="width: calc(100%/3);">Status</div>
+                                            <div class="careerhistoryHeader" style="width: calc(100%/3);">Team Member
+                                                Name
+                                            </div>
+                                            <div class="careerhistoryHeader" style="width: calc(100%/3);">Team Member
+                                                Position
+                                                Sought</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={careerHistoryData} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue" style="width: calc(100%/3);">
+                                                            {visibleContact.Relationship_Status__c}</div>
+                                                        <div class="careerhistoryValue" style="width: calc(100%/3);">
+                                                            None
+                                                        </div>
+                                                        <div class="careerhistoryValue" style="width: calc(100%/3);">-
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sectionContainerChild keyRelationship" data-class="keyRelationship"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Key Relationships and Family
+                                        Members
+                                    </p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={keyRelationships} style="padding: 10px; text-align: center;">No Data
+                                        Available</div>
+                                    <div if:true={keyRelationships} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Start to Finish Date</div>
+                                            <div class="careerhistoryHeader">Job Title</div>
+                                            <div class="careerhistoryHeader">Organization</div>
+                                            <div class="careerhistoryHeader">Job type</div>
+                                            <div class="careerhistoryHeader">Curriculum</div>
+                                            <div class="careerhistoryHeader">Country, State</div>
+                                        </div>
+                                        <div>
+                                            <template for:each={careerHistoryData} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">Aug 01 2018 - Current</div>
+                                                        <div class="careerhistoryValue">School Counselor</div>
+                                                        <div class="careerhistoryValue">Jefferson Elementary School
+                                                        </div>
+                                                        <div class="careerhistoryValue">Full Time</div>
+                                                        <div class="careerhistoryValue">United States of America</div>
+                                                        <div class="careerhistoryValue">United States, Wisconsin</div>
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sectionContainerChild extraCurricular" data-class="extraCurricular"
+                            style="display: none;border-radius: 15px;width: 96%;margin: auto;">
+                            <div style="width: 100%;">
+                                <div class="basicInfoCss">
+                                    <p style="padding-bottom: 15px;" class="customClass">Extra Curricular Activities</p>
+                                </div>
+                                <div
+                                    style="border-radius:15px;padding-left: -8px;background: #F6F6F6;width: 100%;overflow: hidden;overflow-x: auto;">
+                                    <div if:false={extraCurricularBoolean} style="padding: 10px; text-align: center;">No
+                                        Data
+                                        Available</div>
+                                    <div if:true={extraCurricularBoolean} style="min-width: 800px;">
+                                        <div style="display:flex;" class="seekingPositionTabHeader">
+                                            <div class="careerhistoryHeader">Activity</div>
+                                            <div class="careerhistoryHeader">Activity Details</div>
+
+                                        </div>
+                                        <div>
+                                            <template for:each={visibleContact.Career_Activities__r} for:item="item">
+                                                <div key={item} class="singleRow" onclick={CollapseDropDown}>
+                                                    <div class="rowData" style="display:flex;"
+                                                        onclick={CollapseDropDown}>
+                                                        <div class="careerhistoryValue">{item.Activity_Name__c}</div>
+                                                        <div style="width: fit-content;" class="careerhistoryValue">
+                                                            {item.Activity_Details__c}</div>
+
+                                                    </div>
+                                                    <div class="dropdownData"
+                                                        style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+                                                        <p>hi</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </template>
+
+                <template if:true={candidateChat}>
+                    <div class="candidateChatArea">
+                        <div class="chatBody"
+                            style="height: 400px;border: 1px solid #ccc;margin: 0px 20px;width: calc(100% - 40px);">
+
+                        </div>
+                        <div class="msger-footer"
+                            style="background-color:white;padding:10px 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+                            <div class="msger-inputarea">
+                                <input type="text" class="msger-input" placeholder={placeHolder}
+                                    onkeypress={sendMessageOnEnter}>
+                                <div class="sendBottomDiv"
+                                    style="cursor: pointer;background-color: #549BA5; padding: 0rem; margin-left: 0.2rem;border-top-right-radius: 14px; border-bottom-right-radius: 14px;"
+                                    onclick={sendMessage}>
+                                    <lightning-icon icon-name="utility:send" alternative-text="Send" title="Send"
+                                        size="small" class="sendButtonIcon"
+                                        style="--sds-c-icon-color-foreground-default: #fff;">
+                                    </lightning-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template if:true={candidateApplicationHistory}>
+                    <div style="min-height: 100vh;">
+                        <div class="cnt1">
+                            <div class="itm1 hd1">Application Details</div>
+                            <div>
+                                <div class="itm1 fb1">
+                                    <div class="fi1 tb ta hd2">Cover letter</div>
+                                    <div class="fi1 ta">{coverLetterName}</div>
+                                </div>
+                                <div class="itm1 fb1">
+                                    <div class="fi1">Applied on: <span class="tb">Dec 23, 2022</span></div>
+                                    <div class="fi1">Status: <span class="tb">Applied</span></div>
+                                    <div class="fi1">Status updated on: <span class="tb">Dec 23, 2022</span> </div>
+                                </div>
+                                <div class="itm1 fb1">
+                                    <div class="fi1 tb ta hd2">Job Level Questions</div>
+                                    <div class="fi1 ta">No Job Level Questions </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+
+
+                <template if:true={notesArea}>
+
+                    <div class="notesArea" style="min-height: 100vh;overflow-x: hidden;transition: all 1s;">
+
+                        <div class="addNotecomponent">
+                            <h1 style="width: 90%;margin:10px auto;font-size: 20px;">Add new Note</h1>
+                            <lightning-textarea class="addnote" label="Note:" onchange={handleNotes} value={noteText}
+                                style="width: 90%;margin:10px auto;height: 100px;box-shadow: none;"></lightning-textarea>
+                            <div class="btns" style="display: flex;width: 90%;margin:10px auto;">
+                                <p style="cursor: pointer;width:max-content;padding: 6px 20px;font-weight: bold;border-radius: 5px;border: 1px solid #777;margin-right: 10px;"
+                                    onclick={hideAddNoteComponent}>Cancel</p>
+                                <p onclick={createNotes}
+                                    style="cursor: pointer;width:max-content;padding: 6px 20px;background: #549BA5;color: white;font-weight: bold;border-radius: 5px;">
+                                    Submit</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex;justify-content: space-between;padding: 10px 5%;">
+                            <h1 style="font-size: 25px;">Notes: </h1>
+                            <p onclick={showAddNoteComponent}
+                                style="cursor: pointer;background: #549BA5;color: white;font-weight: bold;padding: 10px 20px;border-radius: 5px;">
+                                Add Note</p>
+                        </div>
+
+                        <template for:each={noteshere} for:item="note">
+                            <div class="notes" key={note.Id}>
+                                <div class="singleNote">
+                                    <div style="margin-left: 2%; width: 100%;">
+                                        <div style="display:flex;justify-content:space-between;width: 100%;">
+                                            <h1 class="noteBy">{note.Recruiter__r.Name}</h1>
+                                            <p class="noteBy"> Date:{note.CreatedDate}</p>
+                                        </div>
+                                        <p class="noteText">
+
+
+                                            {note.Notes_For_Candidate__c}
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <div if:true={note.showActions} class="action">
+                                    <lightning-icon class="actionicon" data-id={note.Id} icon-name='utility:edit'
+                                        alternative-text='edit' onclick={editNote} size='small'></lightning-icon>
+                                    <lightning-icon class="actionicon" data-id={note.Id} icon-name='utility:delete'
+                                        onclick={deleteNote} alternative-text='delete' size='small'></lightning-icon>
+                                </div>
+                            </div>
+                        </template>
+
+                    </div>
+                </template>
+                <br>
+            </article>
+        </div>
+    </div>
+
+
+
+</template>

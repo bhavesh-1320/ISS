@@ -1,0 +1,24 @@
+<template>
+    <div class="container">
+        <div>
+            <h2 style="font-size: 25px;
+            font-family: 'Roboto', sans-serif;">Favorites</h2>
+        </div>
+        <div>
+            <ul if:true={displayFavorites.length}>
+                <template for:each={displayFavorites} for:item="favorite">
+                    <li key={favorite}>
+                        <a data-id={favorite.id} class="item" onclick={handelSelectedItem}>{favorite.name}</a>
+                    </li>
+                </template>
+            </ul>
+            <div class="link">
+                <a href="#" onclick={handelAllFavoritesSee}>
+                    <i class="arrow"></i>
+                    <span>{seeAllLabel}</span>
+                    <i class="arrow"></i>
+                </a>           
+            </div>
+        </div>
+    </div>
+</template>

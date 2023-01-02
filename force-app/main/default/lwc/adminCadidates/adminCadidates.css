@@ -1,0 +1,56 @@
+.my-custom-Combobox{
+	
+    --lwc-borderWidthThin: 3px;
+    --sds-c-input-color-border: #549BA5;
+    --lwc-colorTextPlaceholder: #2D514F;
+    --sds-c-input-radius-border: 20px;
+    --lwc-borderWidthThin: 3px;
+    --lwc-heightInput: 2rem;
+    --lwc-colorTextInputIcon: #549BA5;
+    margin-right: 10px;
+}
+.mainContainer{
+    background-color: #eef5f6;  
+}
+.Cadidatecount{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.font-cadidate-count{
+    font-size: 20px;
+    color: cadetblue;
+}
+.addjobButton{
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+    margin-top: 23px;
+   
+  }
+  .desktop-view{
+    display: block;
+  }
+  .mobile-view{
+    display: none;
+  }
+ .mobile-child-display{
+    display: block;
+ }
+
+
+
+  /* mobile css */
+@media (max-width:768px){
+    .desktop-view{
+        display: none;
+      }
+      .mobile-view{
+        display: block;
+        width: 100%;
+      }
+      .mobile-child-display{
+        display: none;
+      }
+}

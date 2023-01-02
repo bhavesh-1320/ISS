@@ -1,0 +1,751 @@
+<template>
+    <div class="optionsOverlay" onclick={optionsOverlayClicked} style="position:absolute;z-index:-1;top: 0;">
+
+    </div>
+    
+    <template if:true={loader}>
+        <div class="overlay"></div>
+        <div id="grid-container" class="grid-container">
+            <div class='cube cube1'></div>
+            <div class='cube cube2'></div>
+            <div class='cube cube3'></div>
+            <div class='cube cube4'></div>
+            <div class='cube cube5'></div>
+            <div class='cube cube6'></div>
+            <div class='cube cube7'></div>
+            <div class='cube cube8'></div>
+            <div class='cube cube9'></div>
+        </div>
+    </template>
+    <template if:true={moreFiltersVisibility}>
+        <div class="morefiltersModalOverlay"></div>
+        <div class="morefiltersModal">
+            <div class="modalheader">
+                <h1 style=" font-family: RobotoLight;">Find a School</h1>
+            </div>
+            <div class="modalOptionsOverlay" onclick={modalOptionsOverlayClicked}
+                style="display:none;width: 100%;height:100vh;position: absolute;top: 0;left: 0;z-index:8;">
+            </div>
+            <div class="modalBody">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-p-around_small slds-p-left_none slds-p-right_none slds-p-top_none regionInner">
+                    <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 61px;">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                            style="z-index:10;">
+                            <lightning-icon size="x-small"
+                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default regionDown"
+                                icon-name="utility:down"></lightning-icon>
+                            <input type="text"
+                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5); margin-left:5px"
+                                placeholder={regionPlaceHolder} class="slds-input inputBar regioninput"
+                                onclick={showOptionMoreFilter} readonly />
+                        </div>
+                    </div>
+                    <div class="moreFilterOptions "
+                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;z-index:30;margin-left:10px">
+                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                            <template for:each={region} for:item="name">
+                                <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalRegion">
+                                    <input type="checkbox"
+                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;" onclick={selectedRegion} value={name.value} data-id="region">
+                                        <span style="font-family: RobotoLight;">{name.value}</span>
+                                </p>
+                            </template>
+                        </div>
+                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                            <div class="reset"
+                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                onclick={resetOptions} data-id="regionReset">Reset</div>
+                            <div class="saveBtn"
+                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                onclick={submitOptions} data-id="regionSubmit">Submit</div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- School Type  -->
+                    <div class="schoolTypeInner">
+                        <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 65px;margin-left: 6px;">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                style="z-index:10;">
+                                <lightning-icon size="x-small"
+                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:down"></lightning-icon>
+                                <input type="text"
+                                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                    placeholder={schoolTypePlaceHolder} class="slds-input inputBar FamilyModalFilter"
+                                    onclick={showOptionMoreFilter} onkeyup={searchSchoolType} />
+                            </div>
+                        </div>
+                        <div class="moreFilterOptions"
+                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;z-index:30;margin-left:10px">
+                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                <input class="innerModalInput schoolTypeSearch" onkeyup={searchSchoolType} ></input>
+                                <template for:each={schoolList} for:item="school">
+                                    <div class="slds-form-element schoolTypeData" key={id}>
+                                        <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalMoreFilter optvalSchoolType">
+                                            <input type="checkbox"
+                                                style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                onclick={selectedSchoolType} value={school.value} data-id="schoolType">
+                                            <span class="scholTypeDataCss" style="font-family: RobotoLight;">{school.value}</span>
+                                        </p>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                <div class="reset"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={resetOptions} data-id="schoolTypeReset">Reset</div>
+                                <div class="saveBtn"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={submitOptions} data-id="schoolTypeSubmit">Submit</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+
+
+                <!-- Second Card  -->
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-p-around_small slds-p-left_none slds-p-right_none slds-p-top_none">
+                    <!-- country  -->
+                    <div class="countryInner"> 
+                        <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 61px;margin-left:6px">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                style="z-index:10;">
+                                <lightning-icon size="x-small"
+                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:down"></lightning-icon>
+                                <input type="text"
+                                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                    placeholder={countryPlaceHolder} class="slds-input inputBar modalFilterCountry"
+                                    onclick={showOptionMoreFilter}  readonly/>
+                            </div>
+                        </div>
+                        <div class="moreFilterOptions"
+                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;z-index:30;margin-left:10px">
+                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                <input class="innerModalInput countrysearch" onkeyup={searchCountry} ></input>
+                                <template for:each={countryViewList} for:item="name">
+                                    <div class="slds-form-element countrycheck " key={id}>
+                                        <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalMoreFilter optvalCountry">
+                                            <input type="checkbox"
+                                                style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                onclick={selectedCheck} data-id="country" value={name.value}>
+                                            <span class="checkCountry" style="font-family: RobotoLight;">{name.value}</span>
+                                        </p>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                <div class="reset"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={resetOptions} data-id="countryReset">Reset</div>
+                                <div class="saveBtn"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={submitOptions} data-id="countrySubmit">Submit</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- visa type  -->
+
+                    <div class="visaTypeInner">
+                        <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 65px;margin-left: 6px;">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                style="z-index:10;">
+                                <lightning-icon size="x-small"
+                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:down"></lightning-icon>
+                                <input type="text"
+                                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                    placeholder={visaPlaceholder} class="slds-input inputBar FamilyModalFilter"
+                                    onclick={showOptionMoreFilter} readonly />
+                            </div>
+                        </div>
+                        <div class="moreFilterOptions"
+                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width:299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;z-index:30;margin-left:10px">
+                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                <template for:each={visaType} for:item="name" for:index="index">
+                                    <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalMoreFilter optvalVisa">
+                                        <input type="radio"
+                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                            value={name.value} onclick={getVisa} onchange={radioValueChange} data-id={name.value} class="chb">
+                                        <span style="font-family: RobotoLight;">{name.value}</span>
+
+                                    </p>
+                                </template>
+                                <!-- <lightning-radio-group name="radioGroup"
+                                    
+                                    options={visaType}
+                                    class="optvalVisa"
+                                    value={value}
+                                    type="radio">
+                                </lightning-radio-group> -->
+                            </div>
+                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                <div class="reset"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={resetOptions} data-id="visaReset">Reset</div>
+                                <div class="saveBtn"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background:#549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={submitOptions} data-id="visaSubmit">Submit</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- <div style="width: max-content;" class="slds-m-top--large ">
+
+                        <h1 class="slds-m-bottom--medium region" >Country</h1>
+                        <input placeholder="Search" style="width: -webkit-fill-available;" onkeyup={searchCountry} onclick={selectedCheck} class="countryData"></input>
+                        <div class="slds-m-top--small hideDiv" style="max-height:120px;overflow: auto;" >
+                            <template for:each={countryViewList} for:item="name" for:index="index">
+                                <div class="slds-form-element country-check " key={id}>
+                                    <div class="slds-form-element__control">
+                                        <div>
+                                            <input type="checkbox" name="options" id={name.key} value={name.value} default="" onclick={selectedCheck}   data-id={name.value} />
+                                            <label class="slds-checkbox__label" for={name.key} style="margin-left: 10px;">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-form-element__label checkCountry">{name.value}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            
+                        </div>
+                    </div> -->
+
+
+
+                </div>
+
+                <!-- Third Card  -->
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-p-around_small slds-p-left_none slds-p-right_none slds-p-top_none">
+                    <!-- <div style="width: max-content;margin-left:25px" class="slds-m-top--large">
+                        <h1 class="slds-m-bottom--medium region" >School Name</h1>
+                        <input placeholder="Search" style="" onkeyup={searchSchool} class="schoolData"></input>
+                        <div class="slds-m-top--small" style="max-height:120px;overflow: auto;">
+                            <template for:each={copyOfAccountData} for:item="name">
+                                <div class="slds-form-element schoolNamecss" key={id}>
+                                    <div class="slds-form-element__control">
+                                        <div class="">
+                                        <input type="checkbox" name="options" id="checkbox-unique-id-86" value={name.Name} onclick={selectedCheckSchool}  data-id={index} />
+                                        <label class="slds-checkbox__label" for="checkbox-unique-id-86" style="margin-left: 10px;">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-form-element__label schoolNameCheckbox">{name.Name}</span>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div> -->
+                    <div class="schoolNameInner" >
+                        <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 61px;margin-left:6px">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                style="z-index:10;">
+                                <lightning-icon size="x-small"
+                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:down"></lightning-icon>
+                                <input type="text"
+                                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                    placeholder={schoolNamePlaceHolder} class="slds-input inputBar schooNameData"
+                                    onclick={showOptionMoreFilter} readonly />
+                            </div>
+                        </div>
+                        <div class="moreFilterOptions"
+                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;z-index:30;margin-left:10px">
+                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;overflow-x: HIDDEN;">
+                                <input class="innerModalInput schoolnameSearch" onkeyup={searchSchoolMorefilter} ></input>
+                                <template for:each={schoolName} for:item="name">
+                                    <div class="slds-form-element schoolNamecss" key={id}>
+                                        <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalMoreFilter optvalSchoolName">
+                                            <input type="checkbox"
+                                                style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                value={name.value} onclick={selectedCheckSchool} data-id="schoolName">
+                                            <span class="schoolNameCheckbox" style="font-family: RobotoLight;">{name.value}</span>
+                                        </p>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                <div class="reset"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={resetOptions} data-id="schoolNameReset">Reset</div>
+                                <div class="saveBtn"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background:#549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={submitOptions} data-id="schoolNameSubmit">Submit</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Regional Org  -->
+                    <!-- <div style="width: max-content;" class="slds-m-top--large">
+                        <h1 class="slds-m-bottom--medium region" >Regional Organization</h1>
+                        <input placeholder="Search" style="width: -webkit-fill-available;"></input>
+                        <div class="slds-m-top--small" style="max-height:120px;overflow: auto;">
+                            <template for:each={regionalOrg} for:item="name">
+                                <div class="slds-form-element" key={id}>
+                                    <div class="slds-form-element__control">
+                                        <div class="">
+                                        <input type="checkbox" name="options" id="checkbox-unique-id-87" value="checkbox-unique-id-87"  />
+                                        <label class="slds-checkbox__label" for="checkbox-unique-id-87" style="margin-left: 10px;">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-form-element__label">{name}</span>
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div> -->
+                    <div class="regionOrgInner">
+                        <div class="slds-form-element" style="width: 100%;max-width: 306px;margin-top: 65px;margin-left: 6px;">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                style="z-index:10;">
+                                <lightning-icon size="x-small"
+                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                    icon-name="utility:down"></lightning-icon>
+                                <input type="text"
+                                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                    placeholder={regionOrgPlaceHolder} class="slds-input inputBar FamilyModalFilter"
+                                    onclick={showOptionMoreFilter} readonly />
+                            </div>
+                        </div>
+                        <div class="moreFilterOptions"
+                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width:299px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px; z-index:30;margin-left:10px">
+                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                <template for:each={regionalOrg} for:item="name">
+                                    <p key={Id} style="padding: 4px;display:flex;align-items:center" class="optvalRegionalOrg">
+                                        <input type="checkbox"
+                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                            data-id="regionalOrg"  onclick={selectedRegionOrg} value={name.value} >
+                                            <span style="font-family: RobotoLight;">{name.value}</span>
+                                    </p>
+                                </template>
+                            </div>
+                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                <div class="reset"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={resetOptions} data-id="regionalOrgReset">Reset</div>
+                                <div class="saveBtn"
+                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                    onclick={submitOptions} data-id="regionalOrgSubmit">Submit</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modalFooter">
+                <p onclick={hideMoreFilter} data-id="cancel" class="footermodal">Cancel</p>
+                <p style="background: #549BA5;color:white" onclick={applyfilters} data-id="searchMorefilter">Search</p>
+            </div>
+        </div>
+    </template>
+
+    <div style="padding: 30px 20px;background: #f4f5f5; padding: 30px 20px; font-family: RobotoLight;">
+        <div class="x">
+            <div class="slds-grid slds-wrap " style="margin-left: 40px;">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                    <div>
+                        <h1 class="headingfonts">School Search </h1>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+                    <!-- <div class="container">
+                        <p style="color: rgba(18, 32, 89, 0.5);"> Special Alert </p>
+                    </div> -->
+                </div>
+            </div>
+            <br>
+            <div class="backgroundWhite" style="background: white;border-top-left-radius: 20px;border-top-right-radius: 20px;margin-top:21px">
+
+                <div style="background: #E6EAEA;border-top-left-radius: 20px;border-top-right-radius: 20px;z-index:3;">
+                    <div class="headerfilter" style="display: flex;justify-content: space-between;padding-left: 15px;">
+
+                        <div class="filters mainDiv" style="display: flex;width: calc(100% - 120px);flex-wrap: wrap;">
+
+                            <div style="padding:5px 7px" class="countryOuter">
+                                <div style="width: max-content;" class="countryBox" onclick={closeShowOption1}>
+                                    <div class="slds-form-element" style="max-width: 200px;">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:3;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default downIconCountry"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border-radius: 20px;"
+                                                placeholder={countryPlaceHolder}
+                                                class="slds-input inputBar countryPrimaryFilter" onclick={showOption1}
+                                                readonly />
+                                        </div>
+                                    </div>
+
+                                    <div class="options1 cmbOptions" id="option1"
+                                        style="position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width:180px;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;margin-left:5px">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;padding: 10px;">
+                                            <template for:each={listOfCountry} for:item="country">
+                                                <!-- <p key={Id} style="padding: 10px 20px;cursor: pointer;" data-id={countryId}
+                                                        value={country.value} onclick={setFilterValue}>{country.value}</p> -->
+                                                <div key={id} style="display: flex;align-items:center;">
+                                                    <p key={Id} style="padding: 4px;"
+                                                        class="optvalMoreFilter optvalCountry">
+                                                        <input type="checkbox"
+                                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                            value={country.value} onclick={selectedCheck} key={id}>
+                                                    </p>
+                                                    <div key={id}>
+                                                        <span key={id} style="font-family: RobotoLight;">{country.value} </span>
+                                                    </div>
+
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions} data-id="countryReset">Reset</div>
+                                            <div class="saveBtn"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background:#549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptionsPrimary} data-id="countrySubmit">Submit</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="padding:5px 7px" class="classSizeOuter">
+                                <div style="width: max-content;">
+                                    <div class="slds-form-element" style="max-width: 200px;">
+                                        <div
+                                            class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                            <!-- <div if:true={showClassSizeCount} class="countShow" style="left:77px;" >
+                                                        <p>&#58; &#40;{classSizeCount}&#41; </p>
+                                                    </div> -->
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default downIconClass"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border-radius: 20px;"
+                                                placeholder={classSizePlaceHolder}
+                                                class="slds-input inputBar classSizefilter" onclick={showOption2}
+                                                readonly />
+                                        </div>
+                                    </div>
+
+                                    <div class="options2 cmbOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width:180px;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;margin-left:5px">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;padding: 10px;">
+                                            <template for:each={listOfClassSize} for:item="classSize">
+                                                <!-- <p key={Id} style="padding: 10px 20px;cursor: pointer;"
+                                                            onclick={setFilterValue}>{classSize.value}</p> -->
+                                                <div key={id} style="display: flex;align-items:center;">
+                                                    <p key={Id} style="padding: 4px;" class="optvalClassSize">
+                                                        <input type="checkbox"
+                                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                            data-id={countryId} value={classSize.value}
+                                                            onclick={classSizeSelected} key={id}>
+                                                    </p>
+                                                    <div key={id}>
+                                                        <span key={id} style="font-family: RobotoLight;">{classSize.value} </span>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions} data-id="classSizereset">Reset</div>
+                                            <div class="saveBtn"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background:#549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptionsPrimary} data-id="classSizeSubmit">Submit
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="padding:5px 7px" class="schoolTypeOuter">
+                                <div style="width: max-content;">
+                                    <div class="slds-form-element" style="max-width: 200px;">
+                                        <div
+                                            class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default downIconSchool"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border-radius: 20px;"
+                                                placeholder={schoolTypePlaceHolder}
+                                                class="slds-input inputBar schoolTypefilter" onclick={showOption3}
+                                                readonly />
+                                        </div>
+                                    </div>
+                                    <div class="options3 cmbOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width:180px;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;margin-left:5px">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;padding: 10px;">
+                                            <template for:each={schoolList} for:item="schooltype">
+                                                <!-- <p key={Id} style="padding: 10px 20px;cursor: pointer;"
+                                                    onclick={setFilterValue}>{schooltype.value}</p> -->
+                                                <div key={id} style="display: flex;align-items:center;">
+                                                    <p key={Id} style="padding: 4px;"
+                                                        class="optvalMoreFilter optvalSchoolType">
+                                                        <input type="checkbox"
+                                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                            data-id={countryId} value={schooltype.value}
+                                                            onclick={selectedSchoolType} key={id}>
+                                                    </p>
+                                                    <div key={id}>
+                                                        <span key={id} style="font-family: RobotoLight;">{schooltype.value} </span>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions} data-id="schoolTypeReset">Reset</div>
+                                            <div class="saveBtn"
+                                                style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptionsPrimary} data-id="schoolTypeSubmit">Submit
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <template for:each={modalFiltersForPillsView} for:item="filter" for:index="index">
+                                <div style="padding:5px 7px ;width:flex-wrap: wrap;" key={id} class={filter.classData}>
+                                    <div style="width: max-content;">
+                                        <div class="filter1" style="max-width: 200px;">
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right  ">
+                                                <lightning-icon size="x-small"
+                                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default newfilter"
+                                                    icon-name="utility:down"></lightning-icon>
+                                                <input type="text"
+                                                    style="cursor: pointer;padding-left: 10px; border-radius: 20px; background: #174581;color: white;font-weight: bold;"
+                                                    placeholder={filter.placeholder} value={filter.value}
+                                                    class={filter.classes} onclick={showOptionMoreFilter} readonly />
+                                            </div>
+                                        </div>
+
+                                        <div class="moreFilterOptions cmbOptions innerBox"
+                                            style="position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width:180px;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;margin-left:5px">
+                                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;padding: 10px;">
+                                                
+
+                                                <template for:each={filter.optionValues} for:item="optionValues">
+                                                    <!-- <template if:false={notVisatype}> -->
+                                                        
+                                                        <div key={id} style="display: flex;align-items:center;">
+                                                            <p key={Id} style="padding: 4px;border: none;" class={filter.classes}>
+                                                                <input type="checkbox" 
+                                                                    style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                                    data-id={optionValues.value} value={optionValues.value} onclick={selectcheckFormorefilter} key={id}>
+                                                                <span key={id} style="font-family: RobotoLight;">{optionValues.value} </span>
+                                                            </p>
+                                                            
+                                                        </div>
+                                                    <!-- </template> -->
+                                                    <!-- <template if:true={notVisatype}>
+                                                   <div key={id} style="display: flex;align-items:center;">
+                                                            <p key={Id} style="padding: 4px;border: none;" class={filter.classes}>
+                                                                <input type="radio" name="visaType"
+                                                                    style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;font-family: RobotoLight;"
+                                                                    data-id={optionValues.value} value={optionValues.value} onclick={selectcheckFormorefilter} key={id}>
+                                                                <span key={id} style="font-family: RobotoLight;">{optionValues.value} </span>
+                                                            </p>
+                                                            
+                                                        </div>
+                                                 </template> -->
+                                                   
+                                                </template>
+
+                                                
+                                            
+                                            
+                                            </div>
+                                            <div class="bottomBtns"
+                                                style="display: flex;justify-content: space-between;">
+                                                <div class="reset"
+                                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                    onclick={resetOptions} data-id="morefilterreset" data-value={filter.placeholder}>Reset</div>
+                                                <div class="saveBtn"
+                                                    style="font-family: RobotoLight;width: max-content; margin: 10px auto; padding: 5px 10px; background:#549BA5;color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                    onclick={submitOptions} data-id="morefiltersubmit">Submit
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>   
+                                
+
+                            </template>
+
+
+                        </div>
+                        <div style="display:flex">
+                            <div>
+                                <p style="width: max-content;text-decoration: none;color:#549BA5;padding: 10px 15px;font-family: 'RobotoLight';font-style: normal;font-weight: 600;font-size: 16px;cursor: pointer;"
+                            onclick={showMoreFilters}>More Filters</p>
+                            </div>
+                            <div if:true={seeClear}>
+                                <p style="width: max-content;text-decoration: none;color:#549BA5;padding: 10px 15px;font-family: 'RobotoLight';font-style: normal;font-weight: 600;font-size: 16px;cursor: pointer;"
+                                onclick={clearAllData}   >Clear</p>
+                            </div>      
+                        </div>    
+                        
+
+
+                    </div>
+
+                  
+                    <div style="background: rgb(230, 234, 234);">
+                        <div class="bestMatchMain">
+                            <div class="sortByDiv" style="width:14%;">
+                                <!-- <lightning-combobox name="progress" class="sortby" label="" value={value}
+                                    placeholder="Sort By" options={sortingOption} onkeyup={handleSortData}
+                                    data-id={sortId}></lightning-combobox> -->
+                                <div
+                                    style="display:flex;">
+                                    <div style="margin: 8px;">
+                                        <div style="width: 400px;" class="filter5">
+                                            <div class="slds-form-element">
+                                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                                    style="z-index:3;">
+                                                    <lightning-icon size="x-small" style="--sds-c-icon-color-foreground-default: white;"
+                                                        class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                        icon-name="utility:down"></lightning-icon>
+                                                    <input type="text" placeholder="Sort Order" class="slds-input inputBar bestMatchFilter"
+                                                        onclick={showOption} readonly />
+                                                </div>
+                                            </div>
+                                            <div class="cmbOptions bestmatchSorting"
+                                                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 400px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;margin-left: 5px;">
+                                                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                                    <template for:each={sortingOption} for:item="option">
+                                                        <p key={Id} style="padding: 10px 20px;cursor: pointer;" class="optval"
+                                                            onclick={handleBestMatch}>
+                                                            {option.label}
+                                                        </p>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div style="padding:8px;display:flex;flex-wrap:wrap;margin-top: 4px;">
+                                        <span class="lrt" style="color: white;font-size: smaller;margin-top: 5px;">Alert</span>
+                                        <lightning-input type="toggle"></lightning-input>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="bestMatches">
+                        <div style="margin-left: 10px;">
+                            <span class="bestmatchfont">
+                                BEST MATCHES</span>
+                        </div> -->
+                        <!-- <div style="font-weight: 600;padding: 7px;margin-left: 120px;color: #fff;">
+                            <p>{sizeOfSchool} Results </p>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- For Mobile view End  -->
+
+                <!-- DropDown start here  -->
+                <div class="slds-grid slds-wrap" style="/* max-height: 61vh; */">
+                    <div class="left slds-col slds-size_1-of-4 show-desktop-list" style="width: 400px;px;background:white;">
+                        <!-- <div class="inputBox" style="margin: 21px 21px 5px 21px;">
+                             <input type="text" style="background: #E6EAEA;border-radius: 20px;height: 50px;" placeholder="Search Name" class="slds-input inputBar" onkeyup={searchSchoolfunc}/>
+                        </div> -->
+                        <!-- New Search bar -->
+                        <div style="background: #FFF;padding: 10px 15px;">
+                            <lightning-input name="enter-search" placeholder="Search School Name" type="search"
+                                class="my-cystom-input"  onchange={searchSchoolfunc}>
+                            </lightning-input>
+                        </div>
+
+                        <p
+                            style="text-align: center; padding: 5px; font-weight: bold; letter-spacing: 2px; color: #555555;background: white;">
+                            {sizeOfSchool} Results
+                        </p>
+                        <!-- <div class="parent-show-dropdown"> -->
+                        <div class="schoollist" style="overflow: auto;height: calc(100vh - 400px);background: white;" onscroll={loadmoredata}>
+                            <div style="width: 100%;padding: 5px 0px;">
+                                <template for:each={accountData} for:item="item" for:index="index">
+                                    <!-- NEW ARTICLE  -->
+                                    <article class="slds-card con-bubble" key={Id} data-record={item.id}
+                                        style="border-radius: 15px;margin: 10px 15px;overflow: hidden;cursor: pointer;padding: 2px;background:linear-gradient(89.81deg, #28397E 1.33%, #46A39D 99.98%);;"
+                                        onclick={getClick} id={item.Id}>
+                                        <div class="slds-grid" data-record={item.id} style="padding-left: 8px;padding-top: 8px;padding-bottom: 8px;padding-right: 9px;">
+                                            <header class="slds-media slds-media_center slds-has-flexi-truncate"
+                                                data-record={}>
+                                                <div class="" style="width:55px;">
+                                                    <img src={rectangleImage}>
+                                                </div>
+                                                <div class="slds-media__body" data-record={}>
+                                                    <p class="conatactName slds-m-left--medium"
+                                                        style="color:#fff;font-size: 15px;font-weight: 600;"
+                                                        data-record={item.Id}>{item.Name}</p>
+                                                    </p>
+                                                </div>
+                                            </header>
+                                        </div>
+                                        <div
+                                            style="border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;overflow: hidden;background: white">
+                                            <div class="slds-grid slds-gutters" style="padding: 12px;">
+                                                <div class="slds-col" style="margin-left: 3px;">
+                                                    <img src={locationImage}>
+                                                    <span
+                                                        style="margin-left:8px;font-size: 13px;font-weight: bold;">{item.Country__c}</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </article>
+                                </template>
+                            </div>
+                            <template if:true={loaderInner}> -->
+                                        <div class="demo-only" style="height:6rem;position:relative">
+                                            <div class="slds-spinner_container">
+                                                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                                    <span class="slds-assistive-text">Loading</span>
+                                                    <div class="slds-spinner__dot-a"></div>
+                                                    <div class="slds-spinner__dot-b"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </template>
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div if:true={seeErrorOnSearch}>
+                            <p style="font-size: 40px;font-size: 40px;top: 370px;position: absolute;left: 80px;"
+                                class=" ">
+                                No Data Found
+                            </p>
+                        </div> -->
+                    </div>
+
+                    <div class="right slds-col slds-size_3-of-4 show-childCmp" if:true={seechildCompo}
+                        style="width: calc(100% - 400px);background: white;padding-top: 15px">
+                        <c-school-Searchchild get-value={value} onchangedheight={handleCmpHeight}
+                            oncallpasstoparent={passToParent} size-list={checkChildListSize} job-list={listOfJobs} account-user-id={firstAccountId}></c-school-Searchchild>
+                        <!-- <c-high-school-math></c-high-school-math> -->
+                    </div>
+                    <div if:true={seeError} style="left: 50%;position: absolute;">
+                        <p style="font-family: 'RobotoLight';font-size: 20px;margin-top: 100px;color: #549BA5;font-weight: bold;">
+                            No Data Found
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

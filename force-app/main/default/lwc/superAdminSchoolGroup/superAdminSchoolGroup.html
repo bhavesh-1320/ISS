@@ -1,0 +1,225 @@
+<template>
+	<div class="container">
+		<div class="addGroupbtn">
+			<button class="slds-button slds-button_neutral slds-button_stateful slds-not-selected" aria-live="assertive" aria-pressed="false">
+                <span class="slds-text-not-selected">
+                  <lightning-icon class="add" icon-name="utility:add" size="x-small"  alternative-text="Error!" title="Error"></lightning-icon>
+                <p class="buttonHead">Add Group</p>
+                </span>
+            </button>
+		</div>
+		<div class="outerDiv">
+			<p class="header">Manage School Group</p>
+			<div class="innerdiv">
+				<div class="schoolNameHeader">
+					<p class="header " style="padding-left:29px;">School Group Name</p>
+					<lightning-icon class="edit" icon-name="utility:edit" size="x-small" style="color:green"
+						alternative-text="Utility image" title="Image"></lightning-icon>
+				</div>
+
+
+				<!-- DESKTOP VIEW USING GRID  -->
+				<div class="slds-grid slds-wrap uppertable">
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Point of Contact</p>
+						<p><u>Jane Doe</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Recruiters</p>
+						<p><u>50</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Open Jobs</p>
+						<p><u>1000</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Expected Job Listing</p>
+						<p class="greyfont">1500</p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Membership Expiration</p>
+						<p class="greyfont">11/11/2022</p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Account Manager</p>
+						<p class="greyfont">Susy Smith</p>
+					</div>
+				</div>
+
+
+				<!-- SCHOOL DATA TABLE -->
+				<div class="maindatatable">
+					<div class="addSchoolbtn">
+						<button class="slds-button slds-button_neutral slds-button_stateful slds-not-selected" aria-live="assertive" aria-pressed="false">
+									<span class="slds-text-not-selected">
+									<lightning-icon class="add" icon-name="utility:add" size="x-small"  alternative-text="Error!" title="Error"></lightning-icon>
+									<p class="buttonHead">Add School</p>
+									</span>
+								</button>
+					</div>
+					<table class="slds-table  slds-border_left slds-border_right" style="border:none">
+
+						<thead>
+							<tr class="">
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Name">School Name</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Recruiters</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Open Jobs</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Expected Job Listing</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Status</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={terFileData.schoolData} for:item="data" for:index="index">
+								<tr key={data.id} class="slds-line-height_reset" data-id={data.id}>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.schoolName}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.recruiters}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.openJobs}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.expectedJobListing}</u></div>
+									</td>
+									<td class="tdpadding" style="padding: 0 34px 0 0 !important;">
+
+										<lightning-combobox class="mycustomComboBox" name="Select Department"
+											value={value} placeholder="Active" options={active} onchange={handleChange}>
+										</lightning-combobox>
+									</td>
+									<td class="tdpadding actionbtn">
+										<lightning-icon class="table_edit" style="padding-bottom:0px;"
+											icon-name="utility:edit" size="x-small" alternative-text="Utility image"
+											title="Image"></lightning-icon>
+										<lightning-icon class="delete" style="padding-bottom:0px;"
+											icon-name="utility:delete" size="x-small" alternative-text="Utility image"
+											title="Image"></lightning-icon>
+
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="innerdiv">
+				<div class="schoolNameHeader">
+					<p class="header " style="padding-left:20px;">School Group Name</p>
+					<lightning-icon class="edit" icon-name="utility:edit" size="x-small" style="color:green"
+						alternative-text="Utility image" title="Image"></lightning-icon>
+				</div>
+
+
+				<!-- DESKTOP VIEW USING GRID  -->
+				<div class="slds-grid slds-wrap uppertable">
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Point of Contact</p>
+						<p><u>Jane Doe</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Recruiters</p>
+						<p><u>50</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Open Jobs</p>
+						<p><u>1000</u></p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Expected Job Listing</p>
+						<p class="greyfont">1500</p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Membership Expiration</p>
+						<p class="greyfont">11/11/2022</p>
+					</div>
+					<div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+						<p class="borderbottom">Account Manager</p>
+						<p class="greyfont">Susy Smith</p>
+					</div>
+				</div>
+
+
+				<!-- SCHOOL DATA TABLE -->
+				<div class="maindatatable">
+					<div class="addSchoolbtn">
+						<button class="slds-button slds-button_neutral slds-button_stateful slds-not-selected" aria-live="assertive" aria-pressed="false">
+									<span class="slds-text-not-selected">
+									<lightning-icon class="add" icon-name="utility:add" size="x-small"  alternative-text="Error!" title="Error"></lightning-icon>
+									<p class="buttonHead">Add School</p>
+									</span>
+								</button>
+					</div>
+					<table class="slds-table  slds-border_left slds-border_right" style="border:none">
+
+						<thead>
+							<tr class="slds-line-height_reset">
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Name">School Name</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Recruiters</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Open Jobs</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Expected Job Listing</div>
+								</th>
+								<th class="tdborder row" scope="col">
+									<div class="slds-truncate " title="Some Custom Column">Status</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={terFileData.schoolData} for:item="data" for:index="index">
+								<tr key={data.id} class="slds-line-height_reset" data-id={data.id}>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.schoolName}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.recruiters}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.openJobs}</u></div>
+									</td>
+									<td class="tdborder tdpadding" scope="col">
+										<div class="slds-truncate tdhead"><u>{data.expectedJobListing}</u></div>
+									</td>
+									<td class="tdpadding" style="padding: 0 34px 0 0 !important;">
+
+										<lightning-combobox class="mycustomComboBox" name="Select Department"
+											value={value} placeholder="Active" options={active} onchange={handleChange}>
+										</lightning-combobox>
+									</td>
+									<td class="tdpadding actionbtn">
+										<lightning-icon class="table_edit" style="padding-bottom:0px;"
+											icon-name="utility:edit" size="x-small" alternative-text="Utility image"
+											title="Image"></lightning-icon>
+										<lightning-icon class="delete" style="padding-bottom:0px;"
+											icon-name="utility:delete" size="x-small" alternative-text="Utility image"
+											title="Image"></lightning-icon>
+
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</template>

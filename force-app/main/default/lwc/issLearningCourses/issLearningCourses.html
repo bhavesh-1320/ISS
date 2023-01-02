@@ -1,0 +1,226 @@
+<template lwc:render-mode="light">
+    <!-- <template if:false={isSearchActive}>
+        <c-search-course-component>
+
+        </c-search-course-component>
+    </template> -->
+    <div class="iss-wrapper" style="background-color: #F7F7F7;">
+        <main class="iss-main">
+            <div class="iss-container" style="padding-left: 50px; padding-right: 50px;">
+                <div class="iss-two-columns scale">
+                    <div class="iss-content-area">
+
+                        <div class="iss-search-box">
+                            <input data-id="searchBox" type="text" placeholder="Find a Course"  oninput={handleInput}>
+                            <button onclick={handleSeeMoreClick} type="submit" class="submit-btn"><i class="icon-ic-search"></i></button>
+                        </div>
+                        
+                        <template if:false={isSearchActive}>
+                            <div if:true={hasLearnerActiveCourses}>
+                                <div class="iss-blocks-row">
+                                    <div class="iss-blocks-head">
+                                        <h1 style="color: #16422f;">In progress </h1>
+                                        <a class="more" onclick={handleSeeMoreClick}>See More <i
+                                                class="icon-arrow-right-long-solid"></i></a>
+                                    </div>
+                                    <c-isscourseslider
+                                        list={activeCourses}
+                                        show-arrows={showArrows}
+                                        show-slicks={showSlicks}
+                                        grid-column-gap="16"
+                                        xl-grid-column-gap="16"
+                                        lg-grid-column-gap="16"
+                                        md-grid-column-gap="16"
+                                        xl-column-count="3"
+                                        lg-column-count="2"
+                                        md-column-count="1"
+                                >
+                                    <!-- <div class="iss-blocks" style="display: flex; justify-content: space-between; flex-wrap: wrap;"> -->
+                                        <template for:each={activeCourses} for:item="course" for:index="index">
+                                            <div key={course.index} class="slider__item">
+                                            <c-course-card class="iss-block scale-card"
+                                                        course={course}
+                                                        is-active-course=true
+                                                        onaction={handleClickAction}
+                                                        onaddtofavorite={addToFavorite}
+                                                        onremovefromfavourite={removeFromFavorite}
+                                                ></c-course-card>
+                                            </div>
+                                        </template>
+                                    <!-- </div> -->
+                                    </c-isscourseslider>
+                                </div>
+                            </div>
+                        
+                            <div if:false={hasLearnerActiveCourses}>
+                                <div class="iss-blocks-row">
+                                    <div class="iss-blocks-head">
+                                        <h1 style="color: #16422f;">No active courses </h1>
+                                        <a href="#" class="more">Select Courses <i class="icon-arrow-right-long-solid"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="iss-blocks-row slds-m-top_medium slds-m-bottom_medium">
+                                <div class="iss-blocks-head">
+                                    <h1 style="color: #16422f;">Recommended For You </h1>
+                                    <a href="#" class="more" onclick={handleSeeMoreClick}>All Courses <i class="icon-arrow-right-long-solid"></i></a>
+                                </div>
+                                <!--  -->
+                                <c-isscourseslider
+                                        list={recommendedCourses}
+                                        show-arrows={showArrows}
+                                        show-slicks={showSlicks}
+                                        grid-column-gap="16"
+                                        xl-grid-column-gap="16"
+                                        lg-grid-column-gap="16"
+                                        md-grid-column-gap="16"
+                                        xl-column-count="3"
+                                        lg-column-count="2"
+                                        md-column-count="1"
+                                >
+                                    <template if:true={recommendedCourses} for:each={recommendedCourses} for:item="course" for:index="index">
+                                        <div key={course.index} class="slider__item">
+                                        <c-course-card class="iss-block scale-card"
+                                                        course={course}
+                                                        onaction={handleClickAction}
+                                                        onaddtofavorite={addToFavorite}
+                                                        onremovefromfavourite={removeFromFavorite}
+                                        >
+                                        </c-course-card>
+                                    </div>
+                                    </template>
+                                </c-isscourseslider>
+                                <!--  -->
+                            </div>
+                            <div class="iss-blocks-row">
+                                <div class="iss-blocks-head">
+                                    <h1 style="font-size: 32px; font-family: 'Roboto', sans-serif; color: rgb(22, 66, 47);">Upcoming Live Sessions </h1>
+                                    <a href="#" class="more" onclick={handleSeeMoreClick}>All Live Sessions <i class="icon-arrow-right-long-solid"></i></a>
+                                </div>
+
+                                <div if:true={hasUpcomingLiveSessions}>
+                                    <c-isscourseslider
+                                        list={upcomingLiveSessions}
+                                        show-arrows={showArrows}
+                                        show-slicks={showSlicks}
+                                        grid-column-gap="16"
+                                        xl-grid-column-gap="16"
+                                        lg-grid-column-gap="16"
+                                        md-grid-column-gap="16"
+                                        xl-column-count="3"
+                                        lg-column-count="2"
+                                        md-column-count="1"
+                                >
+                                    <template for:each={upcomingLiveSessions} for:item="course" for:index="index">
+                                        <div key={course.index} class="slider__item">
+                                            <c-course-card class="iss-block scale-card"
+                                                            course={course}
+                                                            onaction={handleClickAction}
+                                                            onaddtofavorite={addToFavorite}
+                                                            onremovefromfavourite={removeFromFavorite}
+                                                            >
+                                            </c-course-card>
+                                        </div>
+                                    </template>
+                                </c-isscourseslider>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="iss-sidebar">
+                        <h2 class="h2" style="color: #549BA5;">What’s new at ISS ?</h2>
+                        <div class="iss-topics-blocks">
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image1.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title" style="color: #16422f;">Topic 1</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image2.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title" style="color: #16422f;">Topic 2</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image3.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title" style="color: #16422f;">Topic 3</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iss-badges-block">
+                            <ul class="list-unstyled iss-badges-list">
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge"><span class="path1"></span><span
+                                                class="path2"></span><span class="path3"></span><span
+                                                class="path4"></span></span>
+                                    </div>
+                                    <strong class="title">Beginner</strong>
+                                    <span class="text">300pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge"><span class="path1"></span><span
+                                                class="path2"></span><span class="path3"></span><span
+                                                class="path4"></span></span>
+                                    </div>
+                                    <strong class="title">Badge</strong>
+                                    <span class="text">400pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Expert</strong>
+                                    <span class="text">500pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Noob</strong>
+                                    <span class="text">600pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Expert</strong>
+                                    <span class="text">700pts</span>
+                                </li>
+                            </ul>
+                            <span class="link">
+								<a href="#"><i class="icon-chevron-down-solid"></i> See all badges <i
+                                        class="icon-chevron-down-solid"></i></a>
+							</span>
+                        </div>
+                        <div class="iss-fav-block">
+                            <c-containerfavorites data-id="favoritesComponent" to-favorites={favoriteList}></c-containerfavorites>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</template>

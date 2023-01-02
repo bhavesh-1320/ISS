@@ -1,0 +1,195 @@
+<template>
+    <div class="iss-two-columns style01">
+        <div class="iss-content-area">
+            <div class="block_full_detail">
+                <span class="star-wrap">
+                    <i class="icon-star-solid"></i>
+                </span>
+                <p class="title">COURSE</p>
+                <h1>{courseDetails.Name}</h1>
+                <template if:true={courseDetails.Description__c}>
+                    <p>{courseDetails.Description__c}</p>
+                </template>
+                <template if:false={courseDetails.Description__c}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices nunc metus, id fringilla dui varius eget. Nulla sit amet nunc vitae metus ullamcorper vehicula.</p>
+                </template>
+
+                <template if:true={courseDetails.Progress__c}>
+                    <div class="progress_bar_wrap">
+                        <span class="text">0%</span>
+                        <div class="progress_bar">
+                            <div style={widthPercentage}></div>
+                        </div>
+                        <span class="text">100%</span>
+                    </div>
+                </template>
+
+                <template if:false={courseDetails.Progress__c}>
+                    <div class="progress_bar_wrap">
+                        <span class="text">0%</span>
+                        <div class="progress_bar">
+                            <div style="width: 40%"></div>
+                        </div>
+                        <span class="text">100%</span>
+                    </div>
+                </template>
+
+                <div class="meta">
+                    <div class="meta_left_area">
+                        <template if:true={courseDetails.Points__c}>
+                            <span class="points_count">{courseDetails.Points__c} pts</span>
+                        </template>
+                        <template if:false={courseDetails.Points__c}>
+                            <span class="points_count">1500 pts</span>
+                        </template>
+
+                        <template if:true={tags.length}>
+                            <ul class="list-unstyled iss-blocks_tags">
+                                <li for:each={tags} key={tag.Id} for:item="tag"><a>{tag.Name}</a></li>
+                            </ul>
+                        </template>
+
+                        <template if:false={tags.length}>
+                            <ul class="list-unstyled iss-blocks_tags">
+                                <li><a>School</a></li>
+                                <li><a>History</a></li>
+                                <li><a>Math</a></li>
+                            </ul>
+                        </template>
+                    </div>
+
+                    <div class="meta_right_area">
+                        <template if:true={courseDetails.Price__c}>
+                            <p class="price">{courseDetails.Price__c}$</p>
+                        </template>
+
+                        <template if:false={courseDetails.Price__c}>
+                            <p class="price">35$</p>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <template if:true={modules.length}>
+                <template for:each={modules} for:item="module">
+                    <div key={module.Id} class="lesson-blocks">
+                        <h2>{module.Name}</h2>
+                        <template if:true={module.Module_Description__c}>
+                            <p>{module.Module_Description__c}</p>
+                        </template>
+
+                        <template if:false={module.Module_Description__c}>
+                            <p>Module {module.Name}</p>
+                        </template>
+                        <div class="lesson-video">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </template>
+            </template>
+
+
+            <template if:false={modules.length}>
+                <div class="lesson-blocks">
+                    <h2>Lesson title 1</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit, lorem ut accumsan dictum, nunc ante ultricies felis, sed semper lorem ipsum tincidunt lectus. Duis vel nibh a nunc commodo sagittis nec faucibus risus. Vivamus metus augue, pharetra eget tempus eu, volutpat ac augue.
+                    </p>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <div class="lesson-blocks">
+                    <h2>Lesson title 2</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit, lorem ut accumsan dictum, nunc ante ultricies felis, sed semper lorem ipsum tincidunt lectus. Duis vel nibh a nunc commodo sagittis nec faucibus risus. Vivamus metus augue, pharetra eget tempus eu, volutpat ac augue.
+                    </p>
+
+                    <div class="lesson-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="lesson-blocks">
+                    <h2>Lesson title 3</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit, lorem ut accumsan dictum, nunc ante ultricies felis, sed semper lorem ipsum tincidunt lectus. Duis vel nibh a nunc commodo sagittis nec faucibus risus. Vivamus metus augue, pharetra eget tempus eu, volutpat ac augue.
+                    </p>
+
+                    <div class="lesson-video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="iss-sidebar">
+            <div class="widget widget-badges">
+                <ul class="list-unstyled iss-badges-list">
+                    <li>
+                        <a href="#">
+                            <div class="ico">
+                                <span class="icon-ic-badge">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path2"></span>
+                                    <span class="path2"></span>
+                                </span>
+
+                            </div>
+                            <span class="text">Earn this badge</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget widget-topics">
+                <p class="title">Topics</p>
+                <template if:true={modules.length}>
+                    <ul class="list-unstyled topics_list">
+                        <li for:each={modules} key={module.Id} for:item="module">
+                            <a>
+                                <span class="name">{module.Name}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </template>
+
+                <template if:false={modules.length}>
+                    <ul class="list-unstyled topics_list">
+                        <li>
+                            <a><span class="name">Lesson title 1</span></a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="name">Lesson title 2 </span>
+                                <span class="des">sit amet, consectetur adipiscing elit.</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="name">Lesson title 3 </span>
+                                <span class="des">sit amet, consectetur adipiscing elit.</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="name">Lesson title 4 </span>
+                                <span class="des">sit amet, consectetur adipiscing elit.</span>
+                            </a>
+                        </li>
+                    </ul>
+                </template>
+            </div>
+
+
+            <div class="widget widget-info">
+                <c-instructors instructors={currentInstructors}></c-instructors>
+            </div>
+
+            <div>
+                <c-quiz-vit></c-quiz-vit>
+            </div>
+        </div>
+    </div>
+</template>

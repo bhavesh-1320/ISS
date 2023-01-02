@@ -1,0 +1,93 @@
+<template>
+    <div class="main">
+        <div class="widget widget-quiz">
+            <strong class="title">Quiz</strong>
+            <div class="widget-quiz_box">
+                
+                <form>
+                    <ol class="quiz_list">
+                        <template for:each={questions} for:item="question">
+                            <li key={question.Id}>
+                                <p>{question.label__c}</p>
+                                <ul class="list-unstyled quiz_list_options">
+                                    <template for:each={question.handleOptions} for:item="option">
+                                            <li key={option.Id}>
+                                                <label>
+                                                    <input type="radio" title={question.Id} value={option.value} name={option.name} onclick={clickAnswer}>
+                                                    <span class="text" title={question.Id}>{option.label}</span>
+                                                </label>
+                                            </li>
+                                    </template>
+                                </ul>
+                            </li>
+                        </template>
+                        <!--<li>
+                            <p>True or false: Testing is a way to discover issues before they arise for the user.</p>
+                            <ul class="list-unstyled quiz_list_options">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad1">
+                                        <span class="text">A</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad1">
+                                        <span class="text">B</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>True or false: Testing is a way to discover issues before they arise for the user.</p>
+                            <ul class="list-unstyled quiz_list_options">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad2">
+                                        <span class="text">A</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad2">
+                                        <span class="text">B</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad2">
+                                        <span class="text">C</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad2">
+                                        <span class="text">D</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Testing is a way to discover issues before they arise for the user.</p>
+                            <ul class="list-unstyled quiz_list_options">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad3">
+                                        <span class="text">Lorem ipsum dolor sit amet</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="rad3">
+                                        <span class="text">Vivamus metus augue, pharetra eget tempus</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ol>
+                </form>
+                    <button type="submit" onclick={handleSubmit} class="btn btn-primary">Submit Answers</button>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,1606 @@
+<template>
+   <c-resume-parser style="display:none"></c-resume-parser>
+   <!-- {paymentSectionVisibility}
+   {premiumPlan} -->
+   <template if:true={showResume}>
+      <!--
+         I Used SLDS for this code
+         Here is link https://www.lightningdesignsystem.com/components/modals/
+         -->
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+            <!-- modal header start -->
+            <header class="slds-modal__header">
+               <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                  title="Close" name="closetop" onclick={handleShowResume}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                     size="small"></lightning-icon>
+                  <span class="slds-assistive-text">Close</span>
+               </button>
+               <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Upload Resume</h2>
+            </header>
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_medium slds-p-top--none" id="modal-content-id-1">
+               <c-resume-parser class="saved-resume-data" f-page={fPage} s-page={sPage} t-page={tPage}
+                  onpagechange={handlePageChange} ongetrecorddata={getRecordData} user-basic-data={userBasicData} get-record-data={resumeData}>
+               </c-resume-parser>
+               <template if:true={showPag}>
+                  <div style="text-align: center; margin-top: 2%;">
+                     <div onclick={handleNext} class="fBtn fillColor" data-btn="on" style="cursor: pointer;">
+                     </div>
+                     <div onclick={handleNext} class="twBtn grayColor" data-btn="tw" style="cursor: pointer;">
+                     </div>
+                     <div onclick={handleNext} class="thrBtn grayColor" data-btn="thr" style="cursor: pointer;">
+                     </div>
+                     <p style="font-weight: 700; font-size: 10px; color:gray; margin-left: 3%;">{pagiNation}</p>
+                  </div>
+               </template>
+            </div>
+            <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+               <template if:true={fPage}>
+                  <a data-btn="one" style="padding-right: 3%;" name="skip" onclick={handleNext}>Skip</a>
+                  <button data-btn="one" class="slds-button slds-button_brand" name="save"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={handleNext}>Save & Next</button>
+               </template>
+               <template if:true={sPage}>
+                  <a data-btn="two" style="padding-right: 3%;" name="skip" onclick={handleNext}>Skip</a>
+                  <!-- <lightning-button data-btn="two" variant="Brand" onclick={handleNext} label="Save & Next"></lightning-button> -->
+                  <button data-btn="two" name="save" class="slds-button slds-button_brand"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={handleNext}>Save & Next</button>
+               </template>
+               <template if:true={tPage}>
+                  <button data-btn="three" name="closebottom" class="slds-button"
+                     style="padding-right: 3%;border-radius: 15px; color:red; border:none  !important;"
+                     onclick={handleShowResume}>Close</button>
+                  <button data-btn="three" name="save" class="slds-button slds-button_brand"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={saveResumeParser} check-save-pages={savedPages}>Save</button>
+               </template>
+            </footer>
+         </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+   </template>
+
+
+   <template if:true={showRecordPage}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+            <!-- modal header start -->
+           <header class="slds-modal__header">
+               <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                  title="Close" name="closetop" onclick={closeShowRecord}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                     size="small"></lightning-icon>
+                  <span class="slds-assistive-text">Close</span>
+               </button>
+               <h2 class="slds-text-heading_medium slds-hyphenate">Upload Resume</h2>
+            </header>
+
+             <!-- modal body start -->
+             <div class="slds-modal__content slds-p-around_medium slds-p-top--none">
+               <template if:true={fPage}>
+                  <!-- <div> -->
+                  <div class="slds-grid slds-wrap">
+                      <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                          <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Personal Information</h1>
+                      </div>
+  
+                      <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                          <div class="slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                  <div class="slds-m-right--small">
+                                      <lightning-layout-item size="4" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323" >First Name</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                              <input name="firstname" onchange={handleChange} style="--sds-c-input-radius-border: 20px; --sds-c-input: 2px solid black;" class="slds-input" value={userBasicData.Name} type="text">
+                                          </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                 <div class="slds-m-right--small">
+                                     <lightning-layout-item size="4" style="padding-right: 5%;">
+                                         <label class="slds-form-element__label slds-no-flex" for="input-323">Last Name</label>
+                                         <div class="slds-form-element__control slds-grow">
+                                             <input name="lastname" onchange={handleChange} class="slds-input" value={userBasicData.last} type="text" required>
+                                         </div>
+                                     </lightning-layout-item>
+                                 </div>
+                             </div>
+                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12">
+                                 <div class="titleFP slds-m-right--small">
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                       <label class="slds-form-element__label slds-no-flex" for="input-323">Title</label>
+                                       <div class="slds-form-element__control slds-grow">
+                                             <input name="title" onchange={handleChange} class="slds-input" value={userBasicData.title} type="text">
+                                       </div>
+                                    </lightning-layout-item>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                 <div class="slds-m-right--small emailFP">
+                                    <lightning-layout-item size="6" style="padding-right: 5%;">
+                                       <label  class="slds-form-element__label slds-no-flex" for="input-323">Email</label>
+                                       <div class="slds-form-element__control slds-grow">
+                                             <input class="slds-input" value={userBasicData.email} name="email" onchange={handleChange} type="text">
+                                       </div>
+                                    </lightning-layout-item>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                 <div class="slds-m-right--small phoneFP">
+                                     <lightning-layout-item size="6" style="padding-right: 5%;">
+                                         <label class="slds-form-element__label slds-no-flex" for="input-323">Phone</label>
+                                         <div class="slds-form-element__control slds-grow">
+                                             <input name="phone" onchange={handleChange} class="slds-input" value={userBasicData.phone} type="text">
+                                         </div>
+                                     </lightning-layout-item>
+                                 </div>
+ 
+                             </div>
+                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                 <div class="slds-m-right--small dobFP">
+                                     <lightning-layout-item size="6" style="padding-right: 5%;">
+                                         <label class="slds-form-element__label slds-no-flex" for="input-323">Date of Birth</label>
+                                         <div class="slds-form-element__control slds-grow">
+                                             <input name="dob" onchange={handleChange} class="slds-input"  value={userBasicData.birthdayDate} type="date">
+                                         </div>
+                                     </lightning-layout-item>
+                                 </div>
+ 
+                             </div>
+                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                 <div class="slds-m-right--small lndkFP">
+                                     <lightning-layout-item size="6" style="padding-right: 5%;">
+                                         <label class="slds-form-element__label slds-no-flex" for="input-323">Linkedin Profile</label>
+                                         <div class="slds-form-element__control slds-grow">
+                                             <input name="lndprofile" onchange={handleChange} class="slds-input" value={userBasicData.linkedin} type="text">
+                                         </div>
+                                     </lightning-layout-item>
+                                 </div>
+ 
+                             </div>
+                          </div>
+                      </lightning-layout>
+                      <!-- </div> -->
+                  </div>
+                  <div>
+                      <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Address</h1>
+                      <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                          <div class="slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-3 " >
+                                 <div class="add1FP slds-m-right--small">
+
+                                    <lightning-layout-item size="5" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">
+                                            Address Line 1
+                                        </label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="add1" onchange={handleChange} value={userBasicData.street} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-align_absolute-center toggle1FP" style="display:flex">
+  
+                                  <lightning-layout-item size="8" style="text-align: right; padding-right: 2%; color: #549BA5; font-weight: 600;">
+                                      Permanent Address
+                                  </lightning-layout-item>
+                                  <lightning-layout-item size="4" style="padding-right: 5%;">
+                                      <!-- <lightning-input type="toggle" variant="label-hidden" label="Permanent Address" checked>
+                                      </lightning-input> -->
+                                      <div class="slds-form-element">
+                                          <label class="slds-checkbox_toggle slds-grid">
+                                             <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                             <input  onchange={handleChange} type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked="" />
+                                             <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+                                             <span class="slds-checkbox_faux"></span>
+                                             <span class="slds-checkbox_on"></span>
+                                             <span class="slds-checkbox_off"></span>
+                                             </span>
+                                          </label>
+                                      </div>
+                                  </lightning-layout-item>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-3">
+                                  <div class="add2FP slds-m-right--small">
+                                      <lightning-layout-item size="5" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323">Address Line 2</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                             <input name="add2" onchange={handleChange} class="slds-input" type="text">
+                                          </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-align_absolute-center toggle2FP" style="display:flex">
+                                   <lightning-layout-item size="8" style="text-align: right; margin-top: 3%; padding-right: 2%; color: #549BA5; font-weight: 600;">
+                                      Current Address
+                                   </lightning-layout-item>
+                                  <lightning-layout-item size="4" style="padding-right: 5%; margin-top: 3%;">
+                                      <!-- <lightning-input type="toggle" variant="label-hidden" label="Current Address" checked>
+                                      </lightning-input> -->
+                                      <div class="slds-form-element">
+                                       <label class="slds-checkbox_toggle slds-grid">
+                                          <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                          <input type="checkbox"  name="checkbox-toggle-17" value="checkbox-toggle-17" aria-describedby="checkbox-toggle-17" checked=""  onchange={handleChange}/>
+                                          <span id="checkbox-toggle-17" class="slds-checkbox_faux_container" aria-live="assertive">
+                                          <span class="slds-checkbox_faux"></span>
+                                          <span class="slds-checkbox_on"></span>
+                                          <span class="slds-checkbox_off"></span>
+                                          </span>
+                                       </label>
+                                      </div>
+  
+                                  </lightning-layout-item>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                  <div class="slds-m-right--small">
+                                  
+                                      <lightning-layout-item size="4" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323">City</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                             <input name="city" onchange={handleChange} value={userBasicData.city} class="slds-input" type="text">
+                                         </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+  
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                  <div class="slds-m-right--small">
+  
+                                      <lightning-layout-item size="4" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323">State / Province</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                             <input name="state" onchange={handleChange} value={userBasicData.state} class="slds-input" type="text">
+                                         </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+  
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12">
+                                  <div class="postalFP slds-m-right--small">
+  
+  
+                                      <lightning-layout-item size="4" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323">Postal Code</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                             <input name="postalcode" onchange={handleChange} value={userBasicData.postalCode} class="slds-input" type="text">
+                                         </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                  <div class="slds-m-right--large">
+  
+                                      <lightning-layout-item size="4" style="padding-right: 5%;">
+                                          <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                          <div class="slds-form-element__control slds-grow">
+                                             <input name="country" onchange={handleChange} value={userBasicData.countryOfResidence} class="slds-input" type="text">
+                                         </div>
+                                      </lightning-layout-item>
+                                  </div>
+                              </div>
+                          </div>
+                      </lightning-layout>
+                  </div>
+              </template>
+               <template if:true={sPage}>
+                  <div>
+                   <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Education</h1>
+                   <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                       <template for:each={education} for:index="idx" for:item="ed">
+                           <div class="slds-grid slds-wrap" key={ed.Id}>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                   <div class="slds-m-right--small">
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323">Institution</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <input class="slds-input" value={ed.institution} data-idx={idx} name="institution" onchange={handleChange} type="text">
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                   <div class="slds-m-right--small countrySP">        
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <!-- <input class="slds-input" value={ed.country} data-idx={idx} name="countryEdu" onchange={handleChange} type="text"> -->
+                                               <select class="slds-select" onchange={handleChange} name="countryEdu" value={ed.country} data-idx={idx} style="border: 1px solid rgba(134, 132, 132, 0.382); border-radius: 24px;    padding-left: 4%;">
+                                                   <option value="" class="noneField">---None---</option>                
+                                                       <template for:each={educationCountryValues} for:item="selectOptItem">
+                                                           <option data-id={selectOptItem.custFldvalue} class="countryCareerOption" key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                                                               {selectOptItem.custFldlabel}
+                                                           </option>
+                                                       </template>
+                                               </select>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                   <div class="slds-m-right--small tyleSP">
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323" onchange={handleChange} name="tyle">Tyle</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <input class="slds-input" type="text" data-idx={idx} name="tyle" onchange={handleChange}>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                   <div class="slds-m-right--small">
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323">Major</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <input class="slds-input" type="text" data-idx={idx} onchange={handleChange} name="major">
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                   <div class="slds-m-right--small startSP">
+                                       <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323">Start</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <input class="slds-input" value={ed.start} type="date" data-idx={idx}  name="start" onchange={handleChange}>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                   <div class="slds-m-right--small endSP">
+                                       <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                           <label class="slds-form-element__label slds-no-flex" for="input-323" data-idx={idx}>End</label>
+                                           <div class="slds-form-element__control slds-grow">
+                                               <input class="slds-input" value={ed.end} type="date" data-idx={idx} name="end" onchange={handleChange}>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 slds-align_absolute-center uploadDivSP">
+                                   <div class="slds-m-right--small uploadSP">
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                           <!-- <lightning-file-upload label="Upload Diploma"></lightning-file-upload> -->
+                                           
+                                           
+                                           <div class="container" style="height: 0px   !important;">
+                                               <div class="" style="">
+                                                   <div>
+                                                       <h6 style="color: #549BA5; font-weight:600;font-size:14px;">Upload Diploma <span><img src={uploadIcon}></span></h6>
+                                                   </div>
+                                                   <div class="" style="margin-top: -35% !important;opacity:0">
+                                                       <lightning-file-upload accept={acceptedFormats} style="opacity: 0;"></lightning-file-upload>
+                                                   </div>
+                                               </div>
+                                               <!-- <div class="infoi" style="margin-top: -8% !important;opacity:0"> -->
+                                           </div>
+                                       
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                           
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12 " >
+                                   <div class="slds-m-right--large" style="display:flex">
+                                       <lightning-layout-item key={ed.Id} size="7" style="margin-top: 3%; color: #549BA5; font-weight: 600;">
+                                           Degree conferred?
+                                       </lightning-layout-item>
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%; margin-top: 3%;">
+                                           <!-- <lightning-input type="toggle" variant="label-hidden" >
+                                           </lightning-input> -->
+                                           <div class="slds-form-element">
+                                               <label class="slds-checkbox_toggle slds-grid">
+                                                   <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                   <input type="checkbox" name="checkbox-toggle-19" value="checkbox-toggle-19" aria-describedby="checkbox-toggle-19" checked="" onchange={handleChange}/>
+                                                   <span id="checkbox-toggle-19" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                   <span class="slds-checkbox_faux"></span>
+                                                   <span class="slds-checkbox_on"></span>
+                                                   <span class="slds-checkbox_off"></span>
+                                                   </span>
+                                               </label>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+
+                           <!-- <lightning-layout-item key={ed.Id} size="3" style="margin-top: 2%; padding-right: 5%;">
+                               <lightning-input type="toggle" label="Degree conferred?">
+                               </lightning-input>
+                           </lightning-layout-item> -->
+                           <!-- <lightning-layout-item key={ed.Id} size="3" style="margin-top: 2%; padding-right: 5%;">
+                               <lightning-input type="toggle" label="In Education?" checked>
+                               </lightning-input>
+                           </lightning-layout-item> -->
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12 " >
+                                   <div class="slds-m-right--large" style="display:flex">
+                                       <lightning-layout-item key={ed.Id} size="7" style="margin-top: 3%; color: #549BA5; font-weight: 600;">
+                                           In Education?
+                                       </lightning-layout-item>
+                                       <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%; margin-top: 3%;">
+                                           <!-- <lightning-input type="toggle" variant="label-hidden" checked>
+                                           </lightning-input> -->
+                                           <div class="slds-form-element">
+                                               <label class="slds-checkbox_toggle slds-grid">
+                                                   <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                   <input type="checkbox" name="checkbox-toggle-20" value="checkbox-toggle-20" aria-describedby="checkbox-toggle-20" checked="" onchange={handleChange}/>
+                                                   <span id="checkbox-toggle-20" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                   <span class="slds-checkbox_faux"></span>
+                                                   <span class="slds-checkbox_on"></span>
+                                                   <span class="slds-checkbox_off"></span>
+                                                   </span>
+                                               </label>
+                                           </div>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 deleteDivSP" style="margin-top: 1%;">
+                                   <div class="slds-m-left--large deleteSP" style="float:right">
+                                       <lightning-layout-item style="text-align: right;margin-top: 3%; padding-right: 3%;" size="4" key={ed.Id}>
+                                           <lightning-icon variant="error" style="cursor: pointer;" onclick={handleDel} data-idx={idx} data-ic="Edu" icon-name="utility:delete" alternative-text="Delete" size="small" title="Delete"></lightning-icon>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+                               <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_12-of-12 " >
+                                   <div class="" style="">
+                                       <lightning-layout-item size="12" key={ed.Id}>
+                                           <hr style="border: 1px solid rgba(134, 132, 132, 0.382); height:0px !important;"/>
+                                       </lightning-layout-item>
+                                   </div>
+                               </div>
+
+                           </div>
+                       </template>
+                       <button data-btn="Edu" class="slds-button slds-button_neutral" style="border-radius: 20px; border: 1px solid cadetblue;" onclick={handleAdd}><span style="font-size: 20px; font-weight: 700; padding-right: 10px;">+</span>Add Education</button>
+                       <!-- <lightning-button data-btn="Edu" style="border-radius: 20px; border: 1px solid #549BA5;" onclick={handleAdd} label="Add Education" variant="neutral"></lightning-button> -->
+                   </lightning-layout>
+                  </div>
+               </template>
+               <template if:true={tPage}>
+                  <div>
+                      <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Career History</h1>
+                      <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                          <template for:each={workExps} for:index="idx" for:item="ed">
+                              <div class="slds-grid slds-wrap slds-align--absolute-center" key={ed.Id}>
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Start</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input startcareer" value={ed.start} type="date" data-idx={idx} onchange={handleChange} name="startcareer">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">End</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input endcareer" value={ed.end} type="date" data-idx={idx} onchange={handleChange} name="endcareer">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">School / Organization</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input" value={ed.organization} type="text" data-idx={idx} onchange={handleChange} name="organization">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Job Title</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input" value={ed.jobTitle} type="text" data-idx={idx} onchange={handleChange} name="jobTitle">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Curriculums</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input" type="text" data-idx={idx} onchange={handleChange} name="curriculum">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Job Type</label>
+                                              <div class="slds-form-element__control slds-grow" data-idx={idx} onchange={handleChange} name="jobtype">
+                                                  <input class="slds-input" type="text">
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Subject</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input" type="text" name="subject" data-idx={idx} onchange={handleChange}>
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="3" style=" padding-top:3%;">
+                                              <span style="color: #549BA5; font-weight: 600;">Extra Curriculars</span>
+                                              <!-- <lightning-icon style="padding-left: 5%;" icon-name="utility:add" size="xx-small" alternative-text="Add" title="Add"></lightning-icon> -->
+                                              <span style="font-size: 20px; padding-left: 5%; font-weight: bolder; color: #549BA5; cursor: pointer;">+</span>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="4" style="margin-top: 2%; padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <select class="slds-select" onchange={handleChange} name="countryCareer"  value={ed.country} data-idx={idx} style="border: 1px solid rgba(134, 132, 132, 0.382); border-radius: 24px;    padding-left: 4%;">
+                                                      <option value="" class="noneField">---None---</option>                
+                                                          <template for:each={countryCareerValues} for:item="selectOptItem">
+                                                              <option data-id={selectOptItem.custFldvalue} class="countryCareerOption" key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                                                                  {selectOptItem.custFldlabel}
+                                                              </option>
+                                                          </template>
+                                                  </select>
+                                                  <!-- <input class="slds-input" value={ed.country} type="text" name="countryCareer" data-idx={idx} onchange={handleChange}> -->
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item key={ed.Id} size="4" style="margin-top: 2%; padding-right: 5%;">
+                                              <label class="slds-form-element__label slds-no-flex" for="input-323">State</label>
+                                              <div class="slds-form-element__control slds-grow">
+                                                  <input class="slds-input" value={ed.state} type="text" name="stateCareer" data-idx={idx} onchange={handleChange}>
+                                              </div>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                      <div class="slds-m-right--small" style="float:right">
+                                          <lightning-layout-item size="4" key={ed.Id} style="text-align: right;margin-top: 7%; padding-right: 3%;">
+                                              <lightning-icon variant="error" style="cursor: pointer;" onclick={handleDel} data-idx={idx} data-ic="Career" icon-name="utility:delete" size="small" alternative-text="Delete" title="Delete"></lightning-icon>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+  
+                                  <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_12-of-12 " >
+                                      <div class="slds-m-right--small">
+                                          <lightning-layout-item size="12" key={ed.Id}>
+                                              <hr style="border: 1px solid rgba(134, 132, 132, 0.382); height:0px !important;"/>
+                                          </lightning-layout-item>
+                                      </div>
+                                  </div>
+                              </div>
+  
+                          </template>
+                          <button data-btn="Career" class="slds-button slds-button_neutral" style="border-radius: 20px; border: 1px solid cadetblue;" onclick={handleAdd}><span style="font-size: 20px; font-weight: 700; padding-right: 10px;">+</span>Add Career</button>
+                          <!-- <lightning-button style="border-radius: 20px; border: 1px solid #549BA5;" data-btn="Career" onclick={handleAdd} label="Add Career" variant="neutral"></lightning-button> -->
+                      </lightning-layout>
+                  </div>
+                  <!-- <div style="text-align:right;" >
+                       <lightning-button data-btn="three" variant="Brand" label="Save"></lightning-button> 
+                      <button data-btn="three" class="slds-button slds-button_brand" style="border-radius: 15px; background-color: cadetblue; border:none  !important;">Save</button>
+                  </div> -->
+              </template>
+               <template if:true={showPag}>
+                  <div style="text-align: center; margin-top: 2%;">
+                     <div onclick={handleNext} class="fBtn fillColor" data-btn="on" style="cursor: pointer;">
+                     </div>
+                     <div onclick={handleNext} class="twBtn grayColor" data-btn="tw" style="cursor: pointer;">
+                     </div>
+                     <div onclick={handleNext} class="thrBtn grayColor" data-btn="thr" style="cursor: pointer;">
+                     </div>
+                     <p style="font-weight: 700; font-size: 10px; color:gray; margin-left: 3%;">{pagiNation}</p>
+                  </div>
+               </template>
+            </div>
+             <!-- modal footer start-->
+             <footer class="slds-modal__footer">
+               <template if:true={fPage}>
+                  <a data-btn="one" style="padding-right: 3%;" name="skip" onclick={handleNext}>Skip</a>
+                  <button data-btn="one" class="slds-button slds-button_brand" name="save"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={handleNext}>Save & Next</button>
+               </template>
+               <template if:true={sPage}>
+                  <a data-btn="two" style="padding-right: 3%;" name="skip" onclick={handleNext}>Skip</a>
+                  <!-- <lightning-button data-btn="two" variant="Brand" onclick={handleNext} label="Save & Next"></lightning-button> -->
+                  <button data-btn="two" name="save" class="slds-button slds-button_brand"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={handleNext}>Save & Next</button>
+               </template>
+               <template if:true={tPage}>
+                  <button data-btn="three" name="closebottom" class="slds-button"
+                     style="padding-right: 3%;border-radius: 15px; color:red; border:none  !important;"
+                     onclick={closeShowRecord}>Close</button>
+                  <button data-btn="three" name="save" class="slds-button slds-button_brand"
+                     style="border-radius: 15px; background-color: cadetblue; border:none  !important;"
+                     onclick={saveResumeParser} check-save-pages={savedPages}>Save</button>
+               </template>
+            </footer>
+         </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+   </template>
+
+
+
+   <div>
+      <div class="slds-p-around--large">
+         <div class="main">
+            <div class="profileHeader">
+               <div class="secondheader">
+                  <div style="width: auto;height: auto;">
+                     <h3 class="profile" style="color:white;margin-bottom: 15px;">PROFILE</h3>
+                     <h4 class="name">{userBasicData.Name}</h4>
+                     <h5><span class="file-date">Personal: </span><span class="email"
+                        style="color:white">{userBasicData.email}</span></h5>
+                     <h5><span class="file-date">Work: </span><span class="email" style="color:white">
+                        {userBasicData.workEmail}</span>
+                     </h5>
+                  </div>
+                  <div>
+                     <div class="container slds-p-horizontal_small">
+                        <div class="file-info-wrapper">
+                           <div class="file">
+                              <!-- <div class="file-icon slds-p-around_small">
+                                 <span><img src={fileIcon}></span>
+                                 </div>
+                                 <div class="file-info">
+                                 <h6 class="file-name" style="color:white">John_smithson_resume.pdf</h6>
+                                 <h6 class="file-date">Updated On: Sep 2 2022</h6>
+                                 </div> -->
+                           </div>
+                           <div class="file-upload" style="cursor: pointer;" onclick={handleShowResume}>
+                              <h6 class="file-upload-h6">Add a cover letter
+                                 <span><img src={uploadIcon}></span>
+                              </h6>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="mainHeader">
+                  <div class="body">
+                     <section class="summary">
+                        <!-- <div >
+                           <div><p>BASIC EDUCATION SUMMARY</p></div>
+                           <div>IMG</div>
+                           </div> -->
+                        <div style=" height:100%;width: 100%;margin-right: 12px;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">BASIC INFORMATION SUMMARY</p>
+                              </div>
+                              <div><img src={editicon} onclick={makeModalTrue}></div>
+                           </div>
+                           <div class="information slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Full Name</p>
+                                       <p class="educationSummaryValue">{userBasicData.Name}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading ">Country of Residance</p>
+                                       <p class="educationSummaryValue">{userBasicData.countryOfResidence}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Phone</p>
+                                       <p class="educationSummaryValue">{userBasicData.phone}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Criminal Record</p>
+                                       <p class="educationSummaryValue"> {userBasicData.criminalRecord}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Date of Birth</p>
+                                       <p class="educationSummaryValue">{userBasicData.birthdayDate}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Relationship Status</p>
+                                       <p class="educationSummaryValue">{userBasicData.relationshipStatus}
+                                       </p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Date of Availibility</p>
+                                       <p class="educationSummaryValue">{userBasicData.availableDate}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Number of Dependents</p>
+                                       <p class="educationSummaryValue">{userBasicData.numberOfDependents}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Partner:</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSummaryValue" style="color:#549BA5;">{userBasicData.Partner}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="left" style=" height:100; width: 100%;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">EDUCATION SUMMARY</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <!-- <div class="education slds-grid slds-wrap">
+                              <div
+                                  class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                              
+                                  <p class="educationSumaryheading">Name of Institute</p>
+                                  <p class="educationSummaryValue">Iowa State</p>
+                              
+                              
+                              
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Country</p>
+                                  <p class="educationSummaryValue">United States</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Degree Type</p>
+                                  <p class="educationSummaryValue">Certification</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Degree in Education</p>
+                                  <p class="educationSummaryValue">Yes</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Course / Major </p>
+                                  <p class="educationSummaryValue">Engineering</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Degree Conferred</p>
+                                  <p class="educationSummaryValue">Yes</p>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom"
+                                  style="padding-top: 78px;">
+                                  <p class="educationSumaryheading"></p>
+                                  <p class="educationSummaryValue"></p>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom"
+                                  style="padding-top: 78px;">
+                                  <p class="educationSumaryheading"></p>
+                                  <p class="educationSummaryValue"></p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 summaryValueContainer ">
+                                  <p class="educationSumaryheading">Certification:</p>
+                              
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 summaryValueContainer">
+                                  <p class="educationSummaryValue">PA State, DE State</p>
+                              
+                              </div>
+                              
+                              </div> -->
+                           <div class="information slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Name of Institute</p>
+                                       <p class="educationSummaryValue">{userBasicData.nameOfInstitute}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading ">Country</p>
+                                       <p class="educationSummaryValue">{userBasicData.Country}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Degree Type</p>
+                                       <p class="educationSummaryValue">{userBasicData.degreeType}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Degree in Education</p>
+                                       <p class="educationSummaryValue">{userBasicData.degreeInEducation}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="
+                                 border-bottom: 1px solid rgba(9, 17, 50, 0.1);
+                                 ">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Course / Major</p>
+                                       <p class="educationSummaryValue">{userBasicData.courseMajor}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Degree Conferred</p>
+                                       <p class="educationSummaryValue">{userBasicData.degreeConferred}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading"></p>
+                                       <p class="educationSummaryValue"></p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading"></p>
+                                       <p class="educationSummaryValue"></p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap" style="width: inherit;">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSumaryheading">Partner:Certification:</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                                       <p class="educationSummaryValue" style="color:#549BA5;">
+                                          {userBasicData.Partner}, {userBasicData.Certification}
+                                       </p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <h6 class="cardHead">SEEKING POSITIONS</h6>
+                              </div>
+                              <div style="display:flex;">
+                                 <p style="
+                                 font-family: 'Montserrat';
+                                 font-style: normal;
+                                 font-weight: 600;
+                                 font-size: 16px;
+                                 line-height: 20px;
+                                 display: flex;
+                                 align-items: center;
+                                 color: rgba(9, 17, 50, 0.5);
+                                    ">Position Availability</p>
+                                 <p style="
+                                 font-family: 'Montserrat';
+                                 font-style: normal;
+                                 font-weight: 600;
+                                 font-size: 16px;
+                                 line-height: 20px;
+                                 display: flex;
+                                 align-items: center;
+                                    ">Full Time</p>
+                                 <p style="
+                                 font-family: 'Montserrat';
+                                 font-style: normal;
+                                 font-weight: 400;
+                                 font-size: 16px;
+                                 line-height: 20px;
+                                 display: flex;
+                                 align-items: center;
+                                 color: rgba(9, 17, 50, 0.5);
+                                    ">Location</p>
+                                 <p style="
+                                 font-family: 'Montserrat';
+                                 font-style: normal;
+                                 font-weight: 600;
+                                 font-size: 16px;
+                                 line-height: 20px;
+                                 display: flex;
+                                 align-items: center;
+                                 color: #549BA5;">Any</p>
+                                 <img src={editicon}>
+                              </div>
+                           </div>
+                        <template if:true={careerHistoryFound}>   
+                           <div style="width: 100%; border-radius: 15px; ">
+                              <table style="width:100%">
+                                 <tr class="tableBottom">
+                                    <th>Department</th>
+                                    <th>Subject of role</th>
+                                    <th>Education level</th>
+                                    <th>Curriclum</th>
+                                 </tr>
+                                 <template for:each={careerHistory} for:item="item" for:index="index">
+                                    <tr class="tableBottom" key={item.key}>
+                                       <td>{item.Department__c}</td>
+                                       <td>{item.Subject__c}</td>
+                                       <td>Edcation Level</td>
+                                       <td>{item.Curriculums__c}</td>
+                                    </tr>
+                                 </template>
+                              </table>
+                           </div>
+                        </template>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">Career History</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <template if:true={careerHistoryFound}>
+                              <div style="width: 100%; border-radius: 15px;">
+                                 <table style="width:100%">
+                                    <tr class="tableBottom">
+                                       <th>Start - End</th>
+                                       <th>Job Title</th>
+                                       <th>School / Organization</th>
+                                       <th>Job Type</th>
+                                       <th>Country, State</th>
+                                    </tr>
+                                    <template for:each={careerHistory} for:item="item" for:index="index">
+                                       <tr class="tableBottom" key={item.key}>
+                                          <td>{item.start_Date__c} - {item.end_Date__c}</td>
+                                          <td>{item.jobTitle__c}</td>
+                                          <td>{item.Organization_name__c}</td>
+                                          <td>{item.job_Type__c}</td>
+                                          <td>{item.Curriculums__c}</td>
+                                          <td>{item.State__c},{item.Country__c}</td>
+                                       </tr>
+                                    </template>
+                                 </table>
+                              </div>
+                           </template>
+                           <template if:false={careerHistoryFound}>
+                              <div class="noDataCard slds-align--absolute-center"
+                                 style="border-block: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p>No Career History Found</p>
+                              </div>
+                           </template>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">Degrees / Quallifications</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <template if:true={degreeFound}>
+                              <div style="width: 100%; border-radius: 15px;">
+                                 <table style="width:100%">
+                                    <tr class="tableBottom">
+                                       <th>Name of Institute</th>
+                                       <th>Country</th>
+                                       <th>Degree Type</th>
+                                       <th>In Education ?</th>
+                                       <th>Start - End</th>
+                                       <th>Degree Conferred</th>
+                                       <th>Major</th>
+                                       <th>Files</th>
+                                    </tr>
+                                    <template for:each={degreeQualification} for:item="item"
+                                       for:index="index">
+                                       <tr class="tableBottom" key={item.key}>
+                                          <td>{item.Institute_Name__c}</td>
+                                          <td>{item.Country__c}</td>
+                                          <td>{item.Degree_Type__c}</td>
+                                          <td>{item.In_Education__c}</td>
+                                          <td>{item.Start_Date__c} - {item.End_Date__c}</td>
+                                          <td>{item.Degree_Conferred__c}</td>
+                                          <td>{item.Major__c}</td>
+                                          <td>Diplo .... docx</td>
+                                          <td><span><img src={deleteIcon}></span></td>
+                                       </tr>
+                                    </template>
+                                 </table>
+                              </div>
+                           </template>
+                           <template if:false={degreeFound}>
+                              <div class="noDataCard slds-align--absolute-center"
+                                 style="border-block: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p>No Degree/Qualification Found</p>
+                              </div>
+                           </template>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">External Profiles</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <div class="external-profiles">
+                              <template for:each={externalProfileList} for:item="item">
+                                 <div key={item}>
+                                    <div class="profile2 slds-align--absolute-center">
+                                       <div
+                                          style="color: #549BA5;padding-left: 7px;
+                                          padding-right: 8px;
+                                          font-family: 'Roboto';
+                                          font-style: normal;
+                                          font-weight: 600;
+                                          font-size: 16px;
+                                          line-height: 19px;
+                                          display: flex;
+                                          align-items: center;">
+                                          {item.name}
+                                       </div>
+                                       <div><a href={item.url}><img style="height: 40px;" src={item.img}></a></div>
+                                    </div>
+                                 </div>
+                              </template>
+                           </div>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">Key Relationships and Family Members</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <template if:true={childContactFound}>
+                              <div style="width: 100%; border-radius: 15px;">
+                                 <table style="width:100%">
+                                    <tr class="tableBottom">
+                                       <th>Full Name</th>
+                                       <th>Relationship</th>
+                                       <th>DOB</th>
+                                       <th>Gender</th>
+                                       <th>Citizenships</th>
+                                       <th>Traveling with Candidate ?</th>
+                                    </tr>
+                                    <template for:each={chidlContacts} for:item="item" for:index="index">
+                                       <tr class="tableBottom" key={item.key}>
+                                          <td>{item.Name}</td>
+                                          <td>{item.Relationship_Status__c}</td>
+                                          <td>{item.Birthdate}</td>
+                                          <td>{item.Gender__c}</td>
+                                          <td>{userBasicData.Citizenships}</td>
+                                          <td>{userBasicData.travellingWithCandidate}</td>
+                                       </tr>
+                                    </template>
+                                 </table>
+                              </div>
+                           </template>
+                           <template if:false={childContactFound}>
+                              <div class="noDataCard slds-align--absolute-center"
+                                 style="border-block: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p>No Child Contact Found</p>
+                              </div>
+                           </template>
+                        </div>
+                     </section>
+                     <section style="width: 100%; height:100%; ">
+                        <div>
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">References</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <template if:true={referenceDataFound}>
+                              <div style="width: 100%; border-radius: 15px;">
+                                 <table style="width:100%">
+                                    <tr class="tableBottom">
+                                       <th>Status</th>
+                                       <th>Name</th>
+                                       <th>Email</th>
+                                       <th>Date of Ref.</th>
+                                       <th>Start - End</th>
+                                       <th>Referee Title</th>
+                                       <th>Major</th>
+                                       <th>Action</th>
+                                    </tr>
+                                    <template for:each={referenceList} for:item="item" for:index="index">
+                                       <tr class="tableBottom" key={item.key}>
+                                          <td>{item.Status__c}</td>
+                                          <td>{item.Name}</td>
+                                          <td>{item.Email__c}</td>
+                                          <td>{item.Reference_Date__c}</td>
+                                          <td>{item.Start_Date__c} - {item.End_Date__c}}</td>
+                                          <td>Instructor</td>
+                                          <td>Teaching</td>
+                                          <td><span style="padding-right:15px"><img
+                                             src={bellICon}></span><span></span><img
+                                             src={cancel}>
+                                          </td>
+                                       </tr>
+                                    </template>
+                                    <!-- <tr>
+                                       <td>Accepted</td>
+                                       <td>Jim Roberts</td>
+                                       <td>j.Rober@ref2.com</td>
+                                       <td>Jun 21 2022</td>
+                                       <td>1992 - 1996</td>
+                                       <td>Instructor</td>
+                                       <td>Teaching</td>
+                                       <td><span><img src={bellICon}></span></td>
+                                       </tr> -->
+                                 </table>
+                              </div>
+                           </template>
+                           <template if:false={referenceDataFound}>
+                              <div class="noDataCard slds-align--absolute-center"
+                                 style="border-block: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p>No Reference Found</p>
+                              </div>
+                           </template>
+                        </div>
+                     </section>
+                     <section class="summary">
+                        <!-- <div >
+                           <div><p>BASIC EDUCATION SUMMARY</p></div>
+                           <div>IMG</div>
+                           </div> -->
+                        <div style=" height:100%;width: 100%;margin-right: 12px;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">BASIC INFORMATION DETAILS</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <div class="information slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom "
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Full Name</p>
+                                       <p class="educationSummaryValue">{userBasicData.Name}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading ">Additional Names</p>
+                                       <p class="educationSummaryValue">None</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Gender</p>
+                                       <p class="educationSummaryValue">{userBasicData.gender}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom "
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Date of Birth</p>
+                                       <p class="educationSummaryValue"> {userBasicData.birthdayDate}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1  ">
+                                       <p class="educationSumaryheading">Country of Birth</p>
+                                       <p class="educationSummaryValue">{userBasicData.countryOfBirth}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Country of Residence</p>
+                                       <p class="educationSummaryValue">{userBasicData.countryOfResidence}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1  bbottom"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">EU Passport</p>
+                                       <p class="educationSummaryValue">{userBasicData.euPassport}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Citizenship</p>
+                                       <p class="educationSummaryValue">{userBasicData.Citizenships}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-3">
+                                       <p class="educationSumaryheading">Criminal Record</p>
+                                       <p class="educationSummaryValue">{userBasicData.criminalRecord}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="left" style=" height:100; width: 100%;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">LANGUAGE SPOKEN</p>
+                              </div>
+                              <div><img src={editicon} onclick={test}></div>
+                           </div>
+                           <div class="education slds-grid slds-wrap">
+                           <template if:true={languagesFound}>
+                              <template for:each={languagesSpokenList} for:item="item">
+                                 <div key = {item.key} class="slds-col slds-size_1-of-1 bbottom summaryValueContainer"
+                                    style="display:block;border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                    <p class="educationSumaryheading">{item.key}</p>
+                                    <p class="educationSummaryValue">{item.value}</p>
+                                 </div>
+                              </template>
+                           </template> 
+                              <!-- <div class="slds-col slds-size_1-of-1 bbottom summaryValueContainer"
+                                 style="display:block;border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p class="educationSumaryheading">Spanish</p>
+                                 <p class="educationSummaryValue">Limited working proficiency</p>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 bbottom summaryValueContainer"
+                                 style="display:block;border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <p class="educationSumaryheading">French</p>
+                                 <p class="educationSummaryValue">Yes</p>
+                              </div> -->
+                           </div>
+                        </div>
+                     </section>
+                     <section class="summary">
+                        <!-- <div >
+                           <div><p>BASIC EDUCATION SUMMARY</p></div>
+                           <div>IMG</div>
+                           </div> -->
+                        <div style=" height:100%;width: 100%;margin-right: 12px;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">CONTACT DETAILS</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <!-- <div class="information slds-grid slds-wrap">
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Primary Email</p>
+                                  <p class="educationSummaryValue">{userBasicData.email}</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading ">Secondary Email</p>
+                                  <p class="educationSummaryValue">{userBasicData.workEmail}</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Primary Phone</p>
+                                  <p class="educationSummaryValue">{userBasicData.phone}</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Skype ID</p>
+                                  <p class="educationSummaryValue">SKYPE//:ID</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Current Address</p>
+                                  <p class="educationSummaryValue">4548 Science Center Drive</p>
+                              </div>
+                              <div
+                                  class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                  <p class="educationSumaryheading">Permanent Address</p>
+                                  <p class="educationSummaryValue">4548 Science Center Drive</p>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2  "
+                                  style="padding-top: 78px;">
+                              
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2  "
+                                  style="padding-top: 78px;">
+                              
+                              </div>
+                              
+                              
+                              </div> -->
+                           <div class="information slds-grid slds-wrap">
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom "
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Primary Email</p>
+                                       <p class="educationSummaryValue">{userBasicData.email}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading ">Secondary Email</p>
+                                       <p class="educationSummaryValue">{userBasicData.workEmail}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Primary Phone</p>
+                                       <p class="educationSummaryValue">{userBasicData.phone}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom "
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Skype ID</p>
+                                       <p class="educationSummaryValue">{userBasicData.skypeId}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1  ">
+                                       <p class="educationSumaryheading">Current Address</p>
+                                       <p class="educationSummaryValue">{userBasicData.currentAddress}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Permanent Address</p>
+                                       <p class="educationSummaryValue">{userBasicData.permanentAddress}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1  bbottom"
+                                 style="border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                 <div class="slds-grid slds-wrap summaryValueContainer">
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">EU Passport</p>
+                                       <p class="educationSummaryValue">{userBasicData.euPassport}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-1 ">
+                                       <p class="educationSumaryheading">Citizenship</p>
+                                       <p class="educationSummaryValue">{userBasicData.Citizenships}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-large-size_1-of-3 slds-size_1-of-1  slds-small-size_1-of-3">
+                                       <p class="educationSumaryheading">Criminal Record</p>
+                                       <p class="educationSummaryValue">{userBasicData.criminalRecord}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="left" style=" height:100; width: 100%;">
+                           <div class="headingIcon">
+                              <div>
+                                 <p class="cardHead">EMERGENCY CONTACT INFORMATION SPOKEN</p>
+                              </div>
+                              <div><img src={editicon}></div>
+                           </div>
+                           <template if:true={childContactFound}>
+                              <template for:each={chidlContacts} for:index="index" for:item="item">
+                                 <div class="education slds-grid slds-wrap" key={item.key}>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Name</p>
+                                       <p class="educationSummaryValue">{item.Name}
+                                       </p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Email</p>
+                                       <p class="educationSummaryValue">{item.Email}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Phone</p>
+                                       <p class="educationSummaryValue">{item.Phone}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Relationship</p>
+                                       <p class="educationSummaryValue">{item.Relationship_Status__c}</p>
+                                    </div>
+                                 </div>
+                              </template>
+                           </template>
+                           <template if:false={childContactFound}>
+                              <div class="noDataCard slds-align--absolute-center"
+                                 >
+                                 <p>Data Not Available</p>
+                              </div>
+                           </template>
+                        </div>
+                     </section>
+                     <!-- Payment Information Section Starts from here... -->
+                     <template if:true={paymentSectionVisibility}>
+                        <section class="summary" style="width:50%">
+                           <!-- <div >
+                              <div><p>BASIC EDUCATION SUMMARY</p></div>
+                              <div>IMG</div>
+                              </div> -->
+                           <div style=" height:100%;width: 100%;margin-right: 12px;">
+                              <div class="headingIcon">
+                                 <div>
+                                    <p>SUBSCRIPTION DETAILS</p>
+                                 </div>
+                                 <div><img src={editicon}></div>
+                              </div>
+                              <div class="information slds-grid slds-wrap">
+                                 <!-- <template if:true={premiumPlan}>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_2-of-3  summaryValueContainer">
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-3  summaryValueContainer">
+                                       <div class="slds-col" style="padding-right: 0px !important;">
+                     <a href={paymentPage}>
+                        
+                           <p style="background: #F9D88B;border-radius: 20px;padding: 8px 20px;font-weight: bold;width: max-content;color: #549BA5;font-size:14px;text-transform: none;">
+                              Upgrade Now</p>
+                        
+                     </a>
+                     
+                  </div>
+                                    </div>
+                                 </template> -->
+                                 <div
+                                    class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer" style="display:block;border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                    <p class="educationSumaryheading">Subscription Type</p>
+                                    <p class="educationSummaryValue">{userBasicData.subscriptionType}</p>
+                                 </div>
+                                 <div
+                                    class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 bbottom summaryValueContainer slds-m-bottom--large" style="display:block;border-bottom: 1px solid rgba(9, 17, 50, 0.1);">
+                                    <p class="educationSumaryheading ">Subscription End Date</p>
+                                    <p class="educationSummaryValue">{userBasicData.subscriptionEndDate}</p>
+                                 </div>
+                                 <!-- <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                    <p class="educationSumaryheading">Primary Phone</p>
+                                    <p class="educationSummaryValue">{userBasicData.phone}</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                    <p class="educationSumaryheading">Skype ID</p>
+                                    <p class="educationSummaryValue">SKYPE//:ID</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                    <p class="educationSumaryheading">Current Address</p>
+                                    <p class="educationSummaryValue">4548 Science Center Drive</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                    <p class="educationSumaryheading">Permanent Address</p>
+                                    <p class="educationSummaryValue">4548 Science Center Drive</p>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2  " style="padding-top: 78px;">
+                                    
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2  " style="padding-top: 78px;">
+                                    
+                                    </div> -->
+                              </div>
+                           </div>
+                           <!-- <div class="left" style=" height:100; width: 100%;">
+                              <div class="headingIcon">
+                                 <div>
+                                    <p></p>
+                                 </div>
+                                 <div></div>
+                              </div>
+                              <template for:each={chidlContacts} for:index="index" for:item="item">
+                                 <div class="education slds-grid slds-wrap" key={item.key}>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Name</p>
+                                       <p class="educationSummaryValue">{item.Name}
+                                       </p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Email</p>
+                                       <p class="educationSummaryValue">{item.Email}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Phone</p>
+                                       <p class="educationSummaryValue">{item.Phone}</p>
+                                    </div>
+                                    <div
+                                       class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Relationship</p>
+                                       <p class="educationSummaryValue">Spouse</p>
+                                    </div> -->
+                                    <!-- <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Name </p>
+                                       <p class="educationSummaryValue">David Smithson</p>
+                                       </div>
+                                       <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                       <p class="educationSumaryheading">Email </p>
+                                       <p class="educationSummaryValue">davidsmithson@yahoo.com</p>
+                                       </div>
+                                       <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                       <p class="educationSumaryheading">Phone</p>
+                                       <p class="educationSummaryValue">+569 9923 345</p>
+                                       </div>
+                                       <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                       <p class="educationSumaryheading">Relationship</p>
+                                       <p class="educationSummaryValue">Parent</p>
+                                       </div> -->
+                                 <!-- </div> -->
+                              <!-- </template> -->
+                           <!-- </div> -->
+                        </section>
+                     </template>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</template>

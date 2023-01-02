@@ -1,0 +1,305 @@
+<template>
+	<template if:true={spin}>
+        <lightning-spinner class="slds-is-fixed" alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+	<div class="slds-grid slds-wrap  slds-p-around_large slds-p-top--none" style="">
+
+		<!-- Manage Account Card  -->
+		<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_7-of-12 slds-m-top--medium"
+			style="">
+			<div class="main  slds-p-around--large slds-m-right--small" style="min-height: 42.5rem;">
+				<div class="slds-grid slds-wrap" style="">
+					<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-m-bottom--large"
+						style="">
+						<h1 class="head1 customRoboto">Manage Account</h1>
+					</div>
+					<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_6-of-12  slds-m-bottom--large"
+						style="">
+						<div class="slds-m-right--small card slds-p-around_medium card1" style="min-height: 21rem;">
+							<div class="" style="">
+								<span class="testimonial">"I'm so glad I invested in my future with International Schools Services. Their unlimited plan made it super easy for me to find job opportunities and network with top schools. With their services, I've been able to advance my career in ways I never thought possible. I recommend their services to anyone looking to kick start their teaching career or grow as a professional."</span>
+							</div>
+							<div style="display:flex;justify-content: flex-end;"
+								class="slds-m-right--small slds-m-top--none">
+								<img src={vectorIcon} style="height:25px"></img>&nbsp;
+								<img src={vectorIcon} style="height:25px"></img>
+							</div>
+						</div>
+					</div>
+					<div
+						class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_6-of-12 slds-m-bottom--large ">
+						<div class=" slds-m-left--small card slds-p-around_medium card2" style="min-height: 21rem;">
+							<div class=" ">
+								<span class="testimonial">"International School Services has been a constant resource of support throughout my journey as a teacher in an international school. Their dedication to create an environment of inclusion and diversity within each school has helped make the adjustment for myself and my students that much easier. With the help of ISS, I've had some of the best teaching experiences of my career, and have truly grown as a professional."</span>
+							</div>
+							<div style="display:flex;justify-content: flex-end;"
+								class="slds-m-right--small slds-m-top--none">
+								<img src={vectorIcon} style="height:25px" ></img>&nbsp;
+								<img src={vectorIcon} style="height:25px"></img>
+							</div>
+						</div>
+					</div>
+					<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_12-of-12 card slds-m-bottom--large"
+						style="">
+						<div class=" slds-m-left--small slds-p-around_medium ">
+							<div class="">
+								<span class="testimonial">"Working with International School Services has been one of the best decisions I've made in my teaching career. With their help, I have secured a position in an amazing school where my class sizes have become smaller for a more individualized learning experience. Furthermore, I can connect with my students and their families in multiple languages which I thoroughly enjoy. I can't imagine making this career jump without ISS and their incredible services."</span>
+							</div>
+							<div style="display:flex;float:right"
+								class="slds-m-right--small slds-m-top--none slds-m-bottom_medium">
+								<img src={vectorIcon} style="height:25px"></img>&nbsp;
+								<img src={vectorIcon} style="height:25px"></img>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+		<!-- Complete Payment Card  -->
+		<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12 slds-m-top--medium"
+			style="">
+			<template if:true={paymentFirstPage}>
+				<div class="main slds-p-around--medium slds-m-left-small" style="min-height: 42.5rem;">
+					<div class="slds-grid slds-wrap card slds-m-bottom--large" style="">
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="">
+							<div class="headPayment slds-align_absolute-center slds-p-around--small" style="">
+								<h1 class="cmpltPayHeading">Complete Payment</h1>
+							</div>
+						</div>
+
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--medium"
+							style="">
+							<div
+								class="main slds-p-top--medium slds-p-bottom--medium slds-p-left--large slds-p-right--large">
+								<div>
+									<h1 class="paymentCard1head">Premium Subscription Plan</h1>
+								</div>
+								<div>
+									<h2 class="timePeriod">12 Months </h2>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-right--large slds-p-left--large "
+							style="background: #DDECEA;height:4px;">
+							<!-- Line  -->
+						</div>
+
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--medium"
+							style="">
+							<div
+								class="main slds-p-top--medium slds-p-bottom--medium slds-p-left--large slds-p-right--large">
+								<h1 class="paymentCard1head">Price Details</h1>
+								<div style="display:flex;justify-content:space-between"
+									class="slds-align--absolute-center">
+									<div>
+										<h2 class="timePeriod">Subscription Fee</h2>
+									</div>
+									<div style="display:flex">
+										<h1 class="price">$75</h1>
+										<h2 class="currency">USD</h2>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<!-- Coupen Code Card  -->
+
+					<div class="slds-grid slds-wrap card slds-m-top--largeaa" style="">
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--large"
+							style="">
+							<div style="display:flex;height:2.7rem"
+								class="slds-m-right--large slds-m-left--large inputArea">
+								<input class="input inputCoupon" type="text" placeholder="Coupon Code" style="width:75%;padding-left: 2rem;" onchange={couponValue}></input>
+								<button class="applyBtn" title="Apply" style="width:25%" onclick={applyNow}>Apply</button>
+								<button class="removeBtn" title="Remove" style="width:25%" onclick={removeNow}>Remove</button>
+							</div>
+							<template if:true={couponCodetrue}>
+								<div class="slds-m-right--large slds-m-left--large">
+									<h1 class="slds-p-around--small" style="color:#549BA5;">Coupon Code Applied Successfully</h1>
+								</div>
+							</template>
+							<template if:true={couponCodeFalse}>
+								<div class="slds-m-right--large slds-m-left--large">
+									<h1 class="slds-p-around--small" style="color:#549BA5;">Coupon Code is Invalid or Expired</h1>
+								</div>
+							</template>
+							</div>
+
+						</div>
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--large slds-p-top--none slds-p-bottom--none"
+							style="">
+							<div style="display:flex;justify-content:space-between"
+								class="slds-align--absolute-center slds-m-left--large slds-m-right--large amountArea">
+								<div>
+									<h2 class="total">Total</h2>
+								</div>
+								<div style="display:flex">
+									<h1 class="price">${totalPrice}</h1>
+									<h2 class="currency">USD</h2>
+								</div>
+							</div>
+						</div>
+
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-m-top--medium"
+							style="background: #DDECEA;height:4px;">
+							<!-- Line  -->
+						</div>
+
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--large"
+							style="">
+							<div class="slds-m-right--large slds-m-left--large accessArea">
+								<button type="submit" title="Get Access Now" class="getAccessBtn" onclick={getAccessNow}>Get Access Now</button>
+							</div>
+						</div>
+
+					</div>
+				<!-- </div> -->
+
+
+
+
+			</template>
+
+
+			<template if:false={paymentFirstPage}>
+				<div class="main2 slds-p-around--medium slds-m-left-small" style="min-height: 42.5rem;">
+					<div class="slds-grid slds-wrap slds-m-bottom--large" style="">
+						<div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around--medium"
+							style="line-height:4">
+							<!-- <form onsubmit={handleCharge} > -->
+								<h1 class="cCard">Credit Card</h1>
+								<input title="" class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" placeholder="Email" name="email"  onchange={handleChange}></input>
+								<div class="slds-m-top--small">
+									<h3 class="cardsHead slds-p-left--large" style="line-height: 0;font-size: 13px;">Card
+										Information</h3>
+									<input type="number" class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" placeholder="1234 1234 1234 1234" name="cardNumber" maxlength="16"  data-id = "checkValidity" oninput={checkLength} onchange={handleChange} ></input>
+									<div style="display:flex">
+										<input type='' style="width:50%;border-radius: 20px 0px 0px 20px" class="cardInput expiryInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" inputmode="numeric"  placeholder="MM/YY" maxlength="5" minlength="5" name="expiry" data-id = "checkValidity"  onkeyup={handleChange}>
+										<input type="number" style="width:50%;border-radius: 0px 20px 20px 0px" class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" placeholder="CVV" name="Cvv"  onchange={handleChange} maxlength="3" minlength="3" data-id = "checkValidity" oninput={checkLength}>
+									</div>
+
+									</div>
+									<div class="slds-m-top--large">
+										<h3 class="cardsHead slds-p-left--large" style="line-height: 0;font-size: 13px;">
+											Name on Card</h3>
+										<input type="text" class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" data-id = "checkValidity" placeholder="Abram Standon" name="Name"  onchange={handleChange}></input>
+
+
+									</div>
+									<div class="slds-m-top--small">
+										<h3 class="cardsHead slds-p-left--large" style="line-height: 0;font-size: 13px;">
+											Country or region</h3>
+										<select class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" style="color: grey;">
+										<option>United States</option>
+									</select>
+										<input type="" class="cardInput slds-p-bottom--xx-small slds-p-left--large slds-p-left--medium slds-p-top--xx-small" placeholder="ZIP" onchange={handleChange} name="zip"></input>
+
+
+									</div>
+									<div class="slds-p-around--x-large slds-p-bottom--none">
+										<div>
+
+											<h1 class="planDetails">Premium Subscription Plan</h1>
+
+											<h2 class="cardsHead slds-m-top--large" style="line-height: 0;font-size: 13px;">
+												12 Months </h2>
+
+										</div>
+
+										<div class="slds-m-top--large">
+
+											<h1 class="priceDetails">Price Details</h1>
+											<div style="display:flex;justify-content:space-between">
+												<h2 class="cardsHead" style="line-height: 0;font-size: 13px;">Subscription
+													Fee</h2>
+												<h2 class="price2">${totalPrice}</h2>
+
+
+											</div>
+
+										</div>
+										<template if:true={paymentDetailRequired}>
+											<p style="color: red; font-size: 20px;" class="slds-align--absolute-center errMsg">{errorMessage}</p>
+										</template>
+	
+
+										<div class="slds-p-left--xx-large slds-p-right--xx-large">
+											<button type="submit" style="background: #E4FDF1;border-radius: 20px;color:black;    border: transparent;line-height:2;font-weight: 500;font-size: 18px;width:100%" onclick={handleCharge}>Pay Now</button>
+										</div>
+									</div>
+
+
+							<!-- </form> -->
+
+
+							</div>
+						</div>
+					</div>
+			</template>
+		</div>
+
+	<!-- Payment Success Page  -->
+	<!-- <template if:true={paymentInitiated}> -->
+
+		<template if:true={paymentSuccess}>
+				<div>
+					<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+						class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+							<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeModal}>
+							<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+								<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+							</svg>
+							<span class="slds-assistive-text">Cancel and close</span>
+							</button>
+							<div class="slds-modal__header">
+								<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
+								</h1>
+							</div>
+							<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+								<img src={successIcon} class="slds-align--absolute-center" style="width:20%">
+								<h1 class="payDone slds-align--absolute-center" style="font-size: 20px;" >Payment Success</h1>
+							</div>
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+				</div>
+		</template>
+		<template if:true={paymentFailed}>
+			<div>
+					<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-02"
+						class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+							<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeModal}>
+							<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+								<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+							</svg>
+							<span class="slds-assistive-text">Cancel and close</span>
+							</button>
+							<div class="slds-modal__header">
+								<h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate" tabindex="-1">
+								</h1>
+							</div>
+							<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+								<!-- <img src={successIcon} class="slds-align--absolute-center" style="width:20%"> -->
+								<h1 class="payDone slds-align--absolute-center" style="font-size: 20px;color:red" >Payment Failed</h1>
+							</div>
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+				</div>
+		</template>
+	<!-- </template> -->
+
+
+	</div>
+</template>

@@ -1,0 +1,100 @@
+.addjobButton{
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+     HEIGHT: 83PX;
+
+}
+.addAnalytics{
+    margin-right: 54rem;
+    --sds-c-button-neutral-color-border: #549BA5;
+    --sds-c-button-neutral-color-background: #F5FAF9;
+    --slds-c-button-radius-border: 40px;
+    --sds-c-button-text-color: #549BA5;
+    height: 40px;
+}
+.detail-title {
+    padding: 0px 20px;
+}
+.detail-title .title {
+    font-size: 30px;
+}
+.newData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: aliceblue;
+    text-align: center;
+    border-radius: 26px;
+    padding: 16px;
+    margin: 14px;
+}
+.newDataItem {
+    display: flex;
+    text-align: center;
+    margin: 5px 0;
+}
+.textfont{
+    margin-right: 23px;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2D514F80;
+}
+.textSecFont{
+    font-family: arial;
+    font-size: 16;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F;
+}
+
+.recordInfo td {
+    width: 50% !important;
+    text-align: left;
+    padding: 5px 5px 15px;
+}
+
+/* ------------mobile Css ------------------- */
+.mobile-main-btns{
+    display:flex; 
+    justify-content: space-between;
+}
+.mobile-show-compo{
+    display: block;
+}
+.detail-tables-wrapper {
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+}
+
+
+
+
+@media(max-width: 768px) {
+    .recordInfo td {
+        padding: 5px 5px 5px;
+    }
+    .detail-title .title {
+        font-size: 25px;
+    }
+    .mobile-main-btns{
+        display: none;
+    }
+    /* .mobile-show-compo{
+        display: none;
+    } */
+    .newData {
+        flex-direction: column;
+    }
+    .detail-tables-wrapper {
+        flex-direction: column;
+    }
+}

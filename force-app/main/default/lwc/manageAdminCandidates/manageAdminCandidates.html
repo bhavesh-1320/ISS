@@ -1,0 +1,269 @@
+<template >
+
+    
+
+
+    <div  class="mainchildbody">
+      <div class="slds-tabs_default slds-sub-tabs">
+        <ul class="slds-tabs_default__nav" role="tablist" style="backgroud-color:white">
+                <!-- <li class="slds-tabs_default__item slds-sub-tabs__item slds-grid slds-grid_vertical-align-center slds-active" role="presentation" style="background: white;margin-left: 23px;margin-top: 4px;border-radius: 14px;">
+                        <a aria-controls="subtab-tabpanel-01" aria-selected="true" class="slds-tabs_default__link slds-p-horizontal_xx-small" href="#" id="subtab-tabitem-01" role="tab" tabindex="0" title="00071938">
+                                <span class="slds-indicator-container"></span>
+                                <span class="slds-icon_container" title="Case">
+                                        <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Case</span>
+                                </span>
+                                <span class="slds-truncate" title="00071938">Jim Bob</span>
+                        </a>
+                        <div class="slds-col_bump-left slds-p-left_none slds-p-right_none">
+                                <button class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-x-small" tabindex="0" title="Close 00071938">
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                        </svg>
+                                        <lightning-icon icon-name="utility:close" size="small" alternative-text="Doc image" ></lightning-icon>
+                                        
+                                       
+                                </button>
+                        </div>
+                </li>
+                <li class="slds-tabs_default__item slds-sub-tabs__item slds-grid slds-grid_vertical-align-center" role="presentation">
+                        <a aria-controls="subtab-tabpanel-02" aria-selected="false" class="slds-tabs_default__link slds-p-horizontal_xx-small" href="#" id="subtab-tabitem-02" role="tab" tabindex="-1" title="Chat - Customer">
+                                <span class="slds-indicator-container"></span>
+                                <span class="slds-icon_container" title="Live Chat">
+                                        <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#live_chat"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Live Chat</span>
+                                </span>
+                                <span class="slds-truncate" title="Chat - Customer">Jim Bob</span>
+                        </a>
+                        <div class="slds-col_bump-left slds-p-left_none slds-p-right_none">
+                                <button class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-x-small" tabindex="-1" title="Close Chat - Customer">
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                        </svg>
+                                        <lightning-icon icon-name="utility:close" size="small" alternative-text="Doc image" ></lightning-icon>
+                                </button>
+                        </div>
+                </li> -->
+                <template for:each={tabsValue} for:item="item" for:index="index">
+                    <li class="slds-tabs_default__item slds-sub-tabs__item slds-grid slds-grid_vertical-align-center slds-active allList"  onclick={handleGetId} id={item.Id} key={item.key} role="presentation">
+                        <a aria-controls="subtab-tabpanel-01" aria-selected="true" class="slds-tabs_default__link slds-p-horizontal_xx-small" href="#" id="subtab-tabitem-01" role="tab" tabindex="0" title="00071938">
+                                <span class="slds-indicator-container"></span>
+                                <span class="slds-icon_container" title="Case">
+                                        <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Case</span>
+                                </span>
+                                
+                                    <span class="slds-truncate" title="00071938">{item.Name}</span>
+                                
+                                
+                        </a>
+                        <div class="slds-col_bump-left slds-p-left_none slds-p-right_none">
+                                <button class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-xxx-small" tabindex="0" title="Close 00071938">
+                                        <svg class="slds-button__icon" aria-hidden="true">
+                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                        </svg>
+                                        <lightning-icon icon-name="utility:close" size="xx-small" alternative-text="Doc image" ></lightning-icon>
+                                        
+                                       
+                                </button>
+                        </div>
+                </li>
+                </template>
+        </ul>
+        <!-- <div aria-labelledby="subtab-tabitem-01" class="slds-tabs_default__content slds-show" id="subtab-tabpanel-01" role="tabpanel">Item One Content</div>
+        <div aria-labelledby="subtab-tabitem-02" class="slds-tabs_default__content slds-hide" id="subtab-tabpanel-02" role="tabpanel">Item Two Content</div> -->
+      </div>
+
+      
+    </div>
+        <div>
+            <article class="slds-card">
+            <div class="slds-card__header">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <div>   
+                        <div>
+                            <span class="fullNameCss">Jim Bob</span>
+                        </div>
+                    </div>
+                    <div class="slds-media__figure">
+                        <!-- <span class="slds-icon_container">
+                            <div>   
+                                <img src={star} style="position: absolute;left: 114px;top: 18px">
+                            </div>
+                            <div>
+                                <img src={InviteButtonIcon} style="position: absolute;top: 19px;right:20px">
+                                <img src={userIcon} style="position: absolute;top: 37px;right:290px">
+                                <img src={messageIcon} style="position: absolute;top: 39px;right:216px">
+                                <img src={barIcon} style="position: absolute;top: 38px;right:254px ">
+                                <img src={multipleIcon} style="position: absolute;top: 38px;right:171px">
+                            </div>                             
+                        </span> -->
+                    </div>
+                </div>
+                </header>
+            </div>
+
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                   <div class="slds-card__body slds-card__body_inner">
+                <div class="basicInfoCss">
+                    <p style="font-family:arial">Basic information Summary</p> 
+                </div>        
+                <div  style="border-radius: 15px;background: #F5FAF9;">
+                    <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                            <!-- <p>full name </p> </br>
+                            <p class="textCss">Jim bob </p> -->
+                            <span style="color: #b0bcbb;font-family: arial;"> Full Name </br><p class="textCss"> Jim Bob</p></span>
+
+                        </div>
+                        <div style="margin-left: 180px;">
+                          <span style="color: #b0bcbb;font-family: arial;"> Country of Residence </br><p class="textCss">United State</p></span>
+                        </div>
+                    </div>   
+
+                     <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                          <span style="color: #b0bcbb;font-family: arial;"> Phone</br><p class="textCss">+1-245-643-632 </p></span>
+                        </div>
+                        <div style="margin-left: 128px;">
+                            <span style="color: #b0bcbb;font-family: arial;"> Criminal Record</br><p class="textCss">No</p></span>
+                        </div>
+                    </div>    
+                     <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                             <span style="color: #b0bcbb;font-family: arial;">Date Of Birth </br>
+                            <p class="textCss">Dec 12 1984</p> </span>
+                        </div>
+                        <div style="margin-left: 150px;">
+                             <span style="color: #b0bcbb;font-family: arial;">RelationShip Status  </br><p class="textCss">Married</p></span>
+
+                        </div>
+                    </div>  
+                      <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                            <!-- <p>full name </p> </br>
+                            <p class="textCss">Jim bob </p> -->
+                            <span style="color: #b0bcbb;font-family: arial;">Date of Availibility </br><p class="textCss"> Dec 12 1984</p></span>
+
+                        </div>
+                        <div style="margin-left: 145px;">
+                          <span style="color: #b0bcbb;font-family: arial;"> Number of Dependents </br><p class="textCss">0</p></span>
+                        </div>
+                    </div>   
+                     <div style="padding:17px;display:flex;">    
+                        <div style="margin-left: 33px;">
+                            <span style="color: #b0bcbb;font-family: arial;">Partner</span>
+                           
+                        </div>
+                        <div style="margin-left: 200px;">
+                            <p class="textCss"> Jane Doe-Smithson</p>
+                            
+                        </div>
+                    </div>    
+                </div>    
+
+            </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <div class="slds-card__body slds-card__body_inner">
+                <div class="basicInfoCss">
+                    <p style="font-family:arial">Educational Summary</p> 
+                </div>        
+                <div  style="border-radius: 15px;background: #F5FAF9;">
+                    <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                            <!-- <p>full name </p> </br>
+                            <p class="textCss">Jim bob </p> -->
+                            <span style="color: #b0bcbb;font-family: arial;"> Name Of Institute </br><p class="textCss"> Lowa State</p></span>
+
+                        </div>
+                        <div style="margin-left: 180px;">
+                          <span style="color: #b0bcbb;font-family: arial;"> Country</br><p class="textCss">United State</p></span>
+                        </div>
+                    </div>   
+
+                     <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                          <span style="color: #b0bcbb;font-family: arial;"> Degree type</br><p class="textCss">Certification </p></span>
+                        </div>
+                        <div style="margin-left: 190px;">
+                            <span style="color: #b0bcbb;font-family: arial;"> Degree in Education</br><p class="textCss">Yes</p></span>
+                        </div>
+                    </div>    
+                     <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                             <span style="color: #b0bcbb;font-family: arial;">Course / Major</br><p class="textCss">Engineering</p> </span>
+                        </div>
+                        <div style="margin-left: 193px;">
+                             <span style="color: #b0bcbb;font-family: arial;">Degree Conferred</br><p class="textCss">Yes</p></span>
+
+                        </div>
+                    </div>  
+                     <div style="padding:17px;display:flex;border-bottom: 1px solid lightgray; ">    
+                        <div style="margin-left: 33px;">
+                            <!-- <p>full name </p> </br>
+                            <p class="textCss">Jim bob </p> -->
+                            <span style="color: #b0bcbb;font-family: arial;"></br><p class="textCss"></p></span>
+
+                        </div>
+                        <div style="margin-left: 240px;">
+                          <span style="color: #b0bcbb;font-family: arial;"></br><p class="textCss"></p></span>
+                        </div>
+                    </div>  
+                     <div style="padding:17px;display:flex;">    
+                        <div style="margin-left: 33px;">
+                            <span style="color: #b0bcbb;font-family: arial;">Certificate</span>
+                           
+                        </div>
+                        <div style="margin-left: 235px;">
+                            <p class="textCss"> PA State ,DE State</p>
+                            
+                        </div>
+                    </div>    
+                </div>    
+
+            </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-family: Roboto;font-size: 25px;font-weight: 600;line-height: 29px;letter-spacing: 0em;text-align: left;margin-left: 3%;margin-top: 1%;">
+                    <p> Seeking positions</p>
+                </div>
+                <div style="background: rgb(245, 250, 249);border-radius: 48px;min-height: 252px;padding-left: -8px;margin: 2%;">
+                   <table>
+                        <tr class="seekingPositionTabHeader">
+                            <th style="padding:20px">DepartMent</th>
+                            <th>Subject Of Role</th>
+                            <th>Education Level</th>
+                            <th>Carriclum</th>
+                        </tr>
+                        <template for:each={data} for:item="item" >
+                        <tr key={item.key} class="seekingPositionData">
+                            <td style="padding:17px">{item.DepartMent}</td>
+                            <td>{item.Subject}</td>
+                            <td>{item.Education}</td>
+                            <td>{item.Curriclum}</td>
+                        </tr>
+                        </template>
+                    </table>
+                       
+                </div>   
+            </div>    
+
+
+            
+            </article>
+        </div>
+    
+     
+    
+</template>

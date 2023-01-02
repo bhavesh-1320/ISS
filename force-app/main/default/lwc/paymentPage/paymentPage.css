@@ -1,0 +1,265 @@
+.dummy{
+	color : black;
+}
+
+.head1{
+	/* font-family: 'customRoboto'; */
+	font-style: normal;
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 29px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #549BA5;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.card{
+	background: #FFFFFF;
+	box-shadow: 0px 10px 15px rgba(84, 155, 165, 0.15);
+	border-radius: 30px;
+}
+
+.testimonial{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 34px;
+	/* or 155% */
+
+	text-align: justify;
+
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.main{
+	background: #EEF6F5;
+	border-radius: 30px;
+}
+
+.main2{
+	background: #549BA5;
+	border-radius: 30px;
+}
+
+.headPayment{
+	background: #549BA5;
+	border-radius: 30px 30px 0px 0px;
+}
+
+.cmpltPayHeading{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 29px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #FFFFFF;
+}
+
+.paymentCard1head{
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 29px;
+	display: flex;
+	align-items: center;
+
+	color: #2D514F;
+}
+
+.timePeriod{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+	display: flex;
+	align-items: center;
+
+	color: rgba(45, 81, 79, 0.5);
+
+}
+
+.price{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 52px;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #549BA5;
+}
+
+.currency{
+	font-style: normal;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 26px;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+
+	color: rgba(45, 81, 79, 0.5);
+
+}
+
+.input{
+	background: #FFFFFF;
+	border: 2px solid #5FA19C;
+	border-radius: 20px 0px 0px 20px;
+}
+
+.applyBtn{
+	background: #549BA5;
+	border: 2px solid #5FA19C;
+	border-radius: 0px 20px 20px 0px;
+	color: white;
+}
+
+.removeBtn{
+	background: #549BA5;
+	display: none;
+	border: 2px solid #5FA19C;
+	border-radius: 0px 20px 20px 0px;
+	color: white;
+}
+
+.total{
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 26px;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+
+	color: #2D514F;
+
+}
+
+.getAccessBtn{
+	background: #ADC147;
+	border-radius: 20px;
+	color: white;
+	border: transparent;
+    width: 100%;
+    height: 42px;
+    font-size: 18px;
+
+
+}
+
+/* .customRoboto{
+	font-family: 'customRoboto';
+}
+
+@font-face{
+    font-family: 'customRoboto';
+    src: url(/resource/roboto/RobotoNew/fonts/ttf/Roboto-Thin.ttf)
+
+} */
+
+.cardsHead{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.cCard{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+
+	color: #FFFFFF;
+}
+
+.cardInput{
+	background: #FFFFFF;
+	border: 1px solid rgba(45, 81, 79, 0.5);
+	border-radius: 20px;
+	width: 100%;
+    --lwc-colorTextPlaceholder: grey;
+}
+
+.planDetails{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+
+	color: #FFFFFF;
+
+}
+
+.priceDetails{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+
+	color: #FFFFFF;
+}
+
+.price2{
+	font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 52px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.payDone{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 25px;
+	line-height: 29px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #549BA5;
+
+}

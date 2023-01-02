@@ -1,0 +1,24 @@
+.mainChatArea {
+    height: calc(100vh - 100px);
+    background: #DDECEA;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+    .candidateMessagingScreen{
+        width: 50%;
+    }
+    .candidateMessaging{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .candidateMessagingScreen{
+        width: 100%;
+    }
+    .candidateMessaging{
+        width: 100%;
+        display: none;
+    }
+}

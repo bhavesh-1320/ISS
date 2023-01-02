@@ -1,0 +1,35 @@
+<template>
+    <div class="edulearn">
+        <div class="banner">
+            <div class="overlay"></div>
+            <h1>Education & Training Organization</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, cumque nemo. Repudiandae neque rerum
+                sed!</p>
+            <div class="buttons">
+                <div class="btn" style="color: white;background: #539BA5;">Our Course</div>
+                <div class="btn" style="color: black;background: white;">Contact Us</div>
+            </div>
+        </div>
+    </div>
+
+    <h1 style="text-align: center;font-size: 20px;font-weight: 500;padding: 20px 20px 10px 20px;">Our <span
+            style="text-decoration: underline;">Online Courses</span></h1>
+    <div class="courses">
+        <template for:each={allCourses} for:item="singleCourse">
+            <div class="singleCourse" key={Id}>
+                <div class="courseImage">
+                    <img src={course} alt="">
+                </div>
+                <div class="courseDetails">
+                    <div class="coursename">
+                        <h1>Lorem ipsum dolor sit amet.</h1>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="coursePrice">
+                        35$
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

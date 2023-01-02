@@ -1,0 +1,46 @@
+.submitBtn{
+    background-color: rgb(114, 141, 144);
+    margin: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff ;
+    padding: 10px 15px 10px 15px;
+    
+}
+
+.activeBtn{
+    background-color: #549BA5;
+    cursor: pointer;
+}
+
+.borderBottom:not(:last-child){
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.activeBtn:hover{
+    background: #2D514F;
+}
+
+.question-radio-group {
+    --sds-c-button-line-height: 2.875rem;
+    /*border:10px solid red !important;*/
+}
+
+.quizContainer{
+    background-color: #f0f0f0;
+}
+
+.quizTitle{
+    font-size: 15px;
+    font-weight: lighter;
+    color: #c7dada ;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.quizQuestions{
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+}

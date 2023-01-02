@@ -1,0 +1,34 @@
+<template>
+    <div class="iss-search-box">
+        <input type="text" placeholder="Find a Course" value={searchkey} oninput={handlesearch}>
+        <button type="submit" class="submit-btn"><i class="icon-ic-search"></i></button>
+    </div>
+
+    <template if:true={isShowSearchResult}>
+        <div class="iss-search-res-area">
+        <div class="iss-search-head">
+            <h1>Results:</h1>
+            <div class="iss-search_meta">
+                <div class="iss-search-filter">
+                    <p class="title">Filter:</p>
+                    <ul class="list-unstyled iss-filter-list">
+                        <li><button onclick={handleFilter} value="Series">Series</button></li>
+                        <li><button onclick={handleFilter} value="Course">Courses</button></li>
+                    </ul>
+                </div>
+                <div class="iss-search-sort">
+                    <p class="title">Sort by:</p>
+                    <div class="search-sort-box">
+                        <p>{sortBy}</p>
+                        <lightning-button-menu alternative-text="Sort by" variant="bare" onselect={selectSortBy}>
+                            <lightning-menu-item value="Short" label="Short"></lightning-menu-item>
+                            <lightning-menu-item value="Long" label="Long"></lightning-menu-item>
+                        </lightning-button-menu>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </template>
+
+</template>

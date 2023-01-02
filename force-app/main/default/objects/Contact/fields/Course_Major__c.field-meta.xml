@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course_Major__c</fullName>
+    <externalId>false</externalId>
+    <label>Course/Major</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Engineering</fullName>
+                <default>false</default>
+                <label>Engineering</label>
+            </value>
+            <value>
+                <fullName>Demo1</fullName>
+                <default>false</default>
+                <label>Demo1</label>
+            </value>
+            <value>
+                <fullName>Demo2</fullName>
+                <default>false</default>
+                <label>Demo2</label>
+            </value>
+            <value>
+                <fullName>Demo3</fullName>
+                <default>false</default>
+                <label>Demo3</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

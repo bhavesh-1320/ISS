@@ -1,0 +1,557 @@
+<template>
+    <div class="main">
+        <div class="profileHeader">
+            <h3 class="profile">PROFILE</h3>
+        </div>
+        <div class="mainHeader">
+            <div class="secondheader">
+                <div style="width: auto;height: auto;">
+                    <h4 class="name">John Smithson</h4>
+                    <h5><span style="font-weight: 400; color:#8da3a2;font-size:14px">Personal: </span><span
+                            class="email"> johnsmi@mymail.com</span></h5>
+                    <h5><span style="font-weight: 400; color:#8da3a2;font-size:14px">Work: </span><span class="email">
+                            johnsmi@workmail.com</span></h5>
+                </div>
+                <div><div class="container slds-p-horizontal_small">
+                    <div class="file-info-wrapper">
+                        <div class="file">
+                            <div class="file-icon slds-p-around_small">
+                                <span><img src={fileIcon}></span>
+                            </div>
+                            <div class="file-info">
+                                <h6 class="file-name">John_smithson_resume.pdf</h6>
+                                <h6 class="file-date">Updated On: Sep 2 2022</h6>
+                            </div>
+                        </div>
+                        <div class="file-upload">
+                            <h6 style="color: #549BA5; font-weight:600;font-size:14px;">Add a cover letter <span><img src={uploadIcon}></span></h6>
+                        </div>
+                    </div>
+                </div></div>
+
+            </div>
+            <div class="body">
+                <section class="summary">
+                    <!-- <div >
+                        <div><p>BASIC EDUCATION SUMMARY</p></div>
+                        <div>IMG</div>
+                    </div> -->
+                    <div class="leftBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>BASIC INFORMATION SUMMARY</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div class="information slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Full Name</p>
+                                <p class="educationSummaryValue">Jim Bob</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading ">Country of Residance</p>
+                                <p class="educationSummaryValue">United States</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Phone</p>
+                                <p class="educationSummaryValue">+1-245-643-632</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Criminal Record</p>
+                                <p class="educationSummaryValue"> No</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Date of Birth</p>
+                                <p class="educationSummaryValue">Dec 12 1984</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Relationship Status</p>
+                                <p class="educationSummaryValue">Married</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Date of Availibility</p>
+                                <p class="educationSummaryValue">Dec 12 1984</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Number of Dependents</p>
+                                <p class="educationSummaryValue">0</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                <p class="educationSumaryheading">Partner:</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+
+                                <p class="educationSummaryValue" style="color:#549BA5;">Jane Doe-Smithson</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="rightBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>EDUCATION SUMMARY</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div class="education slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+
+                                <p class="educationSumaryheading">Name of Institute</p>
+                                <p class="educationSummaryValue">Iowa State</p>
+
+
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Country</p>
+                                <p class="educationSummaryValue">United States</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Degree Type</p>
+                                <p class="educationSummaryValue">Certification</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Degree in Education</p>
+                                <p class="educationSummaryValue">Yes</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Course / Major </p>
+                                <p class="educationSummaryValue">Engineering</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Degree Conferred</p>
+                                <p class="educationSummaryValue">Yes</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom" style="padding-top: 78px;">
+                                <p class="educationSumaryheading"></p>
+                                <p class="educationSummaryValue"></p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom" style="padding-top: 78px;">
+                                <p class="educationSumaryheading"></p>
+                                <p class="educationSummaryValue"></p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer ">
+                                <p class="educationSumaryheading">Certification:</p>
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                <p class="educationSummaryValue">PA State, DE State</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>SEEKING POSITIONS</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div style="width: 100%;background: #F5FAF9;
+                        border-radius: 15px; ">
+                            <table style="width:100%">
+                                <tr class="tableBottom">
+                                    <th>Department</th>
+                                    <th>Subject of role</th>
+                                    <th>Education level</th>
+                                    <th>Curriclum</th>
+                                </tr>
+                                <tr class="tableBottom">
+                                    <td>Social Studies</td>
+                                    <td>Associate/Assistant Principal</td>
+                                    <td>Elementary</td>
+                                    <td>NA</td>
+                                </tr>
+                                <tr>
+                                    <td>Social Studies</td>
+                                    <td>Socialk Studies</td>
+                                    <td>High School</td>
+                                    <td>Any</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>Career History</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div style="width: 100%;background: #F5FAF9; border-radius: 15px; overflow-x: scroll">
+                            <table style="width:100%">
+                                <tr class="tableBottom">
+                                    <th>Start - End</th>
+                                    <th>Job Title</th>
+                                    <th>School / Organization</th>
+                                    <th>Job Type</th>
+                                    <th>Job Type</th>
+                                    <th>Country, State</th>
+                                </tr>
+                                <tr class="tableBottom">
+                                    <td>1999 - 2001</td>
+                                    <td>Teacher</td>
+                                    <td>Public School</td>
+                                    <td>Full Time</td>
+                                    <td>Common Core</td>
+                                    <td>Pennsylvania,USA</td>
+                                </tr>
+                                <tr>
+                                    <td>1996 - 2001</td>
+                                    <td>Teacher</td>
+                                    <td>American School of Guatemala</td>
+                                    <td>Full Time</td>
+                                    <td>Advanced Placement (AP)</td>
+                                    <td>Guatemala,
+                                        Sacatepequez</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>Degrees / Quallifications</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div style="width: 100%;background: #F5FAF9; border-radius: 15px; overflow-x: scroll">
+                            <table style="width:100%">
+                                <tr class="tableBottom">
+                                    <th>Name of Institute</th>
+                                    <th>Country</th>
+                                    <th>Degree Type</th>
+                                    <th>In Education ?</th>
+                                    <th>Start - End</th>
+                                    <th>Degree Conferred</th>
+                                    <th>Major</th>
+                                    <th>Files</th>
+                                </tr>
+                                <tr class="tableBottom">
+                                    <td>University of California</td>
+                                    <td>United States</td>
+                                    <td>Masters</td>
+                                    <td>Yes</td>
+                                    <td>1992 - 1996</td>
+                                    <td>Yes</td>
+                                    <td>Teaching</td>
+                                    <td>Diplo .... docx</td>
+                                    <td><span><img src={deleteIcon}></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Southern Oregon</td>
+                                    <td>United States</td>
+                                    <td>Masters</td>
+                                    <td>Yes</td>
+                                    <td>1992 - 1996</td>
+                                    <td>Yes</td>
+                                    <td>Teaching</td>
+                                    <td></td>
+                                    <td><span><img src={uploadIcon}></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>External Profiles</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+
+                        <div class="external-profiles">
+                            <template for:each={externalProfile} for:item="item">
+                                <div key={item}>
+                                    <div class="profile2">
+                                        <div style="align-items: center;color: #549BA5;font-weight: 600;font-size: 14px;padding-left: 7px; padding-right: 8px;">{item}</div>
+                                        <div>icon</div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                    </div>
+
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>Key Relationships and Family Members</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div style="width: 100%;background: #F5FAF9; border-radius: 15px; overflow-x: scroll;">
+                            <table style="width:100%">
+                                <tr class="tableBottom">
+                                    <th>Full Name</th>
+                                    <th>Relationship</th>
+                                    <th>DOB</th>
+                                    <th>Gender</th>
+                                    <th>Citizenships</th>
+                                    <th>Traveling with Candidate ?</th>
+                                </tr>
+                                <tr class="tableBottom">
+                                    <td>Jane Doe-Smithson</td>
+                                    <td>Spouse</td>
+                                    <td>Apr 12 1980</td>
+                                    <td>Female</td>
+                                    <td>United States, Guatemala</td>
+                                    <td>Yes</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Noa Smithson</td>
+                                    <td>Child</td>
+                                    <td>Jun 21 2001</td>
+                                    <td>Female</td>
+                                    <td>United States</td>
+                                    <td>Yes</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section style="width: 100%; height:100%; ">
+                    <div>
+                        <div class="headingIcon">
+                            <div>
+                                <p>References</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div style="width: 100%;background: #F5FAF9; border-radius: 15px; overflow-x: scroll">
+                            <table style="width:100%">
+                                <tr class="tableBottom">
+                                    <th>Status</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date of Ref.</th>
+                                    <th>Start - End</th>
+                                    <th>Referee Title</th>
+                                    <th>Major</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr class="tableBottom">
+                                    <td>Pending</td>
+                                    <td>Brian Smith</td>
+                                    <td>bsm@Referral.com</td>
+                                    <td>Apr 12 2022</td>
+                                    <td>1992 - 1996</td>
+                                    <td>Instructor</td>
+                                    <td>Teaching</td>
+                                    <td><span style="padding-right:15px"><img src={bellICon}></span><span></span><img
+                                            src={cancel}></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>Accepted</td>
+                                    <td>Jim Roberts</td>
+                                    <td>j.Rober@ref2.com</td>
+                                    <td>Jun 21 2022</td>
+                                    <td>1992 - 1996</td>
+                                    <td>Instructor</td>
+                                    <td>Teaching</td>
+                                    <td><span><img src={bellICon}></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section class="summary">
+                    <!-- <div >
+                        <div><p>BASIC EDUCATION SUMMARY</p></div>
+                        <div>IMG</div>
+                    </div> -->
+                    <div class="leftBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>BASIC INFORMATION DETAILS</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div class="information slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Full Name</p>
+                                <p class="educationSummaryValue">John Smithson</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading ">Additional Names</p>
+                                <p class="educationSummaryValue">None</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Gender</p>
+                                <p class="educationSummaryValue">Male</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Date of Birth</p>
+                                <p class="educationSummaryValue"> Dec 12 1984</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Country of Birth</p>
+                                <p class="educationSummaryValue">United States</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Country of Residence</p>
+                                <p class="educationSummaryValue">United States</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">EU Passport</p>
+                                <p class="educationSummaryValue">No</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Citizenship</p>
+                                <p class="educationSummaryValue">USA</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3 summaryValueContainer">
+                                <p class="educationSumaryheading">Criminal Record</p>
+                                <p class="educationSummaryValue">None</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="rightBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>LANGUAGE SPOKEN</p>
+                            </div>
+                            <div><img src={editicon} onclick={test}></div>
+                        </div>
+                        <div class="education slds-grid slds-wrap">
+
+                            <div class="slds-col slds-size_1-of-1 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">English</p>
+                                <p class="educationSummaryValue">Native or bilingual proficiency</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Spanish</p>
+                                <p class="educationSummaryValue">Limited working proficiency</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">French</p>
+                                <p class="educationSummaryValue">Yes</p>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </section>
+                <section class="summary">
+                    <!-- <div >
+                        <div><p>BASIC EDUCATION SUMMARY</p></div>
+                        <div>IMG</div>
+                    </div> -->
+                    <div class="leftBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>CONTACT DETAILS</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div class="information slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Primary Email</p>
+                                <p class="educationSummaryValue">jsmithson@longemail.com</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading ">Secondary Email</p>
+                                <p class="educationSummaryValue">None</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Primary Phone</p>
+                                <p class="educationSummaryValue">+502 4444 3234</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Skype ID</p>
+                                <p class="educationSummaryValue">United States</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Current Address</p>
+                                <p class="educationSummaryValue">4548 Science Center Drive</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Permanent Address</p>
+                                <p class="educationSummaryValue">4548 Science Center Drive</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2  " style="padding-top: 78px;">
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-2  " style="padding-top: 78px;">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="rightBox">
+                        <div class="headingIcon">
+                            <div>
+                                <p>EMERGENCY CONTACT INFORMATION SPOKEN</p>
+                            </div>
+                            <div><img src={editicon}></div>
+                        </div>
+                        <div class="education slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+
+                                <p class="educationSumaryheading">Name</p>
+                                <p class="educationSummaryValue">Jane Doe-Smithson
+                                </p>
+
+
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Email</p>
+                                <p class="educationSummaryValue">Janedoe-smithson@yahoo.com</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Phone</p>
+                                <p class="educationSummaryValue">+569 9923 345</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Relationship</p>
+                                <p class="educationSummaryValue">Spouse</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Name </p>
+                                <p class="educationSummaryValue">David Smithson</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 bbottom summaryValueContainer">
+                                <p class="educationSumaryheading">Email </p>
+                                <p class="educationSummaryValue">davidsmithson@yahoo.com</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                <p class="educationSumaryheading">Phone</p>
+                                <p class="educationSummaryValue">+569 9923 345</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 summaryValueContainer">
+                                <p class="educationSumaryheading">Relationship</p>
+                                <p class="educationSummaryValue">Parent</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</template>

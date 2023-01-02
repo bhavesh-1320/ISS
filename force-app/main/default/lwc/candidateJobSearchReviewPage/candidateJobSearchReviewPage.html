@@ -1,0 +1,972 @@
+<template>
+    <div class="fontFamily">
+        <template if:true={loader}>
+            <div class="overlay"></div>
+            <div id="grid-container" class="grid-container">
+                <div class='cube cube1'></div>
+                <div class='cube cube2'></div>
+                <div class='cube cube3'></div>
+                <div class='cube cube4'></div>
+                <div class='cube cube5'></div>
+                <div class='cube cube6'></div>
+                <div class='cube cube7'></div>
+                <div class='cube cube8'></div>
+                <div class='cube cube9'></div>
+            </div>
+        </template>
+        <template if:true={moreFiltersVisibility}>
+            <!-- <div class="morefiltersModalOverlay" ></div> -->
+            <div class="morefiltersModal">
+                <div class="modalheader">
+                    <h1>Find a Job</h1>
+                </div>
+                <div class="modalOptionsOverlay" onclick={MoreFiltersoptionsOverlayClicked}
+                    style="display:none;width: 100%;height:100vh;position: absolute;top: 0;left: 0;z-index:8;">
+                </div>
+                <div class="modalBody">
+                    <div class="slds-grid slds-wrap" style="    width: -webkit-fill-available;">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 10px 7px 0px 5px;margin-bottom: 0px;margin: 8px 0px;position: relative;">
+                                <div  class="filter1">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Department" class="slds-input inputBar DepartmentModalFilter"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions departmentOption"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <input class="innerModalInput" onkeyup={searchInnerModal}></input>
+                                            <template for:each={departmentList} for:item="Department">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata">{Department.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="department"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="department"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 10px 7px 0px 5px;margin-bottom: 0px;margin: 8px 0px;position: relative;">
+                                <div class="filter10">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Subject" class="slds-input inputBar moreFilterSubject"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <input class="innerModalInput" onkeyup={searchInnerModal}></input>
+                                            <template for:each={subjectList} for:item="subject">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{subject.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="subject"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="subject"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 10px 7px 0px 5px;margin-bottom: 0px;margin: 8px 0px;position: relative;">
+                                <div class="filter11">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Country" class="slds-input inputBar moreFilterCountry"
+                                                onclick={showOptionMoreFilter} readonly  />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <input class="innerModalInput" onkeyup={searchInnerModal}></input>
+                                            <template for:each={countryList} for:item="country">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{country.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="country"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="country"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 8px 0px;position: relative;">
+                                <div  class="filter12">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Job Type" class="slds-input inputBar moreFilterJobType"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <!-- <input class="innerModalInput" onkeyup={searchInnerModal}></input> -->
+                                            <template for:each={jobTypes} for:item="job">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{job.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="jobtype"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="jobtype"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 8px 0px;position: relative;">
+                                <div  class="filter13">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Experience" class="slds-input inputBar moreFilterExperience"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <!-- <input class="innerModalInput" onkeyup={searchInnerModal}></input> -->
+                                            <template for:each={Experiences} for:item="experience">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;" class="experienceInnerCheckboxess"><span class="checkinnerdata">{experience.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="experience"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="experience"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 8px 0px;position: relative;">
+                                <div  class="filter14">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="School Name" class="slds-input inputBar moreFilterSchool"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <input class="innerModalInput" onkeyup={searchInnerModal}></input>
+                                            <template for:each={schoolList} for:item="school">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{school.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="school"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="school"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 8px 0px;position: relative;">
+                                <div  class="filter15">
+                                    <div class="slds-form-element">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Curriculum" class="slds-input inputBar moreFilterCurriculum"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <input class="innerModalInput" onkeyup={searchInnerModal}></input>
+                                            <template for:each={CurriculumExperiences} for:item="curriculum">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{curriculum.label}</span>
+                                                    </p>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="curriculum"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="curriculum"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"  class="moreFilterApplyDateFrom customDatePicker"
+                                placeholder="Date From" data-id="dateFrom" ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"   class="moreFilterApplyDateTo customDatePicker" placeholder="Date To" >
+                            </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"  class="moreFilterPositionDateFrom customDatePicker"
+                                placeholder="Position Date From" ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"  class="moreFilterPositionDateTo customDatePicker"
+                                placeholder="Position Date To">
+                            </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"  class="moreFilterNewJobsDateFrom customDatePicker"
+                                placeholder="Start Date" ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <lightning-input type="date"  class="moreFilterNewJobsDateTo customDatePicker" style="  color: #525c5c;font-weight: bold;  margin-top: -4px;" placeholder="End Date"
+                                >
+                            </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 15px 0px;position: relative;">
+                                <div  class="filter16">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Positions At Upcoming Job Fairs" class="slds-input inputBar moreFilterpostionJobFair"
+                                                onclick={showOptionMoreFilter} readonly/>
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <!-- <input class="innerModalInput" onkeyup={searchInnerModal}></input> -->
+                                            <!-- <template for:each={jobTypes} for:item="job">
+                                                <div class="checkParentDiv" key={id}>
+                                                
+                                                <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata">{job.label}</span>
+                                                </p>
+                                                </div>
+                                                </template> -->
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="position"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalresetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="position"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={modalsubmitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                            <div style="padding: 0px 7px;margin: 15px 0px;position: relative;">
+                                <div  class="filter17">
+                                    <div class="slds-form-element" >
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:9;">
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5)"
+                                                placeholder="Bookmark" class="slds-input inputBar moreFiltersBookmark"
+                                                onclick={showOptionMoreFilter} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="moreFilterOptions bookmarkOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <!-- <input class="innerModalInput" onkeyup={searchInnerModal}></input> -->
+                                            <!-- <template for:each={bookmarkCombobox} for:item="bookmark">
+                                                <div class="checkParentDiv" key={id}>
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type="radio"
+                                                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span class="checkinnerdata" style="font-size: 12px;font-weight:100">{bookmark.label}</span>
+                                                    </p>
+                                                    </div>
+                                                
+                                                
+                                                </template> -->
+                                            <lightning-radio-group
+                                                options={bookmarkCombobox}
+                                                class="modalBookmarkRadio"
+                                                value = {bookmarkCheckBoxValue}
+                                                >
+                                            </lightning-radio-group>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="bookmark"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={handleResetChange}>Reset</div>
+                                            <div class="saveBtn" data-id="bookmark"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={handleChange}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modalFooter">
+                    <p onclick={hideMoreFilter}>Cancel</p>
+                    <!-- <p onclick={refreshPage}>Cleare</p> -->
+                    <p style="background: #549BA5;color:white" onclick={searchMoreFilters}>Search</p>
+                </div>
+            </div>
+        </template>
+        <template if:true={likes}>
+            <div>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                    class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Cancel and close</span>
+                        </button>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
+                            </h1>
+                        </div>
+                        <div class="slds-modal__content " id="modal-content-id-1">
+                            <div class="progressBar">
+                                <h2>22 Likes</h2>
+                                <div class="container">
+                                    <div class="item">
+                                        <div class="text">Master</div>
+                                        <div class="progress">
+                                            <div class="status" style="width: 90%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text">Location</div>
+                                        <div class="progress">
+                                            <div class="status" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text">Other</div>
+                                        <div class="progress">
+                                            <div class="status" style="width: 70%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text">Other</div>
+                                        <div class="progress">
+                                            <div class="status" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="text">Other</div>
+                                        <div class="progress">
+                                            <div class="status" style="width: 80%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </div>
+        </template>
+        <div>
+            <div>
+                <div class="maindivcontainer">
+                    <div class="slds-grid slds-wrap " style="    margin-left: 40px;">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                            <div>
+                                <h1 class="headingfonts">Job Search </h1>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+                            <!-- <div class="container">
+                                <p> Special Alert </p>
+                                </div> -->
+                        </div>
+                    </div>
+                    <br>
+                    <!--destop version   -->
+                    <div class="slds-grid slds-grid_vertical-align-center desktopviewCombobox"
+                        style="justify-content: space-between;">
+                        <div style="padding-left: 15px;flex-wrap: wrap;text-decoration: none;font-family: RobotoLight; font-style: normal; font-weight: 600; font-size: 16px;display:flex;width: calc(100% - 200px);" class="mainDiv">
+                            <div class="optionsOverlay" onclick={optionsOverlayClicked}
+                                style="display:none;width: 100%;height:100vh;position: absolute;top: 0;left: 0;z-index:8;">
+                            </div>
+                            <div style="padding:5px 7px" class="startDateOut">
+                                <div style="width: max-content;">
+                                    <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:3;">
+                                            <!-- <lightning-input type="date" variant="standard" name="startDate"  placeholder="Start Date"></lightning-input> -->
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default dateIcon"
+                                                icon-name="utility:down" ></lightning-icon>
+                                            <input type="text"
+                                               
+                                                placeholder="Start Date" class="slds-input inputBar startDate startDateOutside inactiveFilter"
+                                                onclick={showOption} readonly />
+                                        </div>
+                                    </div>
+                                    <div class="cmbOptions"
+                                        style="font-size: 12px;position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width: 100%;padding:10px;max-width: 180px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;">
+                                        <div class="date">
+                                            <label for="startdate">Date From</label>
+                                            <lightning-input placeholder="MMM DD YYYY" id="startdate" onchange={getStartDate} class="startDateInput" type="date"
+                                                style="margin-top:-5px;"></lightning-input>
+                                        </div>
+                                        <div class="date" style="margin-top:20px;">
+                                            <label for="enddate">Date To</label>
+                                            <lightning-input placeholder="MMM DD YYYY" id="enddate" onchange={getEndDate} class="endDateInput" type="date"
+                                                style="margin-top:-5px;"></lightning-input>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold;font-size:16px; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetDate}>Reset</div>
+                                            <div class="saveBtn"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white;font-size:16px; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitDate}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 5px 7px" class="departmentOuter">
+                                <div style="width: max-content;" class="filter2">
+                                    <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:3;">
+                                            <div if:true={countShow} class="countShow" style="    left: 81px;" >
+                                                {showCount}
+                                            </div>
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default departmentIcon"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                               
+                                                placeholder="Department" class="slds-input inputBar departmanrFilter inactiveFilter" onclick={showOption}
+                                                readonly />
+                                        </div>
+                                    </div>
+                                    <div class="cmbOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <template for:each={departmentList} for:item="department">
+                                                <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                    style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span style="font-size: 12px;font-weight:100">{department.value}</span>
+                                                </p>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="department"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="department"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 5px 7px" class="subjectOuter">
+                                <div style="width: max-content;" class="filter2">
+                                    <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:3;">
+                                            <div if:true={subjectCountShow} class="countShow" style="    left: 55px;">
+                                                {showCountSubject}
+                                            </div>
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default subjectIcon"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+
+                                                placeholder="Subject" class="slds-input inputBar subjectval inactiveFilter" onclick={showOption}
+                                                readonly />
+                                        </div>
+                                    </div>
+                                    <div class="cmbOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <template for:each={subjectList} for:item="subject">
+                                                <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                    style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span style="font-size: 12px;font-weight:100">{subject.value}</span>
+                                                </p>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="subject"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="subject"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 5px 7px" class="countryOutside">
+                                <div style="width: max-content;" class="filter2">
+                                    <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                            style="z-index:3;">
+                                            <div if:true={countryCountShow} class="countShow" style="    left: 58px;">
+                                                {showCountCountry}
+                                            </div>
+                                            <lightning-icon size="x-small"
+                                                class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default countryIcon"
+                                                icon-name="utility:down"></lightning-icon>
+                                            <input type="text"
+                                                style=""
+                                                placeholder="Country" class="slds-input inputBar countryVal inactiveFilter" onclick={showOption}
+                                                readonly />
+                                        </div>
+                                    </div>
+                                    <div class="cmbOptions"
+                                        style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                            <template for:each={countryList} for:item="country">
+                                                <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                    style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span style="font-size: 12px;font-weight:100">{country.value}</span>
+                                                </p>
+                                            </template>
+                                        </div>
+                                        <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                            <div class="reset" data-id="country"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={resetOptions}>Reset</div>
+                                            <div class="saveBtn" data-id="country"
+                                                style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                onclick={submitOptions}>Submit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pills For More Filter  -->
+                            <template for:each={modalFiltersForPillsViewDate} for:item="filter">
+                                <lightning-input type="date" label="" placeholder="Date From" class={filter.classes} value={filter.value}
+                                    style="font-weight: bold;" key={Id} onchange={dateChangedInRecentFilters}>
+                                </lightning-input>
+                            </template>
+                            
+
+                                <template for:each={modalFiltersForPillsView} for:item="filter">
+                                    <div style="padding: 5px 7px" key={id} class="searchMorePills">
+                                        <div style="width: max-content;" class="filter4">
+                                            <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                                    style="z-index:3;">
+                                                    <lightning-icon size="x-small"
+                                                        class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default iconClass"
+                                                        icon-name="utility:down"></lightning-icon>
+                                                    <input type="text"
+                                                        style="border-radius: 20px;cursor: pointer;padding-left: 10px;outline: none;font-weight: 600;"
+                                                        placeholder={filter.placeholder} value={filter.value} class={filter.classes} onclick={showOption}
+                                                        readonly />
+                                                </div>
+                                            </div>
+                                            <div class="cmbOptions"
+                                                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                                    <template for:each={filter.optionValues} for:item="opt">
+                                                        <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                                                            style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span style="font-size: 12px;font-weight:100">{opt.label}</span>
+                                                        </p>
+                                                    </template>
+                                                </div>
+                                                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                                    <div class="reset"
+                                                        style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                        onclick={resetOptions}>Reset</div>
+                                                    <div class="saveBtn"
+                                                        style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                        onclick={submitOptions}>Submit</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            
+                            <template for:each={modalFiltersForRadio} for:item="filter">
+                                <div style="padding: 5px 7px" key={id} class="outerRadioButton">
+                                    <div style="width: max-content;" class="filter4">
+                                        <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                                style="z-index:3;">
+                                                <lightning-icon size="x-small"
+                                                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default iconClass"
+                                                    icon-name="utility:down"></lightning-icon>
+                                                <input type="text"
+                                                    style="border-radius: 20px;cursor: pointer;padding-left: 10px;outline: none;font-weight: 600;"
+                                                    placeholder={filter.placeholder} value={filter.value} class={filter.classes} onclick={showOption}
+                                                    readonly />
+                                            </div>
+                                        </div>
+                                        <div class="cmbOptions"
+                                            style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                                            <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                                                <!-- <template for:each={filter.optionValues} for:item="opt">
+                                                    <p key={Id} style="padding: 4px;" class="optval"><input type='radio'
+                                                     style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span style="font-size: 12px;font-weight:100">{opt.label}</span>
+                                                    </p>
+                                                    </template> -->
+                                                <lightning-radio-group
+                                                    options={filter.optionValues}
+                                                    class="modalBookmarkRadio2" 
+                                                    value = {bookmarkCheckBoxValue}
+                                                    >
+                                                </lightning-radio-group>
+                                            </div>
+                                            <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                                                <div class="reset" data-id = "Bookmark"
+                                                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                    onclick={resetOptions}>Reset</div>
+                                                <div class="saveBtn" data-id="Bookmark"
+                                                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                                                    onclick={handleChange2}>Submit</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div style="text-decoration: none;color: rgb(84, 155, 165);font-family: RobotoLight;font-style: normal;font-weight: 600;font-size: 16px;padding: 10px 15px;display:flex">
+                            <div>
+                                <p style="color: #549BA5;font-size: 16px; font-weight: bold;cursor: pointer;"
+                                    onclick={showMoreFilters}>More Filters
+                                </p>
+                            </div>
+                            <div>
+                                <template if:true={resetBtn}>
+                                    <a style="text-decoration: none;color:#549BA5;padding: 10px 15px;font-family: 'RobotoLight';font-style: normal;font-weight: 600;font-size: 16px;"
+                                        onclick={filtersReset}>Clear</a>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: rgb(230, 234, 234);">
+                        <div class="bestMatchMain">
+                            <div class="sortByDiv" style="width:14%;">
+                                <!-- <lightning-combobox name="progress" class="sortby" label="" value={value}
+                                    placeholder="Sort By" options={sortingOption} onkeyup={handleSortData}
+                                    data-id={sortId}></lightning-combobox> -->
+                                <div
+                                    style="display:flex;">
+                                    <div style="margin: 8px;" onclick={openSort}>
+                                        <div style="width: 400px;   " class="filter5">
+                                            <div class="slds-form-element" >
+                                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                                                    style="z-index:3;" >
+                                                    <input onclick={showOption} type="text" placeholder="Sort Order" class="inputBar bestMatchFilter handleBestMatch"
+                                                     readonly />
+                                                    <lightning-icon size="x-small" style="--sds-c-icon-color-foreground-default: white;"
+                                                        class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                                                        icon-name="utility:down"></lightning-icon>
+                                                </div>
+                                            </div>
+                                            <div class="cmbOptions sortingDiv"
+                                                style=" margin-left: 200px;position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;">
+                                                <div class="optionsFields1" style="max-height: 300px;overflow-y: auto;">
+                                                    <template for:each={sortingOption} for:item="option">
+                                                        <p key={Id} style="padding: 10px 20px;cursor: pointer;" class="optval sortBYbm"
+                                                            onclick={handleBestMatch}>
+                                                            {option.label}
+                                                        </p>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div style="padding:8px;display:flex;flex-wrap:wrap;margin-top: 4px;">
+                                        <span class="lrt" style="color: white;font-size: smaller;margin-top: 5px;">Alert</span>
+                                        <lightning-input type="toggle"></lightning-input>
+                                        </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters slds-wrap" style="margin: 0px 0px  ;">
+                        <div class="left" style="width:400px;min-height: 100%;background:#fff;">
+                            <!-- for destop version  -->
+                            <div class="" style="    background: rgb(255, 255, 255);
+                                padding: 10px 15px;">
+                                <!-- <lightning-input type="text" label="" placeholder="Search Name" class=""></lightning-input> -->
+                                <!-- <lightning-combobox name="progress" label="" value={value} placeholder="Sort By"
+                                    options={sortingOption} onkeyup={handleSortData}
+                                    data-id={sortId}></lightning-combobox> -->
+                                <lightning-input class="custom-SearchBox" type="search"
+                                    placeholder="Search Job" onkeyup={handleSearch}
+                                    onchange={handleSearch}></lightning-input>
+                            </div>
+                            <div class="resultsCount">
+                                <p
+                                    style="    text-align: center;
+                                    padding: 5px;
+                                    font-weight: bold;
+                                    letter-spacing: 2px;
+                                    color: rgb(85, 85, 85);
+                                    background: white;">
+                                    {resultCounts} Results
+                                </p>
+                            </div>
+                            <template if:false={NoDatafound}>
+                                <div class="destop-view-dropdown jobslist" onscroll={loadMoreResult} style="height: calc(100vh - 100px);"
+                                    >
+                                    <template for:each={bestMatchJob} for:item="item" for:index="index">
+                                        <article class={item.classes} key={item.key}
+                                            >
+                                            <div style="cursor: pointer; background:none;" class=" slds-grid jobArticle"
+                                                data-id={item.Id} onclick={getClick}>
+                                                <div class="jobDescription" style="background:none;" data-id={item.Id}>
+                                                    <div>
+                                                        <img src={rectangleImage}  >
+                                                    </div>
+                                                    <div style="padding-left: 15px; padding-bottom:5px"
+                                                        data-id={item.Id}>
+                                                        <p class="articleHeading articleHeadingFC" data-id={item.Id}>
+                                                            {item.Name}
+                                                        </p>
+                                                        <p class="articleValue" data-id={item.Id}>{item.SchoolName}</p>
+                                                    </div>
+                                                </div>
+                                                <div data-id={item.Id}>
+                                                    <!-- <img src={groups} style="padding-top:5px"> -->
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="border-bottom-left-radius: 14px;border-bottom-right-radius: 14px;background: white;">
+                                                <div
+                                                    style="padding: 5px 0px;border-bottom: 1px solid #EEF6F5;display: flex;justify-content: space-between;">
+                                                    <div class="slds-col">
+                                                        <img src={locationImage}>
+                                                        <!-- <lightning-icon icon-name='utility:checkin' alternative-text='checkin' size='x-small' title='checkin'></lightning-icon> -->
+                                                        <span style="margin-left:11px;">{item.Country__c} </span>
+                                                    </div>
+                                                    <div class="slds-col">
+                                                        <img src={hatImage}>
+                                                        <span style="margin-left: 11px;"> {item.Minimum_Qualification__c}</span>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    style="    padding: 4px 0px 4px;display: flex;justify-content: space-between;">
+                                                    <div class="slds-col">
+                                                        <span class="applyBy">{item.CreatedDate}</span>
+                                                    </div>
+                                                    <div if:true={isApply} class="slds-col" style="margin-left: 20px;">
+                                                        {item.Apply}
+                                                        <!-- {item.Job_Close_Date__c} -->
+                                                        <!-- <span
+                                                            class="applyBy">{item.Apply}{item.Job_Close_Date__c}</span> -->
+                                                        <!-- <div if:true={item.Apply}>Apply By</div> -->
+                                                        <span
+                                                            class="applyBy">{item.Job_Close_Date__c}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </template>
+                                    <template if:true={loaderInner}>
+                                        <div class="demo-only" style="height:6rem;position:relative">
+                                            <div class="slds-spinner_container">
+                                                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                                    <span class="slds-assistive-text">Loading</span>
+                                                    <div class="slds-spinner__dot-a"></div>
+                                                    <div class="slds-spinner__dot-b"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template if:true={NoDatafound}>
+                                <div class="nodata">
+                                    <p>
+                                        No Data Found
+                                    </p>
+                                </div>
+                            </template>
+                            <!-- for mobile version -->
+                            <div class="mobile-view-dropdown">
+                                <template for:each={bestMatchJob} for:item="item" for:index="index">
+                                    <article class="slds-card" key={item.key}
+                                        style="border-radius: 15px;padding: 10px;">
+                                        <div style="cursor: pointer;" class=" slds-grid jobArticle" data-id={item.Id}
+                                            onclick={getClick}>
+                                            <div class="jobDescription" data-id={item.Id}>
+                                                <div>
+                                                    <img src={rectangleImage}>
+                                                </div>
+                                                <div style="padding-left: 15px; padding-bottom:5px"
+                                                    onclick={getClickMobile} id={item.Id}>
+                                                    <p class="articleHeading" data-id={item.Id}> {item.Name}</p>
+                                                    <p class="articleValue" data-id={item.Id}>{item.School__r}</p>
+                                                </div>
+                                            </div>
+                                            <div data-id={item.Id}>
+                                                <!-- <img src={groups} style="padding-top:5px"> -->
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="slds-grid slds-gutters"
+                                                style="padding: 10px;border-bottom: 1px solid #EEF6F5;">
+                                                <div class="slds-col">
+                                                    <img src={locationImage}>
+                                                    <span style="margin-left:11px;">{item.Country__c} </span>
+                                                </div>
+                                                <div class="slds-col">
+                                                    <img src={hatImage}>
+                                                    <span style="margin-left: 11px;"> Masters</span>
+                                                </div>
+                                            </div>
+                                            <div class="slds-grid slds-gutters"
+                                                style="padding: 10px; padding-bottom:0px;">
+                                                <div class="slds-col">
+                                                    <span class="applyBy">{item.CreatedDate}</span>
+                                                </div>
+                                                <div class="slds-col" style="margin-left: 25px;">
+                                                    <span class="applyBy">{item.Apply} {item.Job_Close_Date__c}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </template>
+                            </div>
+                            <!-- mobile version ends   -->
+                            <div>
+                            </div>
+                        </div>
+                        <div class="childcmp">
+                            <!-- <div>
+                                <div>
+                                	<img src={board} style="border-radius: 20px">
+                                	
+                                		<div class="slds-grid slds-gutters" style="top: 54px;margin-top: -41px;float: right;margin-right: 11px;">
+                                			<div class="slds-col">
+                                				 <lightning-button variant="brand" label="Brand" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                                			</div>
+                                			<div class="slds-col">
+                                				 <lightning-button variant="brand-outline" label="Neutral" title="Non-primary action" onclick={handleClick} class="slds-m-left_x-small" icon-name="utility:bookmark"></lightning-button>
+                                			</div>
+                                			<div class="slds-col">
+                                				 <lightning-button variant="brand" label="Brand" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                                			</div>
+                                		</div>
+                                	   
+                                </div>    
+                                </div>     -->
+                            <c-high-school-math get-value={value} class="mobile-view-childCmp"
+                                oncallpasstoparent={passToParent} onchangedheight={changedHeight}></c-high-school-math>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

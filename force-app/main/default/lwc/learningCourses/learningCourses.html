@@ -1,0 +1,377 @@
+<template lwc:render-mode="light">
+    <div class="iss-wrapper">
+        <!--        <header class="iss-header">-->
+        <!--            <div class="iss-container">-->
+        <!--                <div class="header-left-area">-->
+        <!--                    <div class="iss-logo">-->
+        <!--                        <a href="#">-->
+        <!--                            <img src="/sfsites/c/resource/sourceStyles/images/logo.svg" alt="INTERNATIONAL SCHOOLS SERVICES">-->
+        <!--                        </a>-->
+        <!--                    </div>-->
+        <!--                    <nav class="iss-nav">-->
+        <!--                        <ul class="iss-menu list-unstyled">-->
+        <!--                            <li><a href="#">Courses</a></li>-->
+        <!--                            <li><a href="#">Live Sessions</a></li>-->
+        <!--                            <li><a href="#">My Courses</a></li>-->
+        <!--                            <li><a href="#">Accolades</a></li>-->
+        <!--                        </ul>-->
+        <!--                    </nav>-->
+        <!--                </div>-->
+        <!--                <div class="header-right-area">-->
+        <!--					<span class="iss-notifications">-->
+        <!--						<a href="#">-->
+        <!--							<span class="icon-bell">-->
+        <!--								<span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span>-->
+        <!--							</span>-->
+        <!--						</a>-->
+        <!--					</span>-->
+        <!--                    <span class="iss-inbox">-->
+        <!--						<a href="#">-->
+        <!--							<span class="count-box">3</span>-->
+        <!--							<span class="icon-ic-chat">-->
+        <!--								<span class="path1"></span><span class="path2"></span>-->
+        <!--							</span>-->
+        <!--						</a>-->
+        <!--					</span>-->
+        <!--                    <ul class="iss-subnav list-unstyled">-->
+        <!--                        <li><a href="#"><img src="/sfsites/c/resource/sourceStyles/images/subnav_edulearn.svg" alt="image-description"></a></li>-->
+        <!--                        <li><a href="#"><span class="icon-ic-dot-menu"></span></a></li>-->
+        <!--                        <li>-->
+        <!--                            <div class="text-wrap">-->
+        <!--                                <span class="text">1200 points </span>-->
+        <!--                                <span class="text">4 badges</span>-->
+        <!--                            </div>-->
+        <!--                            <a href="#" class="user_name_box">-->
+        <!--                                <div class="name_box">-->
+        <!--                                    <span class="text">AS</span>-->
+        <!--                                </div>-->
+        <!--                            </a>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </header>-->
+        <main class="iss-main">
+            <div class="iss-container">
+                <div class="iss-two-columns">
+                    <div class="iss-content-area">
+                        <c-find-course-component>
+
+                        </c-find-course-component>
+                        <!--                        <div class="iss-search-box">-->
+                        <!--                            <input type="text" placeholder="Find a Course">-->
+                        <!--                            <button type="submit" class="submit-btn"><i class="icon-ic-search"></i></button>-->
+                        <!--                        </div>-->
+
+                        <div if:true={hasLearnerActiveCourses}>
+                            <div class="iss-blocks-row">
+                                <div class="iss-blocks-head">
+                                    <h1>In progress </h1>
+                                    <a class="more" onclick={handleSeeMoreClick}>See More <i
+                                            class="icon-arrow-right-long-solid"></i></a>
+                                </div>
+
+                                <c-course-slider
+                                        list={activeCourses}
+                                        show-arrows={showArrows}
+                                        show-slicks={showSlicks}
+                                        grid-column-gap="16"
+                                        xl-grid-column-gap="16"
+                                        lg-grid-column-gap="8"
+                                        md-grid-column-gap="8"
+                                        xl-column-count="3"
+                                        lg-column-count="2"
+                                        md-column-count="1"
+                                >
+                                    <template for:each={activeCourses} for:item="item" for:index="index">
+                                        <div key={item.index} class="slider__item">
+                                            <c-active-course-card
+                                                    course={item}
+                                                    onaction={handleClickAction}
+                                            ></c-active-course-card>
+                                        </div>
+                                    </template>
+                                </c-course-slider>
+
+                            </div>
+                        </div>
+
+                        <div if:false={hasLearnerActiveCourses}>
+                            <div class="iss-blocks-row">
+                                <div class="iss-blocks-head">
+                                    <h1>No active courses </h1>
+                                    <a class="more" onclick={handleSeeMoreClick}>Select Courses <i class="icon-arrow-right-long-solid"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="iss-blocks-row slds-m-top_medium slds-m-bottom_medium">
+                            <div class="iss-blocks-head">
+                                <h1>Recommended For You </h1>
+                                <a href="#" class="more">All Courses <i class="icon-arrow-right-long-solid"></i></a>
+                            </div>
+                            <div class="iss-blocks slick-slider" style="display: flex; justify-content: space-between;">
+                                <div style="width: 330px;">
+                                    <div class="iss-block">
+                                        <div class="image">
+                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image8.png"
+                                                             alt="image-description"></a>
+                                            <span class="duration_count">4 hours</span>
+                                            <ul class="list-unstyled actions_links">
+                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="description">
+                                            <ul class="list-unstyled iss-blocks_tags">
+                                                <li><a href="#">School</a></li>
+                                                <li><a href="#">History</a></li>
+                                                <li><a href="#">Math</a></li>
+                                            </ul>
+                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>
+                                            <span class="points_count">+100 pts</span>
+                                            <strong class="price">35$</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide" style="width: 330px;">
+                                    <div class="iss-block">
+                                        <div class="image">
+                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image7.png"
+                                                             alt="image-description"></a>
+                                            <span class="duration_count">4 hours</span>
+                                            <ul class="list-unstyled actions_links">
+                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="description">
+                                            <ul class="list-unstyled iss-blocks_tags">
+                                                <li><a href="#">School</a></li>
+                                                <li><a href="#">History</a></li>
+                                                <li><a href="#">Math</a></li>
+                                            </ul>
+                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>
+                                            <span class="points_count">+100 pts</span>
+                                            <strong class="price">35$</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slide" style="width: 330px;">
+                                    <div class="iss-block">
+                                        <div class="image">
+                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image8.png"
+                                                             alt="image-description"></a>
+                                            <span class="duration_count">4 hours</span>
+                                            <ul class="list-unstyled actions_links">
+                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="description">
+                                            <ul class="list-unstyled iss-blocks_tags">
+                                                <li><a href="#">School</a></li>
+                                                <li><a href="#">History</a></li>
+                                                <li><a href="#">Math</a></li>
+                                            </ul>
+                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>
+                                            <span class="points_count">+100 pts</span>
+                                            <strong class="price">35$</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iss-blocks-row">
+                            <div class="iss-blocks-head">
+                                <h1>Upcoming Live Sessions </h1>
+                                <a href="#" class="more">All Live Sessions <i
+                                        class="icon-arrow-right-long-solid"></i></a>
+                            </div>
+
+                            <div if:true={hasUpcomingLiveSessions}
+                                 class="iss-blocks slick-slider"
+                                 style="display: flex; justify-content: space-between;"
+                            >
+                                <template for:each={upcomingLiveSessions} for:item="item" for:index="index">
+                                    <div key={item.index} class="slider__item">
+                                        <c-active-course-card
+                                                course={item}
+                                                onaction={handleClickAction}
+                                        ></c-active-course-card>
+                                    </div>
+                                </template>
+
+
+                                <!--                                <div class="slide" style="width: 330px;">-->
+                                <!--                                    <div class="iss-block">-->
+                                <!--                                        <div class="image">-->
+                                <!--                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image5.png"-->
+                                <!--                                                             alt="image-description"></a>-->
+                                <!--                                            <span class="duration_count">4 hours</span>-->
+                                <!--                                            <span class="live-date">live: 12.12.22</span>-->
+                                <!--                                            <ul class="list-unstyled actions_links">-->
+                                <!--                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                        </div>-->
+                                <!--                                        <div class="description">-->
+                                <!--                                            <ul class="list-unstyled iss-blocks_tags">-->
+                                <!--                                                <li><a href="#">School</a></li>-->
+                                <!--                                                <li><a href="#">History</a></li>-->
+                                <!--                                                <li><a href="#">Math</a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>-->
+                                <!--                                            <span class="points_count">+100 pts</span>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="slide" style="width: 330px;">-->
+                                <!--                                    <div class="iss-block">-->
+                                <!--                                        <div class="image">-->
+                                <!--                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image8.png"-->
+                                <!--                                                             alt="image-description"></a>-->
+                                <!--                                            <span class="duration_count">4 hours</span>-->
+                                <!--                                            <span class="live-date">live: 12.12.22</span>-->
+                                <!--                                            <ul class="list-unstyled actions_links">-->
+                                <!--                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                        </div>-->
+                                <!--                                        <div class="description">-->
+                                <!--                                            <ul class="list-unstyled iss-blocks_tags">-->
+                                <!--                                                <li><a href="#">School</a></li>-->
+                                <!--                                                <li><a href="#">History</a></li>-->
+                                <!--                                                <li><a href="#">Math</a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>-->
+                                <!--                                            <span class="points_count">+100 pts</span>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="slide" style="width: 330px;">-->
+                                <!--                                    <div class="iss-block">-->
+                                <!--                                        <div class="image">-->
+                                <!--                                            <a href="#"><img src="/sfsites/c/resource/sourceStyles/images/image6.png"-->
+                                <!--                                                             alt="image-description"></a>-->
+                                <!--                                            <span class="duration_count">4 hours</span>-->
+                                <!--                                            <span class="live-date">live: 12.12.22</span>-->
+                                <!--                                            <ul class="list-unstyled actions_links">-->
+                                <!--                                                <li><a href="#"><i class="icon-star-solid"></i></a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                        </div>-->
+                                <!--                                        <div class="description">-->
+                                <!--                                            <ul class="list-unstyled iss-blocks_tags">-->
+                                <!--                                                <li><a href="#">School</a></li>-->
+                                <!--                                                <li><a href="#">History</a></li>-->
+                                <!--                                                <li><a href="#">Math</a></li>-->
+                                <!--                                            </ul>-->
+                                <!--                                            <h2><a href="#">Creating Agile Learning Spaces on a Budget</a></h2>-->
+                                <!--                                            <span class="points_count">+100 pts</span>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="iss-sidebar">
+                        <h2 class="h2">What’s new at ISS ?</h2>
+                        <div class="iss-topics-blocks">
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image1.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title">Topic 1</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image2.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title">Topic 2</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                            <div class="iss-topics-block">
+                                <div class="image">
+                                    <img src="/sfsites/c/resource/sourceStyles/images/image3.png"
+                                         alt="image-description">
+                                </div>
+                                <div class="description">
+                                    <strong class="title">Topic 3</strong>
+                                    <p>International Schools Services supports teachers and schools around the world by
+                                        offering world class professional learning. ...</p>
+                                    <a href="#" class="more">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iss-badges-block">
+                            <ul class="list-unstyled iss-badges-list">
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge"><span class="path1"></span><span
+                                                class="path2"></span><span class="path3"></span><span
+                                                class="path4"></span></span>
+                                    </div>
+                                    <strong class="title">Beginner</strong>
+                                    <span class="text">300pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge"><span class="path1"></span><span
+                                                class="path2"></span><span class="path3"></span><span
+                                                class="path4"></span></span>
+                                    </div>
+                                    <strong class="title">Badge</strong>
+                                    <span class="text">400pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Expert</strong>
+                                    <span class="text">500pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Noob</strong>
+                                    <span class="text">600pts</span>
+                                </li>
+                                <li>
+                                    <div class="ico">
+                                        <span class="icon-ic-badge1"></span>
+                                    </div>
+                                    <strong class="title">Expert</strong>
+                                    <span class="text">700pts</span>
+                                </li>
+                            </ul>
+                            <span class="link">
+								<a href="#"><i class="icon-chevron-down-solid"></i> See all badges <i
+                                        class="icon-chevron-down-solid"></i></a>
+							</span>
+                        </div>
+                        <div class="iss-fav-block">
+                            <h2>Favorites</h2>
+                            <ul class="list-unstyled iss-fav-list">
+                                <li><a href="#">Creating Agile Learning Spaces on ...</a></li>
+                                <li><a href="#">Creating Agile Learning Spaces on ...</a></li>
+                                <li><a href="#">Creating Agile Learning Spaces on ...</a></li>
+                            </ul>
+                            <span class="link">
+								<a href="#"><i class="icon-chevron-down-solid"></i> See all favorites <i
+                                        class="icon-chevron-down-solid"></i></a>
+							</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</template>

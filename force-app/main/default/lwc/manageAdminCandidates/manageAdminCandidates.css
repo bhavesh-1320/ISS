@@ -1,0 +1,140 @@
+.mainchildbody{
+    
+    background: #DFEDEB;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    height: 45px;
+}
+.addjobButton{
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+     HEIGHT: 83PX;
+
+}
+.addAnalytics{
+    margin-right: 54rem;
+    --sds-c-button-neutral-color-border: #549BA5;
+    --sds-c-button-neutral-color-background: #F5FAF9;
+    --slds-c-button-radius-border: 40px;
+    --sds-c-button-text-color: #549BA5;
+    height: 40px;
+}
+.fullNameCss{
+    font-family: arial;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.basicInfoCss{
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.textCss{
+    font-family: arial;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F;
+}
+.seekingPositionTab{
+    font-family: arial;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 15px;
+}
+.seekingPositionTabHeader{
+    font-family: arial;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F80;
+    border-bottom: 1px solid lightgrey;
+}
+.seekingPositionData{
+    font-family: arial;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F;
+    border-bottom: 0.5px solid lightgrey;
+}
+
+.viewHorizontal{
+    display: flex;
+}
+.basicInfo{
+    padding-bottom: 13px;
+    text-align: left;
+}
+.fontsize{
+    font-size: 18px;
+}
+.upperfontsize{
+    font-size:10px
+}
+.firstdiv{
+    margin-left: 52px;
+}
+.secDiv{
+    margin-left: 242px;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid green;
+  background-color: yellow;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+.allList{
+    /* background: white; */
+    margin-left: 23px;
+    margin-top: 4px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    --lwc-brandPrimaryTransparent10 :none;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+.addjobButton{
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+    margin-top: 23px;
+   
+   
+  }

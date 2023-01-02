@@ -1,0 +1,51 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading..." size="large"></lightning-spinner>
+    </template>
+    <template if:false={showSpinner}>
+        <div class="msg-cmp">
+            <lightning-combobox placeholder="School" options={schoolOptionList} value={selectedSchool}
+                onchange={handleChange} class="schoolCombobox">
+            </lightning-combobox>
+
+            <!-- search contact and refresh button -->
+            <div class="slds-grid slds-wrap" style="display:flex;justify-content: space-between;padding: 0px 10px;">
+                <div class="searchContact" style="margin-top: 8px;">
+                    <input type="text" placeholder="Search" onkeyup={searchContact}
+                        style="width: 90%;background:transparent;border:none;outline:none;">
+                    <lightning-icon icon-name="utility:search" class="search-icon" size="small"
+                        style="margin: 3px 0px;">
+                    </lightning-icon>
+                </div>
+                <lightning-button variant="brand" icon-name="utility:sync" label="Refresh" title="Refresh"
+                    onclick={refreshUsersList} class="refreshButton">
+                </lightning-button>
+            </div>
+
+            <br>
+            <template if:true={noContacts}>
+                <div class="noContacts">no Contacts available</div>
+            </template>
+            <!-- contacts grid -->
+            <div class="inbox-info">
+                <template for:each={inboxContacts} for:item="inboxContact" for:index="index">
+                    <div key={inboxContact.Id} data-id={inboxContact.Id} data-index={index} class="con-bubble slds-m-right_small slds-col slds-size--1-of-1"
+                        onclick={openChat}>
+                        <div class="msg-bubble">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-grid slds-wrap slds-col slds-size--1-of-1 con-info">
+                                    <div class="conatactName msg-info-name slds-col slds-size--1-of-2" style="font-weight: 600;font-size: 14px;">{inboxContact.Name}</div>
+                                    <div class="msg-info-time slds-col slds-size--1-of-2 slds-text-align--right" style="color: #555555;">
+                                    {inboxContact.msgTime}</div>
+                                </div>
+                                <div class="slds-col slds-size--1-of-1 con-info">{inboxContact.schoolName}</div>
+                            </div>
+                        </div>
+                        <p class={inboxContact.class} style="color: #656565;">
+                            {inboxContact.message}</p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

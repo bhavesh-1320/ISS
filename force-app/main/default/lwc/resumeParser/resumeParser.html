@@ -1,0 +1,612 @@
+<template>
+    <template if:true={spin}>
+        <lightning-spinner class="slds-is-fixed" alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    
+    <template if:false={showImportCard}>
+        <lightning-card title="Import Resume / CV">
+                <template if:true={notUpload}>
+                    
+        
+                            <!-- <lightning-file-upload onuploadfinished={handleUploadFinished}></lightning-file-upload> -->
+                            <div class="container">
+                                <div class="navi">
+                                    <img  width="15%" src={upImg}>
+                                    <p style="margin-top: 2%; font-weight: 500; color: gray;">Drag and drop your resume / CV to this area or click the icon on the top to search your computer.</p>
+                                </div>
+                                <div class="infoi" style="margin-top: 4% !important;opacity:0" >
+                                    <lightning-file-upload accept={acceptedFormats} style="opacity:0" onuploadfinished={handleUploadFinished}></lightning-file-upload>
+                                </div>
+                            </div>
+                            <p style="margin-top: 2%; text-align:right; font-weight: 500; color: gray;">
+                                Supported files: .<span style="color: black;">docx</span> and .<span style="color: black;">pdf</span>
+                            </p>
+                        </template>
+                        <template if:false={notUpload}>
+                            <lightning-layout style="font-weight: 600; padding-left: 5%;background-color: aliceblue; border-radius: 20px; padding: 1.5%; margin-top: 5%;">
+                                <lightning-layout-item size="1">
+                                    <lightning-icon icon-name={iconName} size="small" title="Document"></lightning-icon>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="7">
+                                    {filename}
+                                </lightning-layout-item>
+                                <lightning-layout-item style="text-align: right; padding-right:2%;" size="4">
+                                    <span style="font-size: 12px; font-weight: bolder; color: blue; cursor: pointer;" onclick={handleCancel}>X</span>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <div style="margin-top: 5%; text-align: right;">
+                                <button class="slds-button slds-button_neutral" style="border: none !important;" onclick={handleCancel}>Cancel</button>
+                                <button data-lab="test" class="slds-button slds-button_brand" style="border-radius: 15px; background-color: cadetblue; border:none  !important;" onclick={handleImport}>Import</button>
+                            </div>
+                        
+                </template>
+            </lightning-card>
+        </template> 
+        
+
+
+
+
+    <template if:true={showImportCard}>
+        <lightning-card title="">
+            <template if:true={fPage}>
+                <!-- <div> -->
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                        <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Personal Information</h1>
+                    </div>
+
+                    <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                <div class="slds-m-right--small">
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323" >First Name</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="firstname" onchange={handleChange} style="--sds-c-input-radius-border: 20px; --sds-c-input: 2px solid black;" class="slds-input" value={userBasicData.Name} type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                <div class="slds-m-right--small">
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Last Name</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="lastname" onchange={handleChange} class="slds-input" value={userData.last} type="text" required>
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            
+
+                            
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12">
+                                <div class="titleFP slds-m-right--small">
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Title</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="title" onchange={handleChange} class="slds-input" value={userData.title} type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                <div class="slds-m-right--small emailFP">
+                                    <lightning-layout-item size="6" style="padding-right: 5%;">
+                                        <label  class="slds-form-element__label slds-no-flex" for="input-323">Email</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input class="slds-input" value={userBasicData.email} name="email" onchange={handleChange} type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                <div class="slds-m-right--small phoneFP">
+                                    <lightning-layout-item size="6" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Phone</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="phone" onchange={handleChange} class="slds-input" value={userBasicData.phone} type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                <div class="slds-m-right--small dobFP">
+                                    <lightning-layout-item size="6" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Date of Birth</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="dob" onchange={handleChange} class="slds-input"  value={userBasicData.birthdayDate} type="date">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                <div class="slds-m-right--small lndkFP">
+                                    <lightning-layout-item size="6" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Linkedin Profile</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="lndprofile" onchange={handleChange} class="slds-input" value={userData.linkedin} type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+
+                            </div>
+                        </div>
+                    </lightning-layout>
+                    <!-- </div> -->
+                </div>
+
+
+
+
+            
+                <div>
+                    <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Address</h1>
+                    <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-3 " >
+                                <div class="add1FP slds-m-right--small">
+
+                                    <lightning-layout-item size="5" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">
+                                            Address Line 1
+                                        </label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="add1" onchange={handleChange} value={userData.street} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-align_absolute-center toggle1FP" style="display:flex">
+
+                                <lightning-layout-item size="8" style="text-align: right; padding-right: 2%; color: #549BA5; font-weight: 600;">
+                                    Permanent Address
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" style="padding-right: 5%;">
+                                    <!-- <lightning-input type="toggle" variant="label-hidden" label="Permanent Address" checked>
+                                    </lightning-input> -->
+                                    <div class="slds-form-element">
+                                        <label class="slds-checkbox_toggle slds-grid">
+                                            <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                            <input  onchange={handleChange} type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked="" />
+                                            <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-checkbox_on"></span>
+                                            <span class="slds-checkbox_off"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </lightning-layout-item>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-3">
+                                <div class="add2FP slds-m-right--small">
+                                    <lightning-layout-item size="5" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Address Line 2</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="add2" onchange={handleChange} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-align_absolute-center toggle2FP" style="display:flex">
+
+                                <lightning-layout-item size="8" style="text-align: right; margin-top: 3%; padding-right: 2%; color: #549BA5; font-weight: 600;">
+                                    Current Address
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" style="padding-right: 5%; margin-top: 3%;">
+                                    <!-- <lightning-input type="toggle" variant="label-hidden" label="Current Address" checked>
+                                    </lightning-input> -->
+                                    <div class="slds-form-element">
+                                        <label class="slds-checkbox_toggle slds-grid">
+                                            <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                            <input type="checkbox"  name="checkbox-toggle-17" value="checkbox-toggle-17" aria-describedby="checkbox-toggle-17" checked=""  onchange={handleChange}/>
+                                            <span id="checkbox-toggle-17" class="slds-checkbox_faux_container" aria-live="assertive">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-checkbox_on"></span>
+                                            <span class="slds-checkbox_off"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                </lightning-layout-item>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                <div class="slds-m-right--small">
+                                
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">City</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="city" onchange={handleChange} value={userData.city} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                <div class="slds-m-right--small">
+
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">State / Province</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="state" onchange={handleChange} value={userData.state} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12">
+                                <div class="postalFP slds-m-right--small">
+
+
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Postal Code</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="postalcode" onchange={handleChange} value={userData.postalCode} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                                <div class="slds-m-right--large">
+
+                                    <lightning-layout-item size="4" style="padding-right: 5%;">
+                                        <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                        <div class="slds-form-element__control slds-grow">
+                                            <input name="country" onchange={handleChange} value={userBasicData.countryOfResidence} class="slds-input" type="text">
+                                        </div>
+                                    </lightning-layout-item>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout>
+                </div>
+                <!-- <div style="text-align:right;" >
+                    <lightning-button data-btn="one" variant="Brand" onclick={handleNext} label="Next"></lightning-button> 
+                    <button data-btn="one" class="slds-button slds-button_brand" style="border-radius: 15px; background-color: cadetblue; border:none  !important;" onclick={handleNext}>Next</button>
+                </div> -->
+                <!-- </div> -->
+            </template>
+
+
+            <template if:true={sPage}>
+                <div>
+                    <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Education</h1>
+                    <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                        <template for:each={education} for:index="idx" for:item="ed">
+                            <div class="slds-grid slds-wrap" key={ed.Id}>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Institution</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.institution} data-idx={idx} name="institution" onchange={handleChange} type="text">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small countrySP">        
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <!-- <input class="slds-input" value={ed.country} data-idx={idx} name="countryEdu" onchange={handleChange} type="text"> -->
+                                                <select class="slds-select" onchange={handleChange} name="countryEdu" value={ed.country} data-idx={idx} style="border: 1px solid rgba(134, 132, 132, 0.382); border-radius: 24px;    padding-left: 4%;">
+                                                    <option value="" class="noneField">---None---</option>                
+                                                        <template for:each={educationCountryValues} for:item="selectOptItem">
+                                                            <option data-id={selectOptItem.custFldvalue} class="countryCareerOption" key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                                                                {selectOptItem.custFldlabel}
+                                                            </option>
+                                                        </template>
+                                                </select>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small tyleSP">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323" onchange={handleChange} name="tyle">Tyle</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" type="text" data-idx={idx} name="tyle" onchange={handleChange}>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Major</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" type="text" data-idx={idx} onchange={handleChange} name="major">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                    <div class="slds-m-right--small startSP">
+                                        <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Start</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.start} type="date" data-idx={idx}  name="start" onchange={handleChange}>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                    <div class="slds-m-right--small endSP">
+                                        <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323" data-idx={idx}>End</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.end} type="date" data-idx={idx} name="end" onchange={handleChange}>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 slds-align_absolute-center uploadDivSP">
+                                    <div class="slds-m-right--small uploadSP">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <!-- <lightning-file-upload label="Upload Diploma"></lightning-file-upload> -->
+                                            
+                                            
+                                            <div class="container" style="height: 0px   !important;">
+                                                <div class="" style="">
+                                                    <div>
+                                                        <h6 style="color: #549BA5; font-weight:600;font-size:14px;">Upload Diploma <span><img src={uploadIcon}></span></h6>
+                                                    </div>
+                                                    <div class="" style="margin-top: -35% !important;opacity:0">
+                                                        <lightning-file-upload accept={acceptedFormats} style="opacity: 0;"></lightning-file-upload>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="infoi" style="margin-top: -8% !important;opacity:0"> -->
+                                            </div>
+                                        
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                            
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12 " >
+                                    <div class="slds-m-right--large" style="display:flex">
+                                        <lightning-layout-item key={ed.Id} size="7" style="margin-top: 3%; color: #549BA5; font-weight: 600;">
+                                            Degree conferred?
+                                        </lightning-layout-item>
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%; margin-top: 3%;">
+                                            <!-- <lightning-input type="toggle" variant="label-hidden" >
+                                            </lightning-input> -->
+                                            <div class="slds-form-element">
+                                                <label class="slds-checkbox_toggle slds-grid">
+                                                    <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                    <input type="checkbox" name="checkbox-toggle-19" value="checkbox-toggle-19" aria-describedby="checkbox-toggle-19" checked="" onchange={handleChange}/>
+                                                    <span id="checkbox-toggle-19" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                    <span class="slds-checkbox_faux"></span>
+                                                    <span class="slds-checkbox_on"></span>
+                                                    <span class="slds-checkbox_off"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                            <!-- <lightning-layout-item key={ed.Id} size="3" style="margin-top: 2%; padding-right: 5%;">
+                                <lightning-input type="toggle" label="Degree conferred?">
+                                </lightning-input>
+                            </lightning-layout-item> -->
+                            <!-- <lightning-layout-item key={ed.Id} size="3" style="margin-top: 2%; padding-right: 5%;">
+                                <lightning-input type="toggle" label="In Education?" checked>
+                                </lightning-input>
+                            </lightning-layout-item> -->
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12 " >
+                                    <div class="slds-m-right--large" style="display:flex">
+                                        <lightning-layout-item key={ed.Id} size="7" style="margin-top: 3%; color: #549BA5; font-weight: 600;">
+                                            In Education?
+                                        </lightning-layout-item>
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%; margin-top: 3%;">
+                                            <!-- <lightning-input type="toggle" variant="label-hidden" checked>
+                                            </lightning-input> -->
+                                            <div class="slds-form-element">
+                                                <label class="slds-checkbox_toggle slds-grid">
+                                                    <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                    <input type="checkbox" name="checkbox-toggle-20" value="checkbox-toggle-20" aria-describedby="checkbox-toggle-20" checked="" onchange={handleChange}/>
+                                                    <span id="checkbox-toggle-20" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                    <span class="slds-checkbox_faux"></span>
+                                                    <span class="slds-checkbox_on"></span>
+                                                    <span class="slds-checkbox_off"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 deleteDivSP" style="margin-top: 1%;">
+                                    <div class="slds-m-left--large deleteSP" style="float:right">
+                                        <lightning-layout-item style="text-align: right;margin-top: 3%; padding-right: 3%;" size="4" key={ed.Id}>
+                                            <lightning-icon variant="error" style="cursor: pointer;" onclick={handleDel} data-idx={idx} data-ic="Edu" icon-name="utility:delete" alternative-text="Delete" size="small" title="Delete"></lightning-icon>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_12-of-12 " >
+                                    <div class="" style="">
+                                        <lightning-layout-item size="12" key={ed.Id}>
+                                            <hr style="border: 1px solid rgba(134, 132, 132, 0.382); height:0px !important;"/>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </template>
+                        <button data-btn="Edu" class="slds-button slds-button_neutral" style="border-radius: 20px; border: 1px solid cadetblue;" onclick={handleAdd}><span style="font-size: 20px; font-weight: 700; padding-right: 10px;">+</span>Add Education</button>
+                        <!-- <lightning-button data-btn="Edu" style="border-radius: 20px; border: 1px solid #549BA5;" onclick={handleAdd} label="Add Education" variant="neutral"></lightning-button> -->
+                    </lightning-layout>
+                </div>
+                <!-- <div style="text-align:right;" >
+                    <a data-btn="two" style="padding-right: 3%;" onclick={handleNext}>Skip</a>
+                     <lightning-button data-btn="two" variant="Brand" onclick={handleNext} label="Save & Next"></lightning-button> 
+                    <button data-btn="two" class="slds-button slds-button_brand" style="border-radius: 15px; background-color: cadetblue; border:none  !important;" onclick={handleNext}>Save & Next</button>
+                </div> -->
+            </template>
+
+            <template if:true={tPage}>
+                <div>
+                    <h1 class="slds-text-heading_small slds-truncate" style="font-weight: bold; margin-top: 3%;">Career History</h1>
+                    <lightning-layout style="margin-top:2%;" multiple-rows="true">
+                        <template for:each={workExps} for:index="idx" for:item="ed">
+                            <div class="slds-grid slds-wrap slds-align--absolute-center" key={ed.Id}>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Start</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input startcareer" value={ed.start} type="date" data-idx={idx} onchange={handleChange} name="startcareer">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="2" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">End</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input endcareer" value={ed.end} type="date" data-idx={idx} onchange={handleChange} name="endcareer">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">School / Organization</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.organization} type="text" data-idx={idx} onchange={handleChange} name="organization">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Job Title</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.jobTitle} type="text" data-idx={idx} onchange={handleChange} name="jobTitle">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Curriculums</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" type="text" data-idx={idx} onchange={handleChange} name="curriculum">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Job Type</label>
+                                            <div class="slds-form-element__control slds-grow" data-idx={idx} onchange={handleChange} name="jobtype">
+                                                <input class="slds-input" type="text">
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="3" style="padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Subject</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" type="text" name="subject" data-idx={idx} onchange={handleChange}>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="3" style=" padding-top:3%;">
+                                            <span style="color: #549BA5; font-weight: 600;">Extra Curriculars</span>
+                                            <!-- <lightning-icon style="padding-left: 5%;" icon-name="utility:add" size="xx-small" alternative-text="Add" title="Add"></lightning-icon> -->
+                                            <span style="font-size: 20px; padding-left: 5%; font-weight: bolder; color: #549BA5; cursor: pointer;">+</span>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="margin-top: 2%; padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">Country</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <select class="slds-select" onchange={handleChange} name="countryCareer"  value={ed.country} data-idx={idx} style="border: 1px solid rgba(134, 132, 132, 0.382); border-radius: 24px;    padding-left: 4%;">
+                                                    <option value="" class="noneField">---None---</option>                
+                                                        <template for:each={countryCareerValues} for:item="selectOptItem">
+                                                            <option data-id={selectOptItem.custFldvalue} class="countryCareerOption" key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                                                                {selectOptItem.custFldlabel}
+                                                            </option>
+                                                        </template>
+                                                </select>
+                                                <!-- <input class="slds-input" value={ed.country} type="text" name="countryCareer" data-idx={idx} onchange={handleChange}> -->
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item key={ed.Id} size="4" style="margin-top: 2%; padding-right: 5%;">
+                                            <label class="slds-form-element__label slds-no-flex" for="input-323">State</label>
+                                            <div class="slds-form-element__control slds-grow">
+                                                <input class="slds-input" value={ed.state} type="text" name="stateCareer" data-idx={idx} onchange={handleChange}>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_4-of-12 " >
+                                    <div class="slds-m-right--small" style="float:right">
+                                        <lightning-layout-item size="4" key={ed.Id} style="text-align: right;margin-top: 7%; padding-right: 3%;">
+                                            <lightning-icon variant="error" style="cursor: pointer;" onclick={handleDel} data-idx={idx} data-ic="Career" icon-name="utility:delete" size="small" alternative-text="Delete" title="Delete"></lightning-icon>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_12-of-12 " >
+                                    <div class="slds-m-right--small">
+                                        <lightning-layout-item size="12" key={ed.Id}>
+                                            <hr style="border: 1px solid rgba(134, 132, 132, 0.382); height:0px !important;"/>
+                                        </lightning-layout-item>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </template>
+                        <button data-btn="Career" class="slds-button slds-button_neutral" style="border-radius: 20px; border: 1px solid cadetblue;" onclick={handleAdd}><span style="font-size: 20px; font-weight: 700; padding-right: 10px;">+</span>Add Career</button>
+                        <!-- <lightning-button style="border-radius: 20px; border: 1px solid #549BA5;" data-btn="Career" onclick={handleAdd} label="Add Career" variant="neutral"></lightning-button> -->
+                    </lightning-layout>
+                </div>
+                <!-- <div style="text-align:right;" >
+                     <lightning-button data-btn="three" variant="Brand" label="Save"></lightning-button> 
+                    <button data-btn="three" class="slds-button slds-button_brand" style="border-radius: 15px; background-color: cadetblue; border:none  !important;">Save</button>
+                </div> -->
+            </template>
+            <!-- <div style="text-align: center; margin-top: 2%;">
+                <div onclick={handleNext} class="fBtn fillColor" data-btn="on" style="cursor: pointer;"></div>
+                <div onclick={handleNext} class="twBtn grayColor" data-btn="tw" style="cursor: pointer;"></div>
+                <div onclick={handleNext} class="thrBtn grayColor" data-btn="thr" style="cursor: pointer;" ></div>
+                <p style="color: gray; margin-left: 3%; font-weight: 500;">{pagiNation}</p>
+            </div> -->
+        </lightning-card>
+    </template>
+</template>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Curriculum_Experience__c</fullName>
+    <externalId>false</externalId>
+    <label>Curriculum Experience</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advanced Placement (AP)</fullName>
+                <default>false</default>
+                <label>Advanced Placement (AP)</label>
+            </value>
+            <value>
+                <fullName>Australian</fullName>
+                <default>false</default>
+                <label>Australian</label>
+            </value>
+            <value>
+                <fullName>Cambridge</fullName>
+                <default>false</default>
+                <label>Cambridge</label>
+            </value>
+            <value>
+                <fullName>Canadian</fullName>
+                <default>false</default>
+                <label>Canadian</label>
+            </value>
+            <value>
+                <fullName>Common Care</fullName>
+                <default>false</default>
+                <label>Common Care</label>
+            </value>
+            <value>
+                <fullName>IB MYP</fullName>
+                <default>false</default>
+                <label>IB MYP</label>
+            </value>
+            <value>
+                <fullName>ESL/EFL</fullName>
+                <default>false</default>
+                <label>ESL/EFL</label>
+            </value>
+            <value>
+                <fullName>IB Career-related Program (IBCP)</fullName>
+                <default>false</default>
+                <label>IB Career-related Program (IBCP)</label>
+            </value>
+            <value>
+                <fullName>IB DP</fullName>
+                <default>false</default>
+                <label>IB DP</label>
+            </value>
+            <value>
+                <fullName>IB PYP</fullName>
+                <default>false</default>
+                <label>IB PYP</label>
+            </value>
+            <value>
+                <fullName>IEYC</fullName>
+                <default>false</default>
+                <label>IEYC</label>
+            </value>
+            <value>
+                <fullName>IMYC</fullName>
+                <default>false</default>
+                <label>IMYC</label>
+            </value>
+            <value>
+                <fullName>IPC</fullName>
+                <default>false</default>
+                <label>IPC</label>
+            </value>
+            <value>
+                <fullName>Irish</fullName>
+                <default>false</default>
+                <label>Irish</label>
+            </value>
+            <value>
+                <fullName>Montessori</fullName>
+                <default>false</default>
+                <label>Montessori</label>
+            </value>
+            <value>
+                <fullName>National</fullName>
+                <default>false</default>
+                <label>National</label>
+            </value>
+            <value>
+                <fullName>New Zealand</fullName>
+                <default>false</default>
+                <label>New Zealand</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Pearson</fullName>
+                <default>false</default>
+                <label>Pearson</label>
+            </value>
+            <value>
+                <fullName>SAT</fullName>
+                <default>false</default>
+                <label>SAT</label>
+            </value>
+            <value>
+                <fullName>STEM</fullName>
+                <default>false</default>
+                <label>STEM</label>
+            </value>
+            <value>
+                <fullName>Southern African</fullName>
+                <default>false</default>
+                <label>Southern African</label>
+            </value>
+            <value>
+                <fullName>UK - A - Levels</fullName>
+                <default>false</default>
+                <label>UK - A - Levels</label>
+            </value>
+            <value>
+                <fullName>UK - GCSE</fullName>
+                <default>false</default>
+                <label>UK - GCSE</label>
+            </value>
+            <value>
+                <fullName>UK - IGCSE</fullName>
+                <default>false</default>
+                <label>UK - IGCSE</label>
+            </value>
+            <value>
+                <fullName>United Kingdom</fullName>
+                <default>false</default>
+                <label>United Kingdom</label>
+            </value>
+            <value>
+                <fullName>United States</fullName>
+                <default>false</default>
+                <label>United States</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

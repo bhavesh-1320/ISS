@@ -1,0 +1,493 @@
+<template>
+	<template if:true={isLoading}>
+		<div class="slds-p-around_x-large">
+			<lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+		</div>
+	</template>
+	<template if:true={previewjob}>
+		<div>
+			<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+				class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						onclick={closeModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+							size="small"></lightning-icon>
+						<span class="slds-assistive-text">Cancel and close</span>
+					</button>
+					<div>
+						<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
+						</h1>
+					</div>
+					<div style="border-radius:20px;" class="slds-modal__content" id="modal-content-id-1">
+
+
+						<!-- component content starts-->
+						<div class="mobile-show-compo">
+							<div class="mobile-main-btns">
+								<div style="margin-left: 14px;margin-top: 10px;margin-bottom: 33px;">
+
+								</div>
+
+							</div>
+							<lightning-card>
+								<p class="add-back-btn" onclick={goBack}> Back</p>
+								<span class="headingFont"> {jobName}</span>
+
+								<div class="newData">
+
+									<div class="newDataItem">
+										<div class="textfont">
+											<p>Apply by:</p>
+										</div>
+										<div class="textSecFont">
+											<p>{closeDate}</p>
+										</div>
+
+									</div>
+									<div class="newDataItem">
+										<div class="textfont">
+											<p>Openings</p>
+										</div>
+										<div class="textSecFont">
+											<p> {numberOfOpening}</p>
+										</div>
+
+									</div>
+									<div class="newDataItem">
+										<div class="textfont">
+											<p>Organization:</p>
+										</div>
+										<div class="textSecFont">
+											<p></p>
+										</div>
+
+									</div>
+
+								</div>
+
+
+								<div class="newData">
+									<div class="slds-col slds-size_2-of-4 detail-tables-wrapper">
+										<div style="width: 40%;">
+											<table class="recordInfo">
+												<tr>
+													<td class="textfont">Starting From : </td>
+													<td class="textSecFont">
+														{startDate}</td>
+												</tr>
+												<tr>
+													<td class="textfont">Contract Length:</td>
+													<td class="textSecFont">{contractLength}</td>
+
+
+
+												</tr>
+												<tr>
+													<td class="textfont">Salary Range:</td>
+													<td class="textSecFont">{SalaryRange}</td>
+
+
+
+												</tr>
+												<tr>
+													<td class="textfont">Department:</td>
+													<td class="textSecFont"></td>
+
+												</tr>
+												<tr>
+													<td class="textfont">Curriclum:</td>
+													<td class="textSecFont"></td>
+
+												</tr>
+
+
+											</table>
+										</div>
+										<div style="white-space: nowrap;">
+											<table class="recordInfo">
+												<tr>
+													<td class="textfont">Minimum Qualification:</td>
+													<td class="textSecFont">
+														{minQualification}</td>
+													<td class="textfont"></td>
+													<td class="textSecFont"></td>
+
+												</tr>
+												<tr>
+													<td class="textfont">Minimum Experience:</td>
+													<td class="textSecFont">{minimumYear}</td>
+													<td class="textfont"></td>
+													<td class="textSecFont"></td>
+
+												</tr>
+												<tr>
+													<td class="textfont">Certifications Required:</td>
+													<td class="textSecFont">
+														{certificateRequired}</td>
+													<td class="textfont"></td>
+													<td class="textSecFont"></td>
+
+												</tr>
+												<tr>
+													<td class="textfont">Subject:</td>
+													<td class="textSecFont"></td>
+												</tr>
+												<tr>
+													<td class="textfont">Grade Range:</td>
+													<td class="textSecFont">{GradeRange}</td>
+
+												</tr>
+
+
+											</table>
+
+
+										</div>
+
+
+
+									</div>
+
+								</div>
+								<div
+									style="background: aliceblue;margin: 0px 12px 0px 13px;padding-left: 18px; border-radius: 19px;">
+									<div>
+										<p style="font-weight: 1000;font-size: 20px;">Description</p>
+									</div>
+
+									<div>
+										<p style="padding: 4px 0px 5px 0px;">
+											{desc}</p>
+									</div>
+								</div>
+							</lightning-card>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		</div>
+	</template>
+	<div class="cont">
+
+
+		<div class="mainContainer">
+			<div class="jobHeader">
+				<div class="slds-grid slds-wrap">
+
+					<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+						<p class="information">Basic Information</p>
+					</div>
+					<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 bt ">
+								<div class="btn slds-align--absolute-center"><img src={pullFromPast}></div>
+							</div>
+							<div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 bt ">
+								<div class="btn">
+										<div class="topButton slds-align--absolute-center" style="wid">
+											<img onclick={previewInfo} src={preview}>
+											<span style="padding-left:5px;">Preview</span></div>
+											</div>
+							</div>
+							<div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 bt">
+								<div class="btn slds-align--absolute-center">
+									<img onclick={publishData} data-id="Draft" src={saveDraft}>
+								</div>
+							</div>
+							<div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 bt">
+								<div class="btn">
+									<div class="topButton slds-align--absolute-center" style="wid">
+									<img onclick={publishData} data-id="Published" src={publish}>
+									  <span onclick={publishData} data-id="Published" style="padding-left:5px;">Publish</span></div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="detailSection">
+				<div class="selectSchool"></div>
+				<div class="emptySpace"></div>
+				<div style="display:flex; justify-content:flex-end;padding: 15px;background-color:white;">
+					<p data-id="CreateSpilitPosition" onclick={CreateSpilitPosition} class="split" style="cursor: pointer;">Create Spilit Position</p>
+				</div>
+				<div class="allFilters" style="background: white;padding: 0px 20px;">
+					<div class="slds-grid slds-wrap">
+						<div data-id="ComboBoxDiv" class="positionSplit slds-grid slds-wrap slds-col slds-size_1-of-1 slds-large-size_1-of-1">
+							<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+								style=" padding-right:7px; padding-left:7px">
+								<lightning-combobox class="mycustomComboBox department" name="Select Department" label=""
+									placeholder="Select Department" options={Departments} onchange={handleChange}>
+								</lightning-combobox>
+							</div>
+							<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+								style=" padding-right:7px; padding-left:7px">
+								<lightning-combobox class="mycustomComboBox subject" name="Subject" label=" " placeholder="Select Subject"
+									options={subject} onchange={handleChange}>
+								</lightning-combobox>
+							</div>
+							<template if:false={CreateSpilitPositionBoolean}>
+								<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+									style=" padding-right:7px; padding-left:7px">
+									<lightning-input type="number" class="allotment mycustomComboBox" name="Allotment" placeholder="Allotment %"
+										onchange={handleChange}>
+									</lightning-input>
+								</div>
+							</template>
+						</div>
+						<template for:each={comboboxList} for:item="combobox">
+							<div key={combobox} class=" positionSplit slds-grid slds-wrap slds-col slds-size_1-of-1 slds-large-size_1-of-1">
+								<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+									style=" padding-right:7px; padding-left:7px">
+									<lightning-combobox class="mycustomComboBox department" name="Select Department"
+										placeholder="Select Department" options={Departments} onchange={handleChange}>
+									</lightning-combobox>
+								</div>
+								<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+									style=" padding-right:7px; padding-left:7px">
+									<lightning-combobox class="mycustomComboBox subject" name="Subject" placeholder="Select Subject"
+										options={subject} onchange={handleChange}>
+									</lightning-combobox>
+								</div>
+								<div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3"
+									style=" padding-right:7px; padding-left:7px">
+									<lightning-input type="number" class="allotment mycustomComboBox" name="Allotment" placeholder="Allotment %"
+										onchange={handleChange}>
+									</lightning-input>
+								</div>
+							</div>
+						</template>
+					</div>
+					<div>
+						<template if:false={CreateSpilitPositionBoolean}>
+							<p onclick={Remove} class="slds-m-left_medium slds-m-top_small split" style="cursor: pointer;">Remove</p>
+						</template>
+					</div>
+					<div class="slds-grid" style="padding-top:20px ;">
+						<div class="  slds-col slds-size_1-of-2" style=" padding-right:7px; padding-left:7px">
+							<lightning-input onchange={handleChange} name="jobName"
+								class="inputFieldError mycustomComboBox jobName" type="text" label="Job Name"
+								placeholder="Job Name" data-obj="jobName" data-id={jobName} required>
+								<!-- <input lightning-input_input="" class="slds-input slds-has-error" type="text" id="input-11" placeholder="Job Name" name="jobName" required=""> -->
+							</lightning-input>
+						</div>
+						<div class=" slds-col slds-size_1-of-2" style=" padding-right:7px; padding-left:7px">
+							<lightning-combobox class="mycustomComboBox" name="JobType" value={jobTypeV}
+								label="Job Type" placeholder="Select Job Type" options={jobType}
+								onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+
+					</div>
+					<div class="slds-grid slds-wrap" style="padding-top:20px ;">
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-combobox class="mycustomComboBox" name="Openings" label="Number of Openings"
+								placeholder="Number of Openings" options={valueOpening} onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="closeDate"
+								onchange={handleChange} type="date" label="Job Close Date" placeholder="Job Close Date"
+								required> </lightning-input>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="startDate"
+								onchange={handleChange} type="date" label="Job Role Start Date"
+								placeholder="Job Role Start Date" required> </lightning-input>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="mycustomComboBox" name="contractLength" onchange={handleChange}
+								type="text" label="Contract Length" placeholder="Contract Length" required>
+							</lightning-input>
+						</div>
+					</div>
+					<div class="slds-grid slds-wrap" style="padding-top:20px ;">
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="salarystartrange"
+								onchange={handleChange} type="text" label="Salary Start " placeholder="Salary Start"
+								required> </lightning-input>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="SalaryEndRange"
+								onchange={handleChange} type="text" label="Salary End" placeholder="Salary End"
+								required>
+							</lightning-input>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="GradeStarting"
+								onchange={handleChange} type="text" label="Grade Starting" placeholder="Grade Starting"
+								required> </lightning-input>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-input class="inputFieldError mycustomComboBox" name="GradeEnding"
+								onchange={handleChange} type="text" label="Grade Ending" placeholder="Grade Ending"
+								required> </lightning-input>
+						</div>
+					</div>
+					<div class="slds-grid slds-wrap" style="padding-top:20px;">
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-combobox class="mycustomComboBox" name="MinimumQualification"
+								label="Minimum Qualification" placeholder="Minimum Qualification"
+								options={minimumQualification} onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-combobox class="mycustomComboBox" name="MinimumYearofExperience"
+								label="Minimum Year of Experience" placeholder="Minimum Year of Experience"
+								options={experience} onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+						<div class=" padd slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px">
+							<lightning-combobox class="mycustomComboBox" name="CertificationRequired"
+								label="Certification Required" placeholder="Certification Required"
+								options={certificate} onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+						<div class=" padd  slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4"
+							style=" padding-right:7px; padding-left:7px;">
+							<lightning-combobox class="mycustomComboBox" name="CoverLetter"
+								label="Cover Letter Required" placeholder="Cover Letter Required" options={cover}
+								onchange={handleChange}>
+							</lightning-combobox>
+						</div>
+
+					</div>
+					<div class="slds-grid" style="padding-top:20px;">
+						<div class=" slds-col slds-size_1-of-1" style=" padding-right:7px; padding-left:7px;">
+							<lightning-input class="mycustomComboBox" name="media" onchange={handleChange} type="text"
+								label="Media link from Head of School / Principal / Department for explaining the job"
+								placeholder="Media Link" required> </lightning-input>
+
+						</div>
+
+					</div>
+					<div style="padding-top:20px;">
+						<div>
+							<p class="carriculum">Crriculum</p>
+						</div>
+						<div class="curriculum">
+							<!-- <div class="slds-grid slds-wrap"> -->
+							<template for:each={checkBoxValue} for:item="item">
+								<div class="checkBoxWrap" key={item} data-id={item}>
+									<input type="checkbox" onclick={onClickHandler} name={item} data-id={item}
+										onchange={handleCheckBox}>
+									<label for={item}> {item}</label>
+									<!-- <lightning-input class="mycustomComboBox" type="checkbox" label={item} name="item"></lightning-input> -->
+								</div>
+							</template>
+							<!-- <div class="slds-large-size_1-of-4">
+								<lightning-checkbox-group name="Checkbox Group"
+								 class="check"
+								  options={options1}
+								  value={value}
+								  onchange={handleChange}></lightning-checkbox-group>
+							</div>
+							<div class="slds-large-size_1-of-4">
+								<lightning-checkbox-group name="Checkbox Group"
+								 
+								  options={options2}
+								  value={value}
+								  onchange={handleChange}></lightning-checkbox-group>
+							</div>
+							<div class="slds-large-size_1-of-4">
+								<lightning-checkbox-group name="Checkbox Group"
+								 
+								  options={options3}
+								  value={value}
+								  onchange={handleChange}></lightning-checkbox-group>
+							</div>
+							<div class="slds-large-size_1-of-4">
+								<lightning-checkbox-group name="Checkbox Group"
+								 
+								  options={options4}
+								  value={value}
+								  onchange={handleChange}></lightning-checkbox-group>
+							</div> -->
+							<!-- </div> -->
+						</div>
+					</div>
+					<!-- need to make custom rich text area  -->
+					<div style="padding-top:20px;">
+						<div>
+							<p class="carriculum">Job Description</p>
+						</div>
+						<lightning-input-rich-text value={myVal} onchange={handleClick}>
+						</lightning-input-rich-text>
+					</div>
+					<!-- documents table is here -->
+					<div style="padding-top:20px;">
+						<div style=" display:flex;justify-content:space-between ;padding-bottom: 7px ;">
+							<div>
+								<span class="carriculum">Documents </span><span> <img src={bookIcon}></span>
+							</div>
+							<div class="btn"><img src={exportIcon}><span class="export">Upload</span></div>
+						</div>
+						<div style="width: 100%;background: #ffffff;
+							border-radius: 30px; overflow-x: scroll; ">
+							<table style="width:100%">
+								<tr class="tableHead tableBottom">
+									<th>File Name</th>
+									<th>Document Type</th>
+									<th>Uploaded On</th>
+									<th>Updated By</th>
+								</tr>
+								<tr class="tableBottom">
+									<td>
+										<p style="color:#848898;font-size: 14px; font-weight: 400;">School
+											Overview</p>
+									</td>
+									<td>PDF</td>
+									<td>Jun 9 2022</td>
+									<td>James Teller</td>
+								</tr>
+								<tr>
+									<td>
+										<p style="color:#848898;font-size: 14px; font-weight: 400;">Area &
+											Surroundings</p>
+									</td>
+									<td>PDF</td>
+									<td>Aug 8 2022</td>
+									<td>Chrisy Smith</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div style="padding-top:20px;">
+						<div>
+							<span class="carriculum" style="padding-left:20px;">Job Application Questions </span><span>
+								<img src={bookIcon}></span>
+						</div>
+
+						<div class=" slds-col slds-size_1-of-1" style=" padding-right:7px; padding-left:7px;">
+							<lightning-input class="mycustomComboBox" type="text"
+								label="Please add any question below that you’d like the candidate to answer in order to apply"
+								placeholder="Enter question here"> </lightning-input>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- preview click starts -->
+
+	<!-- preview click ends -->
+</template>

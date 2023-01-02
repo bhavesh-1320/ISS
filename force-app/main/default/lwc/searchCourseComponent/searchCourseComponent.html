@@ -1,0 +1,32 @@
+<template>
+    <div class="containerMain">
+        <div class="iss-container">
+			<template if:true={isShowFilters}>
+				<c-find-courses-component searchkey={searchkey} is-show-search-result={isShowResult} onsearch={contentSearch} onfilter={handleFilter}></c-find-courses-component>
+			</template>
+
+
+			<template if:true={isShowResult}>
+				<div class="iss-search-res-area">
+					<template if:true={records}>
+						<c-block-information-on-search-component
+						onshowcourse={showCourseDetails} onshowdetails={showSeriesBlock} content={records}></c-block-information-on-search-component>
+					</template>
+				</div>
+			</template>
+
+			<template if:true={isShowDetailSeries}>
+				<lightning-button type="brand" label="Back" onclick={preventPageFromSeries}></lightning-button>
+				<!-- <button onclick={preventPage} value="Back">Back</button> -->
+				<c-series-component series={showRecord}></c-series-component>
+			</template>
+
+
+			<template if:true={isShowDetailCourse}>
+				<lightning-button class="backBtn" type="brand" label="Back" onclick={preventPageFromCourse}></lightning-button>
+				<!-- <button onclick={preventPage} value="Back">Back</button> -->
+				<c-course-component course={courseRecord}></c-course-component>
+			</template>
+    	</div>
+    </div>
+</template>

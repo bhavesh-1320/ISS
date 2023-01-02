@@ -1,0 +1,16 @@
+<apex:page showHeader="false" sidebar="false">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />  
+    <script src="https://cyntexa-1d0-dev-ed.develop.my.site.com/lightning/lightning.out.js"></script>
+    <script>
+    $Lightning.use("c:recruitmentLogin", function() {
+        $Lightning.createComponent("c:jobPortal",
+          { 
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Componenet added in VF page');
+          });
+    });
+    </script>
+</apex:page>

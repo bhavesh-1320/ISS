@@ -1,0 +1,447 @@
+.section{
+	display: flex;
+    margin:0;
+    padding: 0;
+}
+.card{
+  background-color: white;
+ margin:0;
+    padding: 0;
+}
+.container{
+	
+  width: 100%;
+  
+    
+}
+
+.lgnTxt{
+  font-family: 'RobotoLight';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  
+  color: #2D514F;
+  }
+
+
+.heading-secondary{
+      color: #383b41;
+    font-family: SF Pro Display,Arial,Helvetica,sans-serif;
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 40px;
+}
+
+.grid-33 {
+ 
+      margin: auto;
+    width: 33%;
+}
+.grid-66 {
+  width: calc(60% - 15px);
+      padding: 50px 0;
+     
+    height: auto;
+    background: url(https://recruitment.uat.issapi.info/Background.4829052c272081c6ee18.svg) 50%/cover no-repeat;
+       box-sizing: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-icon{
+  position: absolute;
+  top: 37.5px;
+  z-index: 1;
+  right: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+}
+.heading{
+ color: #383b41;
+    font-family: SF Pro Display,Arial,Helvetica,sans-serif;
+    margin: 0 0 20px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 40px;
+}
+.heading1{
+	    color: #383b41;
+    font-family: SF Pro Display,Arial,Helvetica,sans-serif;
+    margin: 0 0 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 40px;
+	font-size: 25px;
+}
+label {
+  color: #555;
+  font-family: RobotoLight;
+  display: inline-block;
+  margin-left: 6px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+p a {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+    margin-top: -13px;
+    margin-right: 20px;
+ -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+/* input[type=text],
+input[type=password] {
+    color: #777;
+  border: 1px solid #c7d0d2;
+  border-radius: 2px;
+  /* box-shadow: inset 0 1.5px 3px rgb(190 190 190 / 40%), 0 0 0 5px #f5f7f8; */
+  /* -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  transition: all .4s ease;
+  border-radius: 20px; */
+    
+/* input[type=text]:hover,
+input[type=password]:hover {
+    border: 1px solid #52545a;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+} */
+/* input[type=text]:focus,
+input[type=password]:focus {
+    border: 1px solid #a8c9e4;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+
+} */
+.btn{
+	margin-top: 15px;
+	padding:auto;
+  width: 100%;
+  
+ text-align: center;
+    font-family: Titillium Web,sans-serif;
+    font-weight: 600;
+    font-size: .875rem;
+    font-style: normal;
+    letter-spacing: .046875rem;
+  background: #46a39d;
+    /* background-color: #46a39d; */
+	
+   
+    
+   
+   box-sizing: border-box;
+    height: 50px;
+    border: 2px solid #46a39d;
+    border-radius: 5px;
+  
+   
+    color: #fff!important;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+}
+.btn1{
+  box-sizing: border-box;
+  font-family: 'RobotoLight';
+    height: 50px;
+    background-color: #fff;
+    transition: all .3s ease-in-out;
+    text-transform: uppercase;
+    color: #46a39d !important;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+}
+
+/* .btn:hover{
+  background-color: #46a39d;
+  color: white !important;
+} */
+.account{
+      font-weight: 450;
+    font-size: 15.5px;
+    letter-spacing: 0;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
+    width:100%;
+    
+}
+.inputSchoolRecruiter{
+  --slds-c-input-color-background:#f5f8fa;
+}
+.buttonSubmit{
+  white-space: pre-wrap;
+  background: #04a9a2;
+  border-color: #04a9a2;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 12px;
+  font-family: Roboto "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+  display: inline-block;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+}
+.actions{
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 17px 0px;
+  text-align: left;
+}
+.password{
+      color: #46a39d;
+    text-decoration: none!important;
+    outline: 0;
+    font-size: 15px;
+        font-style: normal;
+    text-transform: none;
+    margin-top: 1.75rem;
+    font-family: Titillium Web,sans-serif;
+}
+a {
+   color: grey;
+    text-decoration: none!important;
+    outline: 0;
+   
+        font-style: normal;
+    text-transform: none;
+    margin-top: 1.75rem;
+    font-family: Titillium Web,sans-serif;
+}
+fieldset{
+  display: block;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+}
+
+
+ a:active{
+  color: #46a39d;
+  border-bottom: 2px solid #46a39d;
+}
+
+.foot{
+  
+  height: 100%;
+  padding: 25px 0;
+  position: sticky;
+      bottom: 0;
+    width: 100%;
+ 
+  
+  background-color:#383b41;
+}
+.foot-txt{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  line-height: 26px;
+  padding-bottom: 10px;
+
+  margin-left: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+.foot-icon {
+  margin-left: 30px;
+  padding-bottom: 10px;
+}
+.foot-img{
+ padding-bottom: 10px;
+  margin-left: 24px;
+}
+.inside{
+  padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10%;
+}
+.rightDiv{
+  padding-right: 15px;
+    padding-left: 15px;
+}
+.customWrap{
+          align-items: stretch !important;
+}
+.input{
+      padding: 7px;
+    /* padding-top: 1.125rem; */
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+/* login common css */
+.backgroundImg{
+  background: url(/sfsites/c/resource/1670223658000/bgImage);
+  /* height: 86vh; */
+  background-size: cover;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 30px;
+  position: relative;
+}
+
+img{
+  height: 32px;
+}
+
+.maindivOFImg{
+  background: white;
+  padding-bottom: 5px;
+}
+.loginFunctionlity{
+ width: 25%;
+  position: absolute;
+  justify-content: inherit;
+  display: grid;
+  right: 20px;
+  top: 15px;
+  box-shadow: 0px 2px 15px rgba(84, 155, 165, 0.15);
+  background: #fff;
+  padding: 20PX;
+  /* height: 622px; */
+  border-radius: 20px;
+}
+.login-text{
+  font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+    color: #2D514F;
+    line-height: 30px;
+    /* text-align: center; */
+    margin-bottom: 57px;
+}
+.text{
+  position: absolute;
+    top: 45%;
+    left: 24%;
+}
+.welcomeIss{
+  font-family: RobotoLight;
+    font-size: 43px;
+    font-weight: 600;
+    line-height: 50px;
+    /* letter-spacing: 0em; */
+    text-align: left;
+    color: #2D514F;
+}
+.describeIss{
+  font-size: 20px;
+  font-family: RobotoLight;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    font-style: normal;
+    color: #2D514F;
+}
+.footer{
+  display: flex;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px 32px 10px 32px;
+    justify-content: space-between;
+    width: 74%;
+}
+input[type=text],
+input[type=password] {
+  color: #777;
+  border: 2px solid rgba(45, 81, 79, 0.5);
+  border-radius: 2px;
+  /* box-shadow: inset 0 1.5px 3px rgb(190 190 190 / 40%), 0 0 0 5px #f5f7f8; */
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  height: 50px;
+  transition: all .4s ease;
+  border-radius: 20px;
+    }
+/* input[type=text]:hover,
+input[type=password]:hover {
+    border:2px solid rgba(45, 81, 79, 0.5);
+} */
+input[type=text]:focus,
+input[type=password]:focus {
+  border: 2px solid #5FA19C;
+}
+.btn{
+	margin-top: 10px;
+    padding: auto;
+    width: 100%;
+    text-align: center;
+    font-family: RobotoLight;
+    font-weight: 600;
+    font-size: .875rem;
+    font-style: normal;
+    letter-spacing: .046875rem;
+    background: #46a39d;
+    box-sizing: border-box;
+    height: 50px;
+    border: 2px solid #46a39d;
+    border-radius: 20px;
+    /* color: #fff!important; */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.rightAreReseverd{
+  font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #2D514F;
+}
+.copyRight{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.dataPrivacytxt{
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: right;
+  color: #549BA5;
+
+}
+
+
+@font-face{
+  font-family: 'MontserratLight';
+  src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Light.ttf) format('TrueType');
+}
+@font-face{
+  font-family: 'MontserratRegular';
+  src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Regular.ttf) format('TrueType');
+}
+@font-face{
+  font-family: 'RobotoLight';
+  src: url(/s/sfsites/c/resource/roboto/Roboto-Light.ttf) format('TrueType');
+}
+@font-face{
+  font-family: 'RobotoMedium';
+  src: url(/s/sfsites/c/resource/roboto/Roboto-Medium.ttf) format('TrueType');
+}

@@ -1,0 +1,139 @@
+<template>
+  <div style="padding: 0;">
+    <div>
+      <div
+        style="border-top-right-radius: 20px;height:60px;padding:17px;display: flex;justify-content: right;background-image: linear-gradient(to right, #325B88, #1F6E94, #15809B, #28929E, #46A29D);">
+        <lightning-icon icon-name="utility:threedots" size="small"
+          style="background: none;--sds-c-icon-color-foreground-default: white;"></lightning-icon>
+      </div>
+    </div>
+    <lightning-card>
+      <p class="add-back-btn" onclick={goBack}> Back</p>
+      <div style="display: flex;justify-content: space-between;">
+        <span class="headingFont"> {getValue.Name}</span>
+        <a href={addjob}>
+          <lightning-button variant="success" label="Add Job" icon-name="utility:add" title="" onclick={handleClick}
+            class="addjobButton" style="margin-right: 10px;"></lightning-button>
+        </a>
+      </div>
+
+      <br>
+      <div class="newData">
+
+        <div class="newDataItem">
+          <div class="textfont">
+            <p>Organization:</p>
+          </div>
+          <div class="textSecFont">
+            <p>{getValue.School__r.Name} , {getValue.Country__c}</p>
+          </div>
+
+        </div>
+
+        <div class="newDataItem">
+          <div class="textfont">
+            <p>Apply by:</p>
+          </div>
+          <div class="textSecFont">
+            <p>{getValue.Job_Role_Start_Date__c }</p>
+          </div>
+
+        </div>
+        <div class="newDataItem">
+          <div class="textfont">
+            <p>Openings</p>
+          </div>
+          <div class="textSecFont">
+            <p>0 / {getValue.Number_Of_Openings__c}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="newData">
+        <div class="slds-col slds-size_2-of-4 detail-tables-wrapper">
+          <div style="width: 40%;">
+            <table class="recordInfo">
+              <tr>
+                <td>
+                  <p class="textfont">Starting From : </p>
+                  <p class="textSecFont">{getValue.Job_Role_Start_Date__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Contract Length: </p>
+                  <p class="textSecFont">1 Year</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Salary Range: </p>
+                  <p class="textSecFont">{getValue.Salary_Range__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Department:</p>
+                  <p class="textSecFont">{getValue.Department__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Curriclum:</p>
+                  <p class="textSecFont">{getValue.Curriculum__c}</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div style="white-space: nowrap;">
+            <table class="recordInfo">
+              <tr>
+                <td>
+                  <p class="textfont">Minimum Qualification:</p>
+                  <p class="textSecFont">{getValue.Minimum_Qualification__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Minimum Experience:</p>
+                  <p class="textSecFont">1 Year</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Certifications Required:</p>
+                  <p class="textSecFont">{getValue.Certification_Required__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Subject:</p>
+                  <p class="textSecFont">{getValue.Subject__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Grade Range:</p>
+                  <p class="textSecFont">{getValue.Grade_Range__c}</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div style="margin: 0px 12px 0px 13px;padding-left: 18px; border-radius: 19px;">
+        <div>
+          <p style="font-weight: 1000;font-size: 20px;">Description</p>
+        </div>
+
+        <div> 
+          <p style="padding: 4px 0px 5px 0px;">{getValue.Job_Description__c}</p>
+        </div>
+      </div>
+    </lightning-card>
+  </div>
+</template>

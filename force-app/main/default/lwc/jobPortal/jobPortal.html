@@ -1,0 +1,1597 @@
+<template>
+  <template if:true={loader}>
+    <div class="overlay"></div>
+    <div id="grid-container" class="grid-container">
+      <div class='cube cube1'></div>
+      <div class='cube cube2'></div>
+      <div class='cube cube3'></div>
+      <div class='cube cube4'></div>
+      <div class='cube cube5'></div>
+      <div class='cube cube6'></div>
+      <div class='cube cube7'></div>
+      <div class='cube cube8'></div>
+      <div class='cube cube9'></div>
+    </div>
+  </template>
+  <template if:true={component}>
+    <div class="mainBody">
+      <div class="header" style="display:flex;">
+        <div style="width: max-content; display: flex;margin-top: 8px;">
+
+
+          <div style="padding: 5px 7px">
+            <div style="width: max-content;">
+              <div class="slds-form-element" style="width: 100%;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:2;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    placeholder="Department" class="slds-input inputBar jobListInput" onclick={showOption} readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;z-index: 10;overflow:hidden;display:none;width: calc(100% - 50px);max-width: 400px;box-shadow:rgb(0 0 0 / 45%) 0px 5px 50px;padding: 0px 0px 10px 0px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={jobsPositionList} for:item="jobPosition">
+                    <div key={Id} style="padding: 10px;cursor: pointer;border-bottom: 1px solid #eee;margin: 0px 10px;"
+                      data-id={jobPosition.value} onclick={pageJobChanged} data-name={jobPosition.label} class="optval">
+                      <ul>
+                        <li style="display: flex;">
+                          <p style="font-weight: bold;min-width:70px">Name </p> <span
+                            style="min-width:20px;text-align:center;font-weight: bold;">:</span> {jobPosition.label}
+                        </li>
+                        <li style="display: flex;">
+                          <p style="font-weight: bold;min-width:70px">Position </p> <span
+                            style="min-width:20px;text-align:center;font-weight: bold;">:</span> {jobPosition.position}
+                        </li>
+                        <li style="display: flex;">
+                          <p style="font-weight: bold;min-width:70px">Department </p> <span
+                            style="min-width:20px;text-align:center;font-weight: bold;">:</span>
+                          {jobPosition.department}
+                        </li>
+                        <li style="display: flex;">
+                          <p style="font-weight: bold;min-width:70px">Subject </p> <span
+                            style="min-width:20px;text-align:center;font-weight: bold;">:</span> {jobPosition.subject}
+                        </li>
+                      </ul>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- <lightning-combobox options={jobsPositionList}
+            style="background: transparent;border: 2px solid rgb(77 80 80 / 50%);border-radius: 3px;cursor: pointer;padding-left: 10px;"></lightning-combobox>
+          <h1 class="fontChange">Math Teacher </h1>
+          <lightning-icon size="x-small" icon-name="utility:down"
+            style="--sds-c-icon-color-foreground-default: black;margin:5px 0px 0px 30px;"></lightning-icon> -->
+        </div>
+
+        <div class="bars" onclick={showTabs}>
+          <lightning-icon icon-name='utility:threedots' alternative-text='threedots' size='small' title='threedots'
+            style="--sds-c-icon-color-foreground-default: #549BA5"></lightning-icon>
+        </div>
+
+        <div class="headerTabsOverlay" onclick={closeTabs}></div>
+
+        <div class="tabs">
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={groups} title="" style="margin:auto;">
+            <div class="imgText">
+              <h1>Total</h1>
+              <p>{total}</p>
+            </div>
+          </div>
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={invites} style="margin:auto;">
+            <div class="imgText">
+              <h1>Invited</h1>
+              <p>{countInvited}</p>
+            </div>
+          </div>
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={checked} style="margin:auto;">
+            <div class="imgText">
+              <h1>Hired</h1>
+              <p>{Hired}</p>
+            </div>
+          </div>
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={inviteButtonIcon} style="margin:auto;">
+            <div class="imgText">
+              <h1>New</h1>
+              <p>0</p>
+            </div>
+          </div>
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={email} style="margin:auto;">
+            <div class="imgText">
+              <h1>Contacted</h1>
+              <p>{Contacted}</p>
+            </div>
+          </div>
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={likedUser} style="margin:auto;">
+            <div class="imgText">
+              <h1>Interested</h1>
+              <p>{Interested}</p>
+            </div>
+          </div>
+
+          <!-- <div style="text-align: center;display:flex; padding: 0px 5px;cursor: pointer;" onclick={headerTabClicked}>
+            <img src={query} style="margin:auto;">
+            <div class="imgText">
+              <h1>Unsure</h1>
+              <p>3</p>
+            </div>
+          </div> -->
+
+          <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={cancle} style="margin:auto;">
+            <div class="imgText">
+              <h1>Declined</h1>
+              <p>{InvitationDeclined}</p>
+            </div>
+          </div>
+          <!-- <div class="HeaderTabs" onclick={headerTabClicked}>
+            <img src={barchart1} style="margin:auto;">
+            <div class="imgText">
+              <h1>Phase 1</h1>
+              <p>0</p>
+            </div>
+          </div> -->
+          <!-- <div style="text-align: center;">
+            <img src={barchart2} style="margin:auto;">
+         
+          </div> -->
+
+
+
+        </div>
+      </div>
+
+
+      <div class="morefiltersModalOverlay" onclick={hideMoreFilter}></div>
+
+      <div class="morefiltersModal" onclick={modalClicked}>
+        <div class="modalheader" onclick={MoreFiltersoptionsOverlayClicked}>
+          <h1>Find a Candidate</h1>
+        </div>
+        <!-- <div class="modalOptionsOverlay" onclick={MoreFiltersoptionsOverlayClicked}
+          style="display:none;width: 100%;height:100vh;position: absolute;top: 0;left: 0;z-index:8;">
+        </div> -->
+        <div class="modalBody" onclick={modalBodyClicked}>
+
+          <div style="width: 100%;display: flex;flex-wrap: wrap;">
+            <lightning-input type="date" label="" placeholder="Date From" onclick={MoreFiltersoptionsOverlayClicked}
+              class="dateFromModalFilter">
+            </lightning-input>
+            <lightning-input type="date" label="" onclick={MoreFiltersoptionsOverlayClicked} placeholder="Date To"
+              class="dateToModalFilter">
+            </lightning-input>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter1">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Department" class="slds-input inputBar DepartmentModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={Departments} for:item="Department">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Department.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modalFilterCover">
+            <div class="filter2">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Subject" class="slds-input inputBar SubjectModalFilter" onclick={showOptionMoreFilter}
+                    readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;overflow-x: hidden;">
+                  <template for:each={subjectsOptions} for:item="Subject">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Subject.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="modalFilterCover">
+            <div class="filter3">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Experience" class="slds-input inputBar ExperienceModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={Experiences} for:item="Experience">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Experience.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="modalFilterCover">
+            <div class="filter4">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Family" class="slds-input inputBar FamilyModalFilter" onclick={showOptionMoreFilter}
+                    readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={Family} for:item="Fam">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Fam.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter5">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Dependents" class="slds-input inputBar DependentsModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={Dependents} for:item="Fam">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Fam.value}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="modalFilterCover">
+            <div class="filter6">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Languages Spoken" class="slds-input inputBar LanguagesSpokenModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={languagesSpoken} for:item="Experience">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Experience.value}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter7">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Proficiency" class="slds-input inputBar ProficiencyModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={Proficiency} for:item="Profici">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Profici.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modalFilterCover">
+            <div class="filter8">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="iFair Attendance" class="slds-input inputBar iFairAttendanceModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={iFairAttendance} for:item="iFair">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{iFair.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter9">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Position Type" class="slds-input inputBar PositionTypeModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={PositionType} for:item="Position">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Position.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter10">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Curriculum Experience" class="slds-input inputBar CurriculumExperienceModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={CurriculumExperiences} for:item="Curriculum">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Curriculum.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter11">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Minimum Degree" class="slds-input inputBar MinimumDegreeModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={MinimumDegree} for:item="Degree">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Degree.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter12">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Country of Residence" class="slds-input inputBar CountryOfResidenceModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={countries} for:item="Country">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Country.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter13">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Citizenship" class="slds-input inputBar CitizenshipModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={countries} for:item="country">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{country.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modalFilterCover">
+            <div class="filter14">
+              <div class="slds-form-element">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:9;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;cursor: pointer;padding-left: 10px;border:2px solid rgba(45, 81, 79 , 0.5);box-shadow: none;"
+                    placeholder="Interested Country" class="slds-input inputBar InterestedCountryModalFilter"
+                    onclick={showOptionMoreFilter} readonly />
+                </div>
+              </div>
+              <div class="moreFilterOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width:  95%;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 180px;overflow-y: auto;">
+                  <template for:each={countries} for:item="country">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{country.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalResetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={modalsubmitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modalFooter" onclick={MoreFiltersoptionsOverlayClicked}>
+          <p onclick={hideMoreFilter}>Cancel</p>
+          <p style="background: #549BA5;color:white" onclick={searchMoreFilters}>Search</p>
+        </div>
+      </div>
+
+      <!-- <div class="toggleButton" onclick={showHideCompactView}>
+        <lightning-icon icon-name="utility:chevronleft" size="x-small"></lightning-icon>
+      </div> -->
+
+      <div class="headertwoComboBox">
+        <div class="combobox">
+
+          <div class="optionsOverlay" onclick={optionsOverlayClicked}
+            style="display:none;width: 100%;height:100vh;position: absolute;top: 0;left: 0;z-index:2;">
+          </div>
+
+          <!-- <div style="padding: 5px 7px">
+            <div style="width: max-content;" class="filter1">
+              <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:3;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;border-radius: 20px;cursor: pointer;padding-left: 10px;font-weight: bold;border:none;box-shadow: none;"
+                    placeholder="Department" class="slds-input inputBar DepartmentFilter" onclick={showOption}
+                    readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={Departments} for:item="Department">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Department.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={resetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={submitOptions}>Submit</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div style="padding: 5px 7px">
+            <div style="width: max-content;" class="filter2">
+              <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:3;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;border-radius: 20px;cursor: pointer;padding-left: 10px;font-weight: bold;border:none;box-shadow: none;"
+                    placeholder="Experience" class="slds-input inputBar ExperienceFilter" onclick={showOption}
+                    readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={Experiences} for:item="Experience">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Experience.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={resetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={submitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div style="padding: 5px 7px">
+            <div style="width: max-content;" class="filter3">
+              <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:3;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;border-radius: 20px;cursor: pointer;padding-left: 10px;font-weight: bold;border:none;box-shadow: none;"
+                    placeholder="Language" class="slds-input inputBar LanguageFilter" onclick={showOption} readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={languagesSpoken} for:item="language">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{language.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={resetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={submitOptions}>Submit</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div style="padding: 5px 7px">
+            <div style="width: max-content;" class="filter4">
+              <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:3;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;border-radius: 20px;cursor: pointer;padding-left: 10px;outline: none;font-weight: bold;border:none;box-shadow: none;"
+                    placeholder="Curriculum" class="slds-input inputBar CurriculumFilter" onclick={showOption}
+                    readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={CurriculumExperiences} for:item="CurriculumExperience">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{CurriculumExperience.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={resetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={submitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 5px 7px">
+            <div style="width: max-content;" class="filter5">
+              <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  style="z-index:3;">
+                  <lightning-icon size="x-small"
+                    class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                    icon-name="utility:down"></lightning-icon>
+                  <input type="text"
+                    style="background: transparent;border-radius: 20px;cursor: pointer;padding-left: 10px;font-weight: bold;border:none;box-shadow: none;"
+                    placeholder="Degree" class="slds-input inputBar DegreeFilter" onclick={showOption} readonly />
+                </div>
+              </div>
+              <div class="cmbOptions"
+                style="position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;padding: 10px;">
+                <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                  <template for:each={MinimumDegree} for:item="Degree">
+                    <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                        style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{Degree.label}</span>
+                    </p>
+                  </template>
+                </div>
+                <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                  <div class="reset"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={resetOptions}>Reset</div>
+                  <div class="saveBtn"
+                    style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                    onclick={submitOptions}>Submit</div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <template for:each={modalFiltersForPillsViewDate} for:item="filter">
+            <lightning-input
+              style="font-weight: bold;--sds-c-input-radius-border: 20px;color: white;--sds-c-input-radius-border: 5px;
+              --sds-c-input-color-border: transparent;
+              --lwc-borderWidthThin: 0px;
+              width: 100%;
+              max-width: 206px;
+              padding: 0px 7px;
+              --sds-c-input-color-background: #174581;
+              cursor: pointer;
+              --sds-c-button-color-background: white;
+              margin: -12px 0px 0px;
+              --slds-c-input-radius-border: 1rem;
+              font-family: RobotoLight;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 13px;
+              color: white;"
+              type="date" label="" placeholder="Date From" class={filter.classes} value={filter.value} key={Id}
+              onchange={dateChangedInRecentFilters}>
+            </lightning-input>
+          </template>
+
+          <template for:each={modalFiltersForPillsView} for:item="filter">
+            <div style="padding: 5px 7px" key={id}>
+              <div style="width: max-content;" class="filter4">
+                <div class="slds-form-element" style="width: 100%;max-width: 200px;">
+                  <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                    style="z-index:3;">
+                    <lightning-icon size="x-small" class={filter.iconClass} icon-name="utility:down"></lightning-icon>
+                    <input type="text"
+                      style="border-radius: 20px;cursor: pointer;padding-left: 10px;outline: none;font-weight: bold;border:none;box-shadow: none;"
+                      placeholder={filter.placeholder} value={filter.value} class={filter.classes} onclick={showOption}
+                      readonly />
+                  </div>
+                </div>
+                <div class="cmbOptions">
+                  <div class="optionsFields" style="max-height: 300px;overflow-y: auto;overflow-x: hidden;">
+                    <template for:each={filter.optionValues} for:item="opt">
+                      <p key={Id} style="padding: 4px;" class="optval"><input type="checkbox"
+                          style="padding: 10px;width: 15px;height: 15px;vertical-align: middle;margin-right: 5px;"><span>{opt.label}</span>
+                      </p>
+                    </template>
+                  </div>
+                  <div class="bottomBtns" style="display: flex;justify-content: space-between;">
+                    <div class="reset"
+                      style="width: max-content; margin: 10px auto; padding: 5px 10px; color: black; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                      onclick={resetOptions}>Reset</div>
+                    <div class="saveBtn"
+                      style="width: max-content; margin: 10px auto; padding: 5px 10px; background: #549BA5 ; color: white; font-weight: bold; border-radius: 5px;cursor: pointer;"
+                      onclick={submitOptions}>Submit</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+        <a class="slds-align--absolute-center moreFilterBtn" onclick={showMoreFilter}>More Filters</a>
+        <template if:true={resetBtn}>
+          <a class="slds-align--absolute-center ClearBtn" onclick={filtersReset}>Clear</a>
+        </template>
+      </div>
+
+      <div class="compactViewToggleComponent"
+        style=" width:210%;display: flex;justify-content: space-between;flex-direction: row-reverse;margin-left: 0%;transition: all 0.3s;">
+
+        <div class="compactViewOverlay" style="width:47.6%;background: #e6eaea;">
+          <div class="compactView">
+            <div class="compectViewTabArea">
+              <div class="tableTab"
+                style="background: white;color:black; border-radius: 15px; margin-bottom: 5px;font-weight: bold;font-size: 14px"
+                onclick={showTable}>Table
+              </div>
+              <template for:each={compectViewTabAreaoptions} for:item="contact" for:index="index">
+                <div class="tab" key={Id} onclick={changeTab} data-id={contact.Id} data-index={index}>
+                  <p data-id={contact.Id} data-index={index}>{contact.Name}</p>
+                  <lightning-icon data-id={contact.Id} icon-name="utility:close" size="x-small"
+                    alternative-text="Doc image" data-index={index} style="margin: 2px 0px 0px 5px;">
+                  </lightning-icon>
+                </div>
+              </template>
+            </div>
+            <div class="compactViewHeader">
+              <p style="width:60px;min-width: 60px;text-align: center;"><span>Select</span></p>
+
+              <div class="allFieldHeads">
+                <p class="columnWidth NameFieldHead" data-class="NameField"
+                  style="justify-content: left;width:200px;min-width: 200px;">
+                  <span>Name</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByName"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByName}></lightning-icon>
+                </p>
+                <p class="columnWidth EmailFieldHead" data-class="EmailField"
+                  style="justify-content: left;width:300px;min-width: 300px;">
+                  <span>Email</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByEmail"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByEmail}></lightning-icon>
+                </p>
+                <p class="columnWidth AvailableDateFieldHead" data-class="AvailableDateField"
+                  style="width:150px;min-width: 150px;"><span>Available
+                    Date</span></p>
+                <p class="columnWidth CountryFieldHead" data-class="CountryField" style="width:100px;min-width: 100px;">
+                  <span>Country</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByCountry"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCountry}></lightning-icon>
+                </p>
+                <p class="columnWidth PartnerFieldHead" data-class="PartnerField" style="width:100px;min-width: 100px;">
+                  <span>Partner</span>
+                </p>
+                <p class="columnWidth ExperienceFieldHead" data-class="ExperienceField"
+                  style="width:100px;min-width: 100px;"><span>Experience</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByExperience"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByExperience}></lightning-icon>
+                </p>
+                <p class="columnWidth RefereeScoreFieldHead" data-class="RefereeScoreField"
+                  style="width:150px;min-width: 150px;"><span>Referee Score</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByRefereeScore}></lightning-icon>
+                </p>
+                <p class="columnWidth PhoneFieldHead" data-class="PhoneField"
+                  style="display: none;width:150px;min-width: 150px;"><span>Phone</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth CertificateFieldHead" data-class="CertificateField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Certification</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth PreferredCountryFieldHead" data-class="PreferredCountryField"
+                  style="display: none;width:150px;min-width: 150px;"><span>Preferred
+                    Country</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth CriminalRecordFieldHead" data-class="CriminalRecordField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Criminal
+                    Record</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="display: none;padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth BirthdateFieldHead" data-class="BirthdateField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Birthdate</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth RelationshipStatusFieldHead" data-class="RelationshipStatusField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Relationship Status</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth NumberOfDependentsFieldHead" data-class="NumberOfDependentsField"
+                  style="display: none;width:150px;min-width: 150px;"><span>Number
+                    of Dependents</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth DegreeTypeFieldHead" data-class="DegreeTypeField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Degree Type</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth CourseMajorFieldHead" data-class="CourseMajorField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Course Major</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+                <p class="columnWidth DegreeConferredFieldHead" data-class="DegreeConferredField"
+                  style="display: none;width:150px;min-width: 150px;">
+                  <span>Degree
+                    Conferred</span>
+                  <lightning-icon icon-name="utility:down" size="x-small" class="shortByRefereeScore"
+                    style="padding-left: 5px;--sds-c-icon-color-foreground-default: white;cursor: pointer;"
+                    onclick={shortByCertification}></lightning-icon>
+                </p>
+              </div>
+            </div>
+            <div class="compectViewButtons">
+              <p style="width:60px;min-width:60px;text-align: center;padding-top: 20px;"><input class="checkBox"
+                  type="checkbox" onchange={manageSelectAll}></p>
+              <div class="btns">
+                <div style="padding: 10px 20px;" class="compectViewButtonsBtn" onclick={exportContactData}>
+                  <lightning-icon icon-name='utility:table' alternative-text='new_window'
+                    size='x-small'></lightning-icon> Export
+                </div>
+                <div onclick={createTabsForCompactView} class="compectViewButtonsBtn" style="padding: 10px 20px;">
+                  <lightning-icon icon-name='utility:new_window' alternative-text='new_window'
+                    size='x-small'></lightning-icon> New Internal Tab
+                </div>
+                <div onclick={createTabsInBrowser} class="compectViewButtonsBtn" style="padding: 10px 20px;">
+                  <lightning-icon icon-name='utility:open_folder' alternative-t ext='new_window'
+                    size='x-small'></lightning-icon> New Browser Tab
+                </div>
+
+                <div style="padding: 10px 20px;" class="compectViewButtonsBtn" onclick={addRemoveBtnClicked}>
+                  <lightning-icon icon-name='utility:add' alternative-text='new_window' size='x-small'></lightning-icon>
+                  Add / Remove Columns
+                </div>
+
+                <template if:true={showAddremoveOptionVisibility}>
+                  <div class="addRemoveOptionsOverlay" onclick={hideaddRemoveOptions}
+                    style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 3;"></div>
+                  <div class="addRemoveOptions"
+                    style="width:400px;padding: 15px;z-index: 4;position: absolute; margin-top: 55px; right: 80px; background: white; box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px; border-radius: 5px;">
+
+                    <lightning-dual-listbox label="Fields" source-label="Available" selected-label="Selected"
+                      options={allFieldsAvailable} value={currentFieldsOptions}
+                      onchange={handleAddRemoveListOptionChanged}></lightning-dual-listbox>
+                    <div class="listBoxActions" style="display: flex;justify-content: center;padding: 20px 0px 0px;">
+                      <p onclick={hideaddRemoveOptions}
+                        style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;border: 1px solid #ccc;border-radius: 2px;">
+                        Cancel
+                      </p>
+                      <p onclick={fieldsresetReorderOptions}
+                        style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;border: 1px solid #ccc;border-radius: 2px;">
+                        Reset</p>
+                      <p onclick={fieldsSubmitReorderOptions}
+                        style="margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 12px;padding: 5px 10px;border-radius: 2px;background: #549BA5;color:white">
+                        Submit
+                      </p>
+                    </div>
+
+                  </div>
+                </template>
+
+
+                <div class="toggleButton" style="margin-top: 15px;" onclick={showHideCompactView}>
+                  <lightning-icon icon-name="utility:chevronleft" size="x-small"></lightning-icon>
+                </div>
+              </div>
+            </div>
+            <div class="compectViewData">
+
+              <template for:each={compactViewContactList} for:item="contact">
+                <div class="compectViewRow" key={Id}>
+                  <p style="width:60px;min-width: 60px;text-align: center;"><input class="checkBox" type="checkbox"
+                      data-id={contact.Id}>
+                  </p>
+                  <div class="allFieldsValues">
+                    <p class="columnWidth NameField" data-class="NameField"
+                      style="justify-content: left;width:200px;min-width: 200px;max-width: 200px">
+                      {contact.Name}</p>
+                    <p class="columnWidth EmailField" data-class="EmailField"
+                      style="justify-content: left;width:300px;min-width: 300px;max-width: 300px">
+                      {contact.Email}
+                    </p>
+                    <p class="columnWidth AvailableDateField" data-class="AvailableDateField"
+                      style="width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Date_of_Availability__c}</p>
+                    <p class="columnWidth CountryField" data-class="CountryField"
+                      style="width:100px;min-width: 100px;max-width: 100px">
+                      {contact.Country__c}</p>
+                    <p class="columnWidth PartnerField" data-class="PartnerField"
+                      style="width:100px;min-width: 100px;max-width: 100px">
+                      {contact.Partner__c}</p>
+                    <p class="columnWidth ExperienceField" data-class="ExperienceField"
+                      style="width:100px;min-width: 100px;max-width: 100px">{contact.yearsOfExperience__c}
+                    </p>
+                    <p class="columnWidth RefereeScoreField" data-class="RefereeScoreField"
+                      style="width:150px;min-width: 150px;max-width: 100px">{contact.refereeRating__c}
+                    </p>
+                    <p class="columnWidth PhoneField" data-class="PhoneField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">{contact.Phone}</p>
+                    <p class="columnWidth CertificateField" data-class="CertificateField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Certification__c}</p>
+                    <p class="columnWidth PreferredCountryField" data-class="PreferredCountryField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Preferred_Country__c}</p>
+                    <p class="columnWidth CriminalRecordField" data-class="CriminalRecordField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Criminal_Record__c}</p>
+                    <p class="columnWidth BirthdateField" data-class="BirthdateField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Birthdate}</p>
+                    <p class="columnWidth RelationshipStatusField" data-class="RelationshipStatusField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Relationship_Status__c}</p>
+                    <p class="columnWidth NumberOfDependentsField" data-class="NumberOfDependentsField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Number_Of_Dependents__c }</p>
+                    <p class="columnWidth DegreeTypeField" data-class="DegreeTypeField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Degree_Type__c}</p>
+                    <p class="columnWidth CourseMajorField" data-class="CourseMajorField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Course_Major__c}</p>
+                    <p class="columnWidth DegreeConferredField" data-class="DegreeConferredField"
+                      style="display: none;width:150px;min-width: 150px;max-width: 150px">
+                      {contact.Degree_Conferred__c}</p>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <template if:true={compectViewTabDataVisibility}>
+              <div class="compectViewTabData">
+                <div>
+                  <article class="slds-card" style="padding-bottom: 15px;">
+
+                    <div class="header">
+                      <div>
+                        <div style="display: flex;">
+                          <div class="backBtn" onclick={backBtnClicked}>
+                            <lightning-icon icon-name="utility:back" class="search-icon" size="small"
+                              style="margin-top:8px;">
+                            </lightning-icon>
+                          </div>
+                          <span class="fullNameCss">{compactViewVisibleContact.Name}</span>
+                          <img src={star} style="width: 15px;height: 15px;margin: 8px;">
+                        </div>
+                        <div class="emailPreviewcss">
+                          <p>{compactViewVisibleContact.Email}</p>
+                        </div>
+                      </div>
+                      <div class="imageIcons" style="display: flex;flex-wrap:wrap;align-items: center;">
+                        <img src={multipleIcon} style="margin: 0px 10px;">
+                        <img src={messageIcon} style="margin: 0px 10px;">
+                        <img src={barIcon} style="margin: 0px 10px;">
+                        <img src={userIcon} style="margin: 0px 10px 0px 0px;">
+                        <img src={InviteButtonIcon} style="margin: 0px 0px 0px 10px;">
+
+                      </div>
+                    </div>
+
+
+                    <div class="container" style="padding: 0px 15px;display: flex;">
+                      <div class="basicInfo">
+                        <div class="basicInfoCss">
+                          <p style="padding-bottom: 15px;" class="customClass">BASIC INFORMATION SUMMARY</p>
+                        </div>
+                        <div style="background:#F6F6F6;border-radius: 15px;">
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Full Name
+                                <p class="textCss"> {compactViewVisibleContact.Name}</p>
+                              </span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Country of Residence
+                                <p class="textCss">{compactViewVisibleContact.Country_Of_Residance__c}</p>
+                              </span>
+                            </div>
+                          </div>
+
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Phone
+                                <p class="textCss">{compactViewVisibleContact.Phone} </p>
+                              </span>
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Criminal Record
+                                <p class="textCss">{compactViewVisibleContact.Criminal_Record__c}</p>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Date
+                                Of Birth
+                                <p class="textCss">{compactViewVisibleContact.Birthdate}</p>
+                              </span>
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">RelationShip
+                                Status
+                                <p class="textCss">{compactViewVisibleContact.Relationship_Status__c}</p>
+                              </span>
+
+                            </div>
+                          </div>
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Date
+                                of Availibility
+                                <p class="textCss"> {compactViewVisibleContact.Date_of_Availability__c}</p>
+                              </span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Number of Dependents
+                                <p class="textCss">{compactViewVisibleContact.Number_Of_Dependents__c}</p>
+                              </span>
+                            </div>
+                          </div>
+                          <div style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Partner</span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <p class="textCss"> {compactViewVisibleContact.Partner__c}</p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="education">
+                        <div class="basicInfoCss">
+                          <p style="padding-bottom: 15px;" class="customClass">EDUCATIONAL SUMMARY</p>
+                        </div>
+                        <div style="background:#F6F6F6;border-radius: 15px;">
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Name Of Institute
+                                <p class="textCss"> {compactViewVisibleContact.Name_Of_Institute__c}</p>
+                              </span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Country
+                                <p class="textCss">{compactViewVisibleContact.Country__c}</p>
+                              </span>
+                            </div>
+                          </div>
+
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Degree type
+                                <p class="textCss">{compactViewVisibleContact.Degree_Type__c} </p>
+                              </span>
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                Degree in Education
+                                <p class="textCss">{compactViewVisibleContact.Degree_In_Education__c}</p>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Course
+                                / Major
+                                <p class="textCss">{compactViewVisibleContact.Course_Major__c}</p>
+                              </span>
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Degree
+                                Conferred
+                                <p class="textCss">{compactViewVisibleContact.Degree_Conferred__c}</p>
+                              </span>
+
+                            </div>
+                          </div>
+                          <div
+                            style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;border-bottom: 1px solid lightgray; ">
+                            <div style="width: 165px;">
+                              <!-- <p>full name </p> 
+                                        <p class="textCss">Jim bob </p> -->
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                <p class="textCss"></p>
+                              </span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">
+                                <p class="textCss"></p>
+                              </span>
+                            </div>
+                          </div>
+                          <div style="padding:10px 15px;height: 60px;display:flex;justify-content: space-between;">
+                            <div style="width: 165px;">
+                              <span
+                                style="font-family: 'RobotoLight';font-style: normal;font-weight: 400;font-size: 16px;line-height: 19px;color: rgba(9, 17, 50, 0.5);">Certificate</span>
+
+                            </div>
+                            <div style="width: 165px;">
+                              <p class="textCss"> {compactViewVisibleContact.Certification__c}</p>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="border-radius: 15px;width: 97%;margin: auto;">
+                      <div class="basicInfoCss">
+                        <p style="padding-bottom: 15px;" class="customClass">SEEKING POSITIONS</p>
+                      </div>
+                      <div style="background:#F6F6F6;border-radius:15px;min-height: 252px;padding-left: -8px;">
+                        <table>
+                          <tr class="seekingPositionTabHeader">
+                            <th style="padding:20px">Department</th>
+                            <th>Subject of Role</th>
+                            <th>Education Level</th>
+                            <th>Curriculum</th>
+                          </tr>
+                          <template for:each={data} for:item="item">
+                            <tr key={item.key} class="seekingPositionData">
+                              <td style="padding:17px">{item.DepartMent}</td>
+                              <td>{item.Subject}</td>
+                              <td>{item.Education}</td>
+                              <td>{item.Curriclum}</td>
+                            </tr>
+                          </template>
+                        </table>
+
+                      </div>
+                    </div>
+
+
+
+                  </article>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <div class="containerOverlay" style="width: 47.6%;">
+          <div class="container slds-grid slds-gutters slds-wrap">
+            <div class="userList">
+
+              <div style="background: #e6eaea;">
+
+                <div class="bestMatchHeader">
+
+                  <p class="currentRecordsType">Total</p>
+                  <div style="margin: 8px;">
+                    <div style="width: max-content;" class="filter5">
+                      <div class="slds-form-element" style="width: 130px;">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                          style="z-index:3;">
+                          <lightning-icon size="x-small" style="--sds-c-icon-color-foreground-default: white;"
+                            class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+                            icon-name="utility:down"></lightning-icon>
+                          <input type="text" placeholder="" class="slds-input inputBar bestMatchFilter"
+                            onclick={showOption} readonly />
+                        </div>
+                      </div>
+                      <div class="cmbOptions"
+                        style="margin-left: -65px;position: absolute;background:white;border-radius: 10px;overflow:hidden;z-index: 10;display:none;width: 100%;max-width: 192px;box-shadow:rgb(0 0 0 / 50%) 0px 0px 2px;">
+                        <div class="optionsFields" style="max-height: 300px;overflow-y: auto;">
+                          <template for:each={sortingOption} for:item="option">
+                            <p key={Id} style="padding: 10px 20px;cursor: pointer;" class="optval"
+                              onclick={handleBestMatch}>
+                              {option.label}
+                            </p>
+                          </template>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- <div style="padding:8px;display:flex;flex-wrap:wrap;margin-top: 4px;">
+                    <span class="lrt" style="color: white;font-size: smaller;margin-top: 5px;">Alert</span>
+                    <lightning-input type="toggle"></lightning-input>
+                  </div> -->
+                </div>
+                <div style="background: #FFF;padding: 10px 20px 10px 15px;box-shadow: none;">
+                  <lightning-input name="enter-search" placeholder="Search Name or Email " type="search"
+                    class="my-cystom-input" onkeyup={searchContact} onchange={searchContact}></lightning-input>
+                </div>
+
+                <p
+                  style="text-align: center; padding: 5px; font-weight: bold; letter-spacing: 2px; color: #555555;background: white;">
+                  {contactListCount} Results</p>
+
+              </div>
+
+              <div class="conList" style="overflow-y:auto;background: white;">
+                <div style="width: 100%;padding: 5px 0px;">
+                  <template for:each={contactList} for:item="contact">
+                    <div class="con-bubble" key={Id} style="position: relative;">
+                      <div class="icons boomarkIcon" data-id={contact.Id} data-checked={contact.checked}
+                        onclick={bookmarkBtnClicked}>
+                        <div class="boomarkIcon">
+                          <!-- <div class="slds-col">
+                                <img src={showUsers} alt="">  
+                              </div>{contact.Number_Of_Dependents__c} -->
+                          <div class="boomarkIcon">
+                            <img class="boomarkIcon" src={contact.bookmarkStatus} alt=""
+                              style="width: 20px;margin: 0px 5px;">
+                            <!-- <lightning-icon onclick={favouriteCandiddate} data-id={contact.Id}
+                                  class={contact.classname} icon-name='utility:favorite' style="padding:2px;"
+                                  alternative-text='f' size='x-small' title='favorite'></lightning-icon> -->
+                          </div>
+                        </div>
+                      </div>
+                      <article class={contact.classes} data-record={contact.Id}
+                        style="border-radius: 15px;margin: 10px 15px;overflow: hidden;cursor: pointer;padding: 2px;"
+                        onclick={showDetails}>
+                        <div class="slds-card__header slds-grid" data-record={contact.Id}
+                          style="padding: 15px 15px 0px 15px;">
+                          <header class="slds-media slds-media_center slds-has-flexi-truncate" data-record={contact.Id}>
+                            <div class="slds-media__body" data-record={contact.Id}>
+                              <p class="conatactName" style="color:#fff;font-size: 15px;font-weight: 600;"
+                                data-record={contact.Id}>{contact.Name}</p>
+                              <p style="font-weight: 400;font-size: 12px;line-height: 16px;color: white;"
+                                data-record={contact.Id}>
+                                {contact.Degree_Type__c}
+                              </p>
+                            </div>
+                          </header>
+                        </div>
+                        <div
+                          style="padding: 10px 10px 15px; background: white; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;"
+                          data-record={contact.Id}>
+                          <table style="width:100%;" data-record={contact.Id}>
+                            <tr data-record={contact.Id}>
+                              <th style="padding: 0px;" data-record={contact.Id}>Experience</th>
+                              <th style="padding: 0px;" data-record={contact.Id}>Available</th>
+                              <th style="padding: 0px;" data-record={contact.Id}>Referee Score</th>
+                            </tr>
+                            <tr data-record={contact.Id}>
+                              <td style="padding: 0px;" data-record={contact.Id}>{contact.yearsOfExperience__c}</td>
+                              <td style="padding: 0px;" data-record={contact.Id}>{contact.Date_of_Availability__c}</td>
+                              <td style="padding: 0px;" data-record={contact.Id}>{contact.refereeRating__c}</td>
+                            </tr>
+
+
+
+                          </table>
+                        </div>
+                        <!-- <footer class="slds-card__footer"> -->
+                        <!-- <a class="slds-card__footer-action" href="#">View All -->
+                        <!-- <span class="slds-assistive-text">Accounts</span> -->
+                        <!-- </a> -->
+                        <!-- </footer> -->
+                      </article>
+                    </div>
+                  </template>
+                  <br>
+                </div>
+              </div>
+
+            </div>
+            <template if:true={childScreenVisibility}>
+              <div class="childScreen">
+                <c-job-child-component current-jobid={currentActiveJob} visible-contact={visibleContact}
+                  onremovefavourite={removefavourite} onshowfavourite={showfavourite} all-contacts={contactList}
+                  onhidecomponent={hideComponent} ontoggle={showHideCompactView} onchangedheight={changedHeight}
+                  ontogglecomponents={toggleComponents} onsetconlistheight={setConlistHeight}>
+                </c-job-child-component>
+              </div>
+            </template>
+
+            <template if:false={childScreenVisibility}>
+              <div class="childScreen watermark">
+                <div style="height: 100%;
+              text-align: center;
+              width: 100%;">
+                  <!-- <img src={businessLogo} style="opacity: 0.3;height: 350px"> -->
+                  <h1 class="NoCandidateSelected">No Candidate Selected</h1>
+                </div>
+              </div>
+            </template>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </template>
+</template>

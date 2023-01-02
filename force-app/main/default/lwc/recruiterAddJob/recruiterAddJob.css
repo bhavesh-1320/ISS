@@ -1,0 +1,328 @@
+.mainContainer {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 30px;
+}
+
+.gradientBorder {
+    padding: 2px;
+    background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));
+}
+
+.jobHeader {
+    padding: 15px;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-right: 30px;
+
+}
+
+.information {
+    /* font-family: 'Roboto'; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    /* display: flex; */
+    align-items: center;
+    text-transform: uppercase;
+
+    color: #2D514F;
+}
+.topButton{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    padding-left: 5px;
+}
+
+[type="checkbox"] {
+    border-color: red;
+}
+
+.split {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #091132;
+
+}
+
+.emptySpace {
+    width: 100%;
+    height: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));
+}
+
+.tableHead {
+    color: #848898;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.detailSection {
+    background-color: #e6eaea;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.mycustomComboBox {
+    --sds-c-input-radius-border: 20px;
+    /* --sds-c-input-color-border: #549BA5; */
+    --lwc-colorTextPlaceholder: #091132;
+    --slds-c-icon-color-foreground-default: #293A7E;
+}
+
+.slds-form-element__label {
+    padding-bottom: 7px !important;
+}
+
+input[type="checkbox"] {
+    border: 1px solid red;
+}
+
+.curriculum {
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    padding: 15px 20px;
+}
+
+
+/* jobUIchild component */
+.addjobButton {
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+    HEIGHT: 83PX;
+
+}
+
+.addAnalytics {
+    margin-right: 54rem;
+    --sds-c-button-neutral-color-border: #549BA5;
+    --sds-c-button-neutral-color-background: #F5FAF9;
+    --slds-c-button-radius-border: 40px;
+    --sds-c-button-text-color: #549BA5;
+    height: 40px;
+}
+
+.detail-title {
+    padding: 0px 20px;
+}
+
+.detail-title .title {
+    font-size: 30px;
+}
+
+.newData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: aliceblue;
+    text-align: center;
+    border-radius: 26px;
+    padding: 16px;
+    margin: 14px;
+}
+
+.newDataItem {
+    display: flex;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.textfont {
+    margin-right: 23px;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2D514F80;
+}
+
+.textSecFont {
+    font-family: arial;
+    font-size: 16;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F;
+}
+
+.recordInfo td {
+    width: 50% !important;
+    text-align: left;
+    padding: 5px 5px 15px;
+}
+
+/* ------------mobile Css ------------------- */
+.mobile-main-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobile-show-compo {
+    display: block;
+}
+
+.detail-tables-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.add-back-btn {
+    font-size: 20px;
+    margin: 0px 0px 0px 25px;
+    color: blue;
+    display: none;
+}
+
+.headingFont {
+    font-size: 30px;
+    margin-left: 22px;
+}
+
+
+
+@media(max-width: 768px) {
+    .recordInfo td {
+        padding: 5px 5px 5px;
+    }
+
+    .headingFont {
+        font-size: 20px;
+    }
+
+    .detail-title .title {
+        font-size: 25px;
+    }
+
+    .mobile-main-btns {
+        display: none;
+    }
+
+    /* .mobile-show-compo{
+        display: none;
+    } */
+    .newData {
+        flex-direction: column;
+    }
+
+    .detail-tables-wrapper {
+        flex-direction: column;
+    }
+
+    .add-back-btn {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.carriculum {
+    color: #848898;
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 6px;
+    padding-left: 13px;
+}
+
+.padd {
+    padding-right: 30px;
+}
+
+.likeContainer {}
+
+.btn {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #549BA5;
+    cursor: pointer;
+    
+
+}
+.export{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+
+.bt {
+    padding: 4px;
+    /* width: fit-content; */
+}
+
+.cont {
+    padding: 0px 30px 20px 30px;
+    background-color: #f4f5f5;
+}
+
+tr {
+    padding: 20px;
+}
+
+th {
+    padding: 20px;
+}
+
+td {
+    padding: 20px;
+}
+
+.question {
+    color: #2D514F;
+
+}
+
+.check {
+    --sds-c-checkbox-color-background-checked: green;
+    --sds-c-checkbox-mark-color-foreground: yellow;
+}
+
+.checkBoxWrap {
+    color: #091132;
+    font-weight: 600;
+    font-size: 14px;
+    padding-bottom: 8px;
+     width: 25%;
+}
+.selectSchool{
+      width: 100%;
+    height: 40px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-color: #E6EAEA;
+
+}
+
+
+
+
+@media(max-width: 768px) {
+    .checkBoxWrap {
+        width: 50%;
+    }
+}

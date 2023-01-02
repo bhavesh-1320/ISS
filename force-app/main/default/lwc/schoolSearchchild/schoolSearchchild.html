@@ -1,0 +1,502 @@
+<template>
+<!-- <img src={teacherImage}> -->
+<div class="mainContainer" onclick={childCmpResized} >
+    <div class="Teacher">
+    <div>
+        <p class="add-back-btn" onclick={goBack}> &lt; Back</p>
+    </div>
+        <div style="    margin: 10px 0px;">
+            <!-- <img src={teacherImage} alt="" class="mobile-view-Image" style="width: 100%;height: 229px;">  -->
+        </div>
+        
+    <div class="Teacher2">
+        <div class="jobDetails slds-p-around_x-small" >
+        
+        <div class="slds-align-bottom">
+            <p style="font-size: 25px; color: white; font-weight: 600;">{getValue.Name}</p>
+            <div style="color: white;">
+            
+            <p>Location:&nbsp;{getValue.Country__c} </p>
+            <!-- <p>Likes: 22 Likes - View Comments</p> -->
+            </div>
+        </div>
+        <div class="slds-align-bottom" style="display: flex;">
+            <div>
+            <a href={messageChannel} style="background: rgb(84, 155, 165);color: white;margin: 0px 5px;cursor: pointer;text-decoration: none;font-weight: bold;font-size: 13px;padding: 6px 30px;border-radius: 100px;text-align: center;"
+            class="slds-align--absolute-center">
+                <button variant="success" title="Chat" onclick={handleClick} class="slds-m-left_x-small" style="background: transparent;border: none;height: 29px;text-decoration: none;">Chat</button>
+            </a>
+            
+            <!-- <p style="  color: white; font-size: 16px; text-align: center;   margin-left: 23px;margin-top: 2px;">Chat</p> -->
+            </div>
+            <div>
+                <template if:true={bookmarked}>
+                <div style="display:flex">
+                    <!-- <div>
+                        <p style="background: transparent;color: #fff;border:2px solid white;margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 13px;padding: 8px 30px;border-radius: 100px;"
+                            onclick={removeBookmark} data-id={getValue.Id}>
+                        </p>    
+                    </div> -->
+                    <div>
+                       <p style="background: transparent;color: #fff;border:2px solid white;margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 13px;padding: 8px 30px;border-radius: 100px;"
+                      onclick={removeBookmark} data-id={getValue.Id}>
+                      <lightning-icon icon-name="utility:check" size="x-small"
+                        style="--sds-c-icon-color-foreground-default: white;"></lightning-icon> Bookmarked
+                    </p>
+                    </div>
+                </div>
+            </template>
+            <template if:false={bookmarked}>
+                <div>
+                <p style="background: #549BA5;color: white;margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 13px;padding: 10px 30px;border-radius: 100px;"
+                    onclick={addBookmark} data-id={getValue.Id}>
+                    <lightning-icon icon-name="utility:bookmark" size="x-small"
+                    style="--sds-c-icon-color-foreground-default: white;"></lightning-icon> Bookmark
+                </p>
+                </div>
+            </template>
+
+            </div>
+        </div>
+        </div>
+
+
+
+
+    </div>
+    </div>
+
+
+    <div class="newData">
+    
+    <!--  <div class="gridwalaparent" style="width:100% ;">
+        <div class="slds-grid mobile-show-dir">
+                <div class="slds-col slds-order_2 slds-large-order_1">
+                    
+                    <div class="slds-grid">
+                        <div class="slds-col slds-order_2 slds-large-order_1">
+                            <div class="textfont">
+                                <p>School Email</p>
+                                </div>
+                        </div>
+                        <div class="slds-col slds-order_1 slds-large-order_2">
+                            <div class="textSecFont">
+                                <p>{getValue.jobEmail__c}</p>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="slds-col slds-order_1 slds-large-order_2">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-order_2 slds-large-order_1">
+                            <div class="textfont">
+                                <p>School URL:</p>
+                                
+                                </div>
+                        </div>
+                        <div class="slds-col slds-order_1 slds-large-order_2">
+                            <div class="textSecFont">
+                                <p>{getValue.siteUrl__c}</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <hr/> -->
+    
+    <div class="overviewOfSchool">
+            <div class="part1">
+                <div class="Heading ">
+                    <span>
+                        Brief Overview Of school 
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        {getValue.overview__c}
+                    </p>
+                </div>
+                
+            </div>
+            <div class="part">
+                <div class="Heading ">
+                    <span>
+                        What we look for in a teacher?
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        Our focus is to bring in staff members with a passion for helping kid's see their potential in all areas of life including academics. With an extremely diversified and driven group of teachers and administrative members we've been able to build a culture of inclusion, empathy, accountability, and growth.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="part">
+                <div class="Heading ">
+                    <span>
+                        What teachers have to say
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        Abaarso is a premier 7th-12th grade co-ed boarding school outside Hargeisa, Somaliland that is changing lives and helping to rebuild a nation. It started as an abstract vision in 2008—to build a transformative school in a place the world had written off as hopeless.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="part">
+                <div class="Heading ">
+                    <span>
+                        What parent have to say
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        Abaarso is a premier 7th-12th grade co-ed boarding school outside Hargeisa, Somaliland that is changing lives and helping to rebuild a nation. It started as an abstract vision in 2008—to build a transformative school in a place the world had written off as hopeless.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="part">
+                <div class="Heading ">
+                    <span>
+                        History of School
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                         {getValue.history__c}
+                    </p>
+                </div>
+                
+            </div>
+            <div class="part">
+                <div class="Heading ">
+                    <span>
+                        School Blog Links
+                    </span>
+                </div>
+                <div class="paragraph">
+                    <p>
+                        {getValue.blogLinks__c}
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+
+        
+    </div>  
+    <div class="newData" style="padding-left:5px; padding:10px;">
+    <div style="display: flex;justify-content: space-between;cursor: pointer;" data-id="educationalInformation" onclick={CollapseDropDown}>
+        <p style="font-size: 16px;padding: 10px;color:#091132;font-family: 'RobotoMedium';font-weight: 400;line-height: 19px;    letter-spacing: 0em;">
+        School Details
+        </p>
+        <lightning-icon icon-name="utility:down" size="small"
+        style="margin: 10px;--sds-c-icon-color-foreground-default: #091132;"></lightning-icon>
+    </div>
+    <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+        <h1>Basic Information</h1>
+        <div class="recordInfo">
+        <!-- <div class="table"> -->
+            <template for:each={schoolDetails} for:item="item">
+                 <div key ={item}  class="information tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+            <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+            </template>
+        </div>
+        <h1>Contact Information</h1>
+        <div class="recordInfo">
+           <template for:each={contactInformation} for:item="item">
+                 <div key ={item}  class="contact tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+            </template>
+           
+        </div>
+    </div>
+    </div>
+    <div class="newData" style="padding-left:5px; padding:10px;">
+    <div style="display: flex;justify-content: space-between;cursor: pointer;" data-id="educationalInformation" onclick={CollapseDropDown}>
+        <p style="font-size: 16px;padding: 10px;color:#091132;font-family: 'RobotoMedium';font-weight: 400;line-height: 19px;    letter-spacing: 0em;">
+        Hiring Information
+        </p>
+        <lightning-icon icon-name="utility:down" size="small"
+        style="margin: 10px;--sds-c-icon-color-foreground-default: #091132;"></lightning-icon>
+    </div>
+    <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+        <h1>Salary Information</h1>
+         <div class="recordInfo">
+           <template for:each={salaryInformation} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+          
+            </template>
+        </div>
+        <h1>Visa Restrictions</h1>
+         <div class="recordInfo">
+           <template for:each={visaInformation} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+         
+            </template>
+        </div>
+       
+        <h1>Benefits</h1>
+          <div class="recordInfo">
+           <template for:each={benefits} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+           
+            </template>
+        </div>
+       
+    </div>
+    </div>
+     <div class="newData" style="padding-left:5px; padding:10px;">
+    <div style="display: flex;justify-content: space-between;cursor: pointer;" data-id="educationalInformation" onclick={CollapseDropDown}>
+        <p style="font-size: 16px;padding: 10px;color:#091132;font-family: 'RobotoMedium';font-weight: 400;line-height: 19px;    letter-spacing: 0em;">
+        Educational Information
+        </p>
+        <lightning-icon icon-name="utility:down" size="small"
+        style="margin: 10px;--sds-c-icon-color-foreground-default: #091132;"></lightning-icon>
+    </div>
+    <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+         <div class="recordInfo">
+           <template for:each={educationalInformation} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+          
+            </template>
+        </div>
+        
+       
+    </div>
+    </div>
+     <div class="newData" style="padding-left:5px; padding:10px;">
+    <div style="display: flex;justify-content: space-between;cursor: pointer;" data-id="educationalInformation" onclick={CollapseDropDown}>
+        <p style="font-size: 16px;padding: 10px;color:#091132;font-family: 'RobotoMedium';font-weight: 400;line-height: 19px;    letter-spacing: 0em;">
+        Community Information
+        </p>
+        <lightning-icon icon-name="utility:down" size="small"
+        style="margin: 10px;--sds-c-icon-color-foreground-default: #091132;"></lightning-icon>
+    </div>
+    <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+         <h1>Teacher Information</h1>
+         <div class="recordInfo">
+           <template for:each={teacherInformation} for:item="item">
+                 <div key ={item} style="   border-bottom: 0px;"  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+          
+            </template>
+        </div>
+      
+        <h1>Student Information</h1>
+          <div class="recordInfo">
+           <template for:each={studentInformation} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+            </template>
+        </div>
+       
+        <h1>Student Enrollment by Grade</h1>
+        <div class="recordInfo">
+           <template for:each={studentEnrollment} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+            </template>
+        </div>
+       
+        <h1>Tuition and Fees</h1>
+        <div class="recordInfo">
+           <template for:each={tuition} for:item="item">
+                 <div key ={item}  class="tableChild">
+            <p class="textfont">{item.label}</p>
+            <p class="textSecFont">{item.value}</p>
+            </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+            </template>
+        </div>
+       
+        
+    </div>
+    </div>
+    <div class="openRoles" style="overflow-y:auto">
+    <p class="Heading" style="padding: 15px;"> View Open Roles </p> 
+    <!-- <template if:true={sizeList}>
+        <div key={item.key} class="parentdiv" style="display: flex;padding: 20px;">
+            <div class="slds-grid mobile-show-dir">
+                    <template for:each={getJobValue} for:item="item" for:index="index">
+                    <div class="slds-col slds-order_2 slds-large-order_1 mobile-show-dir" key={item.key}>
+                        <article class="slds-card" key={item.key} style="background:aliceblue;border-radius: 15px;padding: 10px; margin-right:30px">
+                            <div class="slds-card__header slds-grid" style="background: #fff;border-radius: 13px">
+                                <header class="slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-grid slds-grid_reverse">
+                                        <div class="slds-col my-col" style="margin-top: 9px;" onclick={handleClick} dataset-id={index}>
+                                            <p style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+                                                {item.Name}
+                                            </p>
+                                            <p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+                                                {item.School__r.Name}
+                                            </p>
+                                        </div>
+                                        <div class="slds-col">
+                                            <img src={rectangleImage} style="margin-left: -14px;margin-bottom: 11px;">
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-no-flex">
+                                    </div>
+                                </header>
+                            </div>
+                            <div>
+                                <div class="slds-grid slds-gutters" style="text-align: center;">
+                                    <div class="slds-col" style="margin-left: 3px;">
+                                        <img src={locationImage}>
+                                        <span style="margin-left:11px;  ">{item.Country__c} </span>
+                                    </div>
+                                    <div class="slds-col" style="margin-bottom:11px">
+                                        <img src={hatImage}>
+                                        <span style="margin-left:11px;margin-left: 11px;margin-bottom: 43px;">
+                                            {item.Education_Level__c}</span>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-gutters" style="text-align:center;">
+                                    <div class="slds-col">
+                                        <span>3 days ago </span>
+                                    </div>
+                                    <div class="slds-col" style="margin-left: 48px;">
+                                            <p>Apply by:{item.Job_Role_Start_Date__c}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </article>
+                        </div>
+                    <div class="slds-col slds-order_1 slds-large-order_2" key={item.key} style="padding-top: 14px;">
+                        <span></span>
+                    </div>
+                </template> 
+            </div>
+        </div>
+    
+    </template> -->
+    <div class="c-container" style="padding: 4px;">
+        <lightning-layout vertical-align="center" style="justify-content: center;"  class="x-large" multiple-rows="true">
+            <template for:each={getMoreJobs} for:item="item" for:index="index">
+                <lightning-layout-item flexibility="auto" padding="around-small" key={Id} size="4">
+                    <article class="slds-card" key={item.key}
+                    style="border-radius: 16px;padding: 2px;width:fix-content;background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));">
+                    <div style="cursor: pointer;" class=" slds-grid jobArticle" data-id={item.Id}
+                        onclick={getClick}>
+
+                        <div class="jobDescription" data-id={item.Id}>
+                            <div style="height: 60px;width: 80px;">
+                                <img src={rectangleImage}>
+                            </div>
+                            <div style="padding-left: 15px; padding-bottom:5px" data-id={item.Id}>
+                                <p class="articleHeading" data-id={item.Id}> {item.Name}</p>
+
+                                <p class="articleValue" data-id={item.Id}></p>
+                            </div>
+                        </div>
+                        <div data-id={item.Id}>
+                            <img src={groups} style="padding-top:5px">
+                        </div>
+                    </div>
+                    <div style="border-bottom-left-radius: 14px;border-bottom-right-radius: 14px;background: white;">
+                        <div style="padding: 10px 0px;border-bottom: 1px solid #EEF6F5;display: flex;justify-content: space-between;text-align:center">
+                            <div class="slds-col">
+                                <img src={locationImage}>
+                                <span style="margin-left:11px;">{item.Country__c} </span>
+                            </div>
+                            <div class="slds-col">
+                                <img src={hatImage}>
+                                <span style="margin-left: 11px;"> Masters</span>
+                            </div>
+                        </div>
+                        <div
+                            style="padding: 10px 0px; padding-bottom:0px;display: flex;text-align:center">
+                            <div class="slds-col">
+                                <span class="posted">{item.CreatedDate} </span>
+                            </div>
+                            <div class="slds-col" style="margin-left: 9px;">
+                                <span class="applyBy">Apply by:&nbsp;{item.Job_Role_Start_Date__c}</span>
+                            </div>
+                        </div>
+                    </div>
+                    </article>
+                </lightning-layout-item>
+            </template>
+            
+        </lightning-layout>  
+    
+    </div>
+    
+    <template if:true={sizeList}>
+        <div class="nodata">
+            <p> No Open Jobs </p>
+        </div>
+        
+    </template>
+
+    
+    </div>   
+    <!-- <template if:true={showMoreData}>
+            <div class="moreData" onclick={showMoreJobs}  style="position: absolute;right: 82px;bottom: 114px;">
+                More Jobs
+            </div>
+        </template> -->
+
+</div>
+
+</template>

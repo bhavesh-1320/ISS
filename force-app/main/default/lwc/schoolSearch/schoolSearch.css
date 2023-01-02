@@ -1,0 +1,529 @@
+.headingfonts {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+    font-family: RobotoLight;
+
+}
+.activeFilter {
+  background: #174581;
+  color: white;
+  font-weight: bold;
+
+}
+.innerModalInput{
+   width: -webkit-fill-available;
+    margin-right: 6px;
+    border-radius: 6px;
+    padding: 5px;
+    border: 2px solid rgba(45, 81, 79, 0.5);
+}
+.innerModalInput:active {
+    border: 2px solid rgba(45, 81, 79, 0.5);
+}
+.activeFilter::placeholder{
+    color: white;
+}
+
+inactiveFilter{
+    background-color: transparent;
+    color: rgb(90 90 90);
+}
+inactiveFilter::placeholder{
+    color: rgb(90 90 90) ;
+}
+.icons{
+    --sds-c-icon-color-foreground-default: white;
+    z-index:15;
+}
+.iconsInactive{
+    --sds-c-icon-color-foreground-default: grey;
+    
+}
+
+
+.container {
+    background: #E6EAEA;
+    border-radius: 22px;
+    text-align: center;
+    color: #555555;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.morefiltersModal,
+.morefiltersModalOverlay {
+    display: none;
+}
+
+.inputBar {
+    z-index: 4;
+    position: inherit;
+    /* color: rgb(90 90 90); */
+    
+}
+
+.region {
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.countryCombobox {
+    background: transparent;
+    border: transparent;
+    border-radius: 20px;
+    width: 7rem;
+    margin-left: 1%;
+    height: 33px;
+
+}
+
+.bestMatchMain {
+    /* background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157)); */
+    background: linear-gradient(89.81deg, #28397E 1.33%, #46A39D 99.98%);
+    ;
+    border-radius: 20px 20px 0px 0px;
+    height: 48px;
+    /* margin-top: -0.3%; */
+}
+PrimaryFilter::placeholder{
+    color: white;
+    background-color: #174581;
+}
+PrimaryFilter{
+    color: white;
+    background-color: #174581;
+}
+
+.bestMatchFilter::placeholder {
+    color: white;
+    font-family: MontserratLight;
+    font-weight: 200;
+
+    font-size: 20px;
+}
+
+.bestMatchFilter {
+    cursor: pointer;
+    font-family: MontserratLight;
+    font-size: 20px;
+    padding-left: 10px;
+    /* font-weight: 300; */
+    line-height: 30px;
+    border-radius: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    /* font-family: Montserrat; */
+}
+
+.countryCombobox * {
+    /* background: red; */
+    border-radius: 0px 0px 20px 20px;
+
+    border: transparent;
+    /* border-radius: 20px; */
+    /* width: 7rem; */
+    /* margin-left: 1%; */
+    height: 33px;
+
+}
+
+.my-cystom-input {
+    --sds-c-input: 2px solid #5FA19C;
+    --sds-c-input-color-border: transparent;
+    --lwc-borderWidthThin: 2px;
+    --slds-c-input-color-background: #e6eaea;
+    --slds-c-input-radius-border: 20px;
+    margin-top: -4px;
+}
+
+input::placeholder {
+    font-weight: bold;
+    font-family: RobotoLight;
+}
+
+
+.maindivcontainer {
+    padding: 0px 15px;
+    background: #f9f9f9;
+    border-radius: 22px;
+}
+
+
+
+.comboBoxCss {
+    --sds-c-input: 2px solid #5FA19C;
+    --sds-c-input-color-border: transparent;
+    --lwc-borderWidthThin: 3px;
+    --slds-c-input-color-background: #e6eaea;
+    --slds-c-input-radius-border: 20px;
+    width: max-content;
+    font-weight: 500;
+    margin: -10px 10px 0px 10px;
+
+}
+
+.bestmatchfont {
+    font-family: MontserratLight;
+    ;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+}
+
+.bestMatches {
+    display: flex;
+    padding: 10px;
+    height: 48px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-image: linear-gradient(89.81deg, #28397E 1.33%, #46A39D 99.98%);
+}
+
+.show-to-desktop {
+    width: 75%;
+    display: flex;
+    padding: 0px;
+}
+
+/* mobile css */
+.parentDiv {
+    display: none;
+    background: #E6EAEA;
+    width: 100%;
+    margin: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-bottom: 10px;
+}
+
+.schoolNameCheckbox {
+    max-width: 160px;
+    white-space: nowrap;
+    font-family: RobotoMedium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.child-show-dropdown {
+    padding: 15px 0;
+    display: none;
+}
+
+.parent-show-dropdown {
+    padding: 15px;
+    display: block;
+    overflow: hidden;
+    height: 732px;
+    overflow-y: auto;
+}
+
+.show-childCmp {
+    /* margin-top: 15px; */
+    display: block;
+    padding: 24px;
+}
+
+/* mobile css end  */
+
+
+
+
+
+/* media query start  */
+@media(max-width : 768px) {
+    .parentDiv {
+        display: block;
+    }
+
+    .show-to-desktop {
+        display: none;
+    }
+
+    .show-desktop-list {
+        width: 100%;
+    }
+
+    .child-show-dropdown {
+        display: block;
+
+    }
+
+    .parent-show-dropdown {
+        display: none;
+    }
+
+    .show-childCmp {
+        display: none;
+        width: 100% !important;
+        margin-top: 10px;
+    }
+}
+
+/* media query end  */
+
+/* scroll bar user */
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+
+
+
+/* LOADER CSS  */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.1;
+    z-index: 100000;
+}
+
+.grid-container {
+    position: absolute;
+    left: calc(50%);
+    top: calc(50vh);
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    height: 120px;
+    aspect-ratio: 1;
+    z-index: 100001;
+}
+
+.cube {
+    background-color: #549BA5;
+}
+
+.cube7 {
+    animation: 0.8s pulse infinite ease-in-out;
+}
+
+.cube4,
+.cube8 {
+    animation: 0.8s pulse 150ms infinite ease-in-out;
+}
+
+.cube1,
+.cube5,
+.cube9 {
+    animation: 0.8s pulse 300ms infinite ease-in-out;
+}
+
+.cube2,
+.cube6 {
+    animation: 0.8s pulse 450ms infinite ease-in-out;
+}
+
+.cube3 {
+    animation: 0.8s pulse 600ms infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* LOADER CSS END  */
+
+
+/* more filter  */
+.morefiltersModal {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    left: calc(40.5% - 350px);
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    background: white;
+    padding: 20px;
+    top: 10vh;
+    height: 58vh;
+    z-index: 17;
+    border-radius: 5px;
+    transition: all 0.6s;
+    animation: showFilters-c-schoolSearch_schoolSearch 0.6s;
+}
+
+@keyframes showFilters {
+    0% {
+        top: 100vh;
+    }
+}
+
+.modalheader {
+    font-size: 24px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    font-family: RobotoLight;
+}
+
+
+.modalBody {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modalBody lightning-combobox,
+.modalBody lightning-input {
+    margin: 20px;
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: right;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    font-family: RobotoLight;
+    z-index: 25;
+    position: relative;
+}
+
+.modalFooter p {
+    padding: 10px 15px;
+    width: max-content;
+    font-weight: bold;
+    margin: 0px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.countShow {
+
+    position: absolute;
+    top: 6px;
+    font-size: 13px;
+    font-family: 'RobotoLight';
+    font-weight: bold;
+
+}
+
+
+
+
+
+/* Implement Custom Css */
+headingFont {
+    font-family: MontserratLight;
+    color: #091132;
+}
+
+subheadingFont {
+    font-family: MontserratRegular;
+    color: #091132;
+}
+
+bodyFont {
+    font-family: RobotoLight;
+    color: #848898;
+}
+
+lineCalloutFont {
+    font-family: RobotoMedium;
+}
+
+@font-face {
+    font-family: 'MontserratLight';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Regular.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Medium.ttf) format('TrueType');
+}
+
+
+.morefiltersModalOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: black; */
+    z-index: 15;
+    opacity: 0.5;
+    transition: all 0.6s;
+    animation: opacityGain 0.6s;
+}
+
+@keyframes opacityGain {
+    0% {
+        opacity: 0;
+    }
+}
+
+/* .morefiltersModal {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background: white;
+  padding: 20px;
+  top: 10vh;
+  height: 80vh;
+  z-index: 6;
+  border-radius: 5px;
+  transition: all 0.6s;
+  animation: showFilters 0.6s;
+} */
+.modalheader {
+    font-size: 24px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.hideDiv {
+    display: none;
+}

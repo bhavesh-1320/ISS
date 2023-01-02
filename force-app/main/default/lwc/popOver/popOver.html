@@ -1,0 +1,35 @@
+<template>
+    <lightning-input
+        type="password"
+        label="Enter your password"
+        name="password"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*+`~=?\|<>/]).{8,}"
+        required
+        onchange={handleChange}
+        onfocus={handleFocus}
+        onblur={handleBlur}
+      ></lightning-input>
+    
+    
+
+      <template if:true={showValidation}>
+<section aria-label="Dialog title" aria-describedby="popover-body-id" class="slds-popover slds-nubbin_left-top" role="dialog">
+<button class="slds-button slds-button_icon slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" title="Close dialog">
+
+<span class="slds-assistive-text">Close dialog</span>
+</button>
+<div id="popover-body-id" class="slds-popover__body">
+ 
+        <div >
+          <p data-id="letter" class="invalid">Use atleast 1 lowercase Character(e.g. a-z)</p>
+          <p data-id="capital" class="invalid">Use atleast 1 uppercase Character(e.g. A-Z)</p>
+          <p data-id="number" class="invalid">Use atleast 1 Number(e.g. 0-9)</p>
+          <p data-id="length" class="invalid">Use atleast 8 or more characters</p>
+          <p data-id="character" class="invalid">Use atleast 1 special character(e.g.@,#,$)</p>
+        </div>
+
+</div>
+</section>
+
+      </template>
+</template>

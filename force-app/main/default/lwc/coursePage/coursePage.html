@@ -1,0 +1,429 @@
+<template>
+    <div class="course-main-container">
+        <div class="course-and-search">
+            <div class="slds-grid">
+                <div class="slds-col slds-order_1 slds-large-order_1">
+                    <div style="margin-top: 20px;margin-left: 26px;">
+                        <h1 class="heading-font" > Course</h1>
+                    </div>
+                </div>
+                <div class="slds-col slds-order_2 slds-large-order_2">
+                    <div class="my-custom-Combobox comboBox-style">
+                        <lightning-input name="enter-search" label="" type="search"></lightning-input>
+                    </div>
+                </div>
+            </div>
+            <div class="parent-div">
+                <div class="courseDetails">
+                    <div class="heading-course">
+                        <h1 class="heading-font" style="color:white;"> Teaching Overseas 101 </h1>
+                        <h6 style="color:white;">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</h6>
+                    </div>
+                    <div class="rating-course">
+                        <div class="flexdiv">  
+                        <div>
+                            <p style="color:white;">5.0 </p>
+                        </div>
+                        <div class="" style="display: flex;padding: 0px 10px 0px 10px;">
+                            <template for:each={rating} for:item="item" for:index="index">
+                                <div class="" key={item.key}>
+                                    <img src={whiteStar} alt="">
+                                </div>
+                            </template>
+                            
+                        </div>
+                        
+                        
+
+                        <div>
+                            <p style="color:white"> (951 Ratings) 17,251 Students</p> </br>
+                        
+                        </div>  
+                        </div>  
+                        <p style="font-size: 17px;color: white;font-family: arial;"> Created By Jhon Doe </p> </br>
+                        <div class="partDiv">
+                            <div class="partDiv">
+                                <div style="padding-right: 15px;">
+                                    <img src={icon} alt="">
+                                </div>
+                                <div>
+                                    <p style="color: #fff;">Last Updated 06/2021</p>
+                                </div>
+                            </div>
+                            <div class="partDiv" >
+                                <div style="padding-right: 15px;">
+                                    <img src={worldwide} alt="">
+                                </div>
+                                <div>
+                                    <p style="color: #fff;">English</p>
+                                </div>
+                            </div>
+                            <div class="partDiv">
+                                <div style="padding-right: 15px;">
+                                    <img src={types} alt="">
+                                </div>
+                                <div>
+                                    <p style="color: #fff;">English [Auto]</p>
+                                </div>
+                            </div>
+
+                        </div>   
+                    </div>
+                </div>
+                    
+                 <!--*********************** Mobile view ************************************************************************ -->
+                 <div class="mobile-view">
+                    <div class="mobile-view-banner img-div">
+                        <img src={thumbnailPic} alt="" style="width:100% ;">
+                        <img src={playbutton} alt="" class="button-play">
+                    </div>
+                    <div style="text-align: left;padding-left: 23px;">
+                        <div class="heading-course">
+                            <h1 class="heading-font"> Teaching Overseas 101 </h1>
+                            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="rating-course">
+                            <div class="flexdiv">  
+                                    <div>
+                                        <p >5.0 </p>
+                                    </div>
+                                    <div class="" style="display: flex;padding: 0px 10px 0px 10px;">
+                                        <template for:each={rating} for:item="item" for:index="index">
+                                            <div class="" key={item.key}>
+                                                <img src={star} alt="">
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <div>
+                                        <p > (951 Ratings) 17,251 Students</p> </br>
+                                    
+                                    </div>  
+                            </div>  
+                            <p style="font-size: 17px;font-family: arial;"> Created By Jhon Doe </p> </br>
+                            <div class="partDiv">
+                                <div class="partDiv">
+                                    <div style="padding-right: 15px;">
+                                        <img src={icon} alt="">
+                                    </div>
+                                    <div>
+                                        <p>Last Updated 06/2021</p>
+                                    </div>
+                                </div>
+                                <div class="partDiv" >
+                                    <div style="padding-right: 15px;">
+                                        <img src={worldwide} alt="">
+                                    </div>
+                                    <div>
+                                        <p>English</p>
+                                    </div>
+                                </div>
+                                <div class="partDiv">
+                                    <div style="padding-right: 15px;">
+                                        <img src={types} alt="">
+                                    </div>
+                                    <div>
+                                        <p >English [Auto]</p>
+                                    </div>
+                                </div>
+    
+                            </div>   
+                        </div>
+                        <div class="rate-of-course">
+                            <p style="margin-top:5px ;"> <span class="buy-course-rate">$75</span>  <span class="off-on-course" style="opacity: 0.5;"><s> $150 </s>  </span>  <span class="off-on-course"> 50% off</span></p>
+                        </div>
+                        <div style="padding:20px ;">
+                            <!-- <button class="slds-button slds-button_brand buttons"><b>Add to Cart</b></button>
+                        </br> -->
+                            <button class="slds-button slds-button_brand buttons" ><b>Buy Now</b></button>
+                        </div>
+                        <div class="details-font">
+                            <p> 30-day Money Back Guarantee </p>
+                            </br>
+                            <p> Full LifeTime Access </p>
+                        </div>
+    
+                        <div class="shareCoupon">
+                            <lightning-layout vertical-align="center" class="x-large">
+                                <lightning-layout-item flexibility="auto" padding="around-small">
+                                    <div class="custom-box">
+                                        <p> Share </p>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item flexibility="auto" padding="around-small">
+                                    <div class="custom-box">
+                                        <p>
+                                            Gift This Course 
+                                        </p>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item flexibility="auto" padding="around-small">
+                                    <div class="custom-box">
+                                        Apply Coupon 
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                </div>
+                <!-- *********************** Mobile view over ********************************** -->
+                <div class="learnSeaction">
+                    <p class="txtLearn"> <b>What you'll Learn </b> </p>
+                    <!-- <div class="whatyoulearn">
+                        
+                        <template for:each={listOfCourse}  for:item="item" for:index="index">
+                            <ul class="slds-list_dotted" key={item.key}>
+                                <li>{item.Name}</li>
+                            </ul>
+                        </template>
+                    </div>    -->
+
+
+                    <div class="whatyoulearn slds-grid slds-wrap">
+                        <!-- <p style="color:cadetblue ; font-size:15px;font-family:Arial, Helvetica, sans-serif;"> What you'll Learn </p> -->
+                        <template for:each={listOfCourse}  for:item="item" for:index="index">
+                            <ul class="slds-list_dotted slds-col  slds-small-size_5-of-12 slds-medium-size_4-of-12 slds-large-size_2-of-12" key={item.key}>
+                                <li class="" style="width:6rem;line-height:1.5rem;">{item.Name}</li>
+                            </ul>
+                        </template>
+                    </div>  
+                    
+                         
+                </div>
+
+                <div class="showPurchaseComponent">
+                    <div class="purchase-Div">
+                        <div class="img-div">
+                            <img src={thumbnailPic} alt="">
+                            <img src={playbutton} alt="" class="button-play">
+                        </div>
+                    </div>
+
+                    <div class="rate-of-course">
+                        <p style="margin-top:5px ;"> <span class="buy-course-rate">$75</span>  <span class="off-on-course" style="opacity: 0.5;"><s> $150 </s>  </span>  <span class="off-on-course"> 50% off</span></p>
+                    </div>
+
+                    <div style="padding:20px ;">
+                        <!-- <button class="slds-button slds-button_brand buttons"><b>Add to Cart</b></button>
+                    </br> -->
+                        <button class="slds-button slds-button_brand buttons" ><b>Buy Now</b></button>
+                    </div>
+
+                    <div class="details-font">
+                        <p> 30-day Money Back Guarantee </p>
+                        </br>
+                        <p> Full LifeTime Access </p>
+                    </div>
+
+                    <div class="shareCoupon">
+                        <lightning-layout vertical-align="center" class="x-large">
+                            <lightning-layout-item flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                    <p> Share </p>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                    <p>
+                                        Gift This Course 
+                                    </p>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                    Apply Coupon 
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+
+                <div class="course-includes">
+                    <p class="txtLearn"> <b> This Course Includes </b></p>
+
+                    <div class="show-course-deatils">
+                        <lightning-layout vertical-align="center" class="x-large show-in-col" >
+                            <lightning-layout-item flexibility="auto" padding="around-small" class="layout-design">
+                                <div class="custom-box" style="text-align:center ;">
+                                <img src={playbutton1} alt="" style="align-items: center;margin: 29px 0px 20px 0px;"  > <br>
+                                <p class="course-detail-font"> 4 Hours Of video </p>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item flexibility="auto" padding="around-small" class="layout-design"> 
+                                <div class="custom-box" style="text-align:center ;">
+                                    <img src={openbook} alt="" style="align-items: center;margin: 29px 0px 20px 0px;"> <br>
+                                    <p class="course-detail-font"> 11 Article + Resources </p>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item flexibility="auto" padding="around-small" class="layout-design">
+                                <div class="custom-box" style="text-align:center ;">
+                                    <img src={certificate} alt="" style="align-items: center;margin: 29px 0px 20px 0px;"> <br>
+                                <p class="course-detail-font">Certificate of Completion </p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+
+                </div>
+                <div class="student-parent">
+                    
+                </div>
+
+                <div class="course-includes">
+                    <p class="txtLearn"> <b> Description </b></p>
+                        <div class="course-description ">
+                            
+                            <p style="position: relative;">
+                                <span class="shadow">
+                                   
+                                </span>                             
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sed possimus, non totam nam quo earum et illum quis quae vero eligendi iusto unde laborum aut maxime numquam ab eveniet.
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, eius maiores reiciendis esse corrupti non quisquam corporis eos eligendi commodi, obcaecati est eaque sunt provclasst laborum deserunt ipsam, ipsa consequatur?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quae repellat ab itaque? Doloribus esse ea ut laborum! Fugiat corrupti provident neque fugit temporibus, alias dolorem doloribus voluptate est fuga<span class="dots"></span>
+                                <span class="more" style="display: none;"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis expedita quae labore quasi possimus, accusantium ipsa nam amet corrupti excepturi iste consectetur dolorem sit esse dolore incidunt impedit voluptatibus!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, nulla. Tempora similique, necessitatibus, modi molestiae voluptas nulla facere dolorum et recusandae excepturi assumenda vero inventore numquam cum rem aliquam veritatis!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque atque harum totam dolor quia tempora repellendus voluptatibus facere nemo quo a neque officiis, laboriosam placeat maiores inventore vitae voluptate numquam.
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, libero accusantium! Iste fugit optio recusandae explicabo quas fuga deserunt aliquid, odio, dolor maxime voluptatem labore ea voluptatum cum molestias autem.
+                                </span>
+                                 
+                                 <button onclick={showMore} class="ShowMoreBtn slds-p-top_medium"><b>Show More</b>  </button>
+                            </p>
+                        </div>
+                        
+                </div>
+
+
+                <div class="course-content">
+                    <p class="txtLearn slds-p-top_medium"><b>Course Content </b></p>
+                    <div style="display:flex; justify-content: space-between;">
+                    <div class="coursetotalInfo">5 sections • 20 lectures • 4h 10m total length</div>
+                    <div class="txtLearn" style="padding:0;"><b>Expand All Sections</b></div>
+                    
+
+                    </div>
+
+                    <div class="Sections">
+                        <template for:each={sections} for:index="index" for:item="item">
+
+                        
+                        <div class="sec1" key={item.key}>
+                            <div class="slds-section slds-is-open">
+                                <h3 class="slds-section__title" style="justify-content:space-around ;">
+                                    <div style="margin-right:15px ;display:flex ;">
+                                        <div style="margin-right: 40px;">
+                                            <lightning-button-icon icon-name="utility:right"  variant="bare" alternative-text="expand" onclick={expandSection} class="showright" name="showright" data-id={index}></lightning-button-icon>
+                                            <lightning-button-icon icon-name="utility:down"  variant="bare" alternative-text="expand" onclick={expandSection} class="showdown" name="showdown" data-id={index}></lightning-button-icon>
+                                        </div>
+                                        <div>
+                                            <span class="slds-truncate" title="Section Title">{item.text}</span>
+                                        </div>
+                                    </div>
+                                        
+                                            <p> 4 lecture • 50 mins</p>
+                                </h3>
+                                <div aria-hidden="true" class="slds-section__content showcontent" id={index}>
+                                    <p data-id={item.id}>
+                                        {item.text} 
+                                    </p>
+                                    <!-- <p>
+                                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    
+                                    </p> -->
+                                </div>
+                            </div>
+                            <hr style="opacity:0.7;color:#DDECEA">
+                        </div> 
+                        
+                    </template>
+                    
+                </div>
+                </div>
+
+                <div class="course-content">
+                    <p class="txtLearn"> <b> About the teacher </b></p>
+                    <div class="main-div-flex">
+
+                        
+                    <div style="display:flex ;">
+                    
+                        <div>
+                            <img src={rectangleImage} alt="">
+                        </div>
+                        <div style="margin-left:23px ;">
+                            <p class="heading-font-course"> <b> Teacher Name </b></p>
+                            <p class="heading-font-course" style="color: rgba(45, 81, 79, 0.5);"> Union Name </p>
+                        </div>
+                        
+                    </div>
+                    <div class="teaher-info-icon">
+                        <img src={teacherIcons} alt="">
+                    </div>
+                    </div>
+
+                    <div class="course-description ">
+                            
+                        <p style="position: relative;">
+                            <span class="shadowpara">
+                            </span>                             
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sed possimus, non totam nam quo earum et illum quis quae vero eligendi iusto unde laborum aut maxime numquam ab eveniet.
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, eius maiores reiciendis esse corrupti non quisquam corporis eos eligendi commodi, obcaecati est eaque sunt provclasst laborum deserunt ipsam, ipsa consequatur?
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quae repellat ab itaque? Doloribus esse ea ut laborum! Fugiat corrupti provident neque fugit temporibus, alias dolorem doloribus voluptate est fuga<span class="dot">...</span>
+                            <span class="moreContent" style="display: none;"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis expedita quae labore quasi possimus, accusantium ipsa nam amet corrupti excepturi iste consectetur dolorem sit esse dolore incidunt impedit voluptatibus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, nulla. Tempora similique, necessitatibus, modi molestiae voluptas nulla facere dolorum et recusandae excepturi assumenda vero inventore numquam cum rem aliquam veritatis!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque atque harum totam dolor quia tempora repellendus voluptatibus facere nemo quo a neque officiis, laboriosam placeat maiores inventore vitae voluptate numquam.
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, libero accusantium! Iste fugit optio recusandae explicabo quas fuga deserunt aliquid, odio, dolor maxime voluptatem labore ea voluptatum cum molestias autem.
+                            </span>
+                                <button onclick={showMoreAbout} class="ShowBtn slds-p-top_medium"><b>Show More</b>  </button>
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="student-review">
+                    <p class="student-review-font"> <b> Student Review </b> </p>
+                    
+                
+                    <template for:each={rating} for:index="index" for:item="item">
+                        <div class="student-review-child" key={item.key}>
+                                 <div class="student-review-icon" style="margin:10px">
+                                <img src={escalips} style="margin-left:-9px ;">
+                                <div class="student-detail">
+                                    <p> Jhon Jackson</p>
+                                    <div style="display:flex ;justify-content: space-between;">
+                                        <div style="display:flex ;"> 
+                                            <template for:each={rating} for:index="index" for:item="item">
+                                                <div key={item.key}>
+                                                    <img src={star} alt="" key={item.key} style="display:flex">
+                                                </div>
+                                                
+                                            </template>
+                                        </div>
+                                        <div>
+                                            
+                                                <p style="text-align:end ;">a week ago </p>
+                                        </div>
+                                    </div>
+                                
+            
+                                   
+                                </div>
+                               
+                            </div>
+                           
+                            <img src={dots} class="threedots">
+                            <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        
+                            </p>
+                        </div>
+                    </template>
+                     <button onclick={showMoreReview} class="ShowReview slds-m-around--none slds-p-right--medium slds-p-bottom--small"><b>Show More</b>  </button>
+                           
+                
+                </div>
+            </div>
+
+            
+        </div>     
+    </div>
+    
+   
+</template>

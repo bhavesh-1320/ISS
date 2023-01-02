@@ -1,0 +1,555 @@
+<template>
+   <template if:true={teacherProfile}>
+      <div class="backgroundDiv" style="background:transparent;position:absolute;z-index:10"
+         onclick={backgroundDivClick}>
+      </div>
+      <div style="width:100%;padding:  14px 0 8px;background: white;">
+         <div style="display:flex;justify-content: space-between;">
+            <div style="display:flex;">
+               <div style="padding-left:30px; padding-top:2pxl"> <a href={communityPath}><img src={schoolLogo}
+                        style="width: 182.67px;height: 32px;"></a></div>
+               <div style=" display: flex; margin: auto; margin-left: 3rem">
+                  <div class="headerfont"><a href={jobSearch}>Jobs</a>
+                  </div>
+                  <div class="headerfont"><a href={schoolPath1}>Schools</a></div>
+                  <div class="headerfont"><a href={ifairPage1}>Fairs</a>
+                  </div>
+                  <div class="headerfont"><a href={candidatelmsPage1}>Learning</a>
+                  </div>
+               </div>
+            </div>
+            <div style="display:flex; margin-right:35px">
+               <div class="slds-grid slds-gutters" style="margin-right: 5px;">
+                  <div class="slds-col" style="padding-right: 0px !important;">
+                     <a href={paymentPage}>
+                        <div if:true={upgradeUser}>
+                           <p style="background: #F9D88B;border-radius: 20px;padding: 8px 20px;font-weight: bold;">
+                              Upgrade Now</p>
+                        </div>
+                     </a>
+                     <!-- <div if:false={upgradeUser} class="slds-align--absolute-center" style="display:flex">
+                        <div class="slds-m-right--medium">
+                           <p class="subscriptionDate">Subscription valid till </p>
+                        </div>
+                        <div>
+                           <p style="background: #F9D88B;border-radius: 20px;padding: 8px 20px;font-weight: bold;">
+                              {validitySubscription}</p>
+                        </div>
+                     </div> -->
+                  </div>
+                  <div class="slds-col" style="padding-top: 5px;min-width: 45px;">
+                     <div>
+                        <img src={notification}>
+                     </div>
+                  </div>
+                  <div class="slds-col">
+                     <a href={cMessagePage}>
+                        <div>
+                           <img src={chat} style="position: relative; top: 7px; ">
+                           <div style="top: 10px;padding-top: 5px;">
+                              <template if:true={showCount}>
+                                 <div class="headerMsgCount">
+                                    <p>{unreadMessageCount}</p>
+                                 </div>
+                              </template>
+                              <!--<img src={rectangle} style="right: -12px; position: relative;top: -33px;" >-->
+                           </div>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="slds-col" style="padding-right: 0;">
+                     <div class="slds-align--absolute-center"
+                        style="margin-top:-2%;background: rgb(230, 234, 234);border-radius: 20px;width: 333px;height: 48px;justify-content: space-evenly;display: flex;position: relative;">
+                        <div style="width: 200px;">
+                           <img src={issEduRecruit} class="headerProfile slds-align--absolute-center">
+                        </div>
+                        <button style="border: transparent;background: transparent;" onclick={openOneApp}>
+                           <div class="slds-icon-waffle slds-icon-waffle_container">
+                              <div class="slds-r1"></div>
+                              <div class="slds-r2"></div>
+                              <div class="slds-r3"></div>
+                              <div class="slds-r4"></div>
+                              <div class="slds-r5"></div>
+                              <div class="slds-r6"></div>
+                              <div class="slds-r7"></div>
+                              <div class="slds-r8"></div>
+                              <div class="slds-r9"></div>
+                              <span class="slds-assistive-text">App Launcher</span>
+                           </div>
+                        </button>
+                        <div style="display: flex;align-items: center;cursor: pointer;">
+                           <!-- <a href={profilePage}> -->
+                           <div style="background: #66C1BF;border-radius: 50%;padding: 6px;width: 32px;"
+                              class="profileTextDiv" onclick={profileOptions}>
+                              <p class="profileTextCss slds-align--absolute-center" style="color:white">{userName}
+                              </p>
+                           </div>
+                           <!-- </a> -->
+                           <div style="margin-left: 5px;" onclick={profileOptions}>
+                              <img src={arrowIcon} />
+                           </div>
+                        </div>
+                        <template if:true={profileOptionsVisibility}>
+                           <div class="profileOptions">
+                              <div class="profileOptionsPointer"></div>
+                              <ul style="z-index:11">
+                                 <li style="font-family:RobotoMedium; font-size: 14px;color:black">{nameOfUser}</li>
+                                 <a href={profilePage}>
+                                    <li style=" font-size: 14px;">Profile</li>
+                                 </a>
+                                 <template if:false={showSwitchTab}>
+                                    <li style=" font-size: 14px;color: #549BA5; display: flex;">
+                                       {profileName}</li>
+                                 </template>
+                                 <template if:true={showSwitchTab}>
+                                    <li style="font-family:RobotoMedium; font-size: 14px;color: #549BA5; display: flex;"
+                                       onclick={changeProfile}>
+                                       <p>{profileName}</p>
+                                       <img src={refreshIcon} alt="" style="width: 15px; height: 15px;margin: 3px;">
+                                    </li>
+                                 </template>
+                                 <li><a href={profilePage} style="font-size: 14px;"> Edit Profile</a></li>
+                                 <a href={logout}>
+                                    <li style="border-top: 1px solid #E9E9E9;font-size: 14px;">Sign Out</li>
+                                 </a>
+                              </ul>
+                           </div>
+                        </template>
+                        <!-- <p style="position: absolute;top:40px;color: lightgray;">{profileName}</p> -->
+                     </div>
+                     <template if:true={appLauncher}>
+                        <div style="box-shadow: rgba(84, 155, 165, 0.3) 0px 0px 15px;position: absolute;">
+                           <div class="slds-p-around--medium comboboxProfile"
+                              style="z-index:11;box-shadow: rgba(84, 155, 165, 0.3) 0px 0px 15px;border-radius: 15px 6px 15px 15px;background: white;left: -60px;position: absolute;z-index: 9002;width: 20rem;transform: translate3d(0px, 0px, 0px);top: 6px;">
+                              <div class="pointer"></div>
+                              <a href={edulearnDashboard}>
+                                 <button value="EDUrecruit" style="
+                                 background: transparent;
+                                 border: transparent;
+                                 width: -webkit-fill-available;
+                                 text-align: left;" onclick={issEduLearnClick}>
+                                    <div class="slds-p-around--small slds-m-bottom--small" style="border: 1px solid #DDECEA;
+                                    border-radius: 15px;">
+                                       <!-- <h1 class="profilesISS slds-align--absolute-center EDUrecruit"  name="EDUrecruit" onclick={changeProfile} style="cursor:pointer">ISS EDUrecruit</h1> -->
+                                       <img style="height:36px" src={issEduLearn} />
+                                    </div>
+                                 </button>
+                              </a>
+                              <a href={userDashboard}>
+                                 <button value="EDUcandidate" style="
+                                 background: transparent;
+                                 border: transparent;
+                                 width: -webkit-fill-available;
+                                 text-align: left;
+                                 " onclick={issEduRecruitClick}>
+                                    <div class="slds-p-around--small slds-m-bottom--small" style="border: 1px solid #DDECEA;
+                                    border-radius: 15px;">
+                                       <!-- <h1 class="profilesISS slds-align--absolute-center EDUcandidate"  name="EDUcandidate" onclick={changeProfile} style="cursor:pointer">ISS EDUcandidate</h1> -->
+                                       <img style="padding-left:6px" src={issEduRecruit} />
+                                    </div>
+                                 </button>
+                              </a>
+                              <button value="EDUlearn" style="
+                                 background: transparent;
+                                 border: transparent;
+                                 width: -webkit-fill-available;
+                                 text-align: left;
+                                 " onclick={issSupplyMarketPlaceClick}>
+                                 <div class="slds-p-around--small" style="border: 1px solid #DDECEA;
+                                    border-radius: 15px;">
+                                    <!-- <h1 class="profilesISS slds-align--absolute-center EDUlearn"  name="EDUlearn" onclick={changeProfile} style="cursor:pointer">ISS EDUlearn</h1> -->
+                                    <img src={issSupplyMarketPlace} />
+                                 </div>
+                              </button>
+                           </div>
+                        </div>
+                     </template>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </template>
+   <template if:true={teacherProfileMobile}>
+      <div class="slds-grid slds-wrap">
+         <!-- Mobile Sidebar  -->
+         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="background:white">
+            <div style="display:flex">
+               <div class="hamburgerOpen">
+                  <div class="slds-p-left--small slds-m-bottom--small">
+                     <div style="width: max-content;display:flex" class="slds-m-top--medium slds-m-left--small">
+                        <div>
+                           <img src={profilePhoto}>
+                        </div>
+                        <div class="slds-m-left--small">
+                           <p onclick={activeOverflow} class="profileTextCss"
+                              style="font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 15px;line-height: 18px;color: #FFFFFF;">
+                              {userName}</p>
+                           <p
+                              style="font-family: 'Roboto';font-style: normal;font-weight: 300;font-size: 14px;line-height: 16px;color: rgba(255, 255, 255, 0.5);">
+                              {profileName}
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Data Of Sidebar Navigation Menu -->
+                  <div style="background:#DDECEA;height: 100%;">
+                     <div class="">
+                        <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                           style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                           <a href={jobSearch} onclick={activeOverflow}>
+                              <h1 style="color:#549BA5">Jobs</h1>
+                           </a>
+                        </div>
+                        <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                           style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                           <a href={schoolPath1} onclick={activeOverflow}>
+                              <h1 style="color:#549BA5">Schools</h1>
+                           </a>
+                        </div>
+                        <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                           style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                           <a href={ifairPage1} onclick={activeOverflow}>
+                              <h1 style="color:#549BA5">Fairs</h1>
+                           </a>
+                        </div>
+                        <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                           style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                           <a href={candidatelmsPage1} onclick={activeOverflow}>
+                              <h1 style="color:#549BA5">Learning</h1>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div
+                  style="margin-top: -1%;position: fixed;z-index: 1;width: 100%;height: 43rem;background: rgba(0,0,0,.6);opacity:0;transition: 0.5s;"
+                  onclick={hamburgerEmptyArea} class="mobileSideNav">
+                  <!-- Empty Div 20% Area Captured  -->
+                  <!-- Test Data -->
+               </div>
+            </div>
+         </div>
+         <!-- Mobile Sidebar Ends Here  -->
+         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="background:white">
+            <div style="display:flex;justify-content:space-between"
+               class="slds-align--absolute-center">
+               <div style="display:flex">
+                  <!-- <img src={hamburgerIcon} onclick={toggleHamburger} class="slds-m-right--medium" style="width:28px"></img> -->
+                  <div onclick={toggleHamburger} style="z-index:3">
+                     <span style="font-size:50px;cursor:pointer;color:#549BA5;"
+                        class="slds-m-right--medium iconHam">&#9776; </span>
+                  </div>
+                  <a href={communityPath}>
+                     <img src={schoolLogo} style="width: 108px;height: 19px;z-index: 3;"
+                        class="slds-align--absolute-center logoISS"></img></a>
+               </div>
+               <div style="display:flex;">
+                  <a href={paymentPage} onclick={activeOverflow} style="z-index: 3;"><img src={upgrade}
+                        style="height:23px;" class="slds-m-right--small"></a>
+                  <img src={notification} class="slds-m-right--small" style="height: 23px;min-width: 45px;">
+                  <a href={cMessagePage}>
+                     <img src={chat} class="slds-m-right--small">
+                     <div style="top: 10px;padding-top: 5px;">
+                        <template if:true={showCount}>
+                           <div class="headerMsgCount">
+                              <p>{unreadMessageCount}</p>
+                           </div>
+                        </template>
+                        <!--<img src={rectangle} style="right: -12px; position: relative;top: -33px;" >-->
+                     </div>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </template>
+   <template if:true={recruiterProfile}>
+      <div class="backgroundDiv" style="background:transparent;position:absolute;" onclick={backgroundDivClick}>
+      </div>
+      <div style="width:100%;padding: 14px 0 8px;background: white;">
+         <div style="display:flex;justify-content: space-between;">
+            <div style="display:flex;">
+               <div style="padding-left:30px; padding-top:2px">
+                  <a href={communityPath}>
+                     <img src={schoolLogo} style="width: 182.67px;height: 32px;"></a>
+               </div>
+               <div style="display:flex; margin: 9px 0 5px 3rem;">
+                  <div class="headerfont schoolOptionParent" style="position: relative;">
+                     <template if:false={showOne}>
+                        <a class="selectASchool slds-align--absolute-center" style="cursor: pointer;display: flex;"
+                           onclick={showSchoolOption}>
+
+                           <p class="currentSchoolName">Select a school</p>
+
+                           <lightning-icon icon-name="utility:chevrondown" size="x-small" class="selectSchoolDropdown"
+                              style="--sds-c-icon-color-foreground-default: #5FA19C;padding-left: 10px;"></lightning-icon>
+                        </a>
+                     </template>
+                     <template if:true={showOne}>
+                        <p class="currentSchoolName">{singleSchoolName}</p>
+                     </template>
+                     <div class="schoolOption" style="z-index:11">
+                        <!-- <template for:each={schoolList} for:item="school">
+                           <p class="schoolOptionP" key={school.Id} data-name={school.Name} data-id={school.Id}
+                              onclick={changeSchool}>{school.Name}
+                           </p>
+                        </template> -->
+                        <div class="profileOptions2">
+                           <div class="profileOptionsPointer2"></div>
+                           <ul style="z-index:11;margin-top: 10px;margin-bottom: 10px;">
+                              <template for:each={schoolList} for:item="school">
+                                 <li class="schoolOptionP2" key={school.Id} data-id={school.Id} data-name={school.Name}
+                                    onclick={changeSchool} style="font-weight: bold; font-size: 14px;color:black">
+                                    {school.Name}</li>
+
+
+                              </template>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="headerfont" onclick={jobspath}><a href={addjob} style="cursor: pointer;">Jobs</a></div>
+                  <!-- <div class="headerfont"><a style="cursor: pointer;">Select Profile</a></div> -->
+                  <div class="headerfont"><a style="cursor: pointer;" href={candidateSearch}>Candidates</a></div>
+                  <div class="headerfont"><a style="cursor: pointer;" href={recruiterifair}>Fairs</a></div>
+               </div>
+            </div>
+            <div style="display:flex; margin-right:35px">
+               <div class="slds-grid slds-gutters" style="margin-right: 5px;">
+                  <div class="slds-col" style="padding-top: 5px;min-width: 45px;">
+                     <div>
+                        <img src={notification}>
+                     </div>
+                  </div>
+                  <div class="slds-col">
+                     <a href={cMessagePage}>
+                        <img src={chat} style="position: relative; top: 7px; ">
+                        <div style="top: 10px;padding-top: 5px;">
+                           <template if:true={showCount}>
+                              <div class="headerMsgCount slds-align--absolute-center">
+                                 <p>{unreadMessageCount}</p>
+                              </div>
+                              <!--<img src={rectangle} style="     right: -12px; position: relative;top: -33px;" >-->
+                           </template>
+                        </div>
+                     </a>
+                  </div>
+                  <!-- <div class="slds-col">
+                     <div>
+                        <img src={profilePhoto} >
+                     </div>
+                     </div> -->
+               </div>
+               <div class="slds-col" style="padding-right: 0;">
+                  <div class="slds-align--absolute-center"
+                     style="margin-top:-2%;background: rgb(230, 234, 234);border-radius: 20px;width: 333px;height: 48px;justify-content: space-evenly;display: flex;position: relative;">
+                     <div style="width: 200px;">
+                        <img src={issEduRecruit} class="headerProfile slds-align--absolute-center">
+                     </div>
+                     <button style="border: transparent;background: transparent;" onclick={openOneApp}>
+                        <div class="slds-icon-waffle slds-icon-waffle_container">
+                           <div class="slds-r1"></div>
+                           <div class="slds-r2"></div>
+                           <div class="slds-r3"></div>
+                           <div class="slds-r4"></div>
+                           <div class="slds-r5"></div>
+                           <div class="slds-r6"></div>
+                           <div class="slds-r7"></div>
+                           <div class="slds-r8"></div>
+                           <div class="slds-r9"></div>
+                           <span class="slds-assistive-text">App Launcher</span>
+                        </div>
+                     </button>
+                     <div style="display: flex;align-items: center;cursor: pointer;">
+                        <!-- <a href={profilePage}> -->
+                        <div style="background: #66C1BF;border-radius: 50%;padding: 6px;" class="profileTextDiv"
+                           onclick={profileOptions}>
+                           <p class="profileTextCss slds-align--absolute-center" style="color:white">{userName}</p>
+                        </div>
+                        <!-- </a> -->
+                        <div style="margin-left: 5px;" onclick={profileOptions}>
+                           <img src={arrowIcon} />
+                        </div>
+                     </div>
+                     <template if:true={profileOptionsVisibility}>
+                        <div class="profileOptions">
+                           <div class="profileOptionsPointer"></div>
+                           <ul style="z-index:11">
+                              <li style="font-family:RobotoMedium; font-size: 14px;color:black">{nameOfUser}</li>
+                              <a href={profilePage}>
+                                 <li style=" font-size: 14px;">Profile</li>
+                              </a>
+
+                              <template if:false={showSwitchTab}>
+                                 <li style="font-family:RobotoMedium; font-size: 14px;color: #549BA5; display: flex;">
+                                    {profileName}</li>
+                              </template>
+                              <template if:true={showSwitchTab}>
+                                 <li style="font-family:RobotoMedium;font-size: 14px;color: #549BA5; display: flex;"
+                                    onclick={changeProfile}>
+                                    <p>{profileName}</p>
+                                    <img src={refreshIcon} alt="" style="width: 15px; height: 15px;margin: 3px;">
+                                 </li>
+                              </template>
+                              <a href={profilePage}>
+                                 <li style="font-family:RobotoMedium;color: #549BA5;font-size: 14px;">Edit Profile</li>
+                              </a>
+                              <a href={logout}>
+                                 <li style="border-top: 1px solid #E9E9E9;color: #549BA5;font-size: 14px;">Sign Out</li>
+                              </a>
+                           </ul>
+                        </div>
+                     </template>
+                     <!-- <p style="position: absolute;top:40px;color: lightgray;">{profileName}</p> -->
+                  </div>
+                  <template if:true={appLauncher}>
+                     <div style="box-shadow: rgba(84, 155, 165, 0.3) 0px 0px 15px;position: absolute;">
+                        <div class="slds-p-around--medium comboboxProfile"
+                           style="z-index:11;box-shadow: rgba(84, 155, 165, 0.3) 0px 0px 15px;border-radius: 15px 6px 15px 15px;background: white;left: -60px;position: absolute;z-index: 9002;width: 20rem;transform: translate3d(0px, 0px, 0px);top: 6px;">
+                           <div class="pointer"></div>
+                           <a href={edulearnDashboard}>
+                              <button value="EDUrecruit" style="
+                              background: transparent;
+                              border: transparent;
+                              width: -webkit-fill-available;
+                              text-align: left;" onclick={issEduLearnClick}>
+                                 <div class="slds-p-around--small slds-m-bottom--small" style="border: 1px solid #DDECEA;
+                                 border-radius: 15px;">
+                                    <!-- <h1 class="profilesISS slds-align--absolute-center EDUrecruit"  name="EDUrecruit" onclick={changeProfile} style="cursor:pointer">ISS EDUrecruit</h1> -->
+                                    <img style="height:36px" src={issEduLearn} />
+                                 </div>
+                              </button>
+                           </a>
+                           <a href={userDashboard}>
+                              <button value="EDUcandidate" style="
+                              background: transparent;
+                              border: transparent;
+                              width: -webkit-fill-available;
+                              text-align: left;
+                              " onclick={issEduRecruitClick}>
+                                 <div class="slds-p-around--small slds-m-bottom--small" style="border: 1px solid #DDECEA;
+                                 border-radius: 15px;">
+                                    <!-- <h1 class="profilesISS slds-align--absolute-center EDUcandidate"  name="EDUcandidate" onclick={changeProfile} style="cursor:pointer">ISS EDUcandidate</h1> -->
+                                    <img style="padding-left:6px" src={issEduRecruit} />
+                                 </div>
+                              </button>
+                           </a>
+                           <button value="EDUlearn" style="
+                              background: transparent;
+                              border: transparent;
+                              width: -webkit-fill-available;
+                              text-align: left;
+                              " onclick={issSupplyMarketPlaceClick}>
+                              <div class="slds-p-around--small" style="border: 1px solid #DDECEA;
+                                 border-radius: 15px;">
+                                 <!-- <h1 class="profilesISS slds-align--absolute-center EDUlearn"  name="EDUlearn" onclick={changeProfile} style="cursor:pointer">ISS EDUlearn</h1> -->
+                                 <img src={issSupplyMarketPlace} />
+                              </div>
+                           </button>
+                        </div>
+                     </div>
+                  </template>
+               </div>
+            </div>
+         </div>
+      </div>
+   </template>
+   <template if:true={recruiterProfileMobile}>
+      <div class="slds-grid slds-wrap">
+         <!-- Mobile Sidebar  -->
+         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="background:white">
+            <div style="display:flex">
+               <div class="hamburgerOpen">
+                  <div class="slds-p-left--small slds-m-bottom--small">
+                     <div style="width: max-content;display:flex" class="slds-m-top--medium slds-m-left--small">
+                        <div>
+                           <img src={profilePhoto}>
+                        </div>
+                        <div class="slds-m-left--small">
+                           <p class="profileTextCss"
+                              style="font-family: 'Roboto';font-style: normal;font-weight: 700;font-size: 15px;line-height: 18px;color: #FFFFFF;">
+                              {userName}</p>
+                           <p
+                              style="font-family: 'Roboto';font-style: normal;font-weight: 300;font-size: 14px;line-height: 16px;color: rgba(255, 255, 255, 0.5);">
+                              {profileName}
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Data Of Sidebar Navigation Menu -->
+                  <div style="background:#DDECEA;height: 100%;">
+                     <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                        style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                        <a onclick={showSchoolOptionMobile}
+                           style="display: flex;padding-right: 10px;justify-content: space-between;">
+                           <h1 style="color:#549BA5">Select a school
+                           </h1>
+                           <lightning-icon icon-name="utility:chevrondown" size="x-small"
+                              style="--sds-c-icon-color-foreground-default: #5FA19C;padding: 5px;">
+                           </lightning-icon>
+                        </a>
+                        <div class="schoolOptionMobile">
+                           <template for:each={schoolList} for:item="school">
+                              <p class="schoolOptionPMobile" key={school.Id}>{school.Name}
+                              </p>
+                           </template>
+                        </div>
+
+                     </div>
+                     <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                        style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                        <a href={jobPath}>
+                           <h1 style="color:#549BA5">Jobs</h1>
+                        </a>
+                     </div>
+                     <!-- <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                        style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                        <a>
+                           <h1 style="color:#549BA5">Select Profile</h1>
+                        </a>
+                     </div> -->
+                     <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                        style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                        <a href={candidateSearch}>
+                           <h1 style="color:#549BA5">Candidates</h1>
+                        </a>
+                     </div>
+                     <div class="slds-p-left--large slds-p-bottom--x-small slds-p-top--x-small"
+                        style="border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);">
+                        <a href={recruiterifair}>
+                           <h1 style="color:#549BA5">Fairs</h1>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div
+               style="margin-top: -1%;position: fixed;z-index: 1;width: 100%;height: 100%;background: rgba(0,0,0,.6);opacity:0;transition: 0.5s;"
+               onclick={hamburgerEmptyArea} class="mobileSideNav">
+               <!-- Empty Div 20% Area Captured  -->
+               <!-- Test Data -->
+            </div>
+         </div>
+      </div>
+      <!-- Mobile Sidebar Ends Here  -->
+      <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1" style="background:white">
+         <div style="display:flex;justify-content:space-between" class="slds-align--absolute-center">
+            <div style="display:flex">
+               <!-- <img src={hamburgerIcon} onclick={toggleHamburger} class="slds-m-right--medium" style="width:28px"></img> -->
+               <div onclick={toggleHamburger} style="z-index:3">
+                  <span style="font-size:50px;cursor:pointer;color:#549BA5;"
+                     class="slds-m-right--medium iconHam">&#9776; </span>
+               </div>
+               <a href={communityPath}>
+                  <img src={schoolLogo} style="width: 108px;height: 19px;z-index: 3;"
+                     class="slds-align--absolute-center logoISS"></img></a>
+            </div>
+            <div style="display:flex;">
+               <img src={notification} class="slds-m-right--small" style="    height: 23px;min-width: 45px;">
+               <a href={cMessagePage}><img src={chat} class="slds-m-right--small"></a>
+            </div>
+         </div>
+      </div>
+   </template>
+</template>

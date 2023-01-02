@@ -1,0 +1,84 @@
+<template>
+
+	<!-- <lightning-card class="card"> -->
+<section class="card">
+		<div class="section">
+
+			<div style="position:relative;position:30px 0; " class="g grid-33">
+				<h2 class="heading">Welcome to ISS EDUrecruit!</h2>
+                <div>
+                    <p class="heading1">We are so glad you are here. To get started, Please provide the email address you used to sign into your ISS-Schrole Advantage Account or ISS Admin Search Profile. We will email you a link to verify your account and create your new password for the ISS EDUrecruit platform.</p>
+                </div>
+				
+
+				<div class="container">
+					<div>
+						<div class="slds-form-element">
+							<label class="slds-form-element__label" for="text-input-id-2"></label>
+							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+								<lightning-icon size="x-small"
+									class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+									icon-name="utility:email"></lightning-icon>
+								<input type="text" style="padding:6px;" id="text-input-id-2" placeholder="Email*" class="slds-input" />
+                                 </div>
+							</div>
+						</div>
+						<div style="margin-top:15px;">
+							<div class="slds-form-element">
+								<label class="slds-form-element__label" for="text-input-id-2"></label>
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+									<lightning-icon size="x-small"
+										class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default"
+										icon-name="utility:email"></lightning-icon>
+									<input type="text"  style="padding:6px;" id="text-input-id-3" placeholder="Confirm Email*" class="slds-input" />
+                                 </div>
+								</div>
+							</div>
+
+							<div style="width: 100%;">
+								<!-- <i>SIGN IN</i> -->
+
+								<button style="border:1px; color:white" type="button" class=" btn"  >SEND PASSWORD RECOVERY LINK</button>
+
+								<!-- <lightning-button class="btn nav-btn" label="Sign In" onclick={handleClick}></lightning-button> -->
+							</div>
+
+
+						</div>
+						
+
+					</div>
+
+
+
+
+
+
+					<div class="g grid-66">
+						<div><img src={issLogo} style="display: block;margin: 0 auto;height:95px;" ></div>
+
+							<div>
+								<img src={candidateregistrationLogo} style="width: 60%;display: block;margin: 70px auto 0;">
+								</div>
+
+							</div>
+						</div>
+						</section>
+	<!-- </lightning-card> -->
+	<footer class="foot">
+	=
+			<div class="foot-img">
+			<img src={footerLogo} >
+					</div>
+			<div class="foot-txt">Data Privacy and Protection Technical Support </div>
+	
+		
+			<div class="foot-icon">
+
+				<img src={facebookFooter}>
+				<img src={twitterLogo}>
+				<img src={linkedinFooter}>
+					</div>
+			</footer>
+
+</template>

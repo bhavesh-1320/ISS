@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : Anton Budkevich
+  @group             : 
+  @last modified on  : 12-23-2022
+  @last modified by  : Anton Budkevich
+-->
+<template >
+    <div class="iss-search-block">
+        <div class="image">
+            <template if:false={content.UniqueImage__c}>
+                <img src={imagePath} alt="image-description">
+            </template>
+            <template if:true={content.UniqueImage__c}>
+                <img src={content.ImagePath__c} alt="image-description">
+            </template>
+            <span class="duration_count">{content.Duration__c} hours</span>
+            <template if:true={content.LiveSessionDate__c}>
+                <span class="live-date">live: {content.LiveSessionDate__c}</span>
+            </template>
+        </div>
+        <div class="description">
+            <span class="iss-fav"><i class="icon-star-solid"></i></span>
+            <span class="title">{content.Type__c}</span>
+            <h2><a onclick={linkToContent}>{content.Name}</a></h2>
+            <p> {content.Description__c}</p>
+            <div class="meta">
+                <span class="pts-text">+{content.Points__c} pts</span>
+                <ul  class="list-unstyled iss-blocks_tags">
+                    <li for:each={tags} key={tag.Id} for:item="tag"><a onclick={linkToTag}>{tag.Name}</a></li>
+                </ul>
+            </div>
+            <strong class="price">{content.Price__c}$</strong>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,25 @@
+<template>
+
+    <fieldset class="slds-form-element" >  
+      <legend class="slds-form-element__legend slds-form-element__label"> 
+        <span class="index">{index}</span>
+        <span class="legend">{label}</span>
+      </legend>
+      <div class="slds-form-element__control">
+  
+        <template for:each={options_} for:item="option">
+  
+          <span key={option.key} for:index={option.index} data-key={option.key} data-value={option.value} class="slds-radio" onclick={handleClick}>
+            <input type="radio" value={option.value}  name={name} checked={option.checked} disabled={option.disabled} class={option.inputClass}>
+            <label class="slds-radio__label" >
+                <div class="slds-form-element__label liter">{option.liter}</div>
+                <div class="slds-form-element__label label">{option.label}</div>
+            </label>
+          </span>
+  
+        </template>
+  
+      </div>
+    </fieldset>
+      
+  </template>

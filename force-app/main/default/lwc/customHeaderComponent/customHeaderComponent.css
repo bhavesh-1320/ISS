@@ -1,0 +1,295 @@
+.headerfont {
+   padding-right: 30px;
+   border: none;
+   color: #549BA5;
+   font-family: arial;
+   font-size: 14px;
+   /* font-weight: 600; */
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: left;
+   /* cursor: pointer; */
+   text-decoration: none;
+   min-width: max-content;
+}
+
+.slds-icon-waffle {
+   width: 1.3125rem;
+   height: 1.3125rem;
+   position: relative;
+   display: block;
+   cursor: pointer;
+}
+
+.subscriptionDate{
+      color: rgb(84, 155, 165);
+    font-family: arial;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.slds-icon-waffle [class*=slds-r] {
+   width: 0.3125rem;
+   height: 0.3125rem;
+   background-color: #549BA5;
+   display: inline-block;
+   position: absolute;
+   border-radius: var(--lwc-borderRadiusCircle, 50%);
+   transition: background-color 100ms;
+   transform-origin: 50% 50%;
+   will-change: scale, background-color;
+}
+
+.hiddenOverflow {
+   overflow: hidden;
+}
+
+.profileTextCss {
+   font-family: RobotoMedium;
+   font-size: 15px;
+   font-weight: 700;
+   line-height: 18px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #2D514F;
+   cursor: pointer;
+}
+
+.slds-card {
+   border-style: none !important;
+}
+
+.header {
+   background-color: white;
+   width: 100%;
+}
+
+a {
+   text-decoration: none;
+   color: #549BA5;
+}
+
+.hamburgerOpen {
+   height: 100%;
+   width: 0px;
+   position: fixed;
+   z-index: 3;
+   top: 0;
+   left: 0;
+   background-color: #549BA5;
+   overflow-x: hidden;
+   overflow-y: hidden;
+   transition: 0.5s;
+   padding-top: 60px;
+}
+
+.hamburgerOpen a {
+
+   /* padding: 8px 8px 8px 32px; */
+   text-decoration: none;
+   font-size: 25px;
+   color: white;
+   display: block;
+   transition: 0.3s;
+}
+
+.hamburgerOpen a:hover {
+   color: gray;
+}
+
+.headerMsgCount {
+
+   right: -12px;
+   position: relative;
+   top: -27px;
+   background-color: #28397E;
+   text-align: center;
+   border-radius: 30%;
+   height: 15px;
+   width: 15px;
+   font-family: arial;
+   font-size: 11px;
+   font-weight: 700;
+   line-height: 18px;
+   letter-spacing: 0em;
+   color: #FFFFFF;
+}
+
+.pointer {
+   z-index: 9001;
+   width: calc(1.25rem + 0.0625rem);
+   height: calc(1.25rem + 0.0625rem);
+   transform: rotate(45deg);
+   border-top: 1px solid white;
+   border-left: 1px solid white;
+   background: #fff;
+   position: absolute;
+   right: 8.00549px;
+   top: -10.0101px;
+}
+
+.profilesISS {
+   color: #549BA5;
+   font-size: 21px;
+}
+
+.profileOptions {
+   position: absolute;
+   background: white;
+   border-radius: 15px 0px 15px 15px;
+   margin-top: 261px;
+   right: 10px;
+   box-shadow: rgba(84, 155, 165, 0.3) 0px 0px 15px;
+   animation: showOptions 0.3s;
+   opacity: 1;
+   z-index: 9003;
+}
+
+.profileOptions2{
+   position: absolute;
+    background: white;
+    border-radius: 15px 0px 15px 15px;
+    right: 24px;
+    box-shadow: rgb(84 155 165 / 30%) 0px 0px 15px;
+    animation: showOptions-c-customHeaderComponent_customHeaderComponent 0.3s;
+    opacity: 1;
+    z-index: 9003;
+    /* width: max-content; */
+        max-width: 20rem !important;
+    width: 20rem;
+
+}
+
+@keyframes showOptions {
+   0% {
+      opacity: 0;
+   }
+}
+
+.profileOptions ul {
+   padding: 10px 0px;
+}
+
+.profileOptions ul li {
+   padding: 10px 30px;
+   width: 200px;
+   letter-spacing: 1px;
+   cursor: pointer;
+}
+
+.profileOptions ul li:hover {
+   background: #F9F9F9;
+}
+
+.profileOptionsPointer {
+   width: 16px;
+   height: 16px;
+   background: white;
+   position: absolute;
+   right: 5px;
+   transform: rotate(45deg);
+   z-index: 1000;
+   margin-top: -8px;
+}
+.profileOptionsPointer2 {
+       width: 16px;
+    height: 16px;
+    background: white;
+    position: absolute;
+    right: 3px;
+    transform: rotate(45deg);
+    z-index: 1000;
+    margin-top: -8px;
+}
+
+.schoolOption {
+   display: none;
+   max-width: 240px;
+   right: 0;
+   top: 30px;
+   position: absolute;
+   background: white;
+   box-shadow: rgb(84 155 165 / 30%) 0px 0px 15px;
+   border-radius: 5px;
+   width: max-content;
+   padding: 5px 0px;
+   z-index: 9000p;
+}
+
+.schoolOptionP {
+   font-size: 12px;
+   cursor: pointer;
+   color: black;
+   padding: 15px 20px;
+}
+
+.schoolOptionP:hover {
+   background: #F9F9F9;
+}
+
+.schoolOptionP2 {
+      font-weight: bold;
+    font-size: 14px;
+    color: black;
+    /* max-width: 300px; */
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+   font-size: 12px;
+   cursor: pointer;
+   color: black;
+   padding: 15px 20px;
+}
+
+.schoolOptionP2:hover {
+   background: #F9F9F9;
+   z-index: 11;
+}
+
+a{
+   font-family: 'RobotoMedium';
+    font-style: normal;
+    /* font-weight: 600; */
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+}
+
+.schoolOptionMobile {
+   height: 0px;
+   overflow: hidden;
+   transition: all 0.6s;
+}
+
+.schoolOptionPMobile {
+   padding: 10px 0px 10px 20px;
+}
+.currentSchoolName{
+   max-width: 150px;
+   white-space: nowrap;
+   font-family:RobotoMedium;   
+   overflow: hidden;
+
+   text-overflow: ellipsis;
+}
+
+@font-face{
+    font-family: 'MontserratLight';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Light.ttf) format('TrueType');
+}
+@font-face{
+    font-family: 'MontserratRegular';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Regular.ttf) format('TrueType');
+}
+@font-face{
+    font-family: 'RobotoLight';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Light.ttf) format('TrueType');
+}
+@font-face{
+    font-family: 'RobotoMedium';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Medium.ttf) format('TrueType');
+}

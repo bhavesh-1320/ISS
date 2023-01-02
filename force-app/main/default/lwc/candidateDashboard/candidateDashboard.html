@@ -1,0 +1,1372 @@
+<template>
+
+    <template if:true={showContent}>
+        <!-- <div class="slds-grid slds-wrap" style="background: linear-gradient(142deg, rgb(255, 246, 195) 0%, rgb(183, 247, 242) 100%)"> -->
+        <div style="background:white" class="slds-p-around--medium">
+
+            <div class="slds-grid slds-p-bottom--large slds-p-left--medium slds-p-right--medium slds-p-top--x-large slds-wrap"
+                style="background: #EEF6F5;border-radius: 30px 30px 30px 30px;">
+                <!-- Heading Section  -->
+                <div style="position: sticky; top: 0; z-index: 1;"
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-left_none slds-p-right_none slds-p-top_none">
+                    <!-- <div class="dashboardHead">
+            </div> -->
+                    <!-- <h1 class="h1Dashboard">Dashboard</h1> -->
+                    <template if:true={notificationPanel}>
+                        <div class="heading slds-align_absolute-center">
+
+
+                            <h1 class="slds-align_absolute-center"
+                                style="font-size:22px;display: flex;align-items: center;text-align: center;color: #F98B8B;width:90%">
+                                Jan. 3,2022 - USA: Philadelphia - St. Jose University has invited you to apply! </h1>
+                            <lightning-icon icon-name="action:close" size="xx-small" alternative-text="Settings"
+                                class="slds-m-around--small" title="Close" onclick={closeNotification}
+                                style="cursor:pointer"></lightning-icon>
+
+
+                        </div>
+                    </template>
+                </div>
+
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-bottom_none"
+                    style="margin-top: 1rem;">
+                    <!-- Search Bar Section  -->
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_10-of-12 "
+                            style="border-radius: 20px;background: white;">
+                            <div class="slds-grid slds-wrap slds-p-bottom--small slds-p-top--small" style="">
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-p-around_small slds-align_absolute-center">
+                                    <h1 style="font-size: 22px;font-weight: 600;">Search</h1>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-p-around_small">
+                                    <select class="slds-select" style="
+    border: 2px solid #5FA19C;
+    border-radius: 20px;
+    color: rgba(45, 81, 79, 0.5);
+
+    height: 42px;
+    padding-left: 10px;
+">
+                                        <option value="Departments">Departments</option>
+                                    </select>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-p-around_small">
+                                    <select class="slds-select" style="
+    border: 2px solid #5FA19C;
+    border-radius: 20px;
+    color: rgba(45, 81, 79, 0.5);
+
+    height: 42px;
+    padding-left: 10px;
+">
+                                        <option value="Subjects">Subjects</option>
+                                    </select>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-p-around_small">
+                                    <select class="slds-select" style="
+    border: 2px solid #5FA19C;
+    border-radius: 20px;
+    color: rgba(45, 81, 79, 0.5);
+
+    height: 42px;
+    padding-left: 10px;
+">
+                                        <option value="Country">Country</option>
+                                    </select>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-p-around_small slds-align_absolute-center">
+                                    <button title="search" style="
+    width: 110px;
+    height: 42px;
+    background: #549BA5;
+    border-radius: 20px;
+" class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Search</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                        </div>
+
+
+                    </div>
+
+                    <!-- Search Bar Ends Here  -->
+
+
+
+
+                </div>
+
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12">
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-m-top--small slds-large-size_6-of-12 slds-align_absolute-center slds-p-around--x-small"
+                            style="color: #549BA5;">
+                            <h1 style="font-size: 16px;font-weight: 600;">125 New Job Postings in the Last 30 days!</h1>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards Section Starts Here  -->
+
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_3-of-12"
+                            style="min-height:24.7rem">
+                            <div style="min-height: 24.7rem;background: #FFFFFF;border-radius: 20px;"
+                                class="slds-p-top--small slds-p-bottom--small">
+                                <div class="slds-align_absolute-center slds-p-around--small">
+                                    <h1 style="font-size: 16px;font-weight: 600;">Complete Profile</h1>
+                                </div>
+
+                                <div style="display:flex;height:35px" class="slds-p-around--large slds-p-top--none">
+                                    <div
+                                        style="background: #559BA5;border-radius: 15px 0px 0px 15px;width:50%;height:24px">
+                                    </div>
+                                    <div
+                                        style="background: white;border-radius: 0px 15px 15px 0px;height: 24px;width: 50%;border: 1px solid grey;">
+                                    </div>
+                                </div>
+                                <div style="background: #EEF6F5;border-radius: 15px;"
+                                    class="slds-p-around_small slds-m-left--large slds-m-right--large slds-align_absolute-center slds-m-top--medium">
+                                    <div>
+                                        <h1 style="font-size: 16px;font-weight: 600;"
+                                            class="slds-align--absolute-center slds-p-bottom--medium slds-p-top--medium">
+                                            Items Remaining</h1>
+                                        <ul>
+                                            <li>
+                                                <h1 style="color: #2D514F;" class="slds-p-bottom--small">3 Completed
+                                                    References</h1>
+                                            </li>
+                                            <li>
+                                                <h1 style="color: #2D514F;" class="slds-p-bottom--small">Dependencies
+                                                </h1>
+                                            </li>
+                                            <li>
+                                                <h1 style="color: #2D514F;" class="slds-p-bottom--small">Emergency
+                                                    Contact
+                                                    Information</h1>
+                                            </li>
+                                            <li>
+                                                <h1 style="color: #2D514F;" class="slds-p-bottom--small">Country of
+                                                    Residence</h1>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="slds-align_absolute-center slds-m-bottom--medium slds-m-left--large slds-m-right--large slds-m-top--medium">
+                                    <button title="Resume Recommendation"
+                                        style="width: -webkit-fill-available;height:24px"
+                                        class="slds-button slds-button_brand slds-align_absolute-center">Resume
+                                        Recommendation</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_7-of-12"
+                            style="min-height:24.7rem">
+                            <div style="min-height: 24.7rem;background: #FFFFFF;border-radius: 20px;"
+                                class="slds-m-left--large">
+                                <div class="slds-align_absolute-center slds-p-around--small">
+                                    <h1 style="font-size: 16px;font-weight: 600;">Job AI - Find Your Ideal</h1>
+                                </div>
+
+                                <div class="slds-grid slds-wrap">
+
+                                    <div
+                                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top--none">
+                                        <div style="min-height: 13rem;background: #EEF6F5;border-radius: 15px;  "
+                                            class="slds-m-left--medium slds-m-right--small slds-p-left--small slds-p-right--small slds-p-bottom--small slds-m-bottom--medium">
+                                            <div
+                                                class="slds-align_absolute-center slds-p-top--small slds-m-bottom--x-small">
+                                                <h1 style="font-size:14px;font-weight:600;">Potential Jobs</h1>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>Union School</h1>
+                                                            <span style="display:flex"><img
+                                                                    style="width: 12px; height: 18px;"
+                                                                    src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                                &nbsp; <h3 class="grey">Rome,Italy</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">New</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>Union School</h1>
+                                                            <span style="display:flex"><img
+                                                                    style="width: 12px; height: 18px;"
+                                                                    src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                                &nbsp; <h3 class="grey">Rome,Italy</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">New</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>Union School</h1>
+                                                            <span style="display:flex"><img
+                                                                    style="width: 12px; height: 18px;"
+                                                                    src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                                &nbsp; <h3 class="grey">Rome,Italy</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">New</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Second Card  -->
+
+                                    <div
+                                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top--none">
+                                        <div style="min-height: 13rem;background: #EEF6F5;border-radius: 15px;  "
+                                            class="slds-m-left--medium slds-m-right--small slds-p-left--small slds-p-right--small slds-p-bottom--small slds-m-bottom--medium">
+                                            <div
+                                                class="slds-align_absolute-center slds-p-top--small slds-m-bottom--x-small">
+                                                <h1 style="font-size:14px;font-weight:600;">Upcoming Fairs</h1>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>iSS iFair China</h1>
+                                                            <span class="calender" style="display:flex"><img
+                                                                    src={rectangleImage1} /> &nbsp; <h3 class="grey">
+                                                                    05/01/2022</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">More</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>iSS iFair China</h1>
+                                                            <span class="calender" style="display:flex"><img
+                                                                    src={rectangleImage1} /> &nbsp; <h3 class="grey">
+                                                                    05/01/2022</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">More</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                class="slds-m-bottom--x-small slds-p-around--small">
+                                                <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                    class="slds-align--absolute-center slds-p-right--large">
+                                                    <div style="display:flex">
+                                                        <div>
+                                                            <img src="" />
+                                                        </div>
+                                                        <div class="slds-align-content-center slds-m-left--small">
+                                                            <h1>iSS iFair China</h1>
+                                                            <span class="calender" style="display:flex"><img
+                                                                    src={rectangleImage1} /> &nbsp; <h3 class="grey">
+                                                                    05/01/2022</h3></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <button title="New"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                            style="border-radius: 5px;height: 22px;">More</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <!-- Second Card Ends Here  -->
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Activity Dashboard Starts Here  -->
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_10-of-12">
+                            <div
+                                style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);border-radius:15px;padding:10px;background-color:white;min-height:17rem">
+                                <div style="display:flex" class="slds-m-bottom--medium slds-m-top--medium">
+                                    <h1 style="font-weight:600;font-size:20px;width:90%"
+                                        class="slds-align_absolute-center">
+                                        Activity Dashboard</h1>
+                                    <div style="float:right" class="slds-m-right--large">
+                                        <lightning-icon icon-name="utility:settings" class="settingIcon" size="small"
+                                            alternative-text="Settings"></lightning-icon>
+                                    </div>
+                                </div>
+                                <div style="overflow:auto" class="dashboard-table slds-m-around--small">
+                                    <table class="slds-table_cell-buffer" style="overflow:auto">
+                                        <thead>
+                                            <tr style="border-bottom:1px solid #ddd"
+                                                class="slds-line-height_reset slds-p-around--large slds-p-top--large">
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="School and Role">School and Role</div>
+                                                </th>
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="Applied Date">Applied Date</div>
+                                                </th>
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="Last Chat">Last Chat</div>
+                                                </th>
+
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="Type">Type</div>
+                                                </th>
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="Bookmarked">Bookmarked</div>
+                                                </th>
+                                                <th class="slds-p-bottom--large slds-p-top--large slds-truncate"
+                                                    scope="col">
+                                                    <div style="font-weight:600; font-size:14px" class="slds-truncate"
+                                                        title="Original Search">Original Search</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <!-- Table Body -->
+                                        <tbody>
+                                            <tr style="border-bottom:1px solid #ddd">
+                                                <th>
+
+                                                    <div>School Name, Country,Role</div>
+
+                                                </th>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate">
+                                                    <div class="slds-truncate">11/22/2022</div>
+                                                </td>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate">
+                                                    <div class="slds-truncate" title="4/14/2015">11:32 PM &nbsp;
+                                                        12/22/2022
+                                                        &nbsp; <img style="width:18px" src={msgImg}></img></div>
+
+                                                </td>
+
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate">
+                                                    <div class="slds-truncate" title="20%">Reply</div>
+                                                </td>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate">
+                                                    <div class="slds-truncate" title="$25k">Yes</div>
+                                                </td>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate">
+                                                    <div class="slds-truncate" title="jrogers@cloudhub.com">
+                                                        Department-Subject-Country
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                            <tr style="border-bottom:1px solid #ddd" class="slds-hint-parent">
+                                                <th scope="row">
+
+                                                    <div class="slds-truncate">School Name, Country,Role</div>
+
+                                                </th>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate"
+                                                    data-label="Account Name">
+                                                    <div class="slds-truncate">11/22/2022</div>
+                                                </td>
+                                                <td class="slds-p-bottom--small slds-p-top--small slds-truncate"
+                                                    data-label="Close Date">
+                                                    <div class="slds-truncate" title="4/14/2015">11:32 PM &nbsp;
+                                                        12/22/2022
+                                                        &nbsp; <img style="width:18px" src={msgImg}></img></div>
+                                                    <!-- <div class="slds-truncate" title="Prospecting">12/22/2022</div> -->
+                                                </td>
+
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="20%">Reply</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="$25k">Yes</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="jrogers@cloudhub.com">
+                                                        Department-Subject-Country
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                            <tr style="border-bottom:1px solid #ddd" class="slds-hint-parent">
+                                                <th scope="row">
+
+                                                    <div class="slds-truncate">School Name, Country,Role</div>
+
+                                                </th>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Account Name">
+                                                    <div class="slds-truncate">11/22/2022</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Close Date">
+                                                    <div class="slds-truncate" title="4/14/2015">11:32 PM &nbsp;
+                                                        12/22/2022
+                                                    </div>
+                                                    <!-- <div class="slds-truncate" title="Prospecting">12/22/2022</div> -->
+                                                </td>
+
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="20%">Reply</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="$25k">Yes</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="jrogers@cloudhub.com">
+                                                        Department-Subject-Country
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+                                            <tr style="border-bottom:1px solid #ddd" class="slds-hint-parent">
+                                                <th scope="row">
+
+                                                    <div class="slds-truncate">School Name, Country,Role</div>
+
+                                                </th>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Account Name">
+                                                    <div class="slds-truncate">11/22/2022</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Close Date">
+                                                    <div class="slds-truncate" title="4/14/2015">11:32 PM &nbsp;
+                                                        12/22/2022
+                                                    </div>
+                                                    <!-- <div class="slds-truncate" title="Prospecting">12/22/2022</div> -->
+                                                </td>
+
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="20%">Reply</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="$25k">Yes</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="jrogers@cloudhub.com">
+                                                        Department-Subject-Country
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                            <tr style="border-bottom:1px solid #ddd" class="slds-hint-parent">
+                                                <th scope="row">
+
+                                                    <div class="slds-truncate">School Name, Country,Role</div>
+
+                                                </th>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Account Name">
+                                                    <div class="slds-truncate">11/22/2022</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate"
+                                                    data-label="Close Date">
+                                                    <div class="slds-truncate" title="4/14/2015">11:32 PM &nbsp;
+                                                        12/22/2022
+                                                        &nbsp; <img style="width:18px" src={msgImg}></img></div>
+                                                    <!-- <div class="slds-truncate" title="Prospecting">12/22/2022</div> -->
+                                                </td>
+
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="20%">Reply</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="$25k">Yes</div>
+                                                </td>
+                                                <td class="slds-p-bottom--medium slds-p-top--medium slds-truncate">
+                                                    <div class="slds-truncate" title="jrogers@cloudhub.com">
+                                                        School Search
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+                                    <div style="float:right;    margin-top: 0;"
+                                        class="slds-float--right slds-m-bottom--medium slds-m-right--large slds-m-top--x-large">
+                                        <h3><a href="#">See All</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Saved Alerts And Recent Searches Card  -->
+
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                            <div style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);padding:2px;border-radius:15px;background-color:white;min-height:17rem"
+                                class="slds-m-right--small">
+                                <div class="slds-m-right--medium slds-m-left--small" style="min-height:13rem;margin:0">
+                                    <div class="slds-align_absolute-center slds-p-top--small">
+                                        <h1 style="font-size:18px;font-weight:600;">Saved Alerts</h1>
+                                    </div>
+                                    <div class="savedAlertTable">
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Remove Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Remove
+                                                    Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Remove Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Remove
+                                                    Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Remove Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Remove
+                                                    Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Remove Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Remove
+                                                    Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Remove Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Remove
+                                                    Alert</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_5-of-12">
+                            <div style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);padding:2px;border-radius:15px;background-color:white;min-height:17rem"
+                                class="slds-m-left--small">
+                                <div class="slds-m-right--medium slds-m-left--small"
+                                    style="min-height:13rem; margin:0;">
+                                    <div class="slds-align_absolute-center slds-p-top--small">
+                                        <h1 style="font-size:18px;font-weight:600;">Recent Searches</h1>
+                                    </div>
+                                    <div class="savedAlertTable">
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Save As Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Save
+                                                    As Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Save As Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Save
+                                                    As Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Save As Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Save
+                                                    As Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Save As Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Save
+                                                    As Alert</button>
+                                            </div>
+
+                                        </div>
+                                        <div style="display:flex;justify-content:space-between;"
+                                            class="slds-p-left--large slds-p-right--large slds-p-top--small slds-p-bottom--none">
+                                            <div style="display:flex">
+                                                <h1><a href="#">High School Math Teacher</a></h1>
+                                            </div>
+                                            <div class="slds-align--absolute-center">
+                                                <h3 style="color:red" class="slds-align--absolute-center">30 New</h3>
+                                            </div>
+
+                                            <div>
+                                                <button title="Save As Alert"
+                                                    class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Save
+                                                    As Alert</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <!-- Three Card Section  -->
+                <div
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                            <!-- Blank  -->
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_10-of-12"
+                            style="min-height: 35px;">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-6">
+                                    <div style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);border-radius:15px;background:white;min-height: 34rem;"
+                                        class="slds-m-right--large">
+                                        <div class="slds-align_absolute-center slds-p-top--small">
+                                            <h1 style="font-size:18px;font-weight:600;">New Job Invitation</h1>
+                                        </div>
+                                        <div
+                                            class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-m-top--none slds-p-around--small">
+                                            <div style="min-height: 33rem;background: #EEF6F5;border-radius: 15px;  "
+                                                class=" slds-p-left--small slds-p-right--small slds-p-bottom--small">
+                                                <div
+                                                    class="slds-align_absolute-center slds-p-top--small slds-m-bottom--x-small">
+                                                </div>
+                                                <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                    class="slds-m-bottom--x-small slds-p-around--small">
+                                                    <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                        class="slds-align--absolute-center slds-p-right--large">
+                                                        <div style="display:flex">
+                                                            <div>
+                                                                <img src="" />
+                                                            </div>
+                                                            <div class="slds-align-content-center slds-m-left--small">
+                                                                <p class="highschool" style="font-size:14px;">High
+                                                                    School
+                                                                    Math Teacher</p>
+                                                                <p class="grey">Union School</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div
+                                                        style="display: flex;justify-content: space-between;margin: 5px;">
+                                                        <span style="display:flex"><img
+                                                                src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                            &nbsp; <h3>Rome</h3></span>
+                                                        <div>
+                                                            <button title="New"
+                                                                class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                                style="border-radius: 5px;height: 22px;">Apply
+                                                                Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                    class="slds-m-bottom--x-small slds-p-around--small">
+                                                    <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                        class="slds-align--absolute-center slds-p-right--large">
+                                                        <div style="display:flex">
+                                                            <div>
+                                                                <img src="" />
+                                                            </div>
+                                                            <div class="slds-align-content-center slds-m-left--small">
+                                                                <p class="highschool" style="font-size:14px;">High
+                                                                    School
+                                                                    Math Teacher</p>
+                                                                <p class="grey">Union School</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div
+                                                        style="display: flex;justify-content: space-between;margin: 5px;">
+                                                        <span style="display:flex"><img
+                                                                src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                            &nbsp; <h3>Rome</h3></span>
+                                                        <div>
+                                                            <button title="New"
+                                                                class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                                style="border-radius: 5px;height: 22px;">Apply
+                                                                Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                    class="slds-m-bottom--x-small slds-p-around--small">
+                                                    <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                        class="slds-align--absolute-center slds-p-right--large">
+                                                        <div style="display:flex">
+                                                            <div>
+                                                                <img src="" />
+                                                            </div>
+                                                            <div class="slds-align-content-center slds-m-left--small">
+                                                                <p class="highschool" style="font-size:14px;">High
+                                                                    School
+                                                                    Math Teacher</p>
+                                                                <p class="grey">Union School</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div
+                                                        style="display: flex;justify-content: space-between;margin: 5px;">
+                                                        <span style="display:flex"><img
+                                                                src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                            &nbsp; <h3>Rome</h3></span>
+                                                        <div>
+                                                            <button title="New"
+                                                                class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                                style="border-radius: 5px;height: 22px;">Apply
+                                                                Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+                                                    class="slds-m-bottom--x-small slds-p-around--small">
+                                                    <div style="display: flex;justify-content: space-between;background: rgba(238, 246, 245, 0.6);border-radius: 15px;;"
+                                                        class="slds-align--absolute-center slds-p-right--large">
+                                                        <div style="display:flex">
+                                                            <div>
+                                                                <img src="" />
+                                                            </div>
+                                                            <div class="slds-align-content-center slds-m-left--small">
+                                                                <p class="highschool" style="font-size:14px;">High
+                                                                    School
+                                                                    Math Teacher</p>
+                                                                <p>Union School</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div
+                                                        style="display: flex;justify-content: space-between;margin: 5px;">
+                                                        <span style="display:flex"><img
+                                                                src="/recruitment/resource/1666200127000/candidateSearchIcon/ISSV2/Group65.png" />
+                                                            &nbsp; <h3>Rome</h3></span>
+                                                        <div>
+                                                            <button title="New"
+                                                                class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium"
+                                                                style="border-radius: 5px;height: 22px;">Apply
+                                                                Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-6  slds-p-right--small"
+                                    style="min-height: 35px;">
+                                    <div
+                                        style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);padding:10px;border-radius:15px;background:white;height: 37rem;">
+
+                                        <div class="slds-align_absolute-center slds-p-around--x-small">
+                                            <h1 style="font-size:18px;font-weight:600;">Message Center</h1>
+                                        </div>
+
+                                        <div class="slds-p-around--small"
+                                            style="background: rgb(238, 246, 245);border-radius: 15px;">
+                                            <div class="slds-m-top--medium slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1 style="font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 15px; color:#2D514F;">Jim Bob, Union School</h1>
+                                                </div>
+                                                <div>
+                                                    <h3 class="grey slds-p-top--small"
+                                                        style="font-size: 13.5px;font-color:#ddd">Hey Chris we just
+                                                        wanted
+                                                        to reach out and talk to you about a position that
+                                                        you may be interested. We'd...</h3>
+                                                </div>
+
+                                                <div style="display:flex;justify-content:space-between;padding:10px 0;">
+                                                    <div>
+                                                        <h3 style="font-weight: 600; font-size:12px;">30 minutes ago
+                                                        </h3>
+                                                    </div>
+
+                                                    <div>
+                                                        <a href="#" style="font-size:12px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="slds-m-top--large slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1 style="font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 15px; color:#2D514F;">Jim Bob, Union School</h1>
+                                                </div>
+                                                <div>
+                                                    <h3 class="grey slds-p-top--small"
+                                                        style="font-size: 13.5px;font-color:#ddd">Hey Chris we just
+                                                        wanted
+                                                        to reach out and talk to you about a position that
+                                                        you may be interested. We'd...</h3>
+                                                </div>
+
+                                                <div style="display:flex;justify-content:space-between;padding:10px 0;">
+                                                    <div>
+                                                        <h3 style="font-weight: 600; font-size:12px;">30 minutes ago
+                                                        </h3>
+                                                    </div>
+
+                                                    <div>
+                                                        <a href="#" style="font-size:12px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-m-top--large slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1 style="font-family: 'Roboto';
+font-style: normal;
+font-weight: 600;
+font-size: 15px; color:#2D514F;">Jim Bob, Union School</h1>
+                                                </div>
+                                                <div>
+                                                    <h3 class="grey slds-p-top--small"
+                                                        style="font-size: 13.5px;font-color:#ddd">Hey Chris we just
+                                                        wanted
+                                                        to reach out and talk to you about a position that
+                                                        you may be interested. We'd...</h3>
+                                                </div>
+
+                                                <div style="display:flex;justify-content:space-between;padding:10px 0;">
+                                                    <div>
+                                                        <h3 style="font-weight: 600; font-size:12px;">30 minutes ago
+                                                        </h3>
+                                                    </div>
+
+                                                    <div>
+                                                        <a href="#" style="font-size:12px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_2-of-6 slds-p-left--small"
+                                    style="min-height: 35px;">
+                                    <div
+                                        style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);padding:13px;border-radius:15px;background:white;min-height: 37rem;">
+
+                                        <div class="slds-align_absolute-center slds-p-around--x-small">
+                                            <h1 style="font-size:18px;font-weight:600;">From ISS</h1>
+                                        </div>
+
+                                        <div class="slds-p-around--small"
+                                            style="background: rgb(238, 246, 245);border-radius: 15px;">
+                                            <div class="slds-m-top--medium slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1
+                                                        style="font-family: 'Roboto';font-style: normal;font-weight: 600;font-size: 16px; color:#2D514F;">
+                                                        School Supplies Credit</h1>
+                                                </div>
+                                                <div class="slds-p-top--small">
+                                                    <h3 class="grey" style="font-size: 14px;font-color:#ddd">Learn how
+                                                        to
+                                                        get a credit for new school
+                                                        supplies through ISS EDUrecruit!</h3>
+                                                </div>
+
+                                                <div style="text-align:right;padding:10px 0;">
+
+                                                    <div>
+                                                        <a href="#" style="font-size:13px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="slds-m-top--medium slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1
+                                                        style="font-family: 'Roboto';font-style: normal;font-weight: 600;font-size: 16px; color:#2D514F;">
+                                                        School Supplies Credit</h1>
+                                                </div>
+                                                <div class="slds-p-top--small">
+                                                    <h3 class="grey" style="font-size: 14px;font-color:#ddd">Learn how
+                                                        to
+                                                        get a credit for new school
+                                                        supplies through ISS EDUrecruit!</h3>
+                                                </div>
+
+                                                <div style="text-align:right;padding:10px 0;">
+
+                                                    <div>
+                                                        <a href="#" style="font-size:13px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-m-top--medium slds-p-bottom--none slds-p-around--medium"
+                                                style="background:white; border-radius: 15px;">
+                                                <div>
+                                                    <h1
+                                                        style="font-family: 'Roboto';font-style: normal;font-weight: 600;font-size: 16px; color:#2D514F;">
+                                                        School Supplies Credit</h1>
+                                                </div>
+                                                <div class="slds-p-top--small">
+                                                    <h3 class="grey" style="font-size: 14px;font-color:#ddd">Learn how
+                                                        to
+                                                        get a credit for new school
+                                                        supplies through ISS EDUrecruit!</h3>
+                                                </div>
+
+                                                <div style="text-align:right;padding:10px 0;">
+
+                                                    <div>
+                                                        <a href="#" style="font-size:13px">More</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-p-around_small slds-p-top_none"
+                    style="margin-top: 1rem;">
+                    <!-- Trainign Section  -->
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_10-of-12">
+                            <div
+                                style="box-shadow: 0 5px 8px 3px rgb(64 60 67 / 16%);border-radius:15px;background-color:white;min-height:17rem">
+                                <div class="slds-align_absolute-center slds-m-bottom--medium slds-p-top--medium ">
+                                    <h1 style="font-weight:600;font-size:20px">Training</h1>
+                                </div>
+
+                                <div class="slds-grid slds-wrap">
+
+                                    <div
+                                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-m-top--none">
+                                        <div style="min-height:16rem;background: rgb(238, 246, 245);border-radius: 15px;"
+                                            class="slds-m-bottom--medium slds-m-left--medium slds-m-right--small slds-p-bottom--medium">
+                                            <div class="slds-align_absolute-center slds-p-top--small">
+                                                <h1 style="font-size:18px;font-weight:600;">Your Badges</h1>
+                                            </div>
+
+
+                                            <div style="border-radius:15px;">
+                                                <div style="display:flex; background:white ; border-bottom:1px solid #ddd;     border-radius: 15px 15px 0 0;"
+                                                    class="slds-m-left--medium slds-m-right--medium slds-p-bottom--small slds-p-left--large slds-p-top--small">
+                                                    <div class="slds-m-right--x-large">
+                                                        <img src={badgeImg} style="width: 42px;"></img>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 style="font-size: 14px;font-weight: 600;">Diversity
+                                                            Inclusion
+                                                        </h1>
+                                                        <h3 class="grey">12/11/2022</h3>
+                                                    </div>
+
+                                                </div>
+                                                <div style="display:flex; background:white; border-bottom:1px solid #ddd; ;"
+                                                    class="slds-m-left--medium slds-m-right--medium slds-p-bottom--small slds-p-left--large slds-p-top--small">
+                                                    <div class="slds-m-right--x-large">
+                                                        <img src={badgeImg} style="width: 42px;"></img>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 style="font-size: 14px;font-weight: 600;">Diversity
+                                                            Inclusion
+                                                        </h1>
+                                                        <h3 class="grey">12/11/2022</h3>
+                                                    </div>
+
+                                                </div>
+                                                <div style="display:flex; background:white; border-bottom:1px solid #ddd; border-radius: 0 0 15px 15px;"
+                                                    class="slds-m-left--medium slds-m-right--medium slds-p-bottom--small slds-p-left--large slds-p-top--small">
+                                                    <div class="slds-m-right--x-large">
+                                                        <img src={badgeImg} style="width: 42px;"></img>
+                                                    </div>
+
+                                                    <div>
+                                                        <h1 style="font-size: 14px;font-weight: 600;">Diversity
+                                                            Inclusion
+                                                        </h1>
+                                                        <h3 class="grey">12/11/2022</h3>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Second Card  -->
+
+                                    <div
+                                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-m-top--none">
+                                        <div class="slds-m-bottom--medium slds-m-left--medium slds-m-right--small slds-p-bottom--medium"
+                                            style="min-height:16rem;background: rgb(238, 246, 245);border-radius: 15px;">
+                                            <div class="slds-align_absolute-center slds-p-top--small">
+                                                <h1 style="font-size:18px;font-weight:600;">In Progress</h1>
+                                            </div>
+                                            <div style="background:white;  border-radius:15px;"
+                                                class="slds-m-left--medium slds-m-right--medium slds-p-bottom--medium slds-p-left--medium slds-p-top--small">
+                                                <div
+                                                    class="slds-p-bottom--none slds-p-right--large  slds-p-top--medium">
+                                                    <div style="display:flex">
+                                                        <h1 style="font-size: 16px;font-weight: 600;">Diversity
+                                                            Inclusion
+                                                        </h1>
+                                                    </div>
+
+                                                    <div class="slds-m-top--small">
+                                                        <img src={graphImg} style="width:100%;height:5rem"></img>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div style="display:flex;justify-content:space-between;"
+                                                    class="slds-p-bottom--none slds-p-right--medium slds-p-top--large">
+                                                    <div style="display:flex">
+                                                        <h1 class="grey" style="">Teaching overseas can be <br>
+                                                            challenging
+                                                            and require a...
+                                                        </h1>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <button title="Continue"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Continue</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Second Card Ends Here  -->
+
+
+                                    <!-- Third Card Starts Here  -->
+                                    <div
+                                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3 slds-m-top--none">
+                                        <div class="slds-m-bottom--medium slds-m-left--medium slds-m-right--small slds-p-bottom--medium"
+                                            style="min-height:16rem;background: rgb(238, 246, 245);border-radius: 15px;">
+                                            <div class="slds-align_absolute-center slds-p-top--small">
+                                                <h1 style="font-size:18px;font-weight:600;">Recommended For You</h1>
+                                            </div>
+                                            <div style="background:white; border-radius:15px;"
+                                                class="slds-m-left--medium slds-m-right--medium slds-p-bottom--medium slds-p-left--medium slds-p-top--small">
+                                                <div
+                                                    class="slds-p-bottom--none slds-p-right--large slds-p-top--medium ">
+                                                    <div style="display:flex">
+                                                        <h1 style="font-size: 16px;font-weight: 600;">Teaching Overseas
+                                                            101
+                                                        </h1>
+                                                    </div>
+
+                                                    <div class="slds-m-top--small">
+                                                        <img src={graphImg} style="width:100%;height:5rem"></img>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div style="display:flex;justify-content:space-between;"
+                                                    class="slds-p-bottom--none slds-p-right--medium slds-p-top--large">
+                                                    <div style="display:flex">
+                                                        <h1 class="grey" style="">Teaching overseas can be <br>
+                                                            challenging
+                                                            and require a...
+                                                        </h1>
+                                                    </div>
+
+
+                                                    <div>
+                                                        <button title="Continue"
+                                                            class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium">Continue</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12">
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                    <!-- </div> -->
+
+                </div>
+
+            </div>
+        </div>
+    </template>
+
+
+</template>

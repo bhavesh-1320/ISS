@@ -1,0 +1,179 @@
+<template>
+<div class="block_full_detail style01">
+        <div class="image">
+            <img src={imageHeaderSeries} alt="image-description">
+            <span class="duration_count">{totalDuration} hours</span>
+        </div>
+        <div class="description">
+            <div class="block_full_holder">
+                <div class="block_full_left">
+                    <span class="iss-fav"><i class="icon-star-solid"></i></span>
+                    <p class="title">Series</p>
+
+                    <h1>{seriesInfo.Name}</h1>
+                    <p>{seriesInfo.Description__c}</p>
+                    <div class="progress_bar_wrap">
+                        <span class="text">0%</span>
+                        <div class="progress_bar">
+                            <div style={widthPercentage}></div>
+                        </div>
+                        <span class="text">100%</span>
+                    </div>
+                </div>
+                <div class="block_full_right">
+                    <p>Instructors:</p>
+
+                    <ul class="list-unstyled instructors-list">
+                        <li for:each={instructors} key={instructor.Id} for:item="instructor">
+                            <a onclick={instructorsDetail}>
+                                <div class="img">
+                                    <img src={imagePath}>
+                                </div>
+                                {instructor.Name}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="meta">
+                <div class="meta_left_area">
+                    <p class="points_count">{totalPoints} pts</p>
+
+                    <ul class="list-unstyled iss-blocks_tags">
+                        <li><a>School</a></li>
+                        <li><a>History</a></li>
+                        <li><a>Math</a></li>
+                    </ul>
+                </div>
+
+                <div class="meta_right_area">
+                    <strong class="price">{totalPrice}$</strong>
+                    <button class="btn btn-primary">Activate</button>
+                </div>
+            </div>
+        </div>
+        <div>
+    </div>
+    </div>
+
+    <div class="block_full_detail2">
+        <h2>Section 1</h2>
+        <template for:each={coursesOfSeries} for:item="course">
+            <div key={course.Id} class="block_full_row">
+                <div class="full_detail2_left">
+                    <div class="image">
+                        <img src={imagePath} alt="image-description">
+                        <span class="duration_count">{course.Duration__c} hours</span>
+                    </div>
+
+                    <div class="description">
+                        <template if:true={course.Type__c}>
+                            <p class="title">{course.Type__c}</p>
+                        </template>
+                        <h2>{course.Name}</h2>
+                        <template if:false={course.Description__c}>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices nunc metus, id fringilla dui varius eget. Nulla sit amet nunc vitae metus ullamcorper vehicula.</p>
+                        </template>
+
+                        <template if:true={course.Description__c}>
+                            <p>{course.Description__c}</p>
+                        </template>
+                        <div class="items_row">
+                            <div class="progress_bar_wrap">
+                                <span class="text">0%</span>
+                                <div class="progress_bar">
+                                    <div style="width:40%"></div>
+                                </div>
+                                <span class="text">100%</span>
+                            </div>
+                            <span class="pts-text">+{course.Points__c} pts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="full_detail2_right">
+                    <div class="widget widget-info">
+                        <p class="heading">Instructors:</p>
+                        <ul class="iss_ins_info list-unstyled">
+                            <li for:each={instructors} key={instructor.Id} for:item="instructor">
+                                <div class="holder">
+                                    <div class="image">
+                                        <img src={imagePath}>
+                                    </div>
+                                    <div class="des">
+                                        <strong class="name">
+                                            <a onclick={instructorsDetail} href="#">
+                                                {instructor.Name}
+                                                <i class="icon icon-arrow-right-long-solid"></i>
+                                            </a>
+                                            <p class="title">CEO</p>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <p>Sea Change Mentoring, California, USA</p>
+                            </li>
+                            <li>
+                                <strong class="price">{course.Price__c}$</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <template if:true={isModalOpen}>
+        <div role="dialog" tabindex="-1" style="background: rgba(45, 81, 79, 0.7);" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="popup_box">
+                    <header class="slds-modal__header" style={backGroundPopup}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading_medium slds-hyphenate" style="margin: 25px 32px;margin: 0;color: #fff;
+                    font-size: 25px;
+                    line-height: 30px;
+                    font-weight: 600;
+                    text-align: start;">Instructor info</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div style="display: flex;flex-wrap: wrap;align-items: center;">
+                        <div style=" width: 50px; height: 50px; border-radius: 100%; margin-right: 10px;">
+                            <img style="display: block;width: 100%;height: auto;" src={ellenimage} alt="image-description">
+                        </div>
+
+                        <div style="display: block;font-size: 16px;line-height: 19px;font-weight: 600;">
+                            <strong style="  display: block;
+                            font-size: 16px;
+                            line-height: 19px;
+                            font-weight: 600;">Ellen Mahoney</strong>
+                            <span style="  display: block;
+                            font-style: normal; font-size: 15px;">CEO</span>
+                        </div>
+                    </div>
+                     <address style="color: #549BA5;
+                        font-style: normal;
+                        font-size: 16px;
+                        padding-top: 5px;">Sea Change Mentoring, California, USA</address>
+
+                        <p style="color: #549BA5;
+                        font-style: normal;
+                        font-size: 16px;
+                        padding-top: 15px;">
+                            Ellen Mahoney, M. Ed, is an alumna of international schools and the founder of Sea Change Mentoring. For over twenty years, Ellen has dedicated her career to strengthening relationships in schools as a teacher, counselor, director, and trainer. She serves as a Council of International Schools (CIS) Affiliated Consultant and is a frequent contributor to CIS’s wellbeing work. Ellen is certified in mentoring supervision by Fordham University's Graduate School of Social Work. Ellen has contributed to major youth-mentoring and international school publications, including the National Mentoring Partnership's (MENTOR) 2022 Youth Mentoring Research Agenda and the award-winning research study, "Surveying the Landscape: Common Practices, Challenges and Opportunities in International School Transitions-Care."
+                        </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button style="border: none; color: #2D514F; font-size:16px" class="slds-button slds-button_neutral" onclick={closeModal} title="Close">Close</button>
+                </footer>
+                </div>
+
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

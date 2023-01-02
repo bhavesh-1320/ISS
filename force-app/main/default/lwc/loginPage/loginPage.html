@@ -1,0 +1,126 @@
+<template>
+    <!-- {largeScreen} -->
+    <div class="iss-logo-header">
+        <c-login-screen-header></c-login-screen-header>
+    </div> <template if:true={largeScreen}>
+        <div class="maindivOFImg">
+            <div style="display:flex;" class="backgroundImg">
+                <div class=" slds-align_absolute-center left">
+<div class="text">
+                    <p> <span class="welcomeIss">Welcome to ISS </span> <br> <span class="describeIss">Sign in or create an account</span> </p>
+                </div>
+                </div>
+                <!-- loginFunctionlity Starts from here  -->
+                <div class="loginFunctionlity">
+                    <div class="logintxtAndError">
+                        <div class="login-text">
+                            <p style="" class="lgnTxt">SIGN IN TO ISS </p>
+                        </div> <template if:true={errorBoolean} style="width: 96%; margin:auto;">
+                            <p style="color:rgb(70, 163, 157); font-size:16px;" class="errMsg">{errorMessage}</p>
+                        </template>
+                    </div>
+                    <div class="container">
+                        <div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"> <label class="slds-form-element__label" for="text-input-id-47"> Email <abbr class="slds-required" title="required">* </abbr> </label> <input type="text" style="    padding:0.6rem;" id="text-input-id-2" placeholder="" label="Email" onchange={usernameValue} class="slds-input emailInput" required /> </div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                    <lightning-icon size="x-small" class="input-icon icon-right " icon-name={passwordIcon} onclick={handleToggleIconname}></lightning-icon> <!-- <lightning-input type={passwordType}  name="password"  placeholder="Password*" class="icon-right"></lightning-input> --> <label class="slds-form-element__label" for="text-input-id-47"> Password <abbr class="slds-required" title="required">* </abbr> </label> <input onchange={passwordValue} type={passwordType} style="padding:0.6rem;" id="text-input-id-3" placeholder="" label="Password" class="icon-right slds-input passwordInput" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div> <a href={forgotPath}>
+                                <p style="font-size: 14px;font-weight: 400;line-height: 19px;letter-spacing: 0em;text-align:center;color: #549BA5;font-family:RobotoLight" class="frgtPaas"> Reset Password </p>
+                            </a> </div>
+                        <hr style="--lwc-spacingXLarge:0.5rem 0;margin-right: -6%;margin-left: -6%;">
+                        <div>
+                            <!-- <i>SIGN IN</i> --> <button style="border:1px; color:white" type="button" class=" btn signInBtn" onclick={login}>SIGN IN</button> <!-- <lightning-button class="btn nav-btn" label="Sign In" onclick={handleClick}></lightning-button> -->
+                        </div>
+                        <div>
+                            <p style="text-align:center ;"> Or </p>
+                        </div>
+                        <div> <a href={jobPath}> <button style="border: 1px solid #46a39d;color:color: #549BA5;;background: white;" type="button" class=" btn createAccount">Create Account</button> </a> </div>
+                        
+                    </div>
+                    <div class="footerText slds-align-bottom">
+                        <p style="text-align: center;font-size: 15px;" class="customerSupport"> If you don't remember the email ID, <br> contact <span style="color: #46a39d;cursor:pointer" onclick={supportPage}> customer support</span> </p>
+                    </div>
+                </div>
+                
+                 <!-- Login loginFunctionlity ends here  -->
+                
+                <div class="footer">
+                    <div class="imgOptimize"> <img src={optimize} alt=""> </div>
+                    <div class="imgEdurecruit"> <img src={edurecruit} alt=""> </div>
+                    <div class="imgLearn"> <img src={learn} alt=""> </div>
+                    <div class="imgFinance"> <img src={finance} alt=""> </div>
+                    <div class="imgMarketPlace"> <img src={marketPlace} alt=""> </div>
+                </div>
+            </div>
+            <div class="copyRight slds-align--absolute-center slds-p-around--x-small" style="display:flex ;">
+                <div class="rightAreReseverd">
+                    <p class="footerCopyright">© Copyright International Schools Services. All rights reserved. </p>
+                </div>
+                <div class="dataPrivacytxt" style="cursor:pointer" onclick={dataPrivacy}> Data Privacy and Protection </div>
+            </div>
+        </div>
+
+
+    </template> <template if:false={largeScreen}>
+        <div class="backgroundImgMobile slds-align--absolute-center">
+            <div class="loginFunctionlityMobile">
+                <div class="logintxtAndError slds-align-top">
+                    <div class="login-text">
+                        <p>SIGN IN TO ISS </p>
+                    </div> <template if:true={errorBoolean} style="width: 96%; margin:auto;">
+                        <p style="color:rgb(70, 163, 157); font-size:16px;" class="errMsg">{errorMessage}</p>
+                    </template>
+                </div>
+                <div class="container " style="margin-top: 15%;">
+                    <div>
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"> <label class="slds-form-element__label" for="text-input-id-47"> Email <abbr class="slds-required" title="required">* </abbr> </label> <input type="text" style="    padding:0.6rem;" id="text-input-id-4" placeholder="" label="Email" onchange={usernameValue} class="slds-input emailInput" required /> </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                <lightning-icon size="x-small" class="input-icon icon-right " icon-name={passwordIcon} onclick={handleToggleIconname}></lightning-icon> <!-- <lightning-input type={passwordType}  name="password"  placeholder="Password*" class="icon-right"></lightning-input> --> <label class="slds-form-element__label" for="text-input-id-47"> Password <abbr class="slds-required" title="required">* </abbr> </label> <input onchange={passwordValue} type={passwordType} style="padding:0.6rem;" id="text-input-id-5" placeholder="" label="Password" class="icon-right slds-input passwordInput" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div> <a href={forgotPath}>
+                            <p style="font-size: 14px;font-weight: 400;line-height: 19px;letter-spacing: 0em;text-align: center;color: #549BA5;" class="frgtPaas"> Reset Password </p>
+                        </a> </div>
+                    <hr style="--lwc-spacingXLarge:0.5rem 0;">
+                    <div>
+                        <!-- <i>SIGN IN</i> --> <button style="border:1px; color:white" type="button" class=" btn signInBtn" onclick={login}>SIGN IN</button> <!-- <lightning-button class="btn nav-btn" label="Sign In" onclick={handleClick}></lightning-button> -->
+                    </div>
+                    <div>
+                        <p style="text-align:center ;"> Or </p>
+                    </div>
+                    <div> <a href={jobPath}> <button style="border: 1px solid #46a39d;color: black !important;;background: white;" type="button" class=" btn createAccount">Create Account</button> </a> </div>
+                    <div>
+                        <p style="text-align: center;font-size: 15px;" class="customerSupport"> If you don't remember the email ID, <br> contact <span style="color: #46a39d;cursor:pointer;" onclick={supportPage}>customer support</span> </p>
+                    </div>
+                </div> <!-- </div> -->
+            </div>
+            <div class="footerMobile">
+                <div> <img src={optimize} alt=""> </div>
+                <div> <img src={edurecruit} alt=""> </div>
+                <div> <img src={learn} alt=""> </div>
+                <div> <img src={finance} alt=""> </div>
+                <div> <img src={marketPlace} alt=""> </div>
+            </div>
+        </div>
+        <div class="copyRightMobile">
+            <div class="rightAreReseverdMobile slds-align--absolute-center">
+                <p>© Copyright International Schools Services. All rights reserved. </p>
+            </div>
+            <div class="dataPrivacytxtMobile slds-align--absolute-center" style="cursor:pointer" onclick={dataPrivacy}> Data Privacy and Protection </div>
+        </div>
+    </template>
+</template>

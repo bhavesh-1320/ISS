@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Degree_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Degree Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Certification</fullName>
+                <default>false</default>
+                <label>Certification</label>
+            </value>
+            <value>
+                <fullName>Demo1</fullName>
+                <default>false</default>
+                <label>Demo1</label>
+            </value>
+            <value>
+                <fullName>Demo2</fullName>
+                <default>false</default>
+                <label>Demo2</label>
+            </value>
+            <value>
+                <fullName>Demo3</fullName>
+                <default>false</default>
+                <label>Demo3</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,607 @@
+@font-face {
+    font-family: 'MontserratLight';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Regular.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Medium.ttf) format('TrueType');
+}
+
+.headingFont {
+    font-family: MontserratLight;
+    color: #091132;
+}
+
+.noteBy {
+    font-family: 'RobotoLight';
+    color: #091132;
+}
+
+.preferences {
+    display: flex;
+    padding: 10px;
+
+}
+
+.preferencesValue {
+    padding: 10px;
+}
+
+.careerhistoryHeader {
+    padding: 15px;
+    width: calc(100%/6);
+    padding-bottom: 10px;
+    font-size: 14px;
+
+}
+
+.careerhistoryValue {
+    padding: 15px;
+    width: calc(100%/6);
+}
+
+.position {
+    width: auto;
+    padding: 10px;
+}
+
+.subheadingFont {
+    font-family: MontserratRegular;
+    color: #091132;
+}
+
+.bodyFont {
+    font-family: RobotoLight;
+    color: #848898;
+}
+
+.lineCalloutFont {
+    font-family: RobotoMedium;
+}
+
+
+.mainchildbody {
+    height: 48px;
+    background-image: linear-gradient(to right, #325B88, #1F6E94, #15809B, #28929E, #46A29D);
+    border-top-right-radius: 20px;
+}
+
+.header {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.addjobButton {
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --sds-c-button-success-text-color: WHITE;
+    HEIGHT: 83PX;
+
+}
+
+.addAnalytics {
+    margin-right: 54rem;
+    --sds-c-button-neutral-color-border: #549BA5;
+    --sds-c-button-neutral-color-background: #F5FAF9;
+    --slds-c-button-radius-border: 40px;
+    --sds-c-button-text-color: #549BA5;
+    height: 40px;
+}
+
+.fullNameCss {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.emailPreviewcss {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #549BA5;
+}
+
+.basicInfoCss {
+    font-family: 'RobotoLight';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 29px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.basicInfoCss p {
+
+    font-family: 'RobotoLight';
+}
+
+.toggleButton {
+    width: 30px;
+    height: 30px;
+    background: #448983;
+    text-align: center;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.toggleButton lightning-icon {
+    --sds-c-icon-color-foreground-default: white;
+    margin-top: 7px;
+
+}
+
+.textCss {
+    font-family: 'RobotoLight';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.seekingPositionTab {
+    font-family: 'RobotoLight';
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 15px;
+    color: #091132;
+}
+
+.seekingPositionTabHeader {
+    font-family: 'RobotoLight';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    border-bottom: 1px solid lightgrey;
+}
+
+.seekingPositionData {
+    font-family: 'RobotoLight';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+    border-bottom: 0.5px solid lightgrey;
+}
+
+.viewHorizontal {
+    display: flex;
+}
+
+.basicInfo,
+.education {
+    padding-bottom: 13px;
+    width: 50%;
+    text-align: left;
+    border-radius: 15px;
+    margin: 2px;
+}
+
+.basicInfo {
+    padding-right: 5px;
+}
+
+.education {
+    padding-left: 5px;
+}
+
+.fontsize {
+    font-size: 18px;
+}
+
+.upperfontsize {
+    font-size: 10px
+}
+
+.firstdiv {
+    margin-left: 52px;
+}
+
+.secDiv {
+    margin-left: 242px;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid green;
+    background-color: yellow;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+.conInfoTabs {
+    width: 100%;
+    overflow: overlay;
+    display: none;
+    padding: 0px 10px;
+}
+
+.conInfoTabs li {
+    display: flex;
+    color: white;
+    margin: 10px 2px;
+    z-index: 1;
+    padding: 10px 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+    min-width: max-content
+}
+
+.conInfoTabs li lightning-icon {
+    --sds-c-icon-color-foreground-default: white;
+}
+
+.conInfoTabs .active {
+    background: white;
+    color: black;
+    font-weight: 600;
+}
+
+.conInfoTabs .active lightning-icon {
+    --sds-c-icon-color-foreground-default: black;
+}
+
+
+.backBtn lightning-icon {
+    --sds-c-icon-color-foreground-default: #5FA19C;
+}
+
+.backBtn {
+    display: none;
+    padding: 5px 15px;
+    background: #f4f5f5;
+}
+
+.cnt1 {
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-auto-rows: auto;
+}
+
+.itm1 {
+    padding: 5px 5px;
+    text-align: center;
+}
+
+.hd1 {
+    grid-column: 1/4;
+    font-size: 38px;
+    word-spacing: 10px;
+    color: #091132;
+    font-family: 'RobotoLight';
+}
+
+.fb1 {
+    padding-top: 20px;
+    /* padding-left: 30%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.fi1 {
+    padding: 10px 0 0 0;
+    width: 100;
+    box-sizing: border-box;
+    font-family: 'RobotoLight';
+    color: #091132;
+    font-size: 18px;
+    text-align: left;
+}
+
+
+.tb {
+    font-weight: 600;
+    color: #091132;
+}
+
+.ta {
+    text-align: left;
+}
+
+.hd2 {
+    font-size: 20px;
+    color: #091132;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Medium.eot');
+    src: url('fonts/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Montserrat-Medium.woff') format('woff'),
+        url('fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.customClass {
+    font-size: 22px;
+    font-family: 'RobotoLight';
+    color: #091132;
+}
+
+.my-icon {
+    cursor: pointer;
+}
+
+.my-fav-icon {
+    cursor: pointer;
+    --sds-c-icon-color-foreground-default: #43A09D;
+}
+
+.inviteBtn,
+.invitedBtn,
+.hiredBtn,
+.AcceptedBtn,
+.DeclinedBtn,
+.ContactedBtn {
+    background: #549BA5;
+    padding: 8px 20px;
+    margin: 0px 5px 0px 10px;
+    border-radius: 100px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.innerScroller::-webkit-scrollbar {
+    width: 5px;
+}
+
+.innerScroller::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.innerScroller::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+}
+
+
+.msger-inputarea {
+    display: flex;
+    background: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 10px solid #F4FAF9;
+    border-radius: 25px;
+}
+
+.msger-inputarea * {
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+}
+
+.msger-input {
+    flex: 1;
+    background: #fff;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+}
+
+.threeDotOptionsOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.threeDotOptions {
+    position: absolute;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    right: 40px;
+    margin-top: 10px;
+    z-index: 4;
+    width: max-content;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.threeDotOptions li {
+    padding: 10px 20px;
+    color: #549ba5;
+    font-weight: bold;
+}
+
+.ThreeDotsPoints {
+    width: 16px;
+    height: 16px;
+    background: #F5F5F5;
+    position: absolute;
+    right: 10px;
+    transform: rotate(45deg);
+    z-index: 3;
+    margin-top: -8px;
+}
+
+.th {
+    color: #091132;
+}
+
+.td {
+    color: #091132;
+}
+
+.addNotecomponent {
+    display: none;
+    position: absolute;
+    height: -webkit-fill-available;
+    margin-top: -89px;
+    right: 20px;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    box-shadow: rgb(99 99 99 / 20%) -5px 2px 3px 0px;
+    transition: all 0.6s;
+    animation: slideIn 0.6s;
+}
+
+@keyframes slideIn {
+    0% {
+        width: 0px;
+    }
+}
+
+.notes {
+    padding: 20px;
+    padding-left: 0px;
+    margin: 20px;
+
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    display: flex;
+    border-radius: 10px;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+
+.singleNote {
+    padding-left: 0px;
+    width: calc(100% - 35px);
+    padding: 10px;
+    border-radius: 2px;
+    display: flex;
+}
+
+.actionicon {
+    cursor: pointer;
+    --sds-c-icon-color-foreground-default: #549BA5;
+    margin: 5px;
+}
+
+.action {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.singleNote h1 {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+.singleNote p {
+    font-weight: 500;
+    font-size: 14px;
+    color: #091132;
+}
+
+.ReordeOptions {
+    position: absolute;
+    right: 100px;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .basicInfo,
+    .education {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .backBtn {
+        display: block;
+    }
+
+    .mainchildbody {
+        display: none;
+    }
+
+    .emailPreviewcss {
+        padding: 5px 0px;
+    }
+
+    .ReordeOptions {
+        width: 96%;
+        right: 2%;
+    }
+
+    .toggleButton{
+        display: none;
+    }
+
+    .addNotecomponent {
+        margin-top: 0;
+        top: 0;
+        right: 0;
+    }
+
+}

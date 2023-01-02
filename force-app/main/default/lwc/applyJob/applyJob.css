@@ -1,0 +1,221 @@
+.mainDiv{
+    border-radius: 20px;
+    background-color: white;
+}
+.closeIcon{
+    cursor: pointer;
+}
+.headerDiv{
+    color:white;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20px 20px 0px 0px;
+    background-image:linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));
+}
+.mainText{
+    font-size: large;
+    font-weight: bold;
+    color: rgb(47, 80, 80);
+}
+.infoDiv{
+    background-color: white;
+}
+.paragraph{
+    color: rgb(83, 113, 111);
+}
+.inputTag{
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background-color: lightgray;
+    color: rgb(84, 155, 165);
+    font-weight: bold;
+}
+::-webkit-file-upload-button{
+    background: black;
+    color: red;
+    padding: 1em;
+}
+.buttonClass{
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+}
+.invertButtonClass{
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: white;
+    color: rgb(84, 155, 165);
+}
+.disableButtonClass{
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+    opacity: 0.3;
+}
+.lineButtonClass{
+    border: 2px solid rgb(84, 155, 165);
+    color: rgb(84, 155, 165);
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.3;
+}
+.infoDiv{
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+}
+.infoIcon{
+    font-size: large;
+    margin-top: -3px;
+    cursor: pointer;
+}
+.infoText{
+    cursor: pointer;
+        font-weight: bold;
+    color: rgb(84, 155, 165);
+    width: 100%;
+    text-align: right;
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.mainText{
+    font-size: large;
+    font-weight: bold;
+    color: rgb(47, 80, 80);
+}
+.infoDiv{
+    background-color: white;
+}
+.paragraph{
+    color: rgb(83, 113, 111);
+}
+.inputTag{
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background-color: lightgray;
+    color: rgb(84, 155, 165);
+    font-weight: bold;
+}
+::-webkit-file-upload-button{
+    background: black;
+    color: red;
+    padding: 1em;
+}
+.buttonClass{
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+}
+.invertButtonClass{
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: white;
+    color: rgb(84, 155, 165);
+}
+.disableButtonClass{
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+    opacity: 0.3;
+}
+.lineButtonClass{
+    border: 2px solid rgb(84, 155, 165);
+    color: rgb(84, 155, 165);
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.3;
+}
+.infoDiv{
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+}
+.infoIcon{
+    font-size: large;
+    margin-top: -3px;
+    cursor: pointer;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.btn {
+    border: none;
+    color: grey;
+    background-color: rgb(245, 245, 245);
+    padding: 15px 10px;
+    border-radius: 20px;
+    width: 100%;
+    text-align: left;
+}
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.infoFileChoosen{
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+    padding: 15px 10px;
+}
+.uploadCover{
+    padding: 10px;
+}
+.OKButton{
+    color: white;
+    background-color: rgb(69, 153, 168);
+    border: none;
+    border-radius: 5px;
+}
+.CantOpenDiv{
+    width: 400px;
+}
+.btn {
+    border: none;
+    color: grey;
+    background-color: rgb(245, 245, 245);
+    padding: 15px 10px;
+    border-radius: 20px;
+    width: 100%;
+    text-align: left;
+}
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.infoFileChoosen{
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+    padding: 15px 10px;
+}
+.uploadCover{
+    padding: 10px;
+}
+
+
+.CantOpenModal{
+    transition: all 0.6s;
+    animation: showPopUp 0.6s;
+}
+
+@keyframes showPopUp {
+    0%{
+        top: 100vh;
+    }
+}

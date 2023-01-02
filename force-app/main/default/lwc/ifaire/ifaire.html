@@ -1,0 +1,316 @@
+<template>
+	<template if:true={timeZone}>
+
+		<div>
+			<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+				class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+						onclick={closeModal}>
+						<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+							size="small"></lightning-icon>
+						<span class="slds-assistive-text">Cancel and close</span>
+					</button>
+					<div>
+						<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
+						</h1>
+					</div>
+					<div style="border-radius:20px;" class="slds-modal__content " id="modal-content-id-1">
+						<div class="time-zone">
+							<h2>{timedate}</h2>
+							<div class="container">
+								<div class="item">
+									<div style="display:flex;justify-content:space-between;">
+										<h3>Current Time Zone</h3>
+										<img style="height:25px;" src={editIcon}>
+									</div>
+									<div class="zones">
+										<p>{currentDate}</p>
+										<!-- <div class="btnicon">
+                        <lightning-icon icon-name='utility:delete' alternative-text='delete' size='small' title='delete'></lightning-icon>
+                    </div> -->
+									</div>
+								</div>
+								<hr class="lines">
+								<div class="item">
+									<h3>Your Time Zone</h3>
+									<div class="zones">
+										<p>(UTC -06:00) Eastern Island - Friday, September 24, 2022 9:30 PM</p>
+										<div class="btnicon">
+											<!-- <<lightning-icon icon-name="doctype:image" alternative-text="Doc image" ></lightning-icon> -->
+											<!--More icon please visit : https://www.lightningdesignsystem.com/icons/ -->
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon class="rightPadding" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+										</div>
+									</div>
+									<div class="zones">
+										<p>(UTC -03:00) Greenland - Friday, September 24, 2022 5:30 PM </p>
+										<div class="btnicon">
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon class="rightPadding" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+										</div>
+									</div>
+								</div>
+								<hr class="lines">
+								<div class="item">
+									<h3>Other Time Zone</h3>
+									<div class="zones">
+										<p>(UTC -05:00) Eastern Time (US & Canada)</p>
+										<div class="btnicon">
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon class="rightPadding" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+											<!-- <div style="width:20px;height:20px;"></div> -->
+										</div>
+									</div>
+									<div class="zones">
+										<p>(UTC -03:00) Greenland - Friday, September 24, 2022 5:30 PM </p>
+										<div class="btnicon">
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon class="rightPadding" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+											<!-- <div style="width:20px;height:20px;"></div> -->
+										</div>
+									</div>
+									<div class="zones">
+										<p>(UTC -02:00) Coordinated UT - Friday, September 24, 2022 7:30 PM</p>
+										<div class="btnicon">
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon class="rightPadding" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+											<div style=""></div>
+										</div>
+									</div>
+									<div class="zones">
+										<p>(UTC-07:00) Arizona - Friday, September 24, 2022 7:30 PM</p>
+
+										<div class="btnicon">
+											<img style="height:20px;" class="rightPadding" src={editIcon}>
+											<lightning-icon style="padding-right:5px;" icon-name='utility:delete'
+												alternative-text='delete' size='small' title='delete'></lightning-icon>
+											<img style="" src={joinTimeZone}>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		</div>
+
+	</template>
+	<!-- <div class="heading slds-align_absolute-center">
+
+
+		<h1 class="slds-align_absolute-center"
+			style="font-size:22px;display: flex;align-items: center;text-align: center;color: #F98B8B;width:90%">Jan.
+			3,2022 - USA: Philadelphia - St. Jose University has invited you to apply! </h1>
+		
+
+	</div> -->
+
+
+	<div style="background-color: white;    border-radius: 20px;">
+
+		<div class="Teacher">
+			<div class="Teacher2">
+
+
+
+
+				<div class="imgText" style="">
+
+					<div class="leftText" style="padding-left:20px">
+						<p class='upperCardHead'>{child.Name}</p>
+						<div class="slds-m-top--xx-small" style="    display: flex;color: white;">
+							<img src={locationImage} alt="">
+							<p class="slds-m-left--x-small locationCardHead">Virtual</p>
+						</div>
+					</div>
+					<div class="rightText">
+						<p class="slds-align--absolute-center schoolParticipateCount slds-m-right--medium">50 schools
+							participating</p>
+						<div>
+							<div class="slds-align--absolute-center bookmarkButton slds-m-right--medium">
+								<img src={Bookmark} alt="" style="width: 18px;height: 21px;">
+								<p style="padding-left: 6px;color: white;font-size: 15px;"> Bookmark</p>
+							</div>
+
+						</div>
+						<div>
+							<div class="slds-align--absolute-center registerButton slds-m-right--medium">
+								<img src={RightSign} alt="" style="    padding-right: 2px;width: 27px;height: 22px;">
+								<p
+									style="    background-color: rgb(84, 155, 165);color: white;font-size: 14px;margin-bottom: 2px;">
+									Register</p>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+		<div>
+			<div class="container slds-grid  slds-wrap">
+				<div class=" newData slds-col slds-large-size_1-of-2 slds-medium-size_1-of-2 slds-size_1-of-1">
+
+
+
+
+
+					<div class="eventTime slds-p-around--medium ">
+						<div style="align-items">
+							<p class="dataLeft">Event time</p>
+						</div>
+						<div class="dateTime slds-m-top--x-small">
+							<div class=" date ">
+
+
+								<div class="textfont" style="display: flex; ">
+									<img src={rectangleImage1} alt="" style="height:18px"
+										class="slds-align--absolute-center">
+									<p class=" leftCardData slds-align--absolute-center">Dec 2 2022 </p>
+								</div>
+								<div class="textfont" style="display: flex;padding-top:2px;">
+									<img src={rectangleImage2} alt="" style="height: 25px;    width: 28px;"
+										class="slds-align--absolute-center">
+									<p class=" leftCardData slds-align--absolute-center"> 9AM -1PM EST</p>
+								</div>
+
+
+							</div>
+
+							<div class="date slds-m-top--xx-small">
+
+								<div class="textfont" style="display: flex;">
+									<img src={rectangleImage1} alt="" style="height:18px"
+										class="slds-align--absolute-center">
+									<p class=" leftCardData slds-align--absolute-center">Dec 2 2022 </p>
+								</div>
+
+
+
+								<div class="textfont" style="display: flex; padding-top:3px;">
+									<img src={rectangleImage2} alt="" style="height: 25px;    width: 28px;"
+										class="slds-align--absolute-center">
+									<p class=" leftCardData slds-align--absolute-center"> 9AM -1PM EST</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="eventTime slds-p-around--medium">
+						<div style="    display: flex;justify-content: space-between;">
+							<p class="dataLeft">Your time</p>
+							<div onclick={showTimezone} style="  cursor: pointer;">
+								<p class="dataRight">
+									Change
+									of view other time zone</p>
+							</div>
+
+						</div>
+						<div class="date slds-m-top--x-small">
+
+							<div class="textfont" style="display: flex;">
+								<img src={rectangleImage1} alt="" style="width: 18px;"
+									class="slds-align--absolute-center">
+								<p class=" leftCardData slds-align--absolute-center">Dec 2 2022 </p>
+							</div>
+
+
+
+							<div class="textfont" style="display: flex; padding-top:3px;">
+								<img src={rectangleImage2} alt="" style="height: 25px;    width: 28px;"
+									class="slds-align--absolute-center">
+								<p class=" leftCardData slds-align--absolute-center"> 9AM -1PM EST</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="eventTime slds-p-around--medium">
+						<div style="    display: flex;justify-content: space-between;">
+							<p class="dataLeft">
+								Description</p>
+							<p class="dataRight">
+								Book Hotel Reservations</p>
+						</div>
+						<div class="date slds-m-top--x-small">
+							<p class=" leftCardData slds-m-top--x-small" style="padding-left: 0px;">We eill be hosting
+								our anual December iFair in Madrid Spain as well as virtually for thos that are unable
+								to attend in person... </p>
+
+
+						</div>
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div class="left scrollable slds-col slds-large-size_1-of-2 slds-medium-size_1-of-2 slds-size_1-of-1">
+
+					<div class="multipleSchools">
+
+						<template for:each={bestMatchJob} for:item="item" for:index="index">
+
+
+							<div key={item.Id}
+								style="background: #FFFFFF;box-shadow: 0px 10px 15px rgba(95, 161, 156, 0.15);border-radius: 15px;"
+								class="slds-m-bottom--x-small slds-p-around--small">
+								<div style="display: flex;justify-content: space-between;background: #F6F6F6;border-radius: 15px;;"
+									class="slds-align--absolute-center slds-p-right--large">
+									<div style="display:flex">
+										<div>
+											<img
+												src="https://internationalschoolsservices--dev.sandbox.my.site.com/recruitment/resource/1668612834000/candidateSearchIcon/ISSV2/Rectangle.png" />
+										</div>
+										<div class="slds-align-content-center slds-m-left--small">
+											<h1>Union School</h1>
+											<span style="display:flex"> &nbsp; <img src={locationImage}> &nbsp; <h3 class="dataLeft2">
+													Rome,Italy</h3></span>
+										</div>
+									</div>
+									<!-- <div>
+                                                <button title="New" class="slds-button slds-button_brand slds-p-left--medium slds-p-right--medium" style="border-radius: 5px;height: 22px;">New</button>
+                                            </div> -->
+								</div>
+							</div>
+						</template>
+					</div>
+					<div>
+
+					</div>
+
+				</div>
+
+				<div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</template>

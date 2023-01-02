@@ -1,0 +1,178 @@
+body{
+	font-size: 15px;
+}
+
+.container{
+	background-color: #F5F5F5;;
+	width: 100%;	
+	border-radius: 20px;
+}
+
+.header{
+	padding: 14px 51px;
+    margin: auto 10px;
+	font-style: Roboto;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 23.44px;
+	color: #2D514F;
+
+}
+.addGroupbtn{
+	    padding: 20px 42px 60px;
+}
+button{
+	float: right;
+	background-color: #549BA5;
+	border-radius: 20px;
+}
+
+.add{
+	 --sds-c-icon-color-foreground-default: white;
+}
+
+.buttonHead{
+	    color: white;
+    margin-left: 4px;
+    padding: 2px;
+}
+.outerDiv{
+	background-color: white;
+	width: 95%;
+	margin: 20px auto;
+	border-radius: 20px;
+}
+
+.innerdiv{
+	background:#F5FAF9;
+	width: 97%;
+	margin-top: 10px;
+	margin: 28px auto;
+	border-radius: 15px;
+	padding-bottom: 20px;
+}
+
+.tdbordernone{
+	border:none;
+}
+
+.uppertable {
+	background-color:rgba(54, 54, 54, 0);
+	color: #2D514F;
+	padding-left: 38px !important;
+	border-collapse: collapse;
+	width: 100% !important;
+	margin-bottom: 10px;
+}
+
+.schoolNameHeader{
+display: flex;
+justify-content: space-between;
+}
+
+.edit{
+ --sds-c-icon-color-foreground-default:cadetblue;
+ padding: 20px 25px 0 0;
+}
+
+.table_edit{
+padding: 0 16px 0 30px !important;
+}
+
+.delete{
+	--sds-c-icon-color-foreground-default: red;
+	
+}
+th{
+background-color:rgba(0, 0, 0, 0) !important;
+	font-weight: 700;
+}
+
+.tdborder{
+	background-color: white;
+	padding: 15px 0 0 65px;
+}
+
+.maindatatable{
+	background-color: white;
+	border: none;
+    width: 96%;
+	border-radius: 20px;
+	margin: 20px auto;
+}
+
+.row{
+	padding: 10px 50px 15px 66px;
+}
+
+.mycustomComboBox{
+	top:-8px;
+	padding: 0px 21px 0px 41px;
+    --sds-c-input-radius-border: 20px;
+    --lwc-borderWidthThin: 1px;
+    --sds-c-input-color-border: #549BA5;
+    --lwc-colorTextPlaceholder:#2D514F;
+    --slds-c-icon-color-foreground-default: #549BA5;
+}
+.status{
+	border-color: cadetblue;
+	background-color: white;
+}
+
+.Statustitle{
+	color: cadetblue;
+}
+
+.down{
+	--sds-c-icon-color-foreground-default: cadetblue;
+}
+
+.greyfont{
+	color: rgb(201, 196, 196);
+}
+
+.tdpadding{
+padding: 2px 0 2px 62px;
+}
+
+.actionbtn{
+	padding-right: 50px;
+}
+
+.borderbottom{
+	border-bottom: 5px;
+	font-weight: 600;
+	padding-top: 5px;
+}
+
+tr{
+	border-bottom: 1px solid #ddd;
+}
+
+.outer-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.headerx {
+  position: absolute; /* relative to outer container */
+  /* background-color: pink; */
+  width: 100%;
+  z-index: 2;
+}
+
+.addSchoolbtn{
+	padding: 12px 13px 0 0;
+}
+
+/* responsive */
+
+.maindatatable{
+    display: block;
+    max-width: -moz-fit-content;
+    max-width: 100%;
+    margin:  auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}

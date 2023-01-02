@@ -1,0 +1,216 @@
+<template>
+  <template if:true={loader}>
+    <div class="overlay"></div>
+    <div id="grid-container" class="grid-container">
+      <div class='cube cube1'></div>
+      <div class='cube cube2'></div>
+      <div class='cube cube3'></div>
+      <div class='cube cube4'></div>
+      <div class='cube cube5'></div>
+      <div class='cube cube6'></div>
+      <div class='cube cube7'></div>
+      <div class='cube cube8'></div>
+      <div class='cube cube9'></div>
+    </div>
+  </template>
+  <div class="SmallPage">
+    <div class="mainBody">
+      <lightning-combobox name="progress" label="" value={jobPosition} placeholder="View Open Jobs"
+        options={jobPosition} onchange={handleJobPosition} class="my-cystom-input" style="left: 10px;top: -10px;">
+      </lightning-combobox>
+      <p style="padding: 18px;">More Filters</p>
+    </div>
+
+
+
+    <!-- <div class="testing" style="display:flex;justify-content: space-around; margin-bottom:10px">
+
+      <div class="mobile-analytics-btns">
+        <lightning-button variant="success" label="Add Job" icon-name="utility:add" title="" onclick={handleClick}
+          class="addjobButton"></lightning-button>
+      </div>
+      <div class="mobile-search">
+        <lightning-input name="enter-search" label="" placeholder="Search" type="search" class="my-custom-Combobox"
+          onkeyup={handleKeyUp}></lightning-input>
+      </div>
+    </div> -->
+
+    <div class="mobile-job-dropdown">
+      <div style="display: flex;">
+        <div class="left">
+
+          <template if:true={initialComponantHide}>
+            <div class="analytics"
+              style="height:60px;border-top-left-radius: 20px;background-image: linear-gradient(to right, rgb(40, 57, 126), rgb(38, 66, 129), rgb(39, 74, 132), rgb(43, 82, 134), rgb(49, 89, 135));padding: 8px 20px;">
+              <div class="analyticsTab"
+                style="display: flex; padding: 5px 20px 5px 25px; background: transparent; width: max-content; border-radius: 100px; border: 3px solid white;">
+                <lightning-icon icon-name="custom:custom102" size="small" title="custom11"
+                  style="background: none;--sds-c-icon-color-foreground-default: white;">
+                </lightning-icon>
+                <h1 style="font-size: 18px;margin-left: 5px;font-weight: bold;color: white;">Analytics</h1>
+              </div>
+            </div>
+
+            <div onkeyup={handleKeyUp} onchange={handleKeyUp} style="padding: 0px 20px;background: white;">
+              <lightning-input name="enter-search" label=" " type="search" placeholder="Search Name"
+                class="my-custom-Combobox"></lightning-input>
+              </br>
+            </div>
+          </template>
+
+
+          <div style="padding: 10px;height: calc(100vh - 275px);overflow-y: auto;min-height: 100%;">
+            <template if:false={noData}>
+              <template for:each={jobsData} for:item="item" for:index="index">
+
+
+                <article class="slds-card" key={item.key} onclick={getClick} id={item.Id}
+                  style="cursor: pointer;border-radius: 16px;overflow: hidden;background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));padding: 1px;">
+
+                  <div class="cardHeader"
+                    style="display: flex; justify-content: space-between;padding: 10px;background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));">
+                    <div class="cardImage" style="width: 50px;height: 50px;border-radius: 8px;">
+                      <img src={rectangleImage} style="width: 100%;">
+                    </div>
+                    <div class="details" style="color: white;max-width: calc(100% - 170px);">
+                      <p style="font-weight: bold;font-size: 14px;margin-top: 5px;">{item.Name}</p>
+                      <p>{item.School__r.Name}</p>
+                    </div>
+                    <div class="applicants" style="text-align: center;">
+                      <p style="color: white;">Applicants</p>
+                      <div class="applicantCount" style="display: flex;">
+                        <p
+                          style="width: 50px;font-weight: bold;font-size:12px;padding:5px;background: #dddddd;border-top-left-radius: 10px;border-bottom-left-radius: 10px;">
+                          43</p>
+                        <p
+                          style="width: 50px;font-weight: bold;font-size:12px;padding: 5px;border: 1px solid #eeeeee;background:white;border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
+                          1 New</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cardFooter"
+                    style="background: white;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;overflow: hidden;">
+                    <div class="footerTop" style="padding:10px;display: flex;justify-content: space-between;">
+                      <div class="location" style="font-weight: bold">
+                        <img src={locationImage}> Rome
+                      </div>
+                      <div class="degree" style="font-weight: bold">
+                        <img src={hatImage}> Masters
+                      </div>
+                    </div>
+                    <div class="footerBottom"
+                      style="border-top:1px solid #ccc;padding:10px;display: flex;justify-content: space-between;color: #777;">
+                      <p> 3 days ago </p>
+                      <p>Apply by: {item.Job_Role_Start_Date__c}</p>
+                    </div>
+                  </div>
+                </article>
+              </template>
+
+
+            </template>
+            <template if:true={noData}>
+              <div class="noData">
+                <p>
+                  No Data Found !!
+                </p>
+              </div>
+
+            </template>
+          </div>
+          <div>
+          </div>
+        </div>
+        <div class="right">
+          <c-job-u-i-child-component get-value={value} oncallpasstoparent={passToParent}></c-job-u-i-child-component>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile view code for left list -->
+    <template if:true={showLeftList}>
+      <div class="mobile-job-dropdown2">
+        <div class="container slds-grid slds-gutters slds-wrap">
+          <div class="left slds-col slds-size_1-of-4">
+            <div class="mobile-search mySearch">
+              <lightning-input name="enter-search" placeholder="Search" type="search" class="my-custom-Combobox"
+                style="margin-top:-20px;"></lightning-input>
+              </br>
+              <p style="text-align:center">{sizeOfJobList} results</p>
+            </div>
+
+            <div>
+              <template for:each={jobsData} for:item="item" for:index="index">
+                <article class="slds-card" key={item.key} style="border-radius: 15px;padding: 10px;">
+                  <div class="slds-card__header slds-grid" style="background: #f5faf9;border-radius: 13px">
+                    <header class="slds-media_center slds-has-flexi-truncate">
+                      <div class="slds-grid slds-grid_reverse">
+                        <div class="slds-col my-col" style="margin-top: 9px;" onclick={handleClick} id={item.Id}>
+                          <p
+                            style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+                            {item.Name}
+                          </p>
+                          <p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+                            {item.School__r.Name}
+                          </p>
+                        </div>
+                        <div class="slds-col">
+                          <img src={rectangleImage} style="margin-left: -14px;margin-bottom: 11px;">
+                        </div>
+                      </div>
+
+                      <div class="slds-no-flex">
+                        <!-- <button class="slds-button slds-button_neutral">New</button> -->
+                      </div>
+                    </header>
+                  </div>
+                  <div>
+                    <div style="display: flex;justify-content: space-evenly;">
+                      <p style="text-align:center;"> Applicants </p>
+                      <div
+                        style="display: flex;border: 1px solid;border-radius: 15px;justify-content: space-around;height: 23px;">
+                        <div class="applicantspill">
+                          <p style="margin-top: 2px;"> 34 </p>
+                        </div>
+                        <div class="applicantspillSec"
+                          style="border: 1px solid #8f888e;background: #726d6d;border-radius: 1px 11px 13px 1px;padding: 1px;">
+                          <p>2 new </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="slds-grid slds-gutters" style="padding: 12px;">
+                      <div class="slds-col" style="margin-left: 3px;">
+                        <img src={locationImage}>
+                        <span style="margin-left:11px;  ">Rome </span>
+                      </div>
+                      <div class="slds-col" style="margin-bottom:11px">
+                        <img src={hatImage}>
+                        <span style="margin-left:11px;margin-left: 11px;margin-bottom: 43px;">
+                          {item.Education_Level__c}</span>
+                      </div>
+                    </div>
+                    <div class="slds-grid slds-gutters">
+                      <div class="slds-col">
+                        <span>3 days ago </span>
+                      </div>
+                      <div class="slds-col" style="margin-left: 48px;">
+                        <p>Apply by:</p>
+                        <p> {item.Job_Role_Start_Date__c} </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+  </div>
+
+
+</template>

@@ -1,0 +1,30 @@
+<template>
+    <div class="iss-blocks slick-slider">
+        <div class="slide">
+            <div class="iss-block">
+                <div class="image">
+                    <a onclick={handleCourseClick}><img src={imagePath} alt="image-description"></a>
+                    <span class="duration_count">{course.courseDuration} hours</span>
+                    <span if:true={isUpcomingLiveSession} class="live-date">live: {course.liveSessionDate}</span>
+                    <ul class="list-unstyled actions_links">
+                        <li><a class="star-class" onclick={handleStarClick}><i class="icon-star-solid"></i></a></li>
+                    </ul>
+
+                </div>
+                <div if:true={isActiveCourse} class="progress_bar">
+                    <div style="width: 15%"></div>
+                </div>
+                <div class="description">
+                    <ul class="list-unstyled iss-blocks_tags">
+                        <li><a href="#">School</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Math</a></li>
+                    </ul>
+                    <h2><a href="#">{course.courseName}</a></h2>
+                    <span class="points_count">+{course.coursePoints} pts</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

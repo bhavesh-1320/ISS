@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : Anton Budkevich
+  @group             : 
+  @last modified on  : 12-27-2022
+  @last modified by  : Anton Budkevich
+-->
+<template>
+	<!-- <button onclick={handleLearningCourses}>To Your courses</button> -->
+	<div class="iss-container">
+			<c-learn-candidate-search-box onsearch={contentSearch} onfilter={handleFilter}></c-learn-candidate-search-box>
+		<div class="iss-search-res-area">
+				<div class="iss-search-head">
+					<h1>Results:</h1>
+					<div class="iss-search_meta">
+						<div class="iss-search-filter">
+							<strong class="title">Filters:</strong>
+							<ul class="list-unstyled iss-filter-list">
+								<li if:true={filters} for:each={filters} for:item="filter" key={filter.Id}>filter.Name</li>
+								<!-- <li><button class="fakeHref" onclick={handleFilter} value="Course">Course</button></li>
+								<li><a onclick={handleFilter} value="LiveSession">Live Session</a></li>
+								<li><a onclick={handleFilter} value="School">School</a></li> -->
+								<li if:true={tag}>{tag}</li>
+							</ul>
+						</div>
+						<div class="iss-search-sort">
+							<strong class="title">Sort by:</strong>
+							<div class="search-sort-box">
+								<a href="#">Short <span class="icon-caret-down-solid"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<template if:true={courses}>
+				<div class="iss-search-blocks">
+					<template for:each={courses} for:item="course">
+						<c-learn-candidate-search-block key={course.id}
+							content={course}></c-learn-candidate-search-block>
+					</template>
+				</div>
+			</template>
+		</div>
+	</div>
+</template>

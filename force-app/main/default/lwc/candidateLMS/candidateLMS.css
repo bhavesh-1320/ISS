@@ -1,0 +1,12 @@
+.main {
+    background: #EEF6F5;
+    border-radius: 30px;
+}
+.profileHeader {
+    box-sizing: border-box;
+    border-bottom: 1px solid #DDECEA;
+}
+.mainHeader {
+    background-color: white;
+	border-radius: 30px;
+}

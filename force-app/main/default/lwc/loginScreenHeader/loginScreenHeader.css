@@ -1,0 +1,27 @@
+.iss-logo{
+    margin-left: 90px;
+    margin-bottom: 12px;
+    max-width: 15%;
+}
+.sign-up{
+    color: #2D514F;
+    font-weight: 700;
+    font-size: 14px;
+}
+.iss-userSignUp{
+    display: flex;
+    margin-right: 78px;
+        background: #F4F5F5;
+    align-items: center;
+    border-radius: 28px;
+    padding: 7px 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+@media screen and (max-width: 769px) {
+    .iss-logo{
+        margin-left: 20px;
+       max-width: 45%;
+
+    }
+}

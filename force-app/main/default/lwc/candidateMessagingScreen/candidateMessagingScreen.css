@@ -1,0 +1,98 @@
+/* :root {
+    --left-msg-bg: #ececec;
+} */
+
+
+.refreshButton {
+    --sds-c-button-brand-color-background: #5FA19C;
+    --slds-c-button-brand-color-border: #5FA19C;
+    --slds-c-button-radius-border: 14px;
+    margin: 10px 0px;
+}
+
+.searchContact {
+    background: #FFFFFF;
+    border: 2px solid #5FA19C;
+    border-radius: 14px;
+    width: calc(100% - 120px);
+    /* max-width: 200px; */
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    padding: 0px 10px;
+
+    /* margin: 0.5rem; */
+}
+
+.search-icon {
+    --sds-c-icon-color-foreground-default: #5FA19C;
+    --sds-c-icon-color-background: transparent;
+}
+
+.schoolCombobox {
+    --sds-c-input-radius-border: 14px;
+    --sds-c-input-color-border: #549BA5;
+    margin: 0.5rem;
+}
+
+.msg-bubble {
+    padding: 15px;
+    border-radius: 15px;
+    background: #F4FAF9;
+}
+
+.con-bubble {
+    padding: 15px;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+    width: 95%;
+    margin: 5px auto;
+    height: max-content;
+}
+
+.con-bubble:hover {
+    background: #efefef;
+}
+
+.msg-cmp {
+    /* height: calc(100vh - 100px); */
+    /* padding-top: 20px; */
+    background: #DDECEA;
+}
+
+.msg-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 10px; */
+    /* width: 100%; */
+}
+
+.msg-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    /* width: 100%; */
+}
+
+.inbox-info {
+    row-gap: 5px;
+    height: calc(100vh - 325px);
+    overflow-y: auto;
+}
+
+.con-info {
+    --lwc-spacingSmall: 0px;
+}
+
+.fontBold {
+    font-weight: bold;
+}
+
+.noContacts {
+    text-align: center;
+    margin-top: 70px;
+    color: rgb(0 133 152);
+}

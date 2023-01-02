@@ -1,0 +1,24 @@
+.headerfont{
+	 margin-right: 24px;
+    border: none;
+    color: #549BA5;
+    font-family: arial;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.profileTextCss{
+	font-family: arial;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2D514F;
+}
+.slds-card
+{
+    border-style: none !important;
+}

@@ -1,0 +1,102 @@
+<template>
+
+
+
+    <section class="msger">
+        <header class="msger-header">
+
+            <div class="msger-header-title" style="display: flex;">
+                <div class="backBtn" style="padding: 10px;display: none;" onclick={backToUserList}>
+                    <lightning-icon icon-name="utility:back" class="search-icon" size="x-small" style="margin-top:8px;">
+                    </lightning-icon>
+                </div>
+                <div class="contactDetail" style="padding: 5px 10px;">
+                    <div style="font-size: 170%;font-weight: bold;color: #2D514F;">{contactName}</div>
+                    <div style="color: #549BA5;font-weight: bolder;">{contactAddress}</div>
+                </div>
+            </div>
+            <div class="searchChat" style="margin-top: 15px;">
+                <input type="text" placeholder="Search in chat" onkeyup={searchInChat}
+                    style="width: 90%;max-width: 239px;background:transparent;border:none;outline:none;">
+                <lightning-icon icon-name="utility:search" class="search-icon" size="x-small" style="margin-top:8px;">
+                </lightning-icon>
+            </div>
+        </header>
+
+        <main class="msger-chat">
+            <!-- <div class="dateStamp">18 August 2022,Friday</div>
+                <div class="noDateStamp"></div> -->
+
+            <template for:each={allMessages} for:item="msg">
+                <div class={msg.dateStampClass} key={msg.id}>{msg.datestamp}</div>
+                <!-- <div key={msg.id} style="text-align: center;">Hello</div> -->
+                <div class={msg.class} key={msg.id}>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                            <div class="msg-info-name">{msg.name}</div>
+                            <div class="msg-info-time">{msg.time}</div>
+                        </div>
+
+                        <div class="msg-text">
+                            {msg.content}
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- <div class="msg left-msg">
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                            <div class="msg-info-name">BOT</div>
+                            <div class="msg-info-time">12:45</div>
+                        </div>
+
+                        <div class="msg-text">
+                            Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+                        </div>
+                    </div>
+                </div>
+
+                <div class="msg right-msg">
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                            <div class="msg-info-name">Sajad</div>
+                            <div class="msg-info-time">12:46</div>
+                        </div>
+
+                        <div class="msg-text">
+                            You can change your name in JS section!
+                        </div>
+                    </div>
+                </div> -->
+        </main>
+
+        <div class="msger-footer"
+            style="background-color:white;padding:10px 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+            <div class="msger-inputarea">
+                <!-- <lightning-button-icon icon-name="custom:custom35" variant="container" alternative-text="Record"
+                            title="Record" style="padding: 0px;"></lightning-button-icon> -->
+                <input type="text" class="msger-input" placeholder={placeHolder} onkeypress={sendMessageOnEnter}>
+                <!-- <div style="padding: 0px;">
+                        <lightning-button-icon icon-name="utility:attach" variant="container" alternative-text="attach"
+                            title="attach"></lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:photo" variant="container" alternative-text="photo"
+                            class="slds-m-left_xx-small" title="photo"></lightning-button-icon>
+                        <lightning-button-icon icon-name="utility:emoji" variant="container" alternative-text="Emoji"
+                            class="slds-m-left_xx-small" title="Emoji"></lightning-button-icon>
+                    </div> -->
+                <div class="sendBottomDiv"
+                    style="cursor: pointer;background-color: #549BA5; padding: 0rem; margin-left: 0.2rem;border-top-right-radius: 14px; border-bottom-right-radius: 14px;"
+                    onclick={sendMessage}>
+                    <lightning-icon icon-name="utility:send" alternative-text="Send" title="Send" size="small"
+                        class="sendButtonIcon">
+                    </lightning-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</template>

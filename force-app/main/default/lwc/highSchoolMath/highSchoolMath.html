@@ -1,0 +1,370 @@
+<template>
+  <template if:true={likes}>
+
+    <div>
+      <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={closeModal}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+            </lightning-icon>
+            <span class="slds-assistive-text">Cancel and close</span>
+          </button>
+          <div >
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">
+            </h1>
+          </div>
+          <div class="slds-modal__content " id="modal-content-id-1">
+            <div class="progressBar">
+              <h2>22 Likes</h2>
+              <div class="container">
+                <div class="item">
+                  <div class="text">Master</div>
+                  <div class="progress">
+                    <div class="status" style="width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="text">Location</div>
+                  <div class="progress">
+                    <div class="status" style="width: 50%;"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="text">Other</div>
+                  <div class="progress">
+                    <div class="status" style="width: 70%;"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="text">Other</div>
+                  <div class="progress">
+                    <div class="status" style="width: 40%;"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="text">Other</div>
+                  <div class="progress">
+                    <div class="status" style="width: 80%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </div>
+
+  </template>
+  <div class="applYjobModale">
+  </div>
+
+  <div class="mainContainer" onclick={childCmpResized}>
+    <template if:false={showData}>
+      <div class="notFound">
+        No Data Found
+      </div>
+    </template>
+    <template if:true={showData}>
+      <p class="add-back-btn" onclick={goBack}> &lt;Back</p>
+      <div class="Teacher">
+        <div class="Teacher2">
+          <div class="jobDetails">
+
+            <div style="padding-left:15px;padding-bottom:5px;width:50%">
+              <p style="font-size: 25px; color: white; font-weight: 600;">{getValue.Name}</p>
+              <div style="color: white;">
+
+                <p>Organization: {getValue.School__r.Name}, {getValue.Country__c}
+                </p>
+                <!-- <a style="color:white" onclick={likeClick}>
+                  <p>Likes: 22 Likes - View Comments</p>
+                </a> -->
+
+              </div>
+            </div>
+            <div class="slds-align-bottom" style="display: flex;     padding-bottom: 9px;padding-right: 13px;width:auto;">
+              <div>
+                <a href={candidateMessaging} style="text-decoration: none;">
+                  <p
+                    style="width: 120px;text-align: center;background: #549BA5;color: white;font-weight: bold;font-size: 13px;padding: 10px 30px;border-radius: 100px;">
+                    Chat</p>
+                </a>
+              </div>
+              <div>
+                <template if:true={bookmarked}>
+                  <div>
+                    <p style="background: transparent;color: #fff;border:2px solid white;margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 13px;padding: 8px 30px;border-radius: 100px;"
+                      onclick={removeBookmark} data-id={getValue.Id}>
+                      <lightning-icon icon-name="utility:check" size="x-small"
+                        style="--sds-c-icon-color-foreground-default: white;"></lightning-icon> Bookmarked
+                    </p>
+                  </div>
+                </template>
+                <template if:false={bookmarked}>
+                  <div>
+                    <p style="background: #549BA5;color: white;margin:0px 5px;cursor: pointer;font-weight: bold;font-size: 13px;padding: 10px 30px;border-radius: 100px;"
+                      onclick={addBookmark} data-id={getValue.Id}>
+                      <lightning-icon icon-name="utility:bookmark" size="x-small"
+                        style="--sds-c-icon-color-foreground-default: white;"></lightning-icon> Bookmark
+                    </p>
+                  </div>
+                </template>
+              </div>
+              <div>
+                <template if:true={applyBtnVisibility}>
+                  <p style="width:120px;text-align: center;background: #549BA5;color: white;font-weight: bold;cursor: pointer;font-size: 13px;padding: 10px 30px;border-radius: 100px;"
+                    onclick={handleChandleShowJoblick}>Apply</p>
+                </template>
+                <template if:false={applyBtnVisibility}>
+                  <p
+                    style="width:120px;text-align: center;background: #9999;color: white;font-weight: bold;cursor: pointer;font-size: 13px;padding: 10px 30px;border-radius: 100px;">
+                    Applied</p>
+                </template>
+              </div>
+            </div>
+            <template if:true={showApply}>
+
+              <div class="overlay"
+                style="width: 100%;height: 100%;background: #000;opacity: 0.4;position: absolute;top: 0;left:0;z-index: 9;">
+              </div>
+              <div class="applYjobModale" style="z-index: 11;">
+                <c-apply-job onclosepopup={handleCloseJobApply} onsubmitapplication={handleSubmitApplication}
+                  jobdetails={getValue} onsavedraft={handleSaveDraft} ontoastmsgfromchild={showToastMsg}></c-apply-job>
+              </div>
+            </template>
+            <!-- <div style="display: flex; padding-top: 17px;">
+            <div style=" cursor: pointer; padding: 10px; margin: 9px; background: rgb(84, 155, 165); display: flex;  border-radius: 20px;   width: 102px;">
+
+              <p style="  color: white; font-size: 16px; text-align: center;   margin-left: 23px;margin-top: 2px;">Chat</p>
+            </div>
+            <div>
+              <div style="display: flex; cursor: pointer; border: 3px solid white;padding: 8px;margin: 8px; border-radius: 20px;  margin-top: 11px;">
+                <img src={Bookmark} alt="" style="width: 18px; height: 21px;" onclick={handleclick}>
+                <p style="padding-left: 6px;  color: white;  font-size: 15px;"> Bookmark</p>
+              </div>
+
+            </div>
+            <div>
+              <div style="padding: 12px; cursor: pointer; margin: 8px;background: rgb(84, 155, 165);display: flex;  border-radius: 20px; width: 100px;">
+
+                <p style="    background-color: rgb(84, 155, 165);color: white;font-size: 14px;text-align: center;margin-left: 18px;font-size: 15px;">Apply</p>
+              </div>
+
+
+            </div>
+          </div> -->
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+
+      <div class="newData">
+        <div class="slds-col slds-size_2-of-4 detail-tables-wrapper" style="justify-content: space-between;">
+          <div style="width: 100%;">
+            <table class="recordInfo">
+              <tr>
+                     <td>
+                        <p class="textfont">Starting From:</p>
+                        <p class="textSecFont">{getValue.Job_Role_Start_Date__c}</p>
+                    </td>
+               
+                <td>
+                  <p class="textfont">Minimum Qualification:</p>
+                  <p class="textSecFont">{getValue.Minimum_Qualification__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Contract Length:</p>
+                  <p class="textSecFont">1 Year</p>
+                </td>
+                <td>
+                  <p class="textfont">Minimum Experience:</p>
+                  <p class="textSecFont">{getValue.Minimum_experience__c} Years</p>
+                </td>
+              </tr>
+              <tr>
+                <!-- <td>
+                  <p class="textfont">Salary Range:</p>
+                  <p class="textSecFont">{getValue.Salary_Range__c}</p>
+                </td> -->
+                <td>
+                  <p class="textfont">Certifications Required:</p>
+                  <p class="textSecFont">{getValue.Certification_Required__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Department:</p>
+                  <p class="textSecFont">{getValue.Department__c}</p>
+                </td>
+                <td>
+                  <p class="textfont">Subject:</p>
+                  <p class="textSecFont">{getValue.Subject__c}</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="textfont">Curriculum:</p>
+                  <p class="textSecFont">{getValue.Curriculum__c}</p>
+                </td>
+                <!-- <td>
+                  <p class="textfont">Grade Range:</p>
+                  <p class="textSecFont">{getValue.Grade_Range__c}</p>
+                </td> -->
+              </tr>
+
+
+            </table>
+          </div>
+        </div>
+       
+      </div>
+      
+      <div class="description" >
+        <div>
+          <p class="textSecFont">Description</p>
+        </div>
+        <div>
+          <p style="padding: 4px 0px 5px 0px;color:#091132;">{getValue.Job_Description__c}</p>
+        </div>
+     <br>
+      </div>
+     
+      <div style="background: #fff;margin: 0px 40px 0px 45px;border-top:1px solid #ccc;">
+        <div style="display: flex;justify-content: space-between;cursor: pointer;" data-id="educationalInformation" onclick={CollapseDropDown}>
+          <p style="font-size: 16px;padding: 10px;color:#091132;">
+            Educational Information
+          </p>
+          <lightning-icon icon-name="utility:down" size="small" class="drop"
+            style="margin: 10px;--sds-c-icon-color-foreground-default: #091132;"></lightning-icon>
+        </div>
+        <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+          <div class="tableInfo">
+            <template for:each={educationalInformation} for:item="item">
+            
+                <div key ={item} class="education tableDiv">
+                    <p key ={item} class="labelText">{item.label}</p>
+                    <p key ={item} class="labelValue">{item.value}</p>
+                </div> 
+                <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+                <!-- <div if:true={item.educationBoolean} key ={item}  class="education tableDiv2">
+                    <p class="labelText">{item.label}</p>
+                    <p class="labelValue">{item.value}</p>
+                </div> -->
+          
+         </template>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div style=" border-top:1px solid #ccc;;background:#fff;margin: 0px 40px 0px 45px;">
+        <div style="display: flex;justify-content: space-between;cursor: pointer;" onclick={CollapseDropDown}>
+          <p style="font-size: 16px;padding:10px;color:#091132;">
+            Salary Information
+          </p>
+          <lightning-icon icon-name="utility:down" size="small" class="drop"
+            style="margin: 10px;--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+        </div>
+        <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+          <div class="tableInfo">
+            <template for:each={salaryInformation} for:item="item">
+              <div key ={item}  class="tableDiv">
+         <p class="labelText">{item.label}</p>
+         <p class="labelValue">{item.value}</p>
+         </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+         </template>
+            
+          </div>
+        </div>
+      </div>
+     
+      <div style="background:#fff;margin: 0px 40px 0px 45px;border-top:1px solid #ccc;;">
+        <div style="display: flex;justify-content: space-between;cursor: pointer;" onclick={CollapseDropDown}>
+          <p style="font-size: 16px;padding:10px;color:#091132;">
+            Benefits
+          </p>
+          <lightning-icon icon-name={dropDownIcon} size="small" class="drop"
+            style="margin: 10px;--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+        </div>
+        <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+          <div class="tableInfo">
+            <template for:each={benefits} for:item="item">
+              <div key ={item}  class="tableDiv">
+         <p class="labelText">{item.label}</p>
+         <p class="labelValue">{item.value}</p>
+         </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+         </template>
+            
+          </div>
+        </div>
+      </div>
+     
+      <div style="background:#fff;margin: 0px 40px 0px 45px;border-top:1px solid #ccc;;">
+        <div style="display: flex;justify-content: space-between;cursor: pointer;" onclick={CollapseDropDown}>
+          <p style="font-size: 16px;padding: 10px;color:#091132;">
+            Visa Information
+          </p>
+          <lightning-icon icon-name="utility:down" size="small" class="drop"
+            style="margin: 10px;--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+        </div>
+        <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+          <div class="tableInfo">
+            <template for:each={visaInformation} for:item="item">
+              <div key ={item}  class="tableDiv">
+         <p class="labelText">{item.label}</p>
+         <p class="labelValue">{item.value}</p>
+         </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+         </template>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div style="background: #fff;margin: 0px 40px 0px 45px;border-top:1px solid #ccc;;">
+        <div style="display: flex;justify-content: space-between;cursor: pointer;" onclick={CollapseDropDown}>
+          <p style="font-size: 16px;padding: 10px;color:#091132;">
+            About The School
+          </p>
+          <lightning-icon icon-name="utility:down" size="small" class="drop"
+            style="margin: 10px;--sds-c-icon-color-foreground-default: black;"></lightning-icon>
+        </div>
+        <div class="dropdownData" style="padding: 0px 20px;height: 0px;transition: all 1s;overflow: hidden;">
+          <!-- <p style="font-size: 14px;font-weight: 700;">{schoolName}</p>
+          <p style="padding: 5px 0px;font-size: 13px;font-weight: 500;color: #818181;">{schoolDescription}</p> -->
+          <div class="tableInfo">
+            <template for:each={schoolDetails} for:item="item">
+              <div key ={item}  class="tableDiv">
+         <p class="labelText">{item.label}</p>
+         <p class="labelValue">{item.value}</p>
+         </div>
+             <template if:true={item.showLine}>
+                      <hr style="width:100%;margin:0%" key ={item} />
+                    </template>
+         </template>
+            
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,249 @@
+<template>
+	<div class="SmallPage">
+		<div class="slds-page-header mainBody">
+			<div class="header" style="display:flex;">
+				<div class="slds-page-header__col-title">
+					<span class="fontChange">Jobs </span>
+					<div class="mobile-comobobox-jobs">
+						<lightning-combobox name="progress" label="" value={value} placeholder="View Open Jobs"
+							options={options} onchange={handleChange} class="my-cystom-input" style="left: -2px;top: -17px;">
+						</lightning-combobox>
+					</div>
+				</div>
+
+				<div class="mobile-icos">
+					<div>
+						<img src={groups} title=""></br>
+						<p style="text-align:center;color:lightgrey">Total</p>
+					</div>
+					<div style="margin-left: 3%;">
+						<img src={invites}></br>
+						<p style="text-align:center;color:lightgrey">Invites </p>
+					</div>
+					<div style="margin-left: 3%">
+						<img src={checked}></br>
+						<p style="text-align:center;color:lightgrey">Hired</p>
+					</div>
+					<div style="margin-left:3%;">
+						<img src={inviteButtonIcon}></br>
+						<p style="text-align:center;color:lightgrey">New</p>
+					</div>
+					<div style="margin-left: 3%;align-items:center;text-align:center;">
+						<img src={email}></br>
+						<p style="text-align:center;color:lightgrey">Contacted </p>
+					</div>
+					<div style="margin-left:3%;">
+						<img src={inviteButtonIcon}></br>
+						<p style="text-align:center;color:lightgrey">Intersted</p>
+					</div>
+					<div style="margin-left: 3%;align-text:center;">
+						<img src={query}></br>
+						<p style="text-align:center;color:lightgrey">Unsure </p>
+					</div>
+					<div style="margin-left: -6.4%;margin-top: -2.7%;">
+						<img src={question}>
+					</div>
+					<div style="margin-left: 3%;">
+						<img src={cancle}></br>
+						<p style="text-align:center;color:lightgrey">Decline</br></p>
+					</div>
+					<div style="margin-left: 3%;">
+						<img src={barchart1}></br>
+						<P style="text-align:center;color:lightgrey">Phase 1</p>
+					</div>
+					<div style="margin-left: 3%;">
+						<img src={barchart2}></br>
+						<p style="text-align:center;color:lightgrey">Phase 2 </p>
+					</div>
+				</div>
+			</div>
+			<div class="mobile-search">
+				<lightning-input name="enter-search" placeholder="Search" type="search" class="my-custom-Combobox"
+					style="margin-top:-20px;"></lightning-input>
+			</div>
+			<div class="mobile-analytics-btns">
+				<div style="margin-left: 14px;margin-top: 10px;">
+					<button onclick={handleClick} style="background: #48494a82;border: 1px solid #a4ea72;border-radius: 16px;">
+						<lightning-icon icon-name="custom:custom102" title="custom11" style="background: none;">
+						</lightning-icon>
+						Analytics
+					</button>
+
+				</div>
+				<div style="padding: 10px; text-align: center; margin-bottom: 10px; font-size: 15px">
+					<lightning-button variant="success" label="Add Job" icon-name="utility:add" title=""
+						onclick={handleClick} class="addjobButton"></lightning-button>
+				</div>
+			</div>
+
+
+			<hr style="margin-left:22%;margin-top:0%;">
+			<div class="mobile-job-dropdown">
+				<div class="container slds-grid slds-gutters slds-wrap">
+					<div class="left slds-col slds-size_1-of-4">
+						<div class="mobile-search mySearch">
+							<lightning-input name="enter-search" placeholder="Search" type="search" class="my-custom-Combobox"
+								style="margin-top:-20px;"></lightning-input>
+							</br>
+							<p style="text-align:center">50 results</p>
+						</div>
+
+						<div>
+							<template for:each={bestMatchJob} for:item="item" for:index="index">
+								<article class="slds-card" key={item.key} style="border-radius: 15px;padding: 10px;">
+									<div class="slds-card__header slds-grid" style="background: #f5faf9;border-radius: 13px">
+										<header class="slds-media_center slds-has-flexi-truncate">
+											<div class="slds-grid slds-grid_reverse">
+												<div class="slds-col my-col" style="margin-top: 9px;" onclick={handleClick} dataset-id={index}>
+													<p style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+														Math Teacher
+													</p>
+													<p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+														Union School
+													</p>
+												</div>
+												<div class="slds-col">
+													<img src={rectangleImage} style="margin-left: -14px;margin-bottom: 11px;">
+												</div>
+											</div>
+
+											<div class="slds-no-flex">
+												<!-- <button class="slds-button slds-button_neutral">New</button> -->
+											</div>
+										</header>
+									</div>
+									<div>
+										<div style="display: flex;justify-content: space-evenly;">
+											<p style="text-align:center;"> Applicants </p>
+											<div style="display: flex;border: 1px solid;border-radius: 15px;justify-content: space-around;height: 23px;">
+												<div class="applicantspill">
+													<p style="margin-top: 2px;"> 34 </p>
+												</div>
+												<div class="applicantspillSec" style="border: 1px solid #8f888e;background: #726d6d;border-radius: 1px 11px 13px 1px;padding: 1px;">
+													<p>2 new </p>
+												</div>
+											</div>
+										</div>
+
+										<div class="slds-grid slds-gutters" style="padding: 12px;">
+											<div class="slds-col" style="margin-left: 3px;">
+												<img src={locationImage}>
+												<span style="margin-left:11px;  ">Rome </span>
+											</div>
+											<div class="slds-col" style="margin-bottom:11px">
+												<img src={hatImage}>
+												<span style="margin-left:11px;margin-left: 11px;margin-bottom: 43px;">
+													Masters</span>
+											</div>
+										</div>
+										<div class="slds-grid slds-gutters">
+											<div class="slds-col">
+												<span>3 days ago </span>
+											</div>
+											<div class="slds-col" style="margin-left: 48px;">
+												<p>Apply by:</p>
+												<p> Dec/09/2022</p>
+											</div>
+										</div>
+									</div>
+									<!-- <footer class="slds-card__footer"> -->
+									<!-- <a class="slds-card__footer-action" href="#">View All -->
+									<!-- <span class="slds-assistive-text">Accounts</span> -->
+									<!-- </a> -->
+									<!-- </footer> -->
+								</article>
+							</template>
+						</div>
+					</div>
+					<div class="slds-col slds-size_3-of-4 right">
+						<c-job-u-i-child-test></c-job-u-i-child-test>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Mobile view code for left list -->
+			<template if:true={showLeftList}>
+				<div class="mobile-job-dropdown2">
+					<div class="container slds-grid slds-gutters slds-wrap">
+						<div class="left slds-col slds-size_1-of-4">
+							<div class="mobile-search mySearch">
+								<lightning-input name="enter-search" placeholder="Search" type="search" class="my-custom-Combobox"
+									style="margin-top:-20px;"></lightning-input>
+								</br>
+								<p style="text-align:center">50 results</p>
+							</div>
+	
+							<div>
+								<template for:each={bestMatchJob} for:item="item" for:index="index">
+									<article class="slds-card" key={item.key} style="border-radius: 15px;padding: 10px;">
+										<div class="slds-card__header slds-grid" style="background: #f5faf9;border-radius: 13px">
+											<header class="slds-media_center slds-has-flexi-truncate">
+												<div class="slds-grid slds-grid_reverse">
+													<div class="slds-col my-col" style="margin-top: 9px;" onclick={handleClick} dataset-id={index}>
+														<p style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+															Math Teacher 2
+														</p>
+														<p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+															Union School
+														</p>
+													</div>
+													<div class="slds-col">
+														<img src={rectangleImage} style="margin-left: -14px;margin-bottom: 11px;">
+													</div>
+												</div>
+	
+												<div class="slds-no-flex">
+													<!-- <button class="slds-button slds-button_neutral">New</button> -->
+												</div>
+											</header>
+										</div>
+										<div>
+											<div style="display: flex;justify-content: space-evenly;">
+												<p style="text-align:center;"> Applicants </p>
+												<div style="display: flex;border: 1px solid;border-radius: 15px;justify-content: space-around;height: 23px;">
+													<div class="applicantspill">
+														<p style="margin-top: 2px;"> 34 </p>
+													</div>
+													<div class="applicantspillSec" style="border: 1px solid #8f888e;background: #726d6d;border-radius: 1px 11px 13px 1px;padding: 1px;">
+														<p>2 new </p>
+													</div>
+												</div>
+											</div>
+	
+											<div class="slds-grid slds-gutters" style="padding: 12px;">
+												<div class="slds-col" style="margin-left: 3px;">
+													<img src={locationImage}>
+													<span style="margin-left:11px;  ">Rome </span>
+												</div>
+												<div class="slds-col" style="margin-bottom:11px">
+													<img src={hatImage}>
+													<span style="margin-left:11px;margin-left: 11px;margin-bottom: 43px;">
+														Masters</span>
+												</div>
+											</div>
+											<div class="slds-grid slds-gutters">
+												<div class="slds-col">
+													<span>3 days ago </span>
+												</div>
+												<div class="slds-col" style="margin-left: 48px;">
+													<p>Apply by:</p>
+													<p> Dec/09/2022</p>
+												</div>
+											</div>
+										</div>
+										<!-- <footer class="slds-card__footer"> -->
+										<!-- <a class="slds-card__footer-action" href="#">View All -->
+										<!-- <span class="slds-assistive-text">Accounts</span> -->
+										<!-- </a> -->
+										<!-- </footer> -->
+									</article>
+								</template>
+							</div>
+						</div>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</template>

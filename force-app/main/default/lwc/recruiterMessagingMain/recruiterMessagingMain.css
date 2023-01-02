@@ -1,0 +1,6 @@
+.mainChatArea {
+    height: calc(100vh - 100px);
+    background: #DDECEA;
+    border-radius: 20px;
+    overflow: hidden;
+}

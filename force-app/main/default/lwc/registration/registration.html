@@ -1,0 +1,118 @@
+<template>
+<div class="iss-logo-header">
+	<c-login-screen-header></c-login-screen-header>
+</div>
+<div class="maindivOFImg">
+	<div class="backgroundImg">
+		<div class="loginFunctionlity">
+			<div class="login-text">
+				<p class="lgnTxt">GET STARTED WITH ISS </p>
+			</div>
+			<div if:true={errorBoolean} style="width: 96%; margin:auto;">
+							
+				<p style="color:#46a39d; font-size:18px;">{submitMessage}</p>
+			</div>
+			<div class="container" if:false={hideUI}>
+						<div style="display:flex ;">
+						<div class="slds-form-element" style="padding-right: 10px;">
+							<label class="slds-form-element__label" for="text-input-id-2"></label>
+							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+									<label class="slds-form-element__label" for="text-input-id-47">
+										First Name <abbr class="slds-required" title="required">* </abbr></label>
+										<input type="text" style="    padding:0.6rem;" id="text-input-id-2" placeholder="" label="Email" onchange={firstNameValueChange} class="slds-input firstNameField" required/>
+									</div>
+							</div>
+							<div class="slds-form-element" >
+								<label class="slds-form-element__label" for="text-input-id-2"></label>
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+										<label class="slds-form-element__label" for="text-input-id-7">
+											Last Name <abbr class="slds-required" title="required">* </abbr></label>
+											<input type="text" style="padding:0.6rem;" id="text-input-id-9" placeholder="" label="Lastname" onchange={lastNameValueChange} class="slds-input lastNameField" required/>
+										</div>
+								</div>
+						</div>
+							<div style="margin-top:15px; margin-bottom:10px;">
+							
+							<div class="slds-form-element">
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+									<!-- <lightning-icon size="x-small" class="input-icon icon-right "
+										icon-name={passwordIcon} onclick={handleToggleIconname}></lightning-icon> -->
+									<!-- <lightning-input type={passwordType}  name="password"  placeholder="Password*" class="icon-right"></lightning-input> -->
+									<label class="slds-form-element__label" for="text-input-id-47">
+										Email <abbr class="slds-required" title="required">* </abbr></label>
+										<input type="text" onchange={emailvalueChange} style="padding:0.6rem;"  id="text-input-id-5" 
+										class="slds-input emailField" />
+									</div>
+							</div>
+							<!-- <div class="slds-form-element">
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+									<lightning-icon size="x-small" class="input-icon icon-right "
+										icon-name={passwordIcon} onclick={handleToggleIconname}></lightning-icon>
+										<label class="slds-form-element__label" for="text-input-id-47">
+										Password <abbr class="slds-required" title="required">* </abbr></label>
+									<input onchange={passwordValue} type={passwordType}  style="padding:10px;" id="text-input-id-6" placeholder="" label="Password" class="icon-right slds-input" required/>
+									</div>
+								</div>
+								<div class="slds-form-element">
+									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+										<lightning-icon size="x-small" class="input-icon icon-right "
+											icon-name={passwordIcon} onclick={handleToggleIconname}></lightning-icon>
+											<label class="slds-form-element__label" for="text-input-id-47">
+											Re-enter Password <abbr class="slds-required" title="required">* </abbr></label>
+										<input onchange={passwordValue} type={passwordType}  style="padding:10px;" id="text-input-id-7" placeholder="" label="Password" class="icon-right slds-input" required/>
+										</div>
+								</div>
+							</div> -->
+							</div>
+							<!-- <hr style="--lwc-spacingXLarge:0.5rem 0;"> -->
+								<div>
+									<!-- <i>SIGN IN</i> -->
+									<button style="border:1px; color:white" type="button" class=" btn" onclick={submitCandidateData}  >Create Account</button>
+								</div>
+							</div>
+						<div>
+								<a href={loginPage} style="text-align: center;font-size: 15px;">
+									<p style="color: #46a39d; text-align: center;font-size: 15px;margin-top: 38px;font-size: 16px;font-weight: 600;line-height: 19px;letter-spacing: 0em;text-align: center;">Back to Sign In</p> 
+								</a>
+						</div>
+		</div>
+
+		<div class="text">
+			<p ><span class="welcomeIss">Welcome to ISS </span><br><span class="describeIss">Sign in or create an account</span></p>
+		</div>
+
+		<div class="footer">
+			<div>
+				<img src={optimize} alt="">
+			</div>
+			<div>
+				<img src={edurecruit} alt="">
+			</div>
+			<div>
+				<img src={learn} alt="">
+			</div>
+			<div>
+				<img src={finance} alt="">
+			</div>
+			<div>
+				<img src={marketPlace} alt="">
+			</div>
+		</div>
+	</div>
+
+	<div class="copyRight" style="display:flex ;">
+		<div class="rightAreReseverd slds-align-bottom">
+			<p>© Copyright International Schools Services. All rights reserved.
+			</p>
+		</div>
+		<div class="dataPrivacytxt" style="cursor:pointer" onclick={dataPrivacy}>
+			Data Privacy and Protection
+
+		</div>
+	</div>
+	
+</div>
+
+
+
+</template>

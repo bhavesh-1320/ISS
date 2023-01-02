@@ -1,0 +1,187 @@
+.section{
+	display: flex;
+    margin:0;
+    padding: 0;
+}
+.card{
+  background-color: white;
+ margin:0;
+    padding: 0;
+}
+.container{
+	
+  width: 100%;
+  
+    
+}
+
+.grid-33 {
+ 
+   margin: 55px auto;
+    width: 33%;
+}
+.grid-66 {
+  width: calc(60% - 15px);
+      padding: 50px 0;
+     
+    height: 100%;
+    background: url(https://recruitment.uat.issapi.info/Background.4829052c272081c6ee18.svg) 50%/cover no-repeat;
+       box-sizing: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading{
+	color: #383b41;
+    font-family: SF Pro Display,Arial,Helvetica,sans-serif;
+    margin: 0 0 20px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 40px;
+}
+.heading1{
+	   font-style: normal;
+    text-transform: none;
+    margin-top: 1.75rem;
+    font-family: Titillium Web,sans-serif;
+	    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
+}
+label {
+    color: #555;
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+p a {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+    margin-top: -13px;
+    margin-right: 20px;
+ -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+input[type=text],
+input[type=password] {
+    color: #777;
+
+    
+
+
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+-webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+    }
+input[type=text]:hover,
+input[type=password]:hover {
+    border: 1px solid #52545a;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+input[type=text]:focus,
+input[type=password]:focus {
+    border: 1px solid #a8c9e4;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+}
+.btn{
+	margin-top: 15px;
+	padding:auto;
+  width: 100%;
+  
+ text-align: center;
+    font-family: Titillium Web,sans-serif;
+    font-weight: 600;
+    font-size: .875rem;
+    font-style: normal;
+    letter-spacing: .046875rem;
+  background: #46a39d;
+    /* background-color: #46a39d; */
+	
+   
+    
+   
+   box-sizing: border-box;
+    height: 50px;
+    border: 2px solid #46a39d;
+    border-radius: 5px;
+  
+   
+    color: #fff!important;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+}
+.account{
+      font-weight: 450;
+    font-size: 15.5px;
+    letter-spacing: 0;
+    line-height: 1.75rem;
+    margin-bottom: 1rem;
+    width:100%;
+    
+}
+.password{
+      color: #46a39d;
+    text-decoration: none!important;
+    outline: 0;
+    font-size: 15px;
+        font-style: normal;
+    text-transform: none;
+    margin-top: 1.75rem;
+    font-family: Titillium Web,sans-serif;
+}
+a {
+   color: #46a39d;
+    text-decoration: none!important;
+    outline: 0;
+   
+        font-style: normal;
+    text-transform: none;
+    margin-top: 1.75rem;
+    font-family: Titillium Web,sans-serif;
+}
+
+
+
+
+
+.foot{
+  
+  height: 100px;
+  padding: 37px 0;
+  position: sticky;
+      bottom: 0;
+    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color:#383b41;
+}
+.foot-txt{
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  line-height: 26px;
+  width: 50%;
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.foot-icon > img{
+  margin: 0 10px;
+}
+
+.foot-icon {
+  margin-right: 60px;
+}
+.foot-img{
+  margin-left: 60px;
+}

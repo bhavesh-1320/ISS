@@ -1,0 +1,102 @@
+.selectedBackgr {
+  background-color: #8ed8e2 !important;
+}
+
+.selectedLabel {
+  color: #549ba5 !important;
+}
+
+.errorBorder {
+  border: 2px solid #e90d0d !important;
+}
+
+.errorLabel {
+  color: #e90d0d !important;
+}
+
+.selectedBorder{
+  border: 2px solid #ffffff !important;
+  background-color: #549ba5 !important;
+  color: #ffffff !important;
+}
+
+.slds-radio_faux {
+  background-color: #549ba5 !important;
+}
+
+:host {
+  --sds-c-radio-mark-color-foreground: #ffffff;
+  --sds-c-radio-color-background-checked: #ffffff;
+}
+
+.slds-form-element__control .slds-radio {
+  border: 2px solid #549ba5;
+  border-radius: 7px;
+  margin: 10px 10px 5px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.slds-form-element {
+  margin: 10px;
+}
+
+.slds-radio [type="radio"] {
+  cursor: pointer;
+}
+
+.slds-radio {
+  cursor: pointer;
+}
+
+span.slds-form-element__label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #549ba5;
+  cursor: pointer;
+}
+
+div.slds-form-element__label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #549ba5;
+  cursor: pointer;
+}
+
+.index {
+  float: left;
+  display: block;
+  width:20px;
+  font-weight: bold;
+}
+
+.legend{
+  overflow: hidden;
+  display: block;
+  font-weight: bold;
+}
+
+.slds-form-element__legend {
+  font-size: 15px;
+  font-weight: normal;
+  color: #549ba5;
+}
+
+.liter{
+  color: #549ba5;
+  float: left;
+  width: 30px;
+  padding-top: 0px !important;
+  border: 2px solid #549ba5;
+  border-radius: 15px;
+  padding-left: 7px;
+  margin-right: 7px;
+}
+
+.label{
+  overflow: hidden;
+}
+
+.slds-form-element__label{
+  margin-bottom: 0px !important;
+}

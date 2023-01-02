@@ -1,0 +1,263 @@
+<template>
+    <template if:true={showContent}>
+        <div class="main slds-p-bottom_medium">
+            <div class="profileHeader slds-p-around_medium">
+                <div class="mainHeader ">
+                    <p style="background:#EEF6F5;" class="slds-p-top_small slds-p-right_small slds-p-bottom_small"><span
+                            class="slds-p-around_small" style="background:white; border-radius:24px 24px 0px 0px">OPEN
+                            JOBS</span></p>
+                    <lightning-layout multiple-rows>
+                        <template for:each={openJobs} for:item="sAlert">
+                            <lightning-layout-item key={sAlert.School}
+                                class="mainHeader slds-p-around_small slds-m-top_small" size="12" small-device-size="12"
+                                medium-device-size="12" large-device-size="12">
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item key={sAlert.School} style="text-align:center;" size="4"
+                                        small-device-size="12" medium-device-size="12" large-device-size="4">
+                                        <div style="display:flex ;justify-content:center;">
+                                            <div>
+                                                <img src={rectangleImage}>
+                                            </div>
+                                            <div style="margin:14px ;">
+                                                <p style="color:#2D514F;font-weight:600;">{sAlert.Subject}</p>
+                                                <p style="color:#2D514F;font-weight:600; opacity:50%;">{sAlert.School}
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                    </lightning-layout-item>
+                                    <lightning-layout-item key={sAlert.School} size="8" small-device-size="12"
+                                        medium-device-size="12" large-device-size="8">
+                                        <div class="tabs">
+                                            <div style="text-align: center; padding: 0px 10px;">
+                                                <img src={groups} title="" style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Total</p>
+                                                <p style="font-weight:600;text-align: center;">45</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={invites} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Invites
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">3</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={checked} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Hired</p>
+                                                <p style="font-weight:600;text-align: center;">1/4</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={inviteButtonIcon} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">New</p>
+                                                <p style="font-weight:600;text-align: center;">4</p>
+
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={email} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Contacted
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">5</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={inviteButtonIcon} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Intersted
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">12</p>
+
+                                            </div>
+
+                                            <div style="text-align: center;">
+                                                <img src={query} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Unsure
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">5</p>
+                                            </div>
+
+                                            <div style="text-align: center;">
+                                                <img src={cancle} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Decline
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">4</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={barchart1} style="margin:auto;height: 25px;">
+                                                <P style="text-align:center;color: #549BA5;font-weight: 600;">Phase 1
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">3</p>
+                                            </div>
+                                            <div style="text-align: center;">
+                                                <img src={barchart2} style="margin:auto;height: 25px;">
+                                                <p style="text-align:center;color: #549BA5;font-weight: 600;">Phase 2
+                                                </p>
+                                                <p style="font-weight:600;text-align: center;">3</p>
+                                            </div>
+
+
+
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </div>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="6" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="6">
+                        <div class="mainHeader slds-p-around_small">
+                            <p class="slds-text-heading_small slds-p-top_small slds-p-left_medium"
+                                style="color: #2D514F; font-weight: 600;">Saved Alert</p>
+                            <lightning-layout multiple-rows>
+                                <template for:each={savedAlerts} for:item="sAlert">
+                                    <lightning-layout-item key={sAlert.SchoolName}
+                                        style="border-radius: 24px; background: #F5FAF9;"
+                                        class="mainHeader slds-p-around_small slds-m-top_small" size="12"
+                                        small-device-size="12" medium-device-size="12" large-device-size="12">
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item key={sAlert.SchoolName} size="5"
+                                                small-device-size="5" medium-device-size="5" large-device-size="5">
+                                                <p style="color:#549BA5;font-weight:600;">{sAlert.JobName} - <span
+                                                        style="color:black;font-weight:600;">{sAlert.SchoolName}</span>
+                                                </p>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item key={sAlert.SchoolName} size="3"
+                                                style="text-align:center;" small-device-size="3" medium-device-size="3"
+                                                large-device-size="3">
+                                                <p style="color:#549BA5; font-weight:600;">{sAlert.Status}</p>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item key={sAlert.SchoolName} style="text-align:right;"
+                                                size="4" small-device-size="4" medium-device-size="4"
+                                                large-device-size="4">
+                                                <span
+                                                    style="cursor:pointer; color: white; background: #E96565;border-radius: 24px;"
+                                                    class="slds-p-right_small slds-p-bottom_xx-small">
+                                                    <lightning-icon
+                                                        style="height: auto; --sds-c-icon-color-foreground-default: white;"
+                                                        size="x-small" class="slds-p-right_xx-small slds-icon"
+                                                        icon-name="utility:delete"></lightning-icon> Remove Alert
+                                                </span>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="6">
+                        <div class="mainHeader slds-p-around_small">
+                            <p class="slds-text-heading_small slds-p-top_small slds-p-left_medium"
+                                style="color: #2D514F; font-weight: 600;">Recent Searches</p>
+                            <lightning-layout multiple-rows>
+                                <template for:each={recentSearches} for:item="sAlert">
+                                    <lightning-layout-item key={sAlert.SchoolName}
+                                        style="border-radius: 24px; background: #F5FAF9;"
+                                        class="mainHeader slds-p-around_small slds-m-top_small" size="12"
+                                        small-device-size="12" medium-device-size="12" large-device-size="12">
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item key={sAlert.SchoolName} size="5"
+                                                small-device-size="5" medium-device-size="5" large-device-size="5">
+                                                <p style="color:#549BA5;font-weight:600;">{sAlert.JobName} - <span
+                                                        style="color:black;font-weight:600;">{sAlert.SchoolName}</span>
+                                                </p>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item key={sAlert.SchoolName} size="3"
+                                                style="text-align:center;" small-device-size="3" medium-device-size="3"
+                                                large-device-size="3">
+                                                <p style="color:#549BA5; font-weight:600;">{sAlert.Status}</p>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item key={sAlert.SchoolName} style="text-align:right;"
+                                                size="4" small-device-size="4" medium-device-size="4"
+                                                large-device-size="4">
+                                                <span
+                                                    style="cursor:pointer; color: white; background: #549BA5;border-radius: 24px;"
+                                                    class="slds-p-right_small slds-p-bottom_xx-small">
+                                                    <lightning-icon
+                                                        style="height: auto; --sds-c-icon-color-foreground-default: white;"
+                                                        size="x-small" class="slds-p-right_xx-small slds-icon"
+                                                        icon-name="utility:delete"></lightning-icon> Save Alert
+                                                </span>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="4" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="4">
+                        <div class="mainHeader slds-p-around_small">
+                            <p class="slds-text-heading_small slds-p-top_small slds-p-left_medium"
+                                style="color: #2D514F; font-weight: 600;">New Application</p>
+                            <lightning-layout multiple-rows>
+                                <template for:each={newApps} for:item="sAlert">
+                                    <lightning-layout-item key={sAlert.School}
+                                        style="border-radius: 24px; background: #F5FAF9;"
+                                        class="mainHeader slds-p-around_small slds-m-top_small" size="12"
+                                        small-device-size="12" medium-device-size="12" large-device-size="12">
+                                        <lightning-layout>
+                                            <lightning-layout-item size="8">
+                                                <p style="color:#549BA5; text-align:center;">{sAlert.Name}</p>
+                                                <p style="color:black; text-align:center;">{sAlert.School}</p>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="4" style="text-align:right;"
+                                                class="slds-m-top_small">
+                                                <span class="slds-p-left_medium slds-p-right_medium"
+                                                    style="cursor:pointer; background:#386E7A; color:white; border-radius:24px;">Match</span>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="4" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="4">
+                        <div class="mainHeader slds-p-around_small">
+                            <p class="slds-text-heading_small slds-p-top_small slds-p-left_medium"
+                                style="color: #2D514F; font-weight: 600;">Message Center</p>
+                            <lightning-layout multiple-rows>
+                                <template for:each={msgCenters} for:item="sAlert">
+                                    <lightning-layout-item key={sAlert.Name}
+                                        style="border-radius: 24px; background: #F5FAF9;"
+                                        class="mainHeader slds-p-around_medium slds-m-top_small" size="12"
+                                        small-device-size="12" medium-device-size="12" large-device-size="12">
+                                        <p style="color:#549BA5;">{sAlert.Name}</p>
+                                        <p>{sAlert.Des}</p>
+                                        <p style="cursor:pointer;text-align:right;">
+                                            <u style="font-weight:700; color:#2D514F;">More</u>
+                                        </p>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="4" padding="around-small" small-device-size="12"
+                        medium-device-size="12" large-device-size="4">
+                        <div class="mainHeader slds-p-around_small">
+                            <p class="slds-text-heading_small slds-p-top_small slds-p-left_medium"
+                                style="color: #2D514F; font-weight: 600;">From ISS</p>
+                            <lightning-layout multiple-rows>
+                                <template for:each={fromIss} for:item="sAlert">
+                                    <lightning-layout-item key={sAlert.Name}
+                                        style="border-radius: 24px; background: #F5FAF9;"
+                                        class="mainHeader slds-p-around_medium slds-m-top_small" size="12"
+                                        small-device-size="12" medium-device-size="12" large-device-size="12">
+                                        <p style="color:#549BA5;">{sAlert.Name}</p>
+                                        <p>{sAlert.Des}</p>
+                                        <p style="text-align:right;">
+                                            <u style="font-weight:700; color:#2D514F;">More</u>
+                                        </p>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,404 @@
+@font-face {
+    font-family: 'MontserratLight';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url(/s/sfsites/c/resource/Montserrat/static/Montserrat-Regular.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Light.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url(/s/sfsites/c/resource/roboto/Roboto-Medium.ttf) format('TrueType');
+}
+
+.headingFont {
+    font-family: MontserratLight;
+    color: #091132;
+}
+
+.subheadingFont {
+    font-family: MontserratRegular;
+    color: #091132;
+}
+
+.bodyFont {
+    font-family: RobotoLight;
+    color: #848898;
+}
+
+.Teacher2{
+    position: relative;
+    border-radius: 25px 25px 0px 0px;
+    height: 232px;
+}
+
+.addjobButton {
+    --sds-c-button-success-color-background-hover: #549BA5;
+    --sds-c-button-success-color-background: #549BA5;
+    --lwc-buttonBorderRadius: 20PX;
+    --lwc-borderWidthThin: 3px;
+    --sds-c-button-success-text-color: WHITE;
+    padding: 1.5px;
+
+}
+
+.add-bookMark {
+    --lwc-buttonColorBackgroundPrimary: none;
+    --sds-c-button-text-color: white;
+    --sds-c-button-outline-brand-color-border: #fff;
+    --lwc-buttonBorderRadius: 20PX;
+    --lwc-borderWidthThin: 3px;
+    --slds-c-button-outline-brand-color-border-hover: rgb(84, 155, 165);
+    --sds-c-button-text-color-hover: white;
+
+}
+
+.progressBar {
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.progressBar h2 {
+    font-size: 22px;
+    color: #549BA5;
+}
+
+.progressBar .container {
+    margin-top: 30px;
+    padding: 20px 25px;
+    border-radius: 20px;
+    background-color: #F5FAF9;
+}
+
+.progressBar .container .item {
+    display: flex;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.applYjobModale {
+    width: 800px;
+    height: max-content;
+    margin: auto;
+    top: calc(50vh - 238px);
+    left: calc(50% - 400px);
+    position: fixed;
+
+}
+
+.progressBar .container .item .text {
+    display: flex;
+    width: 100px;
+    align-items: center;
+    font-size: 16px;
+    color: #2D514F;
+}
+
+.progressBar .container .item .progress {
+    background-color: #fff;
+    height: 20px;
+    width: 100%;
+}
+
+.progressBar .container .item .progress .status {
+    background-color: #549BA5;
+    /* width: 70%; */
+    height: 20px;
+}
+
+.addAnalytics {
+    margin-right: 54rem;
+    --sds-c-button-neutral-color-border: #549BA5;
+    --sds-c-button-neutral-color-background: #F5FAF9;
+    --slds-c-button-radius-border: 40px;
+    --sds-c-button-text-color: #549BA5;
+    height: 40px;
+}
+
+.detail-tables-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.newData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #fff;
+    text-align: center;
+    border-radius: 26px;
+    padding: 16px;
+    margin: 14px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    
+}
+
+.textfont {
+    width: 147px;
+    margin-right: 23px;
+    font-family: RobotoLight;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+}
+
+.add-back-btn {
+    font-size: 20px;
+    margin: 0px 0px 0px 25px;
+    color: cadetblue;
+    display: none;
+}
+.labelText{
+    width: -webkit-fill-available;
+    margin-right: 23px;
+    font-family: RobotoLight;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+    padding: 12px;
+}
+.labelValue{
+    overflow-wrap: anywhere;
+    width: -webkit-fill-available;
+    font-family: RobotoLight;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #091132;
+
+}
+.tableDiv{
+  display: flex;
+  justify-content: space-between;
+  //border-bottom: 1px solid #ccc;
+  width: 50%;
+  min-height: 50px;
+}
+.tableDiv2{
+  display: flex;
+  justify-content: space-between;
+  
+  width: 50%;
+  border-bottom: 1px solid red;
+}
+
+.tableInfo{
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.textSecFont {
+    font-family: RobotoLight;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+   color: #091132;
+}
+
+.mainContainer {
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+
+}
+
+.jobDetails {
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: 110px; */
+        bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+
+.recordInfo td {
+    width: 50% !important;
+    text-align: left;
+    padding: 8px 0px 8px;
+}
+
+tr {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: 1px solid #ccc;
+    padding-left: 15px;
+}
+
+td {
+    display: flex;
+}
+
+/* media query  */
+@media (max-width:768px) {
+    .newData {
+        flex-direction: column;
+    }
+
+    .jobDetails {
+        display: block;
+    }
+
+    .add-back-btn {
+        display: block;
+    }
+
+    .recordInfo td {
+        padding: 5px 5px 5px;
+    }
+
+    .detail-tables-wrapper {
+        flex-direction: column;
+    }
+}
+
+.notFound {
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    color: #549BA5;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 100px;
+}
+.description{
+    border-radius: 19px;
+    padding-left: 35px;
+    background:#fff;
+    margin: 0px 15px 0px 20px;
+}
+
+.mainDiv {
+    border-radius: 20px;
+}
+
+.headerDiv {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 20px 20px 0px 0px;
+    background-image: linear-gradient(to right, rgb(50, 91, 136), rgb(31, 110, 148), rgb(21, 128, 155), rgb(40, 146, 158), rgb(70, 162, 157));
+}
+
+.mainText {
+    font-size: large;
+    font-weight: bold;
+    color: rgb(47, 80, 80);
+}
+
+.paragraph {
+    color: rgb(83, 113, 111);
+}
+
+.inputTag {
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background-color: lightgray;
+    color: rgb(84, 155, 165);
+    font-weight: bold;
+}
+
+::-webkit-file-upload-button {
+    background: black;
+    color: red;
+    padding: 1em;
+}
+
+.buttonClass {
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+}
+
+.invertButtonClass {
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: white;
+    color: rgb(84, 155, 165);
+}
+
+.disableButtonClass {
+    border: none;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(84, 155, 165);
+    opacity: 0.3;
+}
+
+.lineButtonClass {
+    border: 2px solid rgb(84, 155, 165);
+    color: rgb(84, 155, 165);
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.3;
+}
+
+.infoText {
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+}
+
+.infoIcon {
+    font-size: large;
+    margin-top: -3px;
+}
+
+
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    border: none;
+    color: grey;
+    background-color: rgb(245, 245, 245);
+    padding: 15px 10px;
+    border-radius: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.infoFileChoosen {
+    font-weight: bold;
+    color: rgb(84, 155, 165);
+    padding: 15px 10px;
+}

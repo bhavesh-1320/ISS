@@ -1,0 +1,207 @@
+<template>
+    
+    <div class="mainContainer">
+
+    
+    <div class="slds-grid" style="margin-left: 30px;">
+        <div class="slds-col slds-order_1 slds-large-order_1">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_2-of-12">
+                    <div class="slds-col">
+                        <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                    </div>
+                    
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_2-of-12">
+                    <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_2-of-12">
+                    <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_2-of-12">
+                    <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                </div>
+        
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_2-of-12">
+                    <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                </div>
+                <a style="margin-top:23px ;"> More Filters</a>
+            </div>
+        </div>
+        <div class="slds-col slds-order_2 slds-large-order_2">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12">
+                    <lightning-combobox name="Department" label="" value={value} placeholder="Deparment" class="my-custom-Combobox" options={options} onchange={handleChange}></lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_4-of-12" style="margin-top:23px ;">
+                    <lightning-button variant="success" icon-name="utility:save" label="Save View " class="addjobButton"></lightning-button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+       
+        <div class="container slds-grid slds-gutters slds-wrap" style="margin:0px;">
+            <div class="left slds-col slds-size_1-of-4 desktop-view">
+              <div class="mobile-search mySearch" onkeyup={handleKeyUp}>
+                <div class="Cadidatecount">
+                    <div class="font-cadidate-count">
+                        <p>Candidates</p>
+                    </div>
+                    <div class="font-cadidate-count">
+                        <p>150</p>
+                    </div>
+        
+                </div>
+                <lightning-input name="enter-search" label=" " type="search" class="my-custom-Combobox"></lightning-input>
+                </br>
+             
+              </div>
+
+                <!-- header part over  -->
+              <div>
+              <template if:false={noData} >  
+                <template for:each={jobsData} for:item="item" for:index="index">
+
+
+                  <article class="slds-card" key={item.key} style="border-radius: 15px;padding: 10px;">
+                    <div class="slds-card__header slds-grid" style="background: #f5faf9;border-radius: 13px">
+                      <header class="slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-grid slds-grid_reverse">
+                          <div class="slds-col my-col" style="margin-top: 9px; cursor:pointer; display: flex;justify-content: space-between;" onclick={getClickDesktop} >
+                            <div class="namediv">
+                              <p style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+                              <!-- {item.Name} -->
+                              Karan Jain
+                            </p>
+                            <p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+                              <!-- {item.School__r.Name} -->
+                              Aryan College
+                            </p>
+                            </div>
+                            <div>
+                              <img src={groups}>
+                            </div>
+                          </div>
+                          <div class="slds-col" style="align-items: center;">
+                            <img src={rectangleImage} style="margin-bottom: 11px;">
+                          </div>
+                        </div>
+                      </header>
+                    </div>
+                    <div>
+                      <div class="slds-grid">
+                        <div class="slds-col slds-order_2 slds-large-order_1">
+                              <p> <span style="color: cadetblue;">Available :</span> <span style="color:rgb(66, 189, 194)"> June 12 , 2024 </span> </p>
+                        </div>
+                        <div class="slds-col slds-order_1 slds-large-order_2">
+                             <div style="display: flex;flex-wrap: wrap;">
+                              <img src={hatImage}> &nbsp; &nbsp; <p> <span style="color:cadetblue ;">Masters </span></p> 
+                             </div> 
+
+                        </div>
+                        </div>
+                    </div>
+                   </article>
+                </template>
+              </template>
+              <template if:true={noData}>
+                <div class="noData">
+                  <p>
+                    No Data Found !!
+                  </p>
+                </div>
+
+              </template>
+              </div>
+            <div>
+          </div>
+            </div>
+
+            <!-- mobile view  -->
+            <div class="left slds-col slds-size_1-of-4 mobile-view">
+              <div class="mobile-search mySearch" onkeyup={handleKeyUp}>
+                <div class="Cadidatecount">
+                    <div class="font-cadidate-count">
+                        <p>Candidates</p>
+                    </div>
+                    <div class="font-cadidate-count">
+                        <p>150</p>
+                    </div>
+        
+                </div>
+                <lightning-input name="enter-search" label=" " type="search" class="my-custom-Combobox"></lightning-input>
+                </br>
+             
+              </div>
+
+                <!-- header part over  -->
+              <div>
+              <template if:false={noData} >  
+                <template for:each={jobsData} for:item="item" for:index="index">
+
+
+                  <article class="slds-card" key={item.key} style="border-radius: 15px;padding: 10px;">
+                    <div class="slds-card__header slds-grid" style="background: #f5faf9;border-radius: 13px">
+                      <header class="slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-grid slds-grid_reverse">
+                          <div class="slds-col my-col" style="margin-top: 9px; cursor:pointer; display: flex;justify-content: space-between;" onclick={getClick} id={Id}>
+                            <div class="namediv">
+                              <p
+                              style="color: #587574;font-size: 16px;font-weight: bold;margin-bottom:6px;font-size: 12px;">
+                              <!-- {item.Name} -->
+                              Karan Jain
+                            </p>
+                            <p style="color: #939d9c;margin-top: -5px;margin-bottom: 7px;font-size: 13px;">
+                              <!-- {item.School__r.Name} -->
+                              Aryan College
+                            </p>
+                            </div>
+                            <div>
+                              <img src={groups}>
+                            </div>
+                          </div>
+                          <div class="slds-col" style="align-items: center;">
+                            <img src={rectangleImage} style="margin-bottom: 11px;">
+                          </div>
+                        </div>
+                      </header>
+                    </div>
+                    <div>
+                      <div class="slds-grid">
+                        <div class="slds-col slds-order_2 slds-large-order_1">
+                              <p> <span style="color: cadetblue;">Available :</span> <span style="color:rgb(66, 189, 194)"> June 12 , 2024 </span> </p>
+                        </div>
+                        <div class="slds-col slds-order_1 slds-large-order_2">
+                             <div style="display: flex;flex-wrap: wrap;">
+                              <img src={hatImage}> &nbsp; &nbsp; <p> <span style="color:cadetblue ;">Masters </span></p> 
+                             </div> 
+
+                        </div>
+                        </div>
+                    </div>
+                   </article>
+                </template>
+              </template>
+              <template if:true={noData}>
+                <div class="noData">
+                  <p>
+                    No Data Found !!
+                  </p>
+                </div>
+
+              </template>
+              </div>
+            <div>
+          </div>
+            </div>
+        <div class="slds-col slds-size_3-of-4 right mobile-child-display" style="margin-top: 74px;">
+            <!-- <c-job-u-i-child-component get-value={value} oncallpasstoparent={passToParent}></c-job-u-i-child-component> -->
+            <c-manage-admin-candidates></c-manage-admin-candidates>
+        </div>
+      <div>
+</div>
+</div>
+    
+    </div>
+</template>

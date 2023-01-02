@@ -1,0 +1,20 @@
+<template>
+
+    <div class="mainChatArea slds-m-horizontal_large slds-p-top_large slds-p-bottom_small slds-p-horizontal_small">
+        <h1 class="slds-p-left_small slds-p-bottom_small slds-m-bottom_small"
+            style="font-weight: 600;font-size:18px;border-bottom: 1px solid #5FA19C;">Messaging</h1>
+
+        <div class="slds-grid">
+            <div class="recruiterMessagingScreen slds-col slds-size_1-of-3 slds-p-right_x-small">
+                <c-recruiter-messaging-contacts onopenchat={openChat}></c-recruiter-messaging-contacts>
+            </div>
+
+            <div class="recruiterMessaging slds-col slds-size_2-of-3">
+                <template if:true={showrecruiterMessaging}>
+                    <c-recruitment-messaging-chat-area onrefreshcontacts={refreshContacts} onbacktouserlist={backToUserList}
+                        onchangecontactposition={contactPostionChange}></c-recruitment-messaging-chat-area>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

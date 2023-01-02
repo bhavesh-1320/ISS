@@ -1,0 +1,435 @@
+.containerMain {
+  background-color:rgb(247, 247, 247);
+}
+.iss-container {
+  max-width: 1530px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@media (max-width: 991.98px) {
+  .iss-container {
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+}
+
+.iss-sidebar h2 {
+  font-size: 25px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #549BA5;
+  margin: 0 0 20px;
+}
+.iss-sidebar .h2 {
+  padding-left: 7px;
+}
+
+.iss-topics-blocks {
+  margin: 0 0 30px;
+}
+
+.iss-topics-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #fff;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.iss-topics-block .image {
+  width: 126px;
+}
+.iss-topics-block .image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.iss-topics-block .description {
+  padding: 16px 19px 19px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  font-size: 14px;
+  line-height: 15px;
+  color: rgba(45, 81, 79, 0.5);
+}
+.iss-topics-block .description .title {
+  display: block;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  margin: 0 0 7px;
+}
+.iss-topics-block .description p {
+  margin: 0;
+}
+.iss-topics-block .description .more {
+  float: right;
+  color: #549BA5;
+  font-weight: 700;
+}
+.iss-topics-block .description .more:hover {
+  color: #091132;
+}
+
+.iss-badges-block {
+  background: #fff;
+  border-radius: 20px;
+  padding: 17px 15px;
+  margin: 0 0 26px;
+}
+.iss-badges-block .link {
+  text-align: center;
+  display: block;
+}
+.iss-badges-block .link i {
+  font-size: 12px;
+}
+.iss-badges-block .link a {
+  color: #549BA5;
+}
+.iss-badges-block .link a:hover {
+  color: #2D514F;
+}
+
+.iss-badges-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -13px 8px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.iss-badges-list li {
+  padding: 0 13px;
+  text-align: center;
+}
+.iss-badges-list .title {
+  color: #2D514F;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  display: block;
+  margin: 0 0 4px;
+}
+.iss-badges-list .text {
+  display: block;
+  font-size: 11px;
+  line-height: 13px;
+  color: #2D514F;
+}
+.iss-badges-list .ico {
+  width: 46px;
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100%;
+  background: #f4f5f5;
+  font-size: 25px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.iss-fav-block h2 {
+  margin: 0 0 13px;
+  color: #2D514F;
+}
+.iss-fav-block .link {
+  text-align: center;
+  display: block;
+}
+.iss-fav-block .link i {
+  font-size: 12px;
+}
+.iss-fav-block .link a {
+  color: #549BA5;
+}
+.iss-fav-block .link a:hover {
+  color: #2D514F;
+}
+
+.iss-fav-list {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.iss-fav-list li {
+  margin: 0 0 16px;
+}
+.iss-fav-list a {
+  color: #549BA5;
+  display: block;
+  padding: 15px 17px;
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+}
+.iss-fav-list a:before {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  font-size: 20px;
+  line-height: 1;
+  font-family: "Iss-icomoon" !important;
+  content: "\e917";
+  font-weight: 400;
+}
+
+.iss-search-blocks {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .iss-search-blocks {
+    /* width: 100%; */
+    display: flex;
+  }
+}
+
+.iss-search-block .image {
+  position: relative;
+  width: 214px;
+}
+.iss-search-block .image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.iss-search-block .description {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  padding: 14px 35px 10px;
+  font-size: 16px;
+  line-height: 19px;
+  position: relative;
+}
+.iss-search-block .description p {
+  margin: 0 0 10px;
+}
+.iss-search-block .iss-fav {
+  position: absolute;
+  right: 15px;
+  top: -2px;
+  color: #549BA5;
+  font-size: 12px;
+}
+.iss-search-block .iss-fav a {
+  color: #549BA5;
+}
+.iss-search-block .title {
+  display: block;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(45, 81, 79, 0.5);
+}
+.iss-search-block h2 {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #2D514F;
+  margin: 0 0 10px;
+}
+.iss-search-block h2 a {
+  color: #2D514F;
+}
+.iss-search-block h2 a:hover {
+  color: #549BA5;
+}
+.iss-search-block .price {
+  color: #28397E;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  float: right;
+  margin-top: -24px;
+}
+.iss-search-block .points_count {
+  font-size: 14px;
+  line-height: 17px;
+}
+.iss-search-block .meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.iss-search-block .iss-blocks_tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 4px;
+}
+.iss-search-block .iss-blocks_tags li {
+  margin-right: 8px;
+}
+.iss-search-block .iss-blocks_tags a {
+  display: block;
+  background: #f4f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.iss-search-block .iss-blocks_tags a:hover {
+  color: #f4f5f5;
+  background: #2D514F;
+}
+.iss-search-block .duration_count {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  height: 26px;
+  font-size: 14px;
+  line-height: 26px;
+  padding: 0 11px;
+  text-align: center;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+.iss-search-block .live-date {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  height: 26px;
+  font-size: 14px;
+  line-height: 26px;
+  padding: 0 11px;
+  text-align: center;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+.iss-search-block .pts-text {
+  margin-right: 26px;
+  font-size: 14px;
+}
+
+.iss-search-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 14px;
+}
+.iss-search-head h1 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 29px;
+  font-weight: 600;
+  color: #549BA5;
+}
+.iss-search-head .iss-search_meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.iss-search-head .iss-search-filter,
+.iss-search-head .iss-filter-list,
+.iss-search-head .iss-search-sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.iss-search-head .iss-search-sort .title {
+  font-weight: 400;
+  padding-right: 20px;
+}
+.iss-search-head .search-sort-box .icon-caret-down-solid {
+  display: inline-block;
+  margin-right: 2px;
+}
+.iss-search-head .iss-search-filter .title {
+  font-weight: 400;
+}
+.iss-search-head .iss-filter-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 0 10px;
+}
+.iss-search-head .iss-filter-list li {
+  margin-right: 14px;
+}
+.iss-search-head .iss-filter-list a {
+  display: block;
+  background: #fff;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.iss-search-head .iss-search-sort {
+  margin-left: 22px;
+}
+
+.containerMain button {
+  display: block;
+  font-size: 20px;
+  padding: 2px 7px;
+  border: none;
+  background: white;
+  color: #2D514F;
+}
+
+.containerMain button:hover {
+  background-color: #2D514F;
+  color: white;
+}
+
+.backBtn {
+  padding-bottom: 150px;
+}

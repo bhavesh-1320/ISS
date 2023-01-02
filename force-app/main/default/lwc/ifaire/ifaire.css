@@ -1,0 +1,523 @@
+.mainBody {
+  width: auto;
+  height: fit-content;
+  background: #eef6f5;
+  border-radius: 25px;
+  border-bottom: 3px solid lightgray;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+}
+
+.heading {
+  background: rgb(227, 212, 212);
+  border: 1px solid rgb(249, 139, 139);
+  border-radius: 20px;
+  margin-bottom: 35px;
+  padding: 5px;
+}
+
+.description {
+  font-weight: 600;
+  /* color: rgb(45, 81, 79); */
+  padding: 15px;
+  overflow-wrap: anywhere;
+
+}
+
+.leftText {
+  padding-left: 15px;
+}
+
+.imgText {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Teacher2 {
+  border-radius: 20px 20px 0px 0px;
+  height: 178px;
+  padding-top: 110px;
+}
+
+.mainchildbody {
+
+  background: green;
+
+  height: 141px;
+
+}
+
+.applicantspill {
+  font-family: arial;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  align-items: center;
+  text-align: center;
+  margin-left: 7px;
+}
+
+.applicantspillSec {
+  background-color: yellow;
+
+  font-family: arial;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+th {
+  font-size: 10px;
+  color: #b6c3c2;
+  padding-right: 35px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.container {
+  padding: 15px;
+  padding-top: 20px;
+}
+
+.rightPadding {
+  padding-right: 20px;
+}
+
+.headertwoComboBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftIcon {
+  display: flex;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.fontChange {
+
+  font-style: normal;
+
+  font-size: 25px;
+  color: #2D514F;
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+  color: rgb(57, 91, 89);
+}
+
+.combobox {
+  display: flex;
+
+  padding: 20px;
+  padding-left: 0px;
+
+}
+
+.my-icon {
+  --sds-c-icon-color-foreground-default: green;
+  --sds-c-icon-color-background: #c9f8f1;
+}
+
+.my-cystom-input {
+  --sds-c-input-radius-border: 20px;
+  --lwc-borderWidthThin: 3px;
+  --sds-c-input-color-border: #549BA5;
+  --lwc-colorTextPlaceholder: #2D514F;
+  --slds-c-icon-color-foreground-default: #549BA5;
+
+
+  /* --sds-c-input-border: 2px solid #5FA19C; */
+
+}
+
+.my-custom-Combobox {
+  --lwc-spacingSmall: 20rem;
+  --lwc-borderWidthThin: 3px;
+  --sds-c-input-color-border: #549BA5;
+  --lwc-colorTextPlaceholder: #2D514F;
+  --sds-c-input-radius-border: 20px;
+  --lwc-borderWidthThin: 3px;
+  --lwc-heightInput: 2rem;
+  --lwc-colorTextInputIcon: #549BA5;
+
+}
+
+.addjobButton {
+  --sds-c-button-success-color-background-hover: #549BA5;
+  --sds-c-button-success-color-background: #549BA5;
+  --lwc-buttonBorderRadius: 20PX;
+  --sds-c-button-success-text-color: WHITE;
+  HEIGHT: 83PX;
+
+}
+
+.addAnalytics {
+  margin-right: 54rem;
+  --sds-c-button-neutral-color-border: #549BA5;
+  --sds-c-button-neutral-color-background: #F5FAF9;
+  --slds-c-button-radius-border: 40px;
+  --sds-c-button-text-color: #549BA5;
+  height: 40px;
+}
+
+.newData {
+
+  justify-content: space-around;
+  background: #F6F6F6;
+  border-radius: 15px;
+  height: 450px;
+  overflow-y: auto;
+
+
+
+}
+
+.dataLeft {
+  /* padding-left: 10px; */
+  /* color:#91a5a4; */
+  padding-right: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+
+  color: rgba(9, 17, 50, 0.5);
+}
+.leftCardData {
+  font-family: 'Roboto';
+  padding-left: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #091132;
+}
+.dataRight {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: #091132;
+}
+
+
+.textfont {
+  margin-right: 23px;
+  font-family: arial;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #2D514F80;
+}
+
+.textSecFont {
+  font-family: arial;
+  font-size: 16;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #2D514F;
+}
+
+.eventTime {
+  /* padding-top: 15px;
+  padding-right: 20px;
+  padding-left: 5px;
+  padding-bottom: 5px; */
+  border-bottom: 1px solid #DDECEA;
+}
+
+.date {
+  display: flex;
+
+}
+
+.left {
+  padding-left: 15px;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.yourTime {
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #DDECEA;
+
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid #f5faf9;
+}
+
+.time-zone {
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.time-zone h2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #549BA5;
+}
+
+.time-zone .container {
+  margin-top: 30px;
+  padding: 20px 25px;
+  border-radius: 20px;
+  background-color: #F5FAF9;
+}
+
+.time-zone .container .lines {
+  color: #ddd;
+  margin: 13px 0;
+}
+
+.time-zone .container .item {
+  /* background-color: orange; */
+}
+
+.time-zone .container .item h3 {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #549BA5;
+}
+
+.time-zone .container .item .zones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.time-zone .container .item .zones p {
+  font-size: 14px;
+  color: #96a8a7;
+}
+
+.time-zone .container .item .zones .btnicon {
+  /* background: #ddd3e8; */
+}
+
+@media (max-width:768px) {
+  .container {
+    padding-left: 0px;
+    padding-bottom: 0px;
+  }
+
+  .newData {
+    height: 340px;
+    margin-bottom: 10px;
+
+  }
+
+  .left {
+    padding-top: 15px;
+    padding-left: 0px;
+    height: 200px;
+  }
+
+
+}
+
+.multipleSchools {
+  padding: 10px;
+}
+
+.rightText {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .Teacher2 {
+    padding-top: 10px;
+  }
+
+  .imgText {
+    display: block;
+  }
+
+  .rightText {
+    padding-top: 60px;
+    padding-left: 10px;
+  }
+}
+
+p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #091132;
+
+}
+
+h1 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+
+  color: #091132;
+}
+
+.upperCardHead {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+
+}
+
+.locationCardHead {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140.4%;
+  /* or 20px */
+
+  display: flex;
+  align-items: center;
+
+  color: rgba(255, 255, 255, 0.9);
+
+}
+
+.schoolParticipateCount {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+
+  color: #FFFFFF;
+
+}
+
+.bookmarkButton {
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+  width: 142px;
+  height: 50px;
+}
+
+.registerButton {
+  background: #46A39D;
+  border-radius: 20px;
+  width: 142px;
+  height: 50px;
+}
+
+.dataLeft2 {
+  /* padding-left: 10px; */
+  /* color:#91a5a4; */
+  padding-right: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  /* display: flex; */
+  align-items: center;
+
+  color: rgba(9, 17, 50, 0.5);
+}

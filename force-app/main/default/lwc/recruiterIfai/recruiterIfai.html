@@ -1,0 +1,206 @@
+<template>
+	<div class="mainContainerCard" style="background: #F5F5F5;">
+		<div class=" slds-grid slds-wrap">
+
+			<div class="left slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-1">
+				<div style="    padding-bottom: 20px;">
+					<p
+						style=" font-size: 25px;font-family: 'Roboto';font-style: normal;font-weight: 600; color:#2D514F;">
+						IFAIRS</p>
+				</div>
+			</div>
+		</div>
+		<div class="container slds-grid slds-wrap">
+			<div class="left slds-col slds-size_1-of-1 slds-large-size_1-of-1 slds-medium-size_1-of-1 topHead">
+
+				<div style="display:flex;">
+					<div class="slds-m-right--xx-large">
+						<span style="font-size:19px ;font-family:Inter, sans-serif; font-weight:bold; color:white;">
+							Remind me of upcoming fairs </span>
+					</div>
+					<div style="display:flex">
+
+						<lightning-layout-item size="8"
+							style="text-align: right; padding-right: 2%; color: white; font-weight: 600;"
+							class="slds-align--absolute-center">
+							Alert
+						</lightning-layout-item>
+						<lightning-layout-item size="4" style="padding-right: 5%;" class="slds-align--absolute-center">
+							<!-- <lightning-input type="toggle" variant="label-hidden" label="Permanent Address" checked>
+							</lightning-input> -->
+							<div class="slds-form-element">
+								<label class="slds-checkbox_toggle slds-grid">
+									<span class="slds-form-element__label slds-m-bottom_none"></span>
+									<input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16"
+										aria-describedby="checkbox-toggle-16" checked="" />
+									<span id="checkbox-toggle-16" class="slds-checkbox_faux_container"
+										aria-live="assertive">
+										<span class="slds-checkbox_faux"></span>
+										<span class="slds-checkbox_on"></span>
+										<span class="slds-checkbox_off"></span>
+									</span>
+								</label>
+							</div>
+						</lightning-layout-item>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="left slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-1 scrollable">
+				<div class="leftTemp">
+					<template for:each={ifairData} for:item="item" for:index="index">
+
+
+						<article class="slds-card" key={item.Id}
+							style="    border-radius: 15px;min-height: 10rem;    min-height: 10rem;">
+							<div>
+								<div class="cardUp">
+									<div class="slds-card__header slds-grid"
+										style="background: #f5faf9;border-radius: 13px;padding-bottom:10px;">
+										<header class="slds-media slds-has-flexi-truncate">
+											<div id={item.Id} class="slds-media__body" style="cursor:pointer;"
+												onclick={getChildData}>
+												<p style="color: #587574;font-size: 14px;font-weight: bold;">{item.Name}
+												</p>
+												<p style="color: #939d9c;">{item.IFair_Start_Date__c} -
+													{item.IFair_Close_Date__c}</p>
+
+
+											</div>
+
+										</header>
+
+									</div>
+									<div class="slds-p-left_medium">
+										<div class="slds-p-bottom--medium">
+											<span style="padding-right: 0.7rem;"><img src={locationImage}></span><span
+												style="font-weight: 400;font-size: 12px;color: #549BA5;">Virtual</span>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="cardDown">
+
+
+
+
+									<div>
+										<table style="width:100%">
+											<tr class="slds-float_bottom">
+												<th style="padding: 0px;">Register by: {item.Registration_Last_Date__c}
+												</th>
+
+												<th style="padding: 0px;">50+ Schools</th>
+											</tr>
+
+
+
+										</table>
+									</div>
+								</div>
+							
+							</div>
+						</article>
+					</template>
+				</div>
+				<div>
+
+				</div>
+
+			</div> -->
+
+
+			<div class="left slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-medium-size_1-of-3 scrollable"
+				style="overflow-y:auto;">
+
+				<div>
+
+
+				</div>
+				<div class="templateText scrollable" style="padding: 15px 0;">
+					<input
+						style="background: rgb(230, 234, 234);border-radius: 20px;width: -webkit-fill-available;height: 3rem;padding: 20px;margin-bottom: 10px;"
+						placeholder="Search name or email" class="slds-m-around--small" onkeyup={handlechange}></input>
+					<template for:each={ifairData} for:item="item" for:index="index">
+
+						<div key={item.Id} style="background: #F6F6F6;"
+							class="slds-p-around--small slds-m-around--small">
+
+							<article class="slds-card cards" key={item.Id}
+								style="    border-radius: 20px;min-height: 10rem;    min-height: 10rem;">
+								<div>
+									<div class="cardUp">
+										<div class="slds-card__header slds-grid"
+											style="background: linear-gradient(90deg, #28397E 0%, #46A39D 100%);    border-radius: 20px 20px 0px 0px;padding-bottom:10px;">
+											<header class="slds-media slds-has-flexi-truncate">
+												<div id={item.Id} class="slds-media__body" style="cursor:pointer;"
+													onclick={getChildData}>
+													<p style="color: white;font-size: 14px;font-weight: bold;">
+														{item.Name}
+													</p>
+													<p style="color: white;">{item.IFair_Start_Date__c} -
+														{item.IFair_Close_Date__c}</p>
+
+
+												</div>
+
+											</header>
+
+										</div>
+										<div class="slds-p-left_medium">
+											<div class="slds-p-bottom--medium" style="display: flex;">
+												<span style="padding-right: 0.7rem;"><img
+														src={locationImage}></span><span
+													class="locationCard">Virtual</span>
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="cardDown">
+
+
+
+
+										<div>
+											<table style="width:100%">
+												<tr class="slds-float_bottom "
+													style="display: flex;justify-content: space-between;">
+													<th style="padding: 0px;">Register by:
+														{item.Registration_Last_Date__c}
+													</th>
+
+													<th style="padding: 0px;">50+ Schools</th>
+												</tr>
+
+
+
+											</table>
+										</div>
+									</div>
+									<!-- <footer class="slds-card__footer"> -->
+									<!-- <a class="slds-card__footer-action" href="#">View All -->
+									<!-- <span class="slds-assistive-text">Accounts</span> -->
+									<!-- </a> -->
+									<!-- </footer> -->
+								</div>
+							</article>
+						</div>
+					</template>
+				</div>
+				
+
+			</div>
+			<div class="right slds-col slds-medium-size_2-of-3 slds-large-size_2-of-3 slds-size_1-of-1">
+				<!-- <div style=""><p>Don’t forget to book ccomodations for iFair Feb 2022 in New York City, USA</P></div> -->
+				<!-- <c-high-school-math></c-high-school-math> -->
+				<c-ifaire2 child={childData}></c-ifaire2>
+			</div>
+		</div>
+
+	</div>
+
+</template>

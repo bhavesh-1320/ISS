@@ -1,0 +1,73 @@
+<template>
+    <div class="iss-search-blocks">
+        <template for:each={content} for:item="record">
+            <div key={record.Id} class="iss-search-block">
+                <div class="image">
+                    <img src={imagePath} alt="image-description">
+
+                    <template if:true={record.Duration__c}>
+                        <span class="duration_count">{record.Duration__c} hours</span>
+                    </template>
+
+                    <template if:false={record.Duration__c}>
+                        <span class="duration_count">4 hours</span>
+                    </template>
+
+                    <template if:true={record.LiveSessionDate__c}>
+                        <span class="live-date">live: {record.LiveSessionDate__c}</span>
+                    </template>
+                </div>
+                <div class="description">
+                    <span class="iss-fav"><i class="icon-star-solid"></i></span>
+                    <template if:true={record.Type__c}>
+                        <span class="title">{record.Type__c}</span>
+                        <h2><a data-item={record.Id} onclick={linkToCourse}>{record.Name}</a></h2>
+                    </template>
+                    <template if:false={record.Type__c}>
+                        <span class="title">Series</span>
+                        <h2><a data-item={record.Id} onclick={linkToContent}>{record.Name}</a></h2>
+                    </template>
+
+                    <template if:true={record.Description__c}>
+                        <p> {record.Description__c}</p>
+                    </template>
+
+                    <template if:false={record.Description__c}>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices nunc metus, id fringilla dui varius eget. Nulla sit amet nunc vitae metus ullamcorper vehicula.</p>
+                    </template>
+
+                    <div class="meta">
+                        <template if:true={record.Points__c}>
+                            <span class="pts-text">+{record.Points__c} pts</span>
+                        </template>
+
+                        <template if:false={record.Points__c}>
+                            <span class="pts-text">+1500 pts</span>
+                        </template>
+
+                        <template if:true={tags.length}>
+                            <ul class="list-unstyled iss-blocks_tags">
+                                <li for:each={tags} key={tag.Id} for:item="tag"><a>{tag.Name}</a></li>
+                            </ul>
+                        </template>
+
+                        <template if:false={tags.length}>
+                            <ul class="list-unstyled iss-blocks_tags">
+                                <li><a>School</a></li>
+                                <li><a>History</a></li>
+                                <li><a>Math</a></li>
+                            </ul>
+                        </template>
+                    </div>
+                    <template if:true={record.Price__c}>
+                        <strong class="price">{record.Price__c}$</strong>
+                    </template>
+
+                    <template if:false={record.Price__c}>
+                        <strong class="price">15$</strong>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>
